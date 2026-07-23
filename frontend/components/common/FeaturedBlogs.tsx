@@ -5,14 +5,11 @@ import { useState, useEffect } from "react";
 import { getAllBlogs, generateSlug } from "@/services/blogServices";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function FeaturedBlogs() {
   const [isHovered, setIsHovered] = useState(false);
-  const pathname = usePathname();
   const router = useRouter();
-
-  const isResourcesPage = pathname === "/resources";
 
   const [featuredBlog, setFeaturedBlog] = useState<any>();
   const [recentBlogs, setRecentBlogs] = useState<any[]>();
@@ -45,6 +42,7 @@ export default function FeaturedBlogs() {
           }
         }
       } catch (error) {
+        console.log(error)
         console.error("Error fetching featured blogs", error);
       }
     }
@@ -52,20 +50,19 @@ export default function FeaturedBlogs() {
   }, []);
 
   if (!featuredBlog || !recentBlogs) {
-    return null;
+    return <p className="text-center m-6">No Featured blogs found !</p>;
   }
 
   return (
-    <section className="py-6 lg:py-2 w-full max-w-[97vw] mx-auto relative">
-      <div className="bg-[#CDC2BB] mx-auto py-6 lg:py-16 px-4 md:px-8 lg:px-16 rounded-xl ">
-
+    <section className="w-full py-1 px-2">
+      <div className="w-full max-w-8xl mx-auto relative py-6 lg:py-16 px-4 md:px-8 lg:px-16 bg-[#E6DCD6] rounded-xl">
         {/* Section Header */}
-        <div className={`flex flex-col ${isResourcesPage ? 'md:items-start items-center  ml-4 ' : 'items-center'}  lx:items-start mb-12`}>
+        <div className={`mb-12`}>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-sans font-semibold  text-2xl  md:text-[36px] leading-none tracking-normal text-[#1D2331] inline-block relative mb-2"
+            className="font-sans font-semibold text-2xl md:text-[36px] leading-none tracking-normal text-[#1D2331] inline-block relative mb-2"
           >
             Featured Blog Posts
             <motion.div
@@ -140,7 +137,7 @@ export default function FeaturedBlogs() {
                 y: isHovered ? "12px" : "0px"
               }}
               transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-              className="absolute bottom-0 left-0 w-[92%] sm:w-[85%] lg:w-[80%] p-6 sm:p-8 md:p-12 flex flex-col justify-end z-10"
+              className="absolute bottom-0 left-0 w-[92%] sm:w-[85%] p-6 sm:p-8 md:p-12 flex flex-col justify-end z-10"
             >
               <h3 className="font-sans font-medium text-[#1D2331] text-[18px] sm:text-[24px] lg:text-[26px] leading-none tracking-normal mb-3 sm:mb-4 max-w-[95%] sm:max-w-[90%] transition-colors duration-300">
                 {featuredBlog.title}
@@ -183,7 +180,6 @@ export default function FeaturedBlogs() {
               </motion.div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

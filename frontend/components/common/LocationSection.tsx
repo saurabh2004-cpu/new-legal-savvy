@@ -40,9 +40,8 @@ export default function LocationsSection({ className }: { className?: string }) 
     const [hoveredId, setHoveredId] = useState<number | null>(null);
 
     return (
-        <section className={`w-full pb-2  ${className}`}>
-            <div className="max-w-[97vw] mx-auto space-y-2">
-
+        <section className={`w-full py-1 px-2 ${className}`}>
+            <div className="max-w-8xl mx-auto space-y-2">
                 {locations.map((location, index) => {
                     const isHovered = hoveredId === location.id;
 

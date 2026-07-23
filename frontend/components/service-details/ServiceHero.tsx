@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Navbar from "../common/Navbar";
+import Button2 from "../ui/Button2";
 
 function AnimatedCharacter({
   char,
@@ -31,8 +32,8 @@ function AnimatedCharacter({
 
   return (
     <motion.span
-      style={{ 
-        opacity, 
+      style={{
+        opacity,
         y: yVal,
         ...(isForeground
           ? { color: "rgba(255, 255, 255, 0.95)" }
@@ -49,9 +50,10 @@ interface ServiceHeroProps {
   title: string;
   description: string;
   image: string;
+  className?: string;
 }
 
-export default function ServiceHero({ title, description, image }: ServiceHeroProps) {
+export default function ServiceHero({ title, description, image, className }: ServiceHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredMenu, setHoveredMenu] = useState<"services" | "locations" | null>(null);
 
@@ -147,96 +149,98 @@ export default function ServiceHero({ title, description, image }: ServiceHeroPr
   );
 
   return (
-    <div ref={containerRef} className="relative h-[400vh] bg-[#0E2333]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-
-        {/* ========================================================= */}
-        {/* NAVBAR (Z-30)                                             */}
-        {/* ========================================================= */}
-        <motion.div
-          style={{
-            opacity: navOpacity,
-            y: navY,
-            visibility: initialVisibility,
-            pointerEvents: initialPointerEvents
-          }}
-          className="absolute top-0 left-0 right-0 w-full z-30"
-        >
-          <Navbar onHoverMenuChange={setHoveredMenu} hoveredMenu={hoveredMenu} />
-        </motion.div>
-
-        {/* ========================================================= */}
-        {/* BACKGROUND TYPOGRAPHY (Z-0) - Transparent with White Stroke */}
-        {/* Shows outside the image bounds */}
-        {/* ========================================================= */}
-        <AnimatedTypography isForeground={false} />
-
-        {/* ========================================================= */}
-        {/* MAIN IMAGE (Z-10)                                         */}
-        {/* ========================================================= */}
-        <motion.div
-          style={{
-            scale: imageScale,
-            borderRadius: imageRadius,
-          }}
-          className="absolute inset-0 z-10 overflow-hidden transform-gpu origin-center shadow-2xl"
-        >
-          <motion.img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover"
-            initial={{ scale: 1.15 }}
-            animate={{ scale: 1.05 }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
-          />
+    <section className="w-full p-2">
+      <div ref={containerRef} className={`relative h-[400vh] rounded-xl`}>
+        <div className={`sticky top-2 h-screen w-full overflow-hidden flex items-center justify-center rounded-xl ${className}`}>
+          {/* ========================================================= */}
+          {/* NAVBAR (Z-30)                                             */}
+          {/* ========================================================= */}
           <motion.div
-            style={{ opacity: overlayOpacity }}
-            className="absolute inset-0 bg-black"
-          />
-        </motion.div>
-
-        {/* ========================================================= */}
-        {/* FOREGROUND TYPOGRAPHY (Z-[15]) - Solid White              */}
-        {/* Clipped to exactly match the image container dimensions   */}
-        {/* ========================================================= */}
-        <AnimatedTypography isForeground={true} />
-
-        {/* ========================================================= */}
-        {/* FOREGROUND INITIAL TEXT (Z-20)                            */}
-        {/* ========================================================= */}
-        <motion.div
-          style={{ visibility: initialVisibility, pointerEvents: initialPointerEvents }}
-          className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto"
-        >
-          <motion.h1
-            style={{ opacity: titleOpacity, y: titleY }}
-            className="text-5xl md:text-[5rem] lg:text-[6rem] font-bold text-white tracking-tight uppercase leading-[1.1]"
+            style={{
+              opacity: navOpacity,
+              y: navY,
+              visibility: initialVisibility,
+              pointerEvents: initialPointerEvents
+            }}
+            className="absolute top-0 left-0 right-0 w-full z-30"
           >
-            {title}
-          </motion.h1>
-          <motion.p
-            style={{ opacity: descOpacity, y: descY }}
-            className="text-lg md:text-[1.3rem] text-white mt-6 mb-12 font-normal max-w-[900px] leading-relaxed"
-          >
-            {description}
-          </motion.p>
+            <Navbar onHoverMenuChange={setHoveredMenu} hoveredMenu={hoveredMenu} />
+          </motion.div>
 
-          {/* <motion.button 
+          {/* ========================================================= */}
+          {/* BACKGROUND TYPOGRAPHY (Z-0) - Transparent with White Stroke */}
+          {/* Shows outside the image bounds */}
+          {/* ========================================================= */}
+          <AnimatedTypography isForeground={false} />
+
+          {/* ========================================================= */}
+          {/* MAIN IMAGE (Z-10)                                         */}
+          {/* ========================================================= */}
+          <motion.div
+            style={{
+              scale: imageScale,
+              borderRadius: imageRadius,
+            }}
+            className="absolute inset-0 z-10 overflow-hidden transform-gpu origin-center shadow-2xl"
+          >
+            <motion.img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover"
+              initial={{ scale: 1.15 }}
+              animate={{ scale: 1.05 }}
+              transition={{ duration: 2.5, ease: "easeOut" }}
+            />
+            <motion.div
+              style={{ opacity: overlayOpacity }}
+              className="absolute inset-0 bg-black"
+            />
+          </motion.div>
+
+          {/* ========================================================= */}
+          {/* FOREGROUND TYPOGRAPHY (Z-[15]) - Solid White              */}
+          {/* Clipped to exactly match the image container dimensions   */}
+          {/* ========================================================= */}
+          <AnimatedTypography isForeground={true} />
+
+          {/* ========================================================= */}
+          {/* FOREGROUND INITIAL TEXT (Z-20)                            */}
+          {/* ========================================================= */}
+          <motion.div
+            style={{ visibility: initialVisibility, pointerEvents: initialPointerEvents }}
+            className="relative z-20 flex flex-col items-center justify-center text-center px-6 max-w-5xl mx-auto"
+          >
+            <motion.h1
+              style={{ opacity: titleOpacity, y: titleY }}
+              className="text-5xl md:text-[5rem] lg:text-[6rem] font-bold text-white tracking-tight uppercase leading-[1.1]"
+            >
+              {title}
+            </motion.h1>
+            <motion.p
+              style={{ opacity: descOpacity, y: descY }}
+              className="text-lg md:text-[1.3rem] text-white mt-6 mb-12 font-normal max-w-[900px] leading-relaxed"
+            >
+              {description}
+            </motion.p>
+
+            {/* <motion.button 
             style={{ opacity: ctaOpacity, y: ctaY }} 
             className="px-10 py-4 mb-6 bg-white text-black text-sm md:text-base font-semibold tracking-wide rounded-full hover:bg-white/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
           >
             Consult our Expert
           </motion.button> */}
 
-          <motion.button
+            {/* <motion.button
             style={{ opacity: arrowOpacity, y: arrowY, scale: arrowScale }}
             className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
-          </motion.button>
-        </motion.div>
+          </motion.button> */}
 
+            <Button2 />
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

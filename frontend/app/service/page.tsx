@@ -15,24 +15,16 @@ export const metadata: Metadata = {
 }
 
 export default function page() {
-    const abotSectionParagraph1 = [
-        'Professional legal and loan management solutions',
-        'built on transparency, accuracy, and trust. We',
-        'simplify complex paperwork and guide you toward',
-        'secure financial decisions.'
-    ]
+    const abotSectionParagraph1 =
+        "Professional legal and loan management solutions built on transparency, accuracy, and trust. We simplify complex paperwork and guide you toward secure financial decisions.";
+
     return (
-        <div className="bg-[#D8D0CA] min-h-screen">
-            {/* <Hero
-                Heading={"OUR LEGAL SERVICES"}
-                description={"From Business Setup To Legal Documentation, Legal Savvy Provides Simple, Reliable, And Professional Legal Support For Individuals, Startups, And Businesses."}
-                img={"/about/about-hero-img.png"}
-                className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)]  xl:h-[calc(105vh-3rem)]"
-            /> */}
+        <div className="bg-[#D9D9D9] min-h-screen">
             <ServiceHero
                 title="OUR LEGAL SERVICES"
                 description="From Business Setup To Legal Documentation, Legal Savvy Provides Simple, Reliable, And Professional Legal Support For Individuals, Startups, And Businesses."
                 image="/about/about-hero-img.png"
+                className="md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
             />
             {/* <LegalServicesBanner />    */}
             <ServiceCards />
@@ -40,13 +32,13 @@ export default function page() {
                 buttonText1={"OUR"}
                 buttonText2={"APPROACH"}
                 paragraph={abotSectionParagraph1}
+                className="pt-2 py-1"
             />
             <ConsultationSolution
                 image={'/service/service-cultation-img.png'}
                 className="pb-0 lg:pb-0"
             />
             <ImageGalleryStrip />
-
         </div>
     );
 }

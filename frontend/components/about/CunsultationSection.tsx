@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Button from '../ui/Button';
 
 export default function ConsultationSection() {
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
@@ -39,15 +40,12 @@ export default function ConsultationSection() {
     const [activeImage, setActiveImage] = useState(galleryImages[0].src);
 
     return (
-        <section className="w-full px-4 py-6 md:py-6">
-            <div className="mx-auto max-w-[120rem] overflow-hidden rounded-xl bg-[#1B223C]">
-
+        <section className="w-full py-1 px-2">
+            <div className="max-w-8xl mx-auto overflow-hidden rounded-xl bg-[#1D2540]">
                 {/* MAIN WRAPPER */}
                 <div className="flex flex-col gap-12 px-5 py-8 sm:px-8 sm:py-10 md:px-12 xl:flex-row lg:items-center lg:justify-between lg:gap-12 lg:px-20 lg:py-14">
-
                     {/* LEFT CONTENT */}
-                    <div className="flex w-full flex-col items-center gap-6 text-center lg:max-w-[32rem]   lg:gap-8">
-
+                    <div className="flex w-full flex-col items-center gap-6 text-center lg:max-w-[32rem] lg:gap-8">
                         {/* Dual-Colored Brand Pill Tag */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -85,28 +83,19 @@ export default function ConsultationSection() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <button className="group inline-flex items-center gap-3 rounded-full bg-[#FF2D20] px-5 py-3 text-white transition-all duration-300 hover:bg-[#ff3f34] sm:px-6">
-                                <span className="text-[0.9rem] font-medium sm:text-[0.95rem]">
-                                    Explore Services
-                                </span>
-
-                                <div className="flex h-5 w-5 -rotate-45 items-center justify-center rounded-full bg-white text-black">
-                                    <FaArrowRight className="h-2.5 w-2.5 transition-transform duration-300 group-hover:translate-x-[2px]" />
-                                </div>
-                            </button>
+                            <Button text='Explore Services' />
                         </motion.div>
                     </div>
 
                     {/* RIGHT VISUAL SECTION */}
                     <div className="flex w-full flex-col items-center gap-4 sm:gap-5 xl:flex-row md:items-center  md:justify-center lg:w-auto lg:gap-6">
-
                         {/* MAIN IMAGE */}
                         <motion.div
                             key={activeImage}
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5 }}
-                            className="relative h-[24rem] w-full max-w-[20rem] overflow-hidden rounded-[1.8rem] sm:h-[30rem] sm:max-w-[24rem] md:h-[34rem] md:max-w-[26rem] xl:h-[43.125rem] xl:w-[31.875rem] md:max-w-none lg:rounded-[2.14875rem]"
+                            className="relative h-[24rem] w-full max-w-[20rem] overflow-hidden sm:h-[30rem] sm:max-w-[24rem] md:h-[34rem] md:max-w-[26rem] xl:h-[43.125rem] xl:w-[31.875rem] md:max-w-none rounded-xl"
                         >
                             <Image
                                 src={activeImage}
@@ -118,7 +107,7 @@ export default function ConsultationSection() {
                         </motion.div>
 
                         {/* RIGHT STACK IMAGES */}
-                        <div className="flex w-full max-w-full jus gap-3 overflow-x-auto pb-2 scrollbar-hide md:w-auto xl:flex-col xl:overflow-visible md:pb-0 md:gap-4">
+                        <div className="flex w-full max-w-full jus gap-2 overflow-x-auto scrollbar-hide md:w-auto xl:flex-col xl:overflow-visible">
                             {galleryImages.map((image, index) => (
                                 <motion.div
                                     key={image.id}
@@ -132,7 +121,7 @@ export default function ConsultationSection() {
                                     onMouseEnter={() => setHoveredImage(image.id)}
                                     onMouseLeave={() => setHoveredImage(null)}
                                     onClick={() => setActiveImage(image.src)}
-                                    className={`group relative h-[5rem] min-w-[5rem] overflow-hidden rounded-[1.2rem] sm:h-[5.8rem] sm:min-w-[5.8rem] md:h-[6.2rem] md:min-w-[6.2rem] lg:h-[6.808rem] lg:w-[7.751rem] lg:min-w-[7.751rem] lg:rounded-[1.57125rem] cursor-pointer transition-all duration-300 ${activeImage === image.src
+                                    className={`group relative h-[5rem] min-w-[5rem] overflow-hidden rounded-xl sm:h-[5.8rem] sm:min-w-[5.8rem] md:h-[6.2rem] md:min-w-[6.2rem] lg:h-[6.808rem] lg:w-[7.751rem] lg:min-w-[7.751rem] cursor-pointer transition-all duration-300 ${activeImage === image.src
                                         ? 'border-4 border-gray-300 scale-95 shadow-lg'
                                         : 'border-4 border-transparent hover:border-white/50'
                                         }`}

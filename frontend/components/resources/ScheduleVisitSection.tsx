@@ -321,15 +321,16 @@ export default function ScheduleVisitSection() {
     };
 
     return (
-        <section
-            ref={sectionRef}
-            className="w-full px-4 pt-8 sm:pt-12 lg:pt-16 sm:px-6 md:px-8 max-w-[97vw] mx-auto font-[Geist] text-black"
-        >
-            <div className="max-w-[42rem] mx-auto">
-                {/* TABS */}
-                <div className="flex items-center gap-6 mb-8 text-[0.95rem] md:text-[1rem]">
-                    <button
-                        className="
+        <section className="w-full py-1 px-2">
+            <section
+                ref={sectionRef}
+                className="w-full max-w-8xl mx-auto py-4 pt-8 sm:pt-12 lg:pt-16 font-[Geist] text-black"
+            >
+                <div className="max-w-2xl lg:ml-40">
+                    {/* TABS */}
+                    <div className="flex items-center gap-6 mb-8 text-[0.95rem] md:text-[1rem]">
+                        <button
+                            className="
                             font-[Geist]
                             font-semibold
                             text-[1.5rem]
@@ -342,11 +343,11 @@ export default function ScheduleVisitSection() {
                             text-black
                             pb-1 
                         "
-                    >
-                        Forms
-                    </button>
-                    <button
-                        className="
+                        >
+                            Forms
+                        </button>
+                        <button
+                            className="
                         font-[Geist]
                         font-normal
                         text-[1.5rem]
@@ -356,12 +357,12 @@ export default function ScheduleVisitSection() {
                         text-[rgba(0,0,0,0.63)]
                         pb-1
                     "
-                    >
-                        Clinics
-                    </button>
+                        >
+                            Clinics
+                        </button>
 
-                    <button
-                        className="
+                        <button
+                            className="
                             font-[Geist]
                             font-normal
                             text-[1.5rem]
@@ -371,218 +372,205 @@ export default function ScheduleVisitSection() {
                             text-[rgba(0,0,0,0.63)]
                             pb-1
                         "
+                        >
+                            Newsletter
+                        </button>
+                    </div>
+
+                    {/* HEADING */}
+                    <h1 className="w-[22.4375rem] h-[3.25rem] font-[Geist] text-[2rem] md:text-[2.25rem] font-semibold leading-[120%] tracking-[0%] text-black mb-4">
+                        Schedule your visit
+                    </h1>
+
+                    {/* FORM CONTAINER */}
+                    <motion.div
+                        ref={formContainerRef}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            duration: 0.7,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="w-full rounded-xl px-5 py-8 sm:px-10 sm:py-12 bg-[#C6BAB2]"
                     >
-                        Newsletter
-                    </button>
-                </div>
-
-                {/* HEADING */}
-                <h1
-                    className="
-                    w-[22.4375rem]
-                    h-[3.25rem]
-                    font-[Geist]
-                    text-[2rem]
-                    md:text-[2.25rem]
-                    font-semibold
-                    leading-[120%]
-                    tracking-[0%]
-                    text-black
-                    mb-8
-                "
-                >
-                    Schedule your visit
-                </h1>
-
-                {/* FORM CONTAINER */}
-                <motion.div
-                    ref={formContainerRef}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                        duration: 0.7,
-                        ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="w-full rounded-[1.2rem] px-5 py-8 sm:px-10 sm:py-12 bg-[#E6DCD6]"
-                >
-                    <form
-                        onSubmit={handleSubmit}
-                        className="flex flex-col gap-y-3 sm:gap-y-4"
-                    >
-                        <InputField
-                            label="Name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                        />
-
-                        <InputField
-                            label="Phone"
-                            type="tel"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                        />
-
-                        <InputField
-                            label="Alternate Phone Number"
-                            type="tel"
-                            name="alternatePhone"
-                            value={formData.alternatePhone}
-                            onChange={handleInputChange}
-                        />
-
-                        <InputField
-                            label="Email"
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                        />
-
-                        <SelectField
-                            label="Gender"
-                            name="gender"
-                            value={formData.gender}
-                            onChange={handleSelectChange}
+                        <form
+                            onSubmit={handleSubmit}
+                            className="flex flex-col gap-y-3 sm:gap-y-4"
                         >
-                            <option value="" />
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </SelectField>
-
-                        <SelectField
-                            label="City"
-                            name="city"
-                            value={formData.city}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="nagpur">Nagpur</option>
-                            <option value="mumbai">Mumbai</option>
-                            <option value="pune">Pune</option>
-                        </SelectField>
-
-                        <div className="pt-2">
-                            <RadioGroup
-                                label="Employment Status"
-                                options={EMPLOYMENT_OPTIONS}
-                                value={employment}
-                                onChange={setEmployment}
+                            <InputField
+                                label="Name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
                             />
-                        </div>
 
-                        <SelectField
-                            label="Monthly Income"
-                            name="monthlyIncome"
-                            value={formData.monthlyIncome}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="15k">₹15K - ₹25K</option>
-                            <option value="50k">₹25K - ₹50K</option>
-                        </SelectField>
-
-                        <SelectField
-                            label="Total Credit Card Dues"
-                            name="creditCardDues"
-                            value={formData.creditCardDues}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="1l">₹1L - ₹3L</option>
-                            <option value="5l">₹5L - ₹10L</option>
-                        </SelectField>
-
-                        <SelectField
-                            label="Total Personal Loan Dues"
-                            name="personalLoanDues"
-                            value={formData.personalLoanDues}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="1l">₹1L - ₹3L</option>
-                            <option value="5l">₹5L - ₹10L</option>
-                        </SelectField>
-
-                        <SelectField
-                            label="Payment Status"
-                            name="paymentStatus"
-                            value={formData.paymentStatus}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="regular">Regular</option>
-                            <option value="defaulted">Defaulted</option>
-                        </SelectField>
-
-                        <SelectField
-                            label="Facing Harassment ?"
-                            name="facingHarassment"
-                            value={formData.facingHarassment}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </SelectField>
-
-                        <div className="pt-2">
-                            <RadioGroup
-                                label="Any Past Settlement ?"
-                                options={SETTLEMENT_OPTIONS}
-                                value={pastSettlement}
-                                onChange={setPastSettlement}
+                            <InputField
+                                label="Phone"
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleInputChange}
                             />
-                        </div>
 
-                        <SelectField
-                            long
-                            label="Can you start resolution process with Rs.1,000 or Rs. 3,000 and arrange additional funds towards first instalment later. Is that manageable for you?"
-                            name="resolutionFunds"
-                            value={formData.resolutionFunds}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </SelectField>
+                            <InputField
+                                label="Alternate Phone Number"
+                                type="tel"
+                                name="alternatePhone"
+                                value={formData.alternatePhone}
+                                onChange={handleInputChange}
+                            />
 
-                        <SelectField
-                            long
-                            label="What is your preferred language to communicate on Whatsapp or Phone Call ?"
-                            name="preferredLanguage"
-                            value={formData.preferredLanguage}
-                            onChange={handleSelectChange}
-                        >
-                            <option value="" />
-                            <option value="english">English</option>
-                            <option value="hindi">Hindi</option>
-                            <option value="marathi">Marathi</option>
-                        </SelectField>
+                            <InputField
+                                label="Email"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                            />
 
-                        {/* MESSAGE */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4 }}
-                            className="pt-2"
-                        >
-                            <label
-                                className="mb-3 block text-black/55"
-                                style={fieldStyle}
+                            <SelectField
+                                label="Gender"
+                                name="gender"
+                                value={formData.gender}
+                                onChange={handleSelectChange}
                             >
-                                Message
-                            </label>
+                                <option value="" />
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </SelectField>
 
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleTextAreaChange}
-                                rows={4}
-                                className="
+                            <SelectField
+                                label="City"
+                                name="city"
+                                value={formData.city}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="nagpur">Nagpur</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="pune">Pune</option>
+                            </SelectField>
+
+                            <div className="pt-2">
+                                <RadioGroup
+                                    label="Employment Status"
+                                    options={EMPLOYMENT_OPTIONS}
+                                    value={employment}
+                                    onChange={setEmployment}
+                                />
+                            </div>
+
+                            <SelectField
+                                label="Monthly Income"
+                                name="monthlyIncome"
+                                value={formData.monthlyIncome}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="15k">₹15K - ₹25K</option>
+                                <option value="50k">₹25K - ₹50K</option>
+                            </SelectField>
+
+                            <SelectField
+                                label="Total Credit Card Dues"
+                                name="creditCardDues"
+                                value={formData.creditCardDues}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="1l">₹1L - ₹3L</option>
+                                <option value="5l">₹5L - ₹10L</option>
+                            </SelectField>
+
+                            <SelectField
+                                label="Total Personal Loan Dues"
+                                name="personalLoanDues"
+                                value={formData.personalLoanDues}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="1l">₹1L - ₹3L</option>
+                                <option value="5l">₹5L - ₹10L</option>
+                            </SelectField>
+
+                            <SelectField
+                                label="Payment Status"
+                                name="paymentStatus"
+                                value={formData.paymentStatus}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="regular">Regular</option>
+                                <option value="defaulted">Defaulted</option>
+                            </SelectField>
+
+                            <SelectField
+                                label="Facing Harassment ?"
+                                name="facingHarassment"
+                                value={formData.facingHarassment}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </SelectField>
+
+                            <div className="pt-2">
+                                <RadioGroup
+                                    label="Any Past Settlement ?"
+                                    options={SETTLEMENT_OPTIONS}
+                                    value={pastSettlement}
+                                    onChange={setPastSettlement}
+                                />
+                            </div>
+
+                            <SelectField
+                                long
+                                label="Can you start resolution process with Rs.1,000 or Rs. 3,000 and arrange additional funds towards first instalment later. Is that manageable for you?"
+                                name="resolutionFunds"
+                                value={formData.resolutionFunds}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </SelectField>
+
+                            <SelectField
+                                long
+                                label="What is your preferred language to communicate on Whatsapp or Phone Call ?"
+                                name="preferredLanguage"
+                                value={formData.preferredLanguage}
+                                onChange={handleSelectChange}
+                            >
+                                <option value="" />
+                                <option value="english">English</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="marathi">Marathi</option>
+                            </SelectField>
+
+                            {/* MESSAGE */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4 }}
+                                className="pt-2"
+                            >
+                                <label
+                                    className="mb-3 block text-black/55"
+                                    style={fieldStyle}
+                                >
+                                    Message
+                                </label>
+
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleTextAreaChange}
+                                    rows={4}
+                                    className="
                                     min-h-[7rem]
                                     w-full
                                     resize-none
@@ -595,19 +583,19 @@ export default function ScheduleVisitSection() {
                                     text-black
                                     border-none
                                 "
-                                style={fieldStyle}
-                            />
-                        </motion.div>
+                                    style={fieldStyle}
+                                />
+                            </motion.div>
 
-                        {/* BUTTON */}
-                        <motion.div
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="pt-6 flex"
-                        >
-                            <button
-                                type="submit"
-                                className="
+                            {/* BUTTON */}
+                            <motion.div
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="pt-6 flex"
+                            >
+                                <button
+                                    type="submit"
+                                    className="
                                   rounded-full
                                   bg-[#ff3b30]
                                   px-8 py-2.5
@@ -620,13 +608,14 @@ export default function ScheduleVisitSection() {
                                   duration-300
                                   hover:bg-[#ff2d20]
                                 "
-                            >
-                                Submit
-                            </button>
-                        </motion.div>
-                    </form>
-                </motion.div>
-            </div>
+                                >
+                                    Submit
+                                </button>
+                            </motion.div>
+                        </form>
+                    </motion.div>
+                </div>
+            </section>
         </section>
     );
 }

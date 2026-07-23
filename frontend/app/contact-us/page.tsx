@@ -1,10 +1,11 @@
-import Hero from "@/components/common/Hero";
+import ContactHero from "@/components/contact-us/ContactHero";
 import BookConsultation from "@/components/common/BookConsultationSection";
 import ComfortGallerySection from "@/components/contact-us/ConfortGallerySection";
 import QnaSection from "@/components/contact-us/QnaSection";
 
 import type { Metadata } from "next";
 import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
+import LocationsSection from "@/components/common/LocationSection";
 
 export const metadata: Metadata = {
     title: "Contact Legal Savvy - Debt Settlement Services",
@@ -14,15 +15,11 @@ export const metadata: Metadata = {
 
 export default function page() {
     return (
-        <div className="bg-[#D8D0CA] min-h-screen">
-            <Hero
-                Heading={"CONTACT US"}
-                img={"/about/about-hero-img.png"}
-                className="h-h-[calc(40vh-3rem)] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)]  xl:h-[calc(85vh-3rem)]"
-            />
-
+        <div className="bg-[#D9D9D9] min-h-screen">
+            <ContactHero />
             <BookConsultation />
             <DirectionsSection />
+            <LocationsSection />
             <QnaSection />
             <ComfortGallerySection />
         </div>

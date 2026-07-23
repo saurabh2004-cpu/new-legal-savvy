@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Button from "../ui/Button";
 
 interface CaseStat {
   label: string;
@@ -85,93 +86,87 @@ export default function CasesSection() {
   } as const;
 
   return (
-    <section className="w-full max-w-[97vw] mx-auto  font-sans overflow-hidden">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        className="flex flex-col gap-6 md:gap-4"
-      >
-        {casesData.map((caseItem, index) => (
-          <motion.div
-            key={caseItem.id}
-            variants={cardVariants}
-            className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch p-6 sm:p-8 md:p-10 lg:p-12 rounded-xl bg-[#E6DCD6] overflow-hidden ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""
-              }`}
-          >
-            {/* Images Column */}
-            <div className="flex w-full xl:w-1/2 gap-3 sm:gap-4 h-[220px] sm:h-[350px] xl:h-auto min-h-[220px] sm:min-h-[350px] lg:min-h-[450px]">
-              {caseItem.images.map((imgSrc, imgIdx) => (
-                <div
-                  key={imgIdx}
-                  className="relative flex-1 h-full rounded-[1.25rem] overflow-hidden group"
-                >
-                  <Image
-                    src={imgSrc}
-                    alt={`Case image ${imgIdx + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                    className={`object-cover transition duration-700 ease-out group-hover:scale-105 ${imgIdx === 0 ? "grayscale group-hover:grayscale-0" : ""
-                      }`}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Content Column */}
-            <div className="flex flex-col w-full lg:w-2/5 justify-center pt-6 lg:pt-0">
-              <h3 className="font-[Geist] text-[1.5rem] sm:text-[1.75rem] lg:text-[1.875rem] font-medium leading-none tracking-normal text-[#0F172A] mb-5">
-                {caseItem.title}
-              </h3>
-              <p className="font-[Geist] text-[0.95rem] sm:text-[1.0625rem] lg:text-[1.1875rem] font-normal leading-[1.3] tracking-normal capitalize text-black mb-8">
-                {caseItem.description}
-              </p>
-
-              <div className="mb-10 lg:mb-16">
-                <Link href={caseItem.link}>
-                  <span className="inline-flex items-center gap-3 bg-[#FF3030] text-[#F0ECE7] pl-5 pr-1.5 py-1.5 rounded-full font-[Geist] font-medium text-[0.875rem] sm:text-[1rem] lg:text-[1.125rem] leading-none tracking-normal transition-all duration-300 hover:scale-[1.03] hover:bg-[#e62b2b] shadow-md shadow-red-500/20">
-                    View case detail
-
-                    <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center text-black shadow-sm">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M7 17l9.2-9.2M17 17V7H7" />
-                      </svg>
-                    </div>
-                  </span>
-                </Link>
-              </div>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-auto">
-                {caseItem.stats.map((stat, statIdx) => (
+    <section className="w-full py-1 px-2">
+      <div className="w-full max-w-8xl mx-auto font-sans rounded-xl overflow-hidden">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="w-full space-y-2"
+        >
+          {casesData.map((caseItem, index) => (
+            <motion.div
+              key={caseItem.id}
+              variants={cardVariants}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center p-6 sm:p-8 md:p-10 lg:p-12 rounded-xl bg-[#CDC2BB] overflow-hidden"
+            >
+              {/* Images Column */}
+              <div
+                className={`flex w-full gap-3 sm:gap-4 h-[220px] sm:h-[350px] lg:h-full min-h-[220px] sm:min-h-[350px] lg:min-h-[450px] lg:col-span-7 xl:col-span-6 ${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"
+                  }`}
+              >
+                {caseItem.images.map((imgSrc, imgIdx) => (
                   <div
-                    key={statIdx}
-                    className="flex flex-col items-center text-center w-full"
+                    key={imgIdx}
+                    className="relative flex-1 h-full rounded-[1.25rem] overflow-hidden group"
                   >
-                    <span className="font-[Geist] text-[0.65rem] sm:text-[0.875rem] lg:text-[1rem] font-normal leading-none tracking-normal text-center text-[#0F172A]/60 uppercase">
-                      {stat.label}
-                    </span>
-                    <div className="w-full h-[1px] bg-black/10 my-2.5 lg:my-3"></div>
-                    <span className="font-[Geist] text-[0.7rem] sm:text-[1.125rem] lg:text-[1.25rem] font-medium leading-none tracking-normal text-center text-[#0F172A] whitespace-pre-line">
-                      {stat.value}
-                    </span>
+                    <Image
+                      src={imgSrc}
+                      alt={`Case image ${imgIdx + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className={`object-cover transition duration-700 ease-out group-hover:scale-105 ${imgIdx === 0 ? "grayscale group-hover:grayscale-0" : ""
+                        }`}
+                    />
                   </div>
                 ))}
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+
+              {/* Content Column */}
+              <div
+                className={`flex flex-col w-full justify-between pt-6 lg:pt-0 lg:col-span-5 xl:col-span-6 ${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"
+                  }`}
+              >
+                <div className="lg:max-w-xl">
+                  {/* Title */}
+                  <h3 className="font-[Geist] text-[1.5rem] sm:text-[1.85rem] lg:text-[2.1rem] font-medium leading-[1.15] tracking-normal text-[#0F172A] mb-4 md:mb-5">
+                    {caseItem.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="font-[Geist] text-[0.95rem] sm:text-[1.05rem] lg:text-[1.125rem] font-normal leading-[1.45] tracking-normal text-[#1E293B]/90 mb-6 md:mb-8">
+                    {caseItem.description}
+                  </p>
+
+                  {/* Action Button */}
+                  <div className="mb-8 md:mb-12">
+                    <Button text="View case details" />
+                  </div>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-auto">
+                  {caseItem.stats.map((stat, statIdx) => (
+                    <div
+                      key={statIdx}
+                      className="flex flex-col items-center text-center w-full"
+                    >
+                      <span className="font-[Geist] text-[0.7rem] sm:text-[0.85rem] lg:text-[0.95rem] font-medium leading-none tracking-wider text-[#0F172A]/70 uppercase text-center">
+                        {stat.label}
+                      </span>
+                      <div className="w-full h-[1px] bg-black/15 my-2 sm:my-3"></div>
+                      <span className="font-[Geist] text-[0.95rem] sm:text-[1.15rem] lg:text-[1.3rem] font-medium leading-tight text-center text-[#0F172A] whitespace-pre-line">
+                        {stat.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

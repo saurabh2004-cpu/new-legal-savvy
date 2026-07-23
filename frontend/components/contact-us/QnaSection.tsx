@@ -35,16 +35,17 @@ export default function QnaSection() {
     };
 
     return (
-        <section className="w-full bg-[#D8D0CA] max-w-[97vw] rounded-xl m-auto py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-10">
-            <div className="max-w-5xl mx-auto">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <motion.h2
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="
+        <section className="w-full py-1 px-2">
+            <div className="w-full max-w-8xl mx-auto py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-[#CDC2BB] rounded-xl overflow-hidden">
+                <div className="max-w-5xl mx-auto">
+                    {/* Section Header */}
+                    <div className="text-center mb-16">
+                        <motion.h2
+                            initial={{ opacity: 0, y: -20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="
                             relative
                             inline-block
                             font-[Geist]
@@ -58,72 +59,72 @@ export default function QnaSection() {
                             text-black
                             pb-4
                         "
-                    >
-                        Frequently asked questions
+                        >
+                            Frequently asked questions
 
-                        <div className="flex mt-2  flex-col gap-[1px] justify-center items-center">
-                            <motion.span
-                                initial={{ width: 0 }}
-                                whileInView={{ width: "100%" }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 0.8,
-                                    delay: 0.2,
-                                    ease: [0.16, 1, 0.3, 1],
-                                }}
-                                className="relative bottom-0 left-0 h-[2.5px] bg-[#ff3b30]"
-                            />
+                            <div className="flex mt-2  flex-col gap-[1px] justify-center items-center">
+                                <motion.span
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: "100%" }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        duration: 0.8,
+                                        delay: 0.2,
+                                        ease: [0.16, 1, 0.3, 1],
+                                    }}
+                                    className="relative bottom-0 left-0 h-[2.5px] bg-[#ff3b30]"
+                                />
 
-                            <motion.span
-                                initial={{ width: 0 }}
-                                whileInView={{ width: "100%" }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 0.8,
-                                    delay: 0.2,
-                                    ease: [0.16, 1, 0.3, 1],
-                                }}
-                                className="relative bottom-0 left-0 h-[2.5px] bg-[#ff3b30]"
-                            />
-                        </div>
-                    </motion.h2>
-                </div>
-
-                {/* FAQ Accordions List */}
-                <motion.div
-                    variants={{
-                        hidden: { opacity: 0 },
-                        visible: {
-                            opacity: 1,
-                            transition: {
-                                staggerChildren: 0.1
+                                <motion.span
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: "100%" }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        duration: 0.8,
+                                        delay: 0.2,
+                                        ease: [0.16, 1, 0.3, 1],
+                                    }}
+                                    className="relative bottom-0 left-0 h-[2.5px] bg-[#ff3b30]"
+                                />
+                            </div>
+                        </motion.h2>
+                    </div>
+  
+                    {/* FAQ Accordions List */}
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: {
+                                    staggerChildren: 0.1
+                                }
                             }
-                        }
-                    }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                >
-                    {FAQ_DATA.map((item, idx) => {
-                        const isOpen = openIndex === idx;
+                        }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="space-y-6"
+                    >
+                        {FAQ_DATA.map((item, idx) => {
+                            const isOpen = openIndex === idx;
 
-                        return (
-                            <motion.div
-                                key={idx}
-                                variants={{
-                                    hidden: { opacity: 0, y: 20 },
-                                    visible: {
-                                        opacity: 1,
-                                        y: 0,
-                                        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
-                                    }
-                                }}
-                                className="flex gap-4 sm:gap-6 items-center"
-                            >
-                                {/* Left Index Badge */}
-                                <div
-                                    className="
+                            return (
+                                <motion.div
+                                    key={idx}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 20 },
+                                        visible: {
+                                            opacity: 1,
+                                            y: 0,
+                                            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+                                        }
+                                    }}
+                                    className="flex gap-4 sm:gap-6 items-center"
+                                >
+                                    {/* Left Index Badge */}
+                                    <div
+                                        className="
                                         flex 
                                         h-10 w-10 
                                         md:h-12 md:w-12 
@@ -138,14 +139,14 @@ export default function QnaSection() {
                                         text-lg 
                                         shadow-[0_4px_12px_rgba(0,0,0,0.06)]
                                     "
-                                >
-                                    {idx + 1}
-                                </div>
+                                    >
+                                        {idx + 1}
+                                    </div>
 
-                                {/* Accordion Box */}
-                                <div
-                                    onClick={() => toggleIndex(idx)}
-                                    className="
+                                    {/* Accordion Box */}
+                                    <div
+                                        onClick={() => toggleIndex(idx)}
+                                        className="
                                         flex-1 
                                         bg-[#E6DCD6] 
                                         transition-colors 
@@ -157,11 +158,11 @@ export default function QnaSection() {
                                         cursor-pointer 
                                         shadow-[0_4px_20px_rgba(0,0,0,0.02)]
                                     "
-                                >
-                                    {/* Question & Toggle Icon */}
-                                    <div className="flex justify-between items-center gap-4">
-                                        <p
-                                            className="
+                                    >
+                                        {/* Question & Toggle Icon */}
+                                        <div className="flex justify-between items-center gap-4">
+                                            <p
+                                                className="
                                                     font-mono
                                                     font-medium
                                                     text-[0.9rem]
@@ -172,45 +173,46 @@ export default function QnaSection() {
                                                     tracking-[0%] 
                                                     text-black
                                                 "
-                                        >
-                                            {item.question}
-                                        </p>
-                                        <motion.div
-                                            animate={{ rotate: isOpen ? 45 : 0 }}
-                                            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                            className="shrink-0 flex items-center justify-center"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24"
-                                                className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current text-[#ff3b30]"
                                             >
-                                                <path d="M23 11H13V1a1 1 0 0 0-1-1 1 1 0 0 0-1 1v10H1a1 1 0 0 0-1 1 1 1 0 0 0 1 1h10v10a1 1 0 0 0 1 1 1 1 0 0 0 1-1V13h10a1 1 0 0 0 1-1 1 1 0 0 0-1-1Z" />
-                                            </svg>
-                                        </motion.div>
-                                    </div>
-
-                                    {/* Expandable Answer */}
-                                    <AnimatePresence initial={false}>
-                                        {isOpen && (
+                                                {item.question}
+                                            </p>
                                             <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: "auto", opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
+                                                animate={{ rotate: isOpen ? 45 : 0 }}
                                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                                className="overflow-hidden"
+                                                className="shrink-0 flex items-center justify-center"
                                             >
-                                                <div className="pt-4 text-black/70 font-[Geist] font-normal leading-relaxed text-[0.9rem] sm:text-[0.98rem]">
-                                                    {item.answer}
-                                                </div>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24"
+                                                    className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current text-[#ff3b30]"
+                                                >
+                                                    <path d="M23 11H13V1a1 1 0 0 0-1-1 1 1 0 0 0-1 1v10H1a1 1 0 0 0-1 1 1 1 0 0 0 1 1h10v10a1 1 0 0 0 1 1 1 1 0 0 0 1-1V13h10a1 1 0 0 0 1-1 1 1 0 0 0-1-1Z" />
+                                                </svg>
                                             </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </motion.div>
+                                        </div>
+
+                                        {/* Expandable Answer */}
+                                        <AnimatePresence initial={false}>
+                                            {isOpen && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="pt-4 text-black/70 font-[Geist] font-normal leading-relaxed text-[0.9rem] sm:text-[0.98rem]">
+                                                        {item.answer}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

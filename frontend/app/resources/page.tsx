@@ -8,6 +8,7 @@ import BankSettlements from "@/components/common/BankSettlements";
 import StandardOfCareSection from "@/components/resources/StandardOfCareSection";
 import ScheduleVisitSection from "@/components/resources/ScheduleVisitSection";
 import type { Metadata } from "next";
+import ContactHero from "@/components/contact-us/ContactHero";
 
 export const metadata: Metadata = {
   title: "resources Legal Savvy- Debt Settlement Services",
@@ -17,11 +18,11 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <div className="bg-[#D8D0CA] min-h-screen pb-16">
-      <Hero
+    <div className="bg-[#D9D9D9] min-h-screen">
+      <ContactHero
         Heading={"BLOGS & CASES"}
         img={"/about/about-hero-img.png"}
-        className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)]  xl:h-[calc(105vh-3rem)]"
+        className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
       />
       <FeaturedBlogs />
       <LatestArticlesSection />
@@ -32,7 +33,7 @@ export default function page() {
         circleHeading={"Settlements Achieved With Banks"}
         innerCircleBgColour="#363D4F"
         outerCircleBgColour="#1B223C"
-        className="bg-none"
+        className="bg-none py-12 sm:py-16"
       />
       <StandardOfCareSection />
       <ScheduleVisitSection />

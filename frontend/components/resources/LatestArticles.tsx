@@ -175,8 +175,8 @@ export default function LatestArticlesSection() {
     };
 
     return (
-        <section className="w-full max-w-[97vw] mx-auto rounded-xl py-6 md:py-8 lg:px-10 font-sans  lg:mt-12">
-            <div className="flex flex-col w-full">
+        <section className="w-full py-1 px-2">
+            <div className="w-full max-w-8xl mx-auto py-6 md:py-8 lg:px-10 lg:mt-12 rounded-xl flex flex-col font-sans">
                 {/* Section Heading with Double Red Underline */}
                 <motion.div
                     initial="hidden"

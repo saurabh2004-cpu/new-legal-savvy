@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import { getAllServices } from "@/services/serviceServices";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Button from "../ui/Button";
 
 /* ─── Types ─────────────────────────────────────────────── */
 
@@ -188,12 +189,10 @@ function ServiceCard({ card }: ServiceCardProps) {
         <motion.div
             ref={cardRef}
             style={{ y, opacity }}
-            className="bg-[#F0ECE7] rounded-xl p-5 sm:p-7 flex flex-col lg:flex-row gap-5 lg:gap-6"
+            className="bg-[#CDC2BB] rounded-xl p-5 sm:p-7 flex flex-col lg:flex-row gap-5 lg:gap-6"
         >
-
             {/* LEFT — image + content */}
             <div className="flex flex-col sm:flex-row lg:flex-row gap-5 flex-1 min-w-0">
-
                 {/* Image */}
                 <div className="relative flex-shrink-0 w-full sm:w-[240px] xl:h-[26.5rem] lg:w-[280px] xl:w-[29.5rem] rounded-[30px] overflow-hidden aspect-[473/425]">
                     <Image
@@ -223,7 +222,7 @@ function ServiceCard({ card }: ServiceCardProps) {
 
                         {/* Button */}
                         <div>
-                            <a
+                            {/* <a
                                 href={card.buttonHref}
                                 className="inline-flex items-center gap-2.5 bg-[#e8322a] hover:bg-[#cc2921] active:bg-[#b52320] text-white rounded-full px-6 py-3 transition-colors duration-150 no-underline font-sans font-medium text-[18px] leading-[100%] tracking-[0%]"
                             >
@@ -231,7 +230,8 @@ function ServiceCard({ card }: ServiceCardProps) {
                                 <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                                     <ArrowIcon />
                                 </span>
-                            </a>
+                            </a> */}
+                            <Button text={card.buttonLabel} href={card.buttonHref} />
                         </div>
                     </div>
                 </div>
@@ -240,7 +240,7 @@ function ServiceCard({ card }: ServiceCardProps) {
             {/* RIGHT — related services panel */}
             {card.relatedServices.length > 0 && <div
                 className="
-                    bg-[#E6DCD6]
+                    bg-[#C6BAB2]
                     min-h-40
                     rounded-[18px]
                     p-5
@@ -274,7 +274,6 @@ function ServiceCard({ card }: ServiceCardProps) {
 }
 
 /* ─── Main export ────────────────────────────────────────── */
-
 interface ServiceCardsProps {
     cards?: ServiceCardData[];
 }
@@ -327,7 +326,7 @@ export default function ServiceCards({ cards: initialCards }: ServiceCardsProps)
     }
 
     return (
-        <section className="w-full  px-2 lg:pt-8 flex flex-col gap-5">
+        <section className="w-full px-2 lg:pt-8 flex flex-col gap-2">
             {cards.map((card) => (
                 <ServiceCard key={card.id} card={card} />
             ))}

@@ -1,5 +1,6 @@
 import ServiceHero from "@/components/service-details/ServiceHero";
 import AboutService from "@/components/service-details/AboutService";
+import ServiceFooterActions from "@/components/service-details/ServiceFooterActions";
 import OurServices from "@/components/common/OurServices";
 import AssistanceSection from "@/components/service-details/AssistanceSection";
 import BookConsultation from "@/components/common/BookConsultationSection";
@@ -103,13 +104,14 @@ export default async function page({ params, searchParams }: PageProps) {
     }
 
     return (
-        <div className="bg-[#D8D0CA] min-h-screen">
-            <Hero service={serviceresponse} />
+        <div className="bg-[#D9D9D9] min-h-screen">
+            <Hero service={serviceresponse} className="md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]" />
             <AboutService service={serviceresponse} />
+            <ServiceFooterActions />
             <OurServices
                 servicesData={servicesData}
                 heading="Related Services"
-                className="bg-[#1B223C] "
+                className="bg-[#1D2540] pb-12"
             />
             <AssistanceSection />
             <BookConsultation />

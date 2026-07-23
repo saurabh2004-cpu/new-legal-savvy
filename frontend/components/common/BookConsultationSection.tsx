@@ -451,295 +451,297 @@ export default function BookConsultation() {
     };
 
     return (
-        <section
-            ref={sectionRef}
-            className={`w-full px-4 py-6 lg:py-12 sm:px-6 md:px-8 lg:px-10 [--field-font-size:16px] md:[--field-font-size:18px] lg:[--field-font-size:20px] bg-[#CDC2BB] max-w-[97vw] mx-auto rounded-xl`}
-        >
-            <Toaster position="top-center" />
-            <style dangerouslySetInnerHTML={{
-                __html: `
+        <section className="w-full py-1 px-2">
+            <section
+                ref={sectionRef}
+                className={`w-full max-w-8xl mx-auto p-12 [--field-font-size:16px] md:[--field-font-size:18px] lg:[--field-font-size:20px] bg-[#CDC2BB] rounded-xl`}
+            >
+                <Toaster position="top-center" />
+                <style dangerouslySetInnerHTML={{
+                    __html: `
                 .custom-scrollbar::-webkit-scrollbar { width: 6px; }
                 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
                 .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 9999px; }
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.25); }
             `}} />
-            <div className="mx-auto flex justify-between flex-col gap-8 lg:flex-row lg:gap-16">
+                <div className="mx-auto flex justify-between flex-col gap-8 lg:flex-row lg:gap-16">
 
-                {/* LEFT CONTENT */}
-                <div className="px-0 lg:px-12 lg:sticky lg:top-10 lg:self-start">
+                    {/* LEFT CONTENT */}
+                    <div className="px-0 lg:px-12 lg:sticky lg:top-10 lg:self-start">
+                        <motion.div
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            className="w-full lg:pt-8"
+                        >
+                            <h1 className="font-[Geist] font-medium text-[2.4rem] md:text-[3.125rem] leading-[120%] tracking-[0%] text-black">
+                                Book Consultation
+                            </h1>
+
+                            <div className="mt-8 space-y-8">
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
+                                        <Mail className="h-3.5 w-3.5 text-black/70" />
+                                    </div>
+                                    <span className="font-[Geist] font-normal text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
+                                        legal@thelegalstore.com
+                                    </span>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
+                                        <Phone className="h-3.5 w-3.5 text-black/70" />
+                                    </div>
+                                    <span className="font-[Geist] font-normal text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
+                                        +91 9230445513
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* RIGHT FORM */}
                     <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        ref={formContainerRef}
+                        initial={{ opacity: 0, y: 60 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="w-full lg:pt-8"
+                        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full rounded-xl px-5 py-6 sm:px-7 sm:py-7 md:px-8 md:py-8 lg:max-w-[48rem] scroll-smooth custom-scrollbar shadow-[0_10px_30px_rgba(0,0,0,0.03)] bg-[#C6BAB2]"
                     >
-                        <h1 className="font-[Geist] font-semibold text-[2.4rem] md:text-[3.125rem] leading-[120%] tracking-[0%] text-black">
-                            Book Consultation
-                        </h1>
+                        <form
+                            onSubmit={handleSubmit}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-6 gap-y-7"
+                        >
+                            <motion.div layout className="md:col-span-2 lg:col-span-1">
+                                <InputField label="Name *" name="name" value={formData.name} onChange={handleInputChange} error={errors.name} />
+                            </motion.div>
 
-                        <div className="mt-8 space-y-8">
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
-                                    <Mail className="h-3.5 w-3.5 text-black/70" />
-                                </div>
-                                <span className="font-[Geist] font-normal text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
-                                    legal@thelegalstore.com
-                                </span>
-                            </div>
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <InputField label="Phone / Mobile *" type="tel" name="phone" value={formData.phone} onChange={handleInputChange} error={errors.phone} />
+                            </motion.div>
 
-                            <div className="flex items-center gap-3">
-                                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
-                                    <Phone className="h-3.5 w-3.5 text-black/70" />
-                                </div>
-                                <span className="font-[Geist] font-normal text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
-                                    +91 9230445513
-                                </span>
-                            </div>
-                        </div>
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <InputField label="Alternate Phone / Mobile *" type="tel" name="alternatePhone" value={formData.alternatePhone} onChange={handleInputChange} error={errors.alternatePhone} />
+                            </motion.div>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <InputField label="Email *" type="email" name="email" value={formData.email} onChange={handleInputChange} error={errors.email} />
+                            </motion.div>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="City *" name="city" value={formData.city} onChange={handleSelectChange} options={CITIES} error={errors.city} />
+                            </motion.div>
+
+                            <AnimatePresence>
+                                {showCustomCity && (
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="md:col-span-1 lg:col-span-1"
+                                    >
+                                        <InputField label="Please add your City *" name="customCity" value={formData.customCity} onChange={handleInputChange} error={errors.customCity} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="Marital Status *" name="maritalStatus" value={formData.maritalStatus} onChange={handleSelectChange} options={MARITAL_STATUS} error={errors.maritalStatus} />
+                            </motion.div>
+
+                            <AnimatePresence>
+                                {showSpouseIncome && (
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="md:col-span-1 lg:col-span-1"
+                                    >
+                                        <SelectField label="Spouse Income *" name="spouseIncome" value={formData.spouseIncome} onChange={handleSelectChange} options={INCOME_OPTIONS} error={errors.spouseIncome} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="Employment Status *" name="employmentStatus" value={formData.employmentStatus} onChange={handleSelectChange} options={EMPLOYMENT_STATUS} error={errors.employmentStatus} />
+                            </motion.div>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="Monthly Income *" name="monthlyIncome" value={formData.monthlyIncome} onChange={handleSelectChange} options={INCOME_OPTIONS} error={errors.monthlyIncome} />
+                            </motion.div>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="Total Credit Card Dues *" name="creditCardDues" value={formData.creditCardDues} onChange={handleSelectChange} options={CREDIT_CARD_DUES} error={errors.creditCardDues} />
+                            </motion.div>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="Total Personal and Business Loan Dues *" name="personalLoanDues" value={formData.personalLoanDues} onChange={handleSelectChange} options={LOAN_DUES} error={errors.personalLoanDues} />
+                            </motion.div>
+
+                            <AnimatePresence>
+                                {showLoanSection && (
+                                    <>
+                                        <motion.div
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="md:col-span-1 lg:col-span-1"
+                                        >
+                                            <SelectField label="Payment Status *" name="paymentStatus" value={formData.paymentStatus} onChange={handleSelectChange} options={PAYMENT_STATUS} error={errors.paymentStatus} />
+                                        </motion.div>
+
+                                        <motion.div
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="md:col-span-1 lg:col-span-1"
+                                        >
+                                            <SelectField label="Facing Harassment? *" name="facingHarassment" value={formData.facingHarassment} onChange={handleSelectChange} options={HARASSMENT_OPTIONS} error={errors.facingHarassment} />
+                                        </motion.div>
+                                    </>
+                                )}
+                            </AnimatePresence>
+
+                            <AnimatePresence>
+                                {showLegalNotice && (
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="md:col-span-1 lg:col-span-1"
+                                    >
+                                        <SelectField label="Received Legal Notice? *" name="receivedLegalNotice" value={formData.receivedLegalNotice} onChange={handleSelectChange} options={YES_NO} error={errors.receivedLegalNotice} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <AnimatePresence>
+                                {showSettlementTime && (
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="md:col-span-1 lg:col-span-1"
+                                    >
+                                        <SelectField label="Settlement Time *" name="settlementTime" value={formData.settlementTime} onChange={handleSelectChange} options={SETTLEMENT_TIMES} error={errors.settlementTime} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <AnimatePresence>
+                                {showLoanSection && (
+                                    <>
+                                        <motion.div
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="md:col-span-1 lg:col-span-1"
+                                        >
+                                            <SelectField label="Any Past Settlement? *" name="anyPastSettlement" value={formData.anyPastSettlement} onChange={handleSelectChange} options={YES_NO} error={errors.anyPastSettlement} />
+                                        </motion.div>
+
+                                        <motion.div
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="md:col-span-1 lg:col-span-1"
+                                        >
+                                            <SelectField label="Settlement Starting Funds Requirement *" name="fundsRequirement" value={formData.fundsRequirement} onChange={handleSelectChange} options={FUNDS_REQUIREMENT} error={errors.fundsRequirement} />
+                                        </motion.div>
+
+                                        <motion.div
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="md:col-span-1 lg:col-span-1"
+                                        >
+                                            <SelectField label="Preferred Language for Communication *" name="preferredLanguage" value={formData.preferredLanguage} onChange={handleSelectChange} options={LANGUAGES} error={errors.preferredLanguage} />
+                                        </motion.div>
+
+
+                                    </>
+                                )}
+                            </AnimatePresence>
+
+                            <AnimatePresence>
+                                {showSettlementLetter && (
+                                    <motion.div
+                                        layout
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="md:col-span-1 lg:col-span-1"
+                                    >
+                                        <SelectField label="Received Settlement Letter? *" name="receivedSettlementLetter" value={formData.receivedSettlementLetter} onChange={handleSelectChange} options={YES_NO} error={errors.receivedSettlementLetter} />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
+                            <motion.div layout className="md:col-span-1 lg:col-span-1">
+                                <SelectField label="Convenient Call Time *" name="convenientCallTime" value={formData.convenientCallTime} onChange={handleSelectChange} options={CALL_TIMES} error={errors.convenientCallTime} />
+                            </motion.div>
+
+
+
+                            <motion.div layout className="md:col-span-2 lg:col-span-1">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 15 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="pt-1"
+                                >
+                                    <label className="mb-2 block text-black/55" style={fieldStyle}>
+                                        Message
+                                    </label>
+                                    <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        rows={4}
+                                        placeholder="Tell us more about your financial situation..."
+                                        className="min-h-[5rem] w-full resize-none rounded-[0.7rem] bg-[#F0ECE7] px-4 py-3 outline-none font-[Geist] text-black placeholder:text-black/30"
+                                        style={fieldStyle}
+                                    />
+                                </motion.div>
+                            </motion.div>
+
+                            <motion.div layout className="md:col-span-2 lg:col-span-1">
+                                <motion.div whileHover={isSubmitting ? {} : { scale: 1.03 }} whileTap={isSubmitting ? {} : { scale: 0.98 }} className="pt-2">
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className={`rounded-full px-6 py-2.5 font-[Geist] text-[0.82rem] font-medium text-white shadow-[0_6px_20px_rgba(255,59,48,0.25)] transition-all duration-300 ${isSubmitting ? 'bg-[#ff2d20]/70 cursor-not-allowed' : 'bg-[#ff3b30] hover:bg-[#ff2d20]'}`}
+                                    >
+                                        {isSubmitting ? "Submitting..." : "Submit"}
+                                    </button>
+                                </motion.div>
+                            </motion.div>
+                        </form>
                     </motion.div>
                 </div>
-
-                {/* RIGHT FORM */}
-                <motion.div
-                    ref={formContainerRef}
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full rounded-[1.2rem] px-5 py-6 sm:px-7 sm:py-7 md:px-8 md:py-8 lg:max-w-[48rem] scroll-smooth custom-scrollbar shadow-[0_10px_30px_rgba(0,0,0,0.03)] bg-[#E6DCD6]"
-                >
-                    <form
-                        onSubmit={handleSubmit}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-6 gap-y-7"
-                    >
-                        <motion.div layout className="md:col-span-2 lg:col-span-1">
-                            <InputField label="Name *" name="name" value={formData.name} onChange={handleInputChange} error={errors.name} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <InputField label="Phone / Mobile *" type="tel" name="phone" value={formData.phone} onChange={handleInputChange} error={errors.phone} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <InputField label="Alternate Phone / Mobile *" type="tel" name="alternatePhone" value={formData.alternatePhone} onChange={handleInputChange} error={errors.alternatePhone} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <InputField label="Email *" type="email" name="email" value={formData.email} onChange={handleInputChange} error={errors.email} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="City *" name="city" value={formData.city} onChange={handleSelectChange} options={CITIES} error={errors.city} />
-                        </motion.div>
-
-                        <AnimatePresence>
-                            {showCustomCity && (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="md:col-span-1 lg:col-span-1"
-                                >
-                                    <InputField label="Please add your City *" name="customCity" value={formData.customCity} onChange={handleInputChange} error={errors.customCity} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="Marital Status *" name="maritalStatus" value={formData.maritalStatus} onChange={handleSelectChange} options={MARITAL_STATUS} error={errors.maritalStatus} />
-                        </motion.div>
-
-                        <AnimatePresence>
-                            {showSpouseIncome && (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="md:col-span-1 lg:col-span-1"
-                                >
-                                    <SelectField label="Spouse Income *" name="spouseIncome" value={formData.spouseIncome} onChange={handleSelectChange} options={INCOME_OPTIONS} error={errors.spouseIncome} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="Employment Status *" name="employmentStatus" value={formData.employmentStatus} onChange={handleSelectChange} options={EMPLOYMENT_STATUS} error={errors.employmentStatus} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="Monthly Income *" name="monthlyIncome" value={formData.monthlyIncome} onChange={handleSelectChange} options={INCOME_OPTIONS} error={errors.monthlyIncome} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="Total Credit Card Dues *" name="creditCardDues" value={formData.creditCardDues} onChange={handleSelectChange} options={CREDIT_CARD_DUES} error={errors.creditCardDues} />
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="Total Personal and Business Loan Dues *" name="personalLoanDues" value={formData.personalLoanDues} onChange={handleSelectChange} options={LOAN_DUES} error={errors.personalLoanDues} />
-                        </motion.div>
-
-                        <AnimatePresence>
-                            {showLoanSection && (
-                                <>
-                                    <motion.div
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="md:col-span-1 lg:col-span-1"
-                                    >
-                                        <SelectField label="Payment Status *" name="paymentStatus" value={formData.paymentStatus} onChange={handleSelectChange} options={PAYMENT_STATUS} error={errors.paymentStatus} />
-                                    </motion.div>
-
-                                    <motion.div
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="md:col-span-1 lg:col-span-1"
-                                    >
-                                        <SelectField label="Facing Harassment? *" name="facingHarassment" value={formData.facingHarassment} onChange={handleSelectChange} options={HARASSMENT_OPTIONS} error={errors.facingHarassment} />
-                                    </motion.div>
-                                </>
-                            )}
-                        </AnimatePresence>
-
-                        <AnimatePresence>
-                            {showLegalNotice && (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="md:col-span-1 lg:col-span-1"
-                                >
-                                    <SelectField label="Received Legal Notice? *" name="receivedLegalNotice" value={formData.receivedLegalNotice} onChange={handleSelectChange} options={YES_NO} error={errors.receivedLegalNotice} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <AnimatePresence>
-                            {showSettlementTime && (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="md:col-span-1 lg:col-span-1"
-                                >
-                                    <SelectField label="Settlement Time *" name="settlementTime" value={formData.settlementTime} onChange={handleSelectChange} options={SETTLEMENT_TIMES} error={errors.settlementTime} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <AnimatePresence>
-                            {showLoanSection && (
-                                <>
-                                    <motion.div
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="md:col-span-1 lg:col-span-1"
-                                    >
-                                        <SelectField label="Any Past Settlement? *" name="anyPastSettlement" value={formData.anyPastSettlement} onChange={handleSelectChange} options={YES_NO} error={errors.anyPastSettlement} />
-                                    </motion.div>
-
-                                    <motion.div
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="md:col-span-1 lg:col-span-1"
-                                    >
-                                        <SelectField label="Settlement Starting Funds Requirement *" name="fundsRequirement" value={formData.fundsRequirement} onChange={handleSelectChange} options={FUNDS_REQUIREMENT} error={errors.fundsRequirement} />
-                                    </motion.div>
-
-                                    <motion.div
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="md:col-span-1 lg:col-span-1"
-                                    >
-                                        <SelectField label="Preferred Language for Communication *" name="preferredLanguage" value={formData.preferredLanguage} onChange={handleSelectChange} options={LANGUAGES} error={errors.preferredLanguage} />
-                                    </motion.div>
-
-
-                                </>
-                            )}
-                        </AnimatePresence>
-
-                        <AnimatePresence>
-                            {showSettlementLetter && (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="md:col-span-1 lg:col-span-1"
-                                >
-                                    <SelectField label="Received Settlement Letter? *" name="receivedSettlementLetter" value={formData.receivedSettlementLetter} onChange={handleSelectChange} options={YES_NO} error={errors.receivedSettlementLetter} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <motion.div layout className="md:col-span-1 lg:col-span-1">
-                            <SelectField label="Convenient Call Time *" name="convenientCallTime" value={formData.convenientCallTime} onChange={handleSelectChange} options={CALL_TIMES} error={errors.convenientCallTime} />
-                        </motion.div>
-
-
-
-                        <motion.div layout className="md:col-span-2 lg:col-span-1">
-                            <motion.div
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 15 }}
-                                transition={{ duration: 0.4 }}
-                                className="pt-1"
-                            >
-                                <label className="mb-2 block text-black/55" style={fieldStyle}>
-                                    Message
-                                </label>
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleInputChange}
-                                    rows={4}
-                                    placeholder="Tell us more about your financial situation..."
-                                    className="min-h-[5rem] w-full resize-none rounded-[0.7rem] bg-[#F0ECE7] px-4 py-3 outline-none font-[Geist] text-black placeholder:text-black/30"
-                                    style={fieldStyle}
-                                />
-                            </motion.div>
-                        </motion.div>
-
-                        <motion.div layout className="md:col-span-2 lg:col-span-1">
-                            <motion.div whileHover={isSubmitting ? {} : { scale: 1.03 }} whileTap={isSubmitting ? {} : { scale: 0.98 }} className="pt-2">
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className={`rounded-full px-6 py-2.5 font-[Geist] text-[0.82rem] font-medium text-white shadow-[0_6px_20px_rgba(255,59,48,0.25)] transition-all duration-300 ${isSubmitting ? 'bg-[#ff2d20]/70 cursor-not-allowed' : 'bg-[#ff3b30] hover:bg-[#ff2d20]'}`}
-                                >
-                                    {isSubmitting ? "Submitting..." : "Submit"}
-                                </button>
-                            </motion.div>
-                        </motion.div>
-                    </form>
-                </motion.div>
-            </div>
+            </section>
         </section>
     );
 }

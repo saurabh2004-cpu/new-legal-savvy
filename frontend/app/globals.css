@@ -60,3 +60,23 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.geist-regular {
+  font-family: var(--font-geist-regular), sans-serif;
+}
+
+.geist-medium {
+  font-family: var(--font-geist-medium), sans-serif;
+}
+
+.geist-bold {
+  font-family: var(--font-geist-bold), sans-serif;
+}
+
+.geist-semibold {
+  font-family: var(--font-geist-semibold), sans-serif;
+}

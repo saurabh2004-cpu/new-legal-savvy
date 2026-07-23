@@ -45,14 +45,13 @@ export default function LegalExpertise() {
   } as const;
 
   return (
-    <section
-      ref={containerRef}
-      className="py-6 md:py-6 lg:pb-16 px-6 md:px-12 md:m-4 bg-[#D8D0CA] rounded-xl overflow-hidden flex flex-col items-center"
-    >
-      <div className="w-full max-w-[84rem] mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-16 items-stretch">
-
+    <section className="w-full py-1 px-2">
+      <div
+        ref={containerRef}
+        className="max-w-8xl mx-auto grid grid-cols-1 xl:grid-cols-2 gap-2 items-stretch py-6 md:py-6 lg:pb-16 px-6 md:px-12 bg-[#D8D0CA] rounded-xl overflow-hidden"
+      >
         {/* LEFT COLUMN: Asterisk & Subtext */}
-        <div className="flex flex-col justify-end items-start xl:min-h-[12rem]  h-full py-2">
+        <div className="flex flex-col justify-end items-start xl:min-h-[12rem] h-full py-2">
 
           {/* Subtitle */}
           <motion.p
@@ -72,7 +71,7 @@ export default function LegalExpertise() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col justify-center gap-1 md:gap-2"
+          className="flex flex-col justify-center gap-1"
         >
           {roles.map((role, idx) => (
             <motion.div
@@ -80,15 +79,16 @@ export default function LegalExpertise() {
               variants={itemVariants}
               whileHover={{ x: 10, color: "#1D2331" }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="py-2.5 md:py-3.5  last:border-0 cursor-pointer group"
+              className="py-1 md:py-1.5 last:border-0 cursor-pointer group"
             >
-              <span className="font-sans font-medium text-2xl  md:text-[46px] leading-[100%] tracking-normal text-[#363D4F] transition-colors duration-300 group-hover:text-[#1D2331]">
+              <span
+                className="geist-medium text-2xl md:text-5xl bg-gradient-to-r from-[#0E1429] to-[#2E4286] bg-clip-text text-transparent"
+              >
                 {role}
               </span>
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

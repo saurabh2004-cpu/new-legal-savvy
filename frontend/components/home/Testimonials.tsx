@@ -55,7 +55,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
       <motion.div
         whileHover={{ scale: 1.02, y: -5 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="w-[290px] sm:w-[320px] md:w-[400px] h-[400px] md:h-[450px] flex-shrink-0 bg-[#F0ECE7] rounded-[32px] md:rounded-[40px] p-4 pb-6 md:p-6 md:pb-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
+        className="w-[290px] sm:w-[320px] md:w-[400px] h-[400px] md:h-[450px] flex-shrink-0 bg-[#D9D9D9] rounded-[32px] md:rounded-[40px] p-4 pb-6 md:p-6 md:pb-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
       >
         {/* Video Thumbnail Area */}
         <div className="relative w-full flex-1 rounded-xl overflow-hidden group cursor-pointer mb-4 bg-gray-200">
@@ -136,67 +136,66 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-12 lg:py-16 overflow-hidden w-full mx-auto relative bg-[#1B223C]">
-      {/* Header Section with Viewport Animation */}
-      <motion.div
-        variants={headerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="max-w-[85rem] w-full mx-auto px-4 md:px-16 mb-12 lg:mb-16 flex flex-col items-start"
+    <section className="w-full py-1 px-2">
+      <div
+        className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center overflow-hidden p-12 sm:px-16 sm:py-20 lg:pt-28 space-y-6 md:space-y-8 lg:space-y-10 bg-[#1D2540]"
       >
-        <h2 className="font-sans font-semibold text-[28px] md:text-[36px] leading-[100%] tracking-normal text-white inline-block relative mb-6">
-          <span className="relative inline-block">
-            Testimonials
-            <div className="absolute left-0 -bottom-3 w-full flex flex-col space-y-[1px]">
-              <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-              <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-            </div>
-          </span>
-        </h2>
-
-        <div className="my-4 flex w-full flex-col lg:flex-row justify-between lg:items-end gap-6">
-          <h2 className="font-sans font-semibold text-[24px] md:text-[32px] xl:text-[52.09px] leading-[100%] tracking-normal text-white inline-block relative">
-            Trusted Smiles.
-            <p className="mt-2 text-white">Shared Experiences</p>
+        {/* Header Section with Viewport Animation */}
+        <div className="w-full flex flex-col items-start">
+          <h2 className="font-sans font-semibold text-[28px] md:text-[36px] leading-[100%] tracking-normal text-white inline-block relative mb-6">
+            <span className="relative inline-block">
+              Testimonials
+              <div className="absolute left-0 -bottom-3 w-full flex flex-col space-y-[1px]">
+                <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
+                <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
+              </div>
+            </span>
           </h2>
-          <div className="lg:w-[500px] w-full flex">
-            <p className="text-white font-mono font-medium text-[12px] md:text-[16px] lg:text-[16px] leading-[125%] lg:leading-[100%] tracking-normal max-w-2xl">
-              Hear from our clients who have successfully resolved their debt and regained their financial freedom with our expert legal assistance.
-            </p>
+
+          <div className="my-4 flex w-full flex-col lg:flex-row justify-between lg:items-end gap-6">
+            <h2 className="font-sans font-semibold text-[24px] md:text-[32px] xl:text-[52.09px] leading-[100%] tracking-normal text-white inline-block relative">
+              Trusted Smiles.
+              <p className="mt-2 text-white">Shared Experiences</p>
+            </h2>
+
+            <div className="w-full lg:w-[500px] flex">
+              <p className="text-white font-mono font-medium text-base leading-snug">
+                Hear from our clients who have successfully resolved their debt and regained their financial freedom with our expert legal assistance.
+              </p>
+            </div>
           </div>
         </div>
-      </motion.div>
 
-      {/* Marquee Container */}
-      <div className="relative w-full overflow-hidden flex items-center py-6">
-        {/* Left/Right Fade Gradients for smooth entrance/exit */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-48 bg-gradient-to-r from-[#1B223C] to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-48 bg-gradient-to-l from-[#1B223C] to-transparent z-10 pointer-events-none"></div>
+        {/* Marquee Container */}
+        <div className="relative w-full overflow-hidden flex items-center">
+          {/* Left/Right Fade Gradients for smooth entrance/exit */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-48 bg-gradient-to-r from-[#1D2540] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-48 bg-gradient-to-l from-[#1D2540] to-transparent z-10 pointer-events-none"></div>
 
-        {/* Scroll Tracks */}
-        <div className="flex w-max">
-          {/* First Track */}
-          <motion.div
-            variants={trackVariants}
-            animate="animate"
-            className="flex gap-6 md:gap-8 pr-6 md:pr-8"
-          >
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={`track1-${testimonial.id}`} testimonial={testimonial} />
-            ))}
-          </motion.div>
+          {/* Scroll Tracks */}
+          <div className="flex w-max">
+            {/* First Track */}
+            <motion.div
+              variants={trackVariants}
+              animate="animate"
+              className="flex gap-6 md:gap-8 pr-6 md:pr-8"
+            >
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={`track1-${testimonial.id}`} testimonial={testimonial} />
+              ))}
+            </motion.div>
 
-          {/* Second Track (Duplicate for seamless loop) */}
-          <motion.div
-            variants={trackVariants}
-            animate="animate"
-            className="flex gap-6 md:gap-8 pr-6 md:pr-8"
-          >
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={`track2-${testimonial.id}`} testimonial={testimonial} />
-            ))}
-          </motion.div>
+            {/* Second Track (Duplicate for seamless loop) */}
+            <motion.div
+              variants={trackVariants}
+              animate="animate"
+              className="flex gap-6 md:gap-8 pr-6 md:pr-8"
+            >
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={`track2-${testimonial.id}`} testimonial={testimonial} />
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

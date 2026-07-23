@@ -12,9 +12,6 @@ import ConsultationSolution from "@/components/common/ConsultationSolution";
 import Locations from "@/components/home/Locations";
 import Footer from "../components/common/Footer";
 import { CTA_ASSETS } from "@/components/home/assets";
-
-
-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,17 +23,13 @@ export const metadata: Metadata = {
 
 export default function Home() {
 
-  const abotSectionParagraph = [
-    "Professional legal and loan management",
-    "solutions built on transparency, accuracy, and trust.",
-    "We simplify complex paperwork and guide",
-    "you toward secure financial decisions."
-  ]
+  const abotSectionParagraph =
+    "Professional legal and loan management solutions built on transparency, accuracy, and trust. We simplify complex paperwork and guide you toward secure financial decisions.";
 
   const servicesData = [
     {
       tag: "LOAN ISSUES",
-      tagBg: "#FF3030",
+      tagBg: "#E64A19",
       tagColor: "#FFFFFF",
       title: "Personal Loan Settlement",
       description: "If loan payments are piling up and causing stress, we've got your back. Our team works with you to find solutions, negotiate with creditors, and ease the burden. Let's tackle it together and get your finances back on track!",
@@ -52,7 +45,7 @@ export default function Home() {
     },
     {
       tag: "BUSINESS LOAN ISSUES",
-      tagBg: "#FF3030",
+      tagBg: "#E64A19",
       tagColor: "#FFFFFF",
       title: "Business Loan Settlement",
       description: "If business loan payments are overwhelming you, we're here to help. Our team collaborates with you to find effective solutions, negotiate with lenders, and reduce your financial stress. Together, we can ease the burden and get your business.",
@@ -68,7 +61,7 @@ export default function Home() {
     },
     {
       tag: "CREDIT CARD ISSUES",
-      tagBg: "#FF3030",
+      tagBg: "#E64A19",
       tagColor: "#FFFFFF",
       title: "Credit Card Loan Settlement",
       description: "Struggling with credit card debt? We're here to help you find the right path forward. Our team negotiates with your creditors to reduce your debt, making payments more manageable. Let's work together to clear the burden and get your financial.",
@@ -84,7 +77,7 @@ export default function Home() {
     },
     {
       tag: "ANTI-HARASSMENT ISSUES",
-      tagBg: "#FF3030",
+      tagBg: "#E64A19",
       tagColor: "#FFFFFF",
       title: "Anti-Harassment Services",
       description: "If you're dealing with harassment, you don't have to face it alone. Our team is here to provide the support you need, guiding you through legal options and ensuring your safety. Let's work together to resolve the issue and protect your rights.",
@@ -102,20 +95,19 @@ export default function Home() {
 
 
   return (
-    <main className="bg-[#D8D0CA] min-h-screen">
+    <main className="bg-[#D9D9D9] min-h-screen">
       <Hero
-        Heading={"SMART LEGAL & LOAN SOLUTIONS"}
+        Heading={"Smart Legal & Loan Solutions"}
         img={"/about/about-hero-img.png"}
-        className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)]  xl:h-[calc(105vh-3rem)]"
+        className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
       />
-      <AboutUs buttonText1={"About"} buttonText2={"Us"} buttonText3={"More about us"} paragraph={abotSectionParagraph} />
+      <AboutUs buttonText1={"About"} buttonText2={"Us"} buttonText3={"More about us"} paragraph={abotSectionParagraph} paragraphMaxWidth="max-w-5xl" />
       <WhyUs />
       <OurServices servicesData={servicesData} heading="Our Services" />
       <BankSettlements
         circleHeading={"Settlements Achieved With Banks"}
-        innerCircleBgColour="#363D4F"
-        outerCircleBgColour="#1B223C"
-        className="bg-[#d8d0ca]"
+        innerCircleBgColour="#333A4D"
+        outerCircleBgColour="#1D2540"
       />
       <OurFeatures />
       <Testimonials />

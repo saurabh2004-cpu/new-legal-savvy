@@ -55,112 +55,112 @@ export default function BankSettlements({ circleHeading, innerCircleBgColour, ou
   const rotateInnerReverse = useTransform(time, t => (t / 40000) * 360);
 
   return (
-    <section className={`md:py-3 lg:py-6 px-4 md:px-12 md:m-4 rounded-xl flex flex-col items-center justify-center overflow-hidden ${className || ''}`}>
+    <section className="w-full py-1 px-2">
+      <div className={`max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center pt-10 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 p-6 ${className}`}>
+        {/* Main Circular UI */}
+        <div className="relative w-[75%] max-w-[45rem] aspect-square mx-auto my-14 md:my-16 flex items-center justify-center">
 
-      {/* Main Circular UI */}
-      <div className="relative w-[75%] max-w-[45rem] aspect-square mx-auto my-14 md:my-16 flex items-center justify-center">
+          {/* Outer Navy Circle */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute w-[111.7%] h-[111.7%] rounded-full shadow-xl"
+            style={{ backgroundColor: outerCircleBgColour }}
+          />
 
-        {/* Outer Navy Circle */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute w-[111.7%] h-[111.7%] rounded-full shadow-xl"
-          style={{ backgroundColor: outerCircleBgColour }}
-        />
+          {/* Inner Slate Circle */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute w-[64.4%] h-[64.4%] rounded-full shadow-lg flex items-center justify-center text-center z-10"
+            style={{ backgroundColor: innerCircleBgColour }}
+          >
+            <div className="flex flex-col items-center justify-center px-2 md:px-6">
+              <h2 className="text-white max-w-[80%] font-sans xl:font-semibold xl:text-[25px] lg:text-[20px] md:text-[20px] text-[12px] leading-snug tracking-normal text-center capitalize ">
+                {circleHeading}
+              </h2>
+            </div>
+          </motion.div>
 
-        {/* Inner Slate Circle */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute w-[64.4%] h-[64.4%] rounded-full shadow-lg flex items-center justify-center text-center z-10"
-          style={{ backgroundColor: innerCircleBgColour }}
-        >
-          <div className="flex flex-col items-center justify-center px-2 md:px-6">
-            <h2 className="text-white max-w-[80%] font-sans xl:font-semibold xl:text-[25px] lg:text-[20px] md:text-[20px] text-[12px] leading-snug tracking-normal text-center capitalize ">
-              {circleHeading}
-            </h2>
-          </div>
-        </motion.div>
-
-        {/* Outer Orbit Container (Rotates CW) */}
-        <motion.div
-          style={{ rotate: rotateOuter }}
-          className="absolute w-full h-full z-20 pointer-events-none"
-        >
-          {outerBanks.map((bank, idx) => {
-            const pos = getOrbitPosition(idx, outerBanks.length, 55.85);
-            return (
-              <div
-                key={bank.id}
-                style={{ top: pos.top, left: pos.left }}
-                className="absolute w-[14%] h-[14%] md:w-[12%] md:h-[12%] -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
-              >
-                {/* Counter-Rotating Child Wrapper - PERFECTLY SYNCED */}
-                <motion.div
-                  style={{ rotate: rotateOuterReverse }}
-                  className="w-full h-full rounded-full bg-[#F0ECE7] shadow-sm flex items-center justify-center p-2 sm:p-3"
+          {/* Outer Orbit Container (Rotates CW) */}
+          <motion.div
+            style={{ rotate: rotateOuter }}
+            className="absolute w-full h-full z-20 pointer-events-none"
+          >
+            {outerBanks.map((bank, idx) => {
+              const pos = getOrbitPosition(idx, outerBanks.length, 55.85);
+              return (
+                <div
+                  key={bank.id}
+                  style={{ top: pos.top, left: pos.left }}
+                  className="absolute w-[14%] h-[14%] md:w-[12%] md:h-[12%] -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
                 >
+                  {/* Counter-Rotating Child Wrapper - PERFECTLY SYNCED */}
                   <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.2 + (idx * 0.03), ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full flex items-center justify-center"
+                    style={{ rotate: rotateOuterReverse }}
+                    className="w-full h-full rounded-full bg-[#E6DCD6] shadow-sm flex items-center justify-center p-2 sm:p-3"
                   >
-                    <img
-                      src={bank.img}
-                      alt={bank.name}
-                      className="w-[90%] h-[90%] object-contain select-none pointer-events-none"
-                    />
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.6, delay: 0.2 + (idx * 0.03), ease: [0.16, 1, 0.3, 1] }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      <img
+                        src={bank.img}
+                        alt={bank.name}
+                        className="w-[90%] h-[90%] object-contain select-none pointer-events-none"
+                      />
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              </div>
-            );
-          })}
-        </motion.div>
+                </div>
+              );
+            })}
+          </motion.div>
 
-        {/* Inner Orbit Container (Rotates CCW) */}
-        <motion.div
-          style={{ rotate: rotateInner }}
-          className="absolute w-full h-full z-30 pointer-events-none"
-        >
-          {innerBanks.map((bank, idx) => {
-            const pos = getOrbitPosition(idx, innerBanks.length, 32.2);
-            return (
-              <div
-                key={bank.id}
-                style={{ top: pos.top, left: pos.left }}
-                className="absolute w-[16%] h-[16%] md:w-[14%] md:h-[14%] -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
-              >
-                {/* Counter-Rotating Child Wrapper - PERFECTLY SYNCED */}
-                <motion.div
-                  style={{ rotate: rotateInnerReverse }}
-                  className="w-full h-full rounded-full flex items-center justify-center p-2 sm:p-3 bg-white shadow-md border border-gray-100"
+          {/* Inner Orbit Container (Rotates CCW) */}
+          <motion.div
+            style={{ rotate: rotateInner }}
+            className="absolute w-full h-full z-30 pointer-events-none"
+          >
+            {innerBanks.map((bank, idx) => {
+              const pos = getOrbitPosition(idx, innerBanks.length, 32.2);
+              return (
+                <div
+                  key={bank.id}
+                  style={{ top: pos.top, left: pos.left }}
+                  className="absolute w-[16%] h-[16%] md:w-[14%] md:h-[14%] -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
                 >
+                  {/* Counter-Rotating Child Wrapper - PERFECTLY SYNCED */}
                   <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.2 + (idx * 0.05), ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full flex items-center justify-center"
+                    style={{ rotate: rotateInnerReverse }}
+                    className="w-full h-full rounded-full flex items-center justify-center p-2 sm:p-3 bg-[#E6DCD6] shadow-md border border-gray-100"
                   >
-                    <img
-                      src={bank.img}
-                      alt={bank.name}
-                      className="w-[90%] h-[90%] object-contain select-none pointer-events-none"
-                    />
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.6, delay: 0.2 + (idx * 0.05), ease: [0.16, 1, 0.3, 1] }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      <img
+                        src={bank.img}
+                        alt={bank.name}
+                        className="w-[90%] h-[90%] object-contain select-none pointer-events-none"
+                      />
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              </div>
-            );
-          })}
-        </motion.div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
-
     </section>
   );
 }
