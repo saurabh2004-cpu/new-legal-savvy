@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Navbar from "../common/Navbar";
-import Button2 from "../ui/Button2";
+import Button2 from "../utils/Button2";
 
 function AnimatedCharacter({
   char,
@@ -148,6 +148,19 @@ export default function ServiceHero({ title, description, image, className }: Se
     </motion.div>
   );
 
+
+  const handleScrollDown = () => {
+    const nextSection = document.querySelector("section")?.nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="w-full p-2">
       <div ref={containerRef} className={`relative h-[400vh] rounded-xl`}>
@@ -223,7 +236,7 @@ export default function ServiceHero({ title, description, image, className }: Se
               {description}
             </motion.p>
 
-            <Button2 />
+            <Button2 onClick={handleScrollDown} />
           </motion.div>
         </div>
       </div>
@@ -237,7 +250,7 @@ export default function ServiceHero({ title, description, image, className }: Se
 // import React, { useRef, useState } from "react";
 // import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 // import Navbar from "./Navbar";
-// import Button2 from "../ui/Button2";
+// import Button2 from "../utils/Button2";
 
 // function AnimatedCharacter({
 //   char,

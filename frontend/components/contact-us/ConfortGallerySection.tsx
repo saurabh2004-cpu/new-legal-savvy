@@ -18,8 +18,8 @@ const galleryImages = [
 
 export default function ComfortGallerySection() {
     return (
-        <section className="w-full py-1 px-2">
-            <div className="w-full max-w-8xl mx-auto mt-4 sm:mt-8 rounded-xl bg-[#CDC2BB] py-10 md:py-14 lg:py-12 space-y-6 sm:space-y-8 lg:space-y-10">
+        <section className="w-full py-1 px-2 border">
+            <div className="w-full max-w-8xl mx-auto rounded-xl bg-[#CDC2BB] py-10 md:py-14 lg:py-12 space-y-6 sm:space-y-8 lg:space-y-10">
                 {/* HEADER */}
                 <div className="flex flex-col items-center justify-center gap-6">
                     <SectionHeading title="Designed for comfort and precision" />

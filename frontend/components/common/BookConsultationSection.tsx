@@ -2,14 +2,14 @@
 
 import { useState, ChangeEvent, FormEvent, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, ChevronDown } from "lucide-react";
+import { Mail, Phone, ChevronDown, LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
 import { createConsultation } from "../../services/consultation.service";
 import { ConsultationPayload } from "../../types/consultation";
+import Link from "next/link";
 
 /* ───────────────── Types ───────────────── */
-
 interface FormData {
     name: string;
     phone: string;
@@ -250,6 +250,74 @@ const INITIAL_FORM_DATA: FormData = {
     message: "",
 };
 
+
+interface ContactItemProps {
+    icon: LucideIcon;
+    text: string;
+    href: string;
+}
+
+const ContactItem = ({ icon: Icon, text, href }: ContactItemProps) => (
+    <motion.div
+        initial="rest"
+        whileHover="hover"
+        animate="rest"
+    >
+        <Link
+            href={href}
+            className="group relative flex w-fit cursor-pointer items-center gap-3 overflow-hidden rounded-full border border-[#0000001A] px-4 py-3"
+        >
+            {/* Background */}
+            <motion.div
+                variants={{
+                    rest: { scaleX: 0 },
+                    hover: { scaleX: 1 },
+                }}
+                transition={{
+                    duration: 0.45,
+                    ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute inset-0 origin-left bg-[#C6BAB2]"
+            />
+
+            {/* Icon */}
+            <motion.div
+                variants={{
+                    rest: { scale: 1 },
+                    hover: { scale: 1.4 },
+                }}
+                transition={{ duration: 0.35 }}
+                className="relative z-10 flex h-7 w-7 items-center justify-center"
+            >
+                <Icon className="h-3.5 w-3.5 text-black/70" />
+            </motion.div>
+
+            {/* Text */}
+            <div className="relative z-10 h-7 overflow-hidden">
+                <motion.div
+                    variants={{
+                        rest: { y: "-28px" },
+                        hover: { y: 0 },
+                    }}
+                    transition={{
+                        duration: 0.45,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="flex flex-col"
+                >
+                    <span className="flex h-7 items-center geist-regular text-[1rem] leading-[120%] tracking-[0%] text-black/75 md:text-[1.125rem]">
+                        {text}
+                    </span>
+
+                    <span className="flex h-7 items-center geist-regular text-[1rem] leading-[120%] tracking-[0%] text-black/75 md:text-[1.125rem]">
+                        {text}
+                    </span>
+                </motion.div>
+            </div>
+        </Link>
+    </motion.div>
+);
+
 /* ───────────────── Main Component ───────────────── */
 export default function BookConsultation() {
     const pathname = usePathname();
@@ -475,23 +543,17 @@ export default function BookConsultation() {
                             </h1>
 
                             <div className="mt-8 space-y-8">
-                                <div className="flex items-center gap-3">
-                                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
-                                        <Mail className="h-3.5 w-3.5 text-black/70" />
-                                    </div>
-                                    <span className="geist-regular text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
-                                        legal@thelegalstore.com
-                                    </span>
-                                </div>
+                                <ContactItem
+                                    icon={Mail}
+                                    text="legal@thelegalstore.com"
+                                    href="mailto:legal@thelegalstore.com"
+                                />
 
-                                <div className="flex items-center gap-3">
-                                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
-                                        <Phone className="h-3.5 w-3.5 text-black/70" />
-                                    </div>
-                                    <span className="geist-regular text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
-                                        +91 9230445513
-                                    </span>
-                                </div>
+                                <ContactItem
+                                    icon={Phone}
+                                    text="+91 9230445513"
+                                    href="tel:+919230445513"
+                                />
                             </div>
                         </motion.div>
                     </div>

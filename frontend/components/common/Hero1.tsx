@@ -5,7 +5,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import Navbar from "./Navbar";
 import { usePathname } from "next/navigation";
 import Button from "../utils/Button";
-import Button2 from "../ui/Button2";
+import Button2 from "../utils/Button2";
 
 interface HeroProps {
   Heading: string;

@@ -6,19 +6,19 @@ const navColumns = [
     [
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
-        { label: "Services", href: "/services" },
+        { label: "Services", href: "/service" },
         { label: "Gallery", href: "/gallery" },
     ],
     [
         { label: "Blogs", href: "/blogs" },
-        { label: "Contact Us", href: "/contact" },
-        { label: "Services", href: "/services" },
+        { label: "Contact Us", href: "/contact-us" },
+        { label: "Services", href: "/service" },
         { label: "Gallery", href: "/gallery" },
     ],
     [
         { label: "Blogs", href: "/blogs" },
-        { label: "Contact Us", href: "/contact" },
-        { label: "Services", href: "/services" },
+        { label: "Contact Us", href: "/contact-us" },
+        { label: "Services", href: "/service" },
         { label: "Gallery", href: "/gallery" },
     ],
 ];
@@ -110,7 +110,7 @@ export default function Footer() {
                                 </span>
 
                                 <Link
-                                    href="/contact"
+                                    href="/contact-us"
                                     className="text-base md:text-lg font-medium tracking-wide text-[#e0e2ec] transition-colors duration-200 hover:text-white"
                                 >
                                     Schedule a Consultation
@@ -134,7 +134,6 @@ export default function Footer() {
 
                         {/* Navigation */}
                         <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 lg:col-span-4 lg:gap-x-20">
-
                             {navColumns.map((col, ci) => (
                                 <div
                                     key={ci}

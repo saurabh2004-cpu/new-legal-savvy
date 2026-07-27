@@ -52,7 +52,7 @@ const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(
                 initial="initial"
                 whileHover="hover"
                 variants={circleVariants}
-                className={`relative flex items-center justify-center p-2 w-14 aspect-square rounded-full bg-white overflow-hidden cursor-pointer ${className}`}
+                className={`relative flex items-center justify-center p-2 w-13 aspect-square rounded-full bg-white overflow-hidden cursor-pointer ${className}`}
                 {...props}
             >
                 <div className="relative flex items-center justify-center w-[18px] h-[18px]">

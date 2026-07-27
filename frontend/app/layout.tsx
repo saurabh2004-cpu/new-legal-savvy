@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/common/Footer";
 import { DynamicPagesList } from "@/components/dynamic-content-page/DynamicPagesList";
-import SmoothScroll from "@/components/ui/SmoothScroll";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",

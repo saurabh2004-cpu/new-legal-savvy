@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Button2 from "../ui/Button2";
+import Button2 from "../utils/Button2";
 import Button from "../utils/Button";
 import PillTag from "../utils/PillTag";
 
@@ -48,6 +48,18 @@ export default function Hero5({ service, className }: Hero5Props) {
         window.addEventListener("resize", updateDistance);
         return () => window.removeEventListener("resize", updateDistance);
     }, []);
+
+    const handleScrollDown = () => {
+        const nextSection = document.querySelector("section")?.nextElementSibling;
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: "smooth",
+            });
+        }
+    };
 
     return (
         <section className={`w-full p-2 ${className}`}>
@@ -123,7 +135,7 @@ export default function Hero5({ service, className }: Hero5Props) {
                             </p>
 
                             <div className="flex items-center justify-center gap-4">
-                                <Button2 />
+                                <Button2 onClick={handleScrollDown} />
                                 <Button text="Get Consultation" />
                             </div>
                         </div>

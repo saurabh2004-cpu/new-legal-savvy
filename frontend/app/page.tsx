@@ -120,7 +120,7 @@ export default function Home() {
       <HumanApproach />
       <FeaturedBlogs />
       <ConsultationSolution image={CTA_ASSETS["radial-text"]} className="pb-16 lg:pb-24" />
-      <Locations />
+      <Locations variant="parallax" className="-mt-20 md:-mt-58 xl:-mt-38" />
     </main>
   );
 }

@@ -243,7 +243,8 @@ function ParallaxLocations({
     <div className={`w-full py-1 px-2 ${className}`}>
       <motion.section
         ref={containerRef}
-        className="relative -mt-20 md:-mt-58 xl:-mt-38 rounded-xl overflow-hidden pt-24 sm:pt-32 lg:pt-40 pb-8 sm:pb-12 lg:pb-16 flex flex-col justify-end items-center min-h-[42rem] z-20"
+        // className="relative -mt-20 md:-mt-58 xl:-mt-38 rounded-xl overflow-hidden pt-24 sm:pt-32 lg:pt-40 pb-8 sm:pb-12 lg:pb-16 flex flex-col justify-end items-center min-h-[42rem] z-20"
+        className="relative rounded-xl overflow-hidden pt-24 sm:pt-32 lg:pt-40 pb-8 sm:pb-12 lg:pb-16 flex flex-col justify-end items-center min-h-[42rem] z-20"
         id="locations-section"
       >
         {/* Parallax Background Layer */}
