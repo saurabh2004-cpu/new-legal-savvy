@@ -59,7 +59,7 @@ export default function LegalExpertise() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-sans font-normal text-[20px] leading-[100%] tracking-normal text-center text-[#1D2331] mt-8 md:mt-0"
+            className="geist-regular text-[20px] leading-[100%] tracking-normal text-center text-[#1D2331] mt-8 md:mt-0"
           >
             Practical legal expertise
           </motion.p>

@@ -6,6 +6,7 @@ import { getAllBlogs, generateSlug } from "@/services/blogServices";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import SectionHeading from "../utils/SectionHeading";
 
 export default function FeaturedBlogs() {
   const [isHovered, setIsHovered] = useState(false);
@@ -57,26 +58,7 @@ export default function FeaturedBlogs() {
     <section className="w-full py-1 px-2">
       <div className="w-full max-w-8xl mx-auto relative py-6 lg:py-16 px-4 md:px-8 lg:px-16 bg-[#E6DCD6] rounded-xl">
         {/* Section Header */}
-        <div className={`mb-12`}>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-sans font-semibold text-2xl md:text-[36px] leading-none tracking-normal text-[#1D2331] inline-block relative mb-2"
-          >
-            Featured Blog Posts
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-              className="absolute -bottom-3 left-0 w-[100%] origin-left"
-            >
-              <div className="w-full h-[2.5px] bg-[#ED3D3D] mb-[1px]"></div>
-              <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-            </motion.div>
-          </motion.h2>
-        </div>
+        <SectionHeading title="Featured Blog Posts" align="left" titleClassName="text-2xl md:text-[36px] text-[#1D2331]" underlineColor="#ED3D3D" containerClassName="mb-12" />
 
         {/* Blog Grid */}
         <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 mt-8 items-stretch">
@@ -139,12 +121,12 @@ export default function FeaturedBlogs() {
               transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
               className="absolute bottom-0 left-0 w-[92%] sm:w-[85%] p-6 sm:p-8 md:p-12 flex flex-col justify-end z-10"
             >
-              <h3 className="font-sans font-medium text-[#1D2331] text-[18px] sm:text-[24px] lg:text-[26px] leading-none tracking-normal mb-3 sm:mb-4 max-w-[95%] sm:max-w-[90%] transition-colors duration-300">
+              <h3 className="text-[#1D2331] text-[18px] sm:text-[24px] lg:text-[26px] leading-none tracking-normal mb-3 sm:mb-4 max-w-[95%] sm:max-w-[90%] transition-colors duration-300">
                 {featuredBlog.title}
               </h3>
-              <div className="flex flex-col gap-1.5 sm:gap-2 font-mono font-medium text-[13px] sm:text-[16px] lg:text-[18px] leading-none tracking-normal text-[#1D2331]/80">
-                <span>CATEGORY: <span className="font-mono  uppercase">{featuredBlog.category}</span></span>
-                <span>READ: <span className="font-mono  lowercase">{featuredBlog.readTime}</span></span>
+              <div className="flex flex-col gap-1.5 sm:gap-2 geist-mono-medium text-[13px] sm:text-[16px] lg:text-[18px] leading-none tracking-normal text-[#1D2331]/80">
+                <span>CATEGORY: <span className="uppercase">{featuredBlog.category}</span></span>
+                <span>READ: <span className="lowercase">{featuredBlog.readTime}</span></span>
               </div>
             </motion.div>
           </motion.div>
@@ -170,10 +152,10 @@ export default function FeaturedBlogs() {
                   />
                 </div>
                 <div className="flex flex-col justify-center pr-2 sm:pr-4">
-                  <h4 className="font-sans font-medium text-[#1D2331] text-[14px] sm:text-[18px] lg:text-[20px] leading-snug tracking-normal mb-1.5 sm:mb-2 group-hover:text-[#ED3D3D] transition-colors duration-300">
+                  <h4 className="text-[#1D2331] text-[14px] sm:text-[18px] lg:text-[20px] leading-snug tracking-normal mb-1.5 sm:mb-2 group-hover:text-[#ED3D3D] transition-colors duration-300">
                     {blog.title}
                   </h4>
-                  <span className="font-mono font-medium text-[11px] sm:text-[14px] lg:text-[18px] leading-none tracking-normal text-[#00000070] uppercase">
+                  <span className="geist-mono-medium text-[11px] sm:text-[14px] lg:text-[18px] leading-none tracking-normal text-[#00000070] uppercase">
                     {blog.category}
                   </span>
                 </div>

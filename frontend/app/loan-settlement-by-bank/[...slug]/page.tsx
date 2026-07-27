@@ -1,5 +1,5 @@
 import Navbar from "@/components/common/Navbar";
-import Hero from "@/components/loan-settlement-by-bank/Hero";
+import Hero7 from "@/components/common/Hero7";
 import ContentSection from "@/components/loan-settlement-by-bank/ContentSection";
 import { getLabelsByType } from "@/services/labelsServices";
 
@@ -35,7 +35,7 @@ export default async function Page({ params }: PageProps) {
     return (
         <div className="bg-[#f0ece7] min-h-screen">
             <Navbar />
-            <Hero bankName={bankName} />
+            <Hero7 bankName={bankName} />
             <ContentSection bankName={bankName} />
         </div>
     );

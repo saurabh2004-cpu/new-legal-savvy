@@ -1,21 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import Navbar from "../common/Navbar";
+import Navbar from "./Navbar";
 
-interface HeroProps {
+interface Hero10Props {
   heading: string;
   description?: string;
   ctaText?: string;
   ctaLink?: string;
+  className?: string;
 }
 
-export default function Hero({
+export default function Hero10({
   heading,
   description,
   ctaText = "Get Professional Protection Now",
   ctaLink = "https://www.credsettle.com/contact",
-}: HeroProps) {
+  className = "",
+}: Hero10Props) {
   const [hoveredMenu, setHoveredMenu] = useState<"services" | "locations" | null>(null);
 
   return (
@@ -25,7 +27,7 @@ export default function Hero({
         backgroundImage: "radial-gradient(circle at top right, #243A8D 0%, #132042 70%)",
       }}
       className={`relative text-white pt-36 pb-20 px-4 md:px-8 min-h-[91vh] flex flex-col items-center justify-center transition-all duration-300 ${hoveredMenu ? "overflow-visible" : "overflow-hidden"
-        }`}
+        } ${className}`}
     >
       {/* Navbar passing hover state and callback */}
       <Navbar hoveredMenu={hoveredMenu} onHoverMenuChange={setHoveredMenu} />

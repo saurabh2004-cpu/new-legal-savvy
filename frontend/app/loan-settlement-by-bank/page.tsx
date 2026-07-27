@@ -1,6 +1,6 @@
 
 import BookConsultation from "@/components/common/BookConsultationSection";
-import Hero from "@/components/common/Hero";
+import Hero1 from "@/components/common/Hero1";
 import Locations from "@/components/loan-sattelments/Locations";
 import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
 import { getLabelsByType } from "@/services/labelsServices";
@@ -19,10 +19,10 @@ export default async function page() {
 
     return (
         <div className="bg-[#D8D0CA] min-h-screen">
-            <Hero
+            <Hero1
                 Heading={"LOAN SETTLEMENT BY BANKS"}
                 img={"/about/about-hero-img.png"}
-                className="h-h-[calc(40vh-3rem)] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)]  xl:h-[calc(85vh-3rem)]"
+                className="h-[50vh] md:h-[70vh] lg:h-[80vh] min-h-[400px]"
             />
             <Locations labels={labels} />
             <DirectionsSection />

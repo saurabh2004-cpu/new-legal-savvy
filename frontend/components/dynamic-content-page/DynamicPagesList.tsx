@@ -18,9 +18,9 @@ export const DynamicPagesList = async () => {
   }
 
   return (
-    <section className="w-full py-1 px-2 bg-[#D9D9D9] w-full mx-auto geist-regular">
-      <div className="max-w-8xl mx-auto bg-white rounded-xl text-gray-800 px-4 md:px-8 py-8">
-        <h2 className="geist-medium text-2xl md:text-3xl mb-6">
+    <section className="w-full py-1 px-2 bg-[#FFFFFF]">
+      <div className="max-w-8xl mx-auto bg-white rounded-xl text-gray-800 px-4 md:px-8 lg:px-16 py-8">
+        <h2 className="text-2xl md:text-3xl font-medium mb-6">
           Queries
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">

@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import PillTag from "../utils/PillTag";
 
 interface TrustCard {
   title: string;
@@ -91,20 +92,12 @@ export default function TrustSection({
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="w-full lg:pl-20">
+          <div className="w-full lg:pl-20 pt-12">
             <div
-              className="flex flex-col items-start justify-start gap-4 w-full lg:w-[90%] lg:mx-auto lg:pr-6"
+              className="flex flex-col items-start justify-start gap-8 w-full lg:w-[90%] lg:mx-auto lg:pr-6"
             >
               {/* Badge Labels */}
-              <div className="flex flex-row items-center justify-start text-[#1D2331] font-sans font-bold text-xs tracking-wider mb-4 lg:mb-20">
-                <span className="uppercase bg-[#F0ECE7] px-4 rounded-md py-2">CLARITY</span>
-
-                <div className="flex items-center justify-center px-4 py-2 rounded-md bg-[#363D4F] text-white">
-                  <span className="uppercase font-bold">
-                    TRUST
-                  </span>
-                </div>
-              </div>
+              <PillTag buttonText1={"CLARITY"} buttonText2={"TRUST"} />
 
               {/* Cards */}
               <div className="w-full lg:max-w-lg">

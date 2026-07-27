@@ -60,7 +60,7 @@ export default function DirectionsSection() {
                             }}
                             className="flex justify-center md:justify-start"
                         >
-                            <h2 className="font-[Geist] font-semibold text-[1.7rem] leading-[120%] tracking-[0%] text-black text-[2rem] md:text-[1.2rem] xl:text-[2.5rem]"
+                            <h2 className="geist-semibold text-[1.7rem] leading-[120%] text-black text-[2rem] md:text-[1.2rem] xl:text-[2.5rem]"
                             >
                                 Find your location
                             </h2>
@@ -117,7 +117,7 @@ export default function DirectionsSection() {
                             }}
                             className="group flex items-center justify-center gap-2 sm:gap-3 text-black"
                         >
-                            <span className="font-[Geist] font-normal text-[1.7rem] leading-[120%] tracking-[0%] sm:text-[2rem] md:text-[1.2rem] xl:text-[2.5rem]">
+                            <span className="geist-regular text-[1.7rem] leading-[120%] sm:text-[2rem] md:text-[1.2rem] xl:text-[2.5rem]">
                                 Get Directions
                             </span>
 

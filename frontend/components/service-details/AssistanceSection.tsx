@@ -17,6 +17,7 @@ import {
   Check,
 } from "lucide-react";
 import Image from "next/image";
+import SectionHeading from "../utils/SectionHeading";
 
 interface PointItem {
   text: string;
@@ -102,20 +103,15 @@ export default function AssistanceSection() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div className="w-full max-w-8xl mx-auto rounded-xl py-10 bg-[#0B1727]">
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center overflow-hidden space-y-8 md:space-y-12 font-sans text-white ">
+      <div className="w-full max-w-8xl mx-auto rounded-xl py-10 lg:py-14 bg-[#0B1727]">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center overflow-hidden space-y-8 md:space-y-12 text-white">
           {/* Centered Heading */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={headerVariants}
-            className="text-center max-w-3xl"
-          >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-white max-w-xl">
-              Comprehensive Legal & Financial Assistance
-            </h2>
-          </motion.div>
+          <SectionHeading
+            title="Comprehensive Legal & Financial Assistance"
+            titleClassName="text-white text-4xl"
+            underlineColor="transparent"
+            containerClassName="max-w-xl mx-auto"
+          />
 
           {/* 2-Column Responsive Grid */}
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
@@ -138,7 +134,7 @@ export default function AssistanceSection() {
                 {/* Content Container */}
                 <div className="relative z-20 h-full flex flex-col justify-center px-6 sm:px-8 md:px-10 lg:px-12 max-w-[85%] sm:max-w-[70%] lg:max-w-[65%]">
                   {/* Title */}
-                  <h3 className="font-sans font-semibold text-lg sm:text-xl lg:text-[22px] leading-tight text-white mb-4 sm:mb-5 tracking-tight group-hover:text-blue-100 transition-colors duration-300">
+                  <h3 className="geist-semibold text-lg sm:text-xl lg:text-[22px] leading-tight text-white mb-4 sm:mb-5 tracking-tight group-hover:text-blue-100 transition-colors duration-300">
                     {card.title}
                   </h3>
 
@@ -162,7 +158,7 @@ export default function AssistanceSection() {
                           <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/20 backdrop-blur-md border border-white/25 text-white shrink-0 shadow-sm transition-transform duration-300 group-hover/item:scale-110 group-hover/item:bg-white/30">
                             <IconComponent className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                           </span>
-                          <span className="font-sans font-medium text-xs sm:text-sm md:text-[15px] text-white/90 leading-snug">
+                          <span className="geist-medium text-sm md:text-lg text-white/90 leading-snug">
                             {point.text}
                           </span>
                         </motion.li>

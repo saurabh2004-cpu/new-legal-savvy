@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import PillTag from "../utils/PillTag";
 
 const BulletIcon = () => (
   <div className="w-7 h-7 rounded-full bg-[#CDC2BB] flex items-center justify-center text-[#1D2331] shrink-0">
@@ -40,34 +41,57 @@ export default function AddressesSection() {
     },
   };
 
+  const heading =
+    "Legal Savvy provides reliable legal support with a clear, client-focused approach. From legal consultation to documentation and dispute guidance, we simplify complex legal matters and help you make informed decisions with confidence.";
+
+  const words = heading.split(" ");
+
   return (
-    <section className="w-full py-1 px-2">
+    <section className="w-full py-1 px-2 border">
       <div className="max-w-8xl mx-auto py-12 px-6 lg:px-12 bg-[#CDC2BB] rounded-xl space-y-6 lg:space-y-12 overflow-hidden">
         {/* Header Pill & Title Inline */}
         <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center overflow-hidden mb-5"
-          >
-            <span className="bg-[#CDC2BB] text-black px-5 py-3 rounded-lg font-mono font-normal text-sm md:text-base leading-none tracking-normal uppercase border border-black/10">
-              About
-            </span>
-            <span className="bg-[#363D4F] text-white px-5 py-3 rounded-lg font-mono font-normal text-sm md:text-base leading-none tracking-normal uppercase">
-              Legal
-            </span>
-          </motion.div>
+          <PillTag buttonText1={"About"} buttonBg1="bg-[#E6DCD6]" buttonText2={"Legal"} />
 
           <motion.h2
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="geist-medium text-xl md:text-3xl lg:text-4xl xl:text-5xl text-[#0F172A] leading-snug md:leading-normal tracking-normal text-center"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.03,
+                  delayChildren: 0.1,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            // viewport={{ once: true, margin: "-100px" }}
+            className="max-w-7xl mx-auto geist-medium text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#0F172A] leading-[1] tracking-normal text-center mt-5 mb-5 text-center"
           >
-            Legal Savvy provides reliable legal support with a clear, client-focused approach. From legal consultation to documentation and dispute guidance, we simplify complex legal matters and help you make informed decisions with confidence.
+            {words.map((word, index) => (
+              <span key={index} className="inline-block overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      y: -30,
+                    },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                    },
+                  }}
+                  className="inline-block mr-[0.25em]"
+                >
+                  {word}
+                </motion.span>
+              </span>
+            ))}
           </motion.h2>
         </div>
 
@@ -111,11 +135,11 @@ export default function AddressesSection() {
                 >
                   <div className="flex items-center gap-3">
                     <BulletIcon />
-                    <span className="font-sans font-medium text-sm sm:text-base lg:text-lg text-[#1D2331]">
+                    <span className="geist-regular text-sm sm:text-base lg:text-lg text-[#1D2331]">
                       {item.label}
                     </span>
                   </div>
-                  <span className="font-mono text-sm sm:text-base lg:text-lg font-medium text-[#1D2331]/80">
+                  <span className="geist-regular text-sm sm:text-base lg:text-lg text-[#1D2331]/80">
                     {item.index}
                   </span>
                 </div>
@@ -143,13 +167,13 @@ export default function AddressesSection() {
                 },
               ].map((office, i) => (
                 <div key={i} className="flex flex-col items-center text-center flex-1">
-                  <div className="bg-[#1D2331]/10 text-[#1D2331] text-xs font-mono tracking-wider px-3.5 py-1.5 rounded-md font-semibold uppercase mb-3 sm:mb-4">
+                  <div className="bg-[#333A4D] geist-mono-medium text-white text-sm sm:text-base tracking-wider px-4 py-2 rounded-lg uppercase mb-3 sm:mb-4">
                     {office.badge}
                   </div>
-                  <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-[#0F2D4A] tracking-tight mb-2 text-center">
+                  <h3 className="geist-light text-2xl sm:text-3xl lg:text-4xl text-[#0F2D4A] tracking-tight mb-2 text-center">
                     {office.city}
                   </h3>
-                  <div className="flex flex-col gap-1 text-[#1D2331]/70 font-mono text-sm sm:text-base">
+                  <div className="flex flex-col gap-1 text-[#1D2331]/70 geist-regular text-sm sm:text-base">
                     {office.lines.map((line, lIdx) => (
                       <p key={lIdx}>{line}</p>
                     ))}
@@ -202,6 +226,6 @@ export default function AddressesSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </section >
   );
 }

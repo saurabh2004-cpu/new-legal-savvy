@@ -1,6 +1,6 @@
 import { Metadata, ResolvingMetadata } from "next";
 import { getAllBlogs, getBlogById, generateSlug } from "@/services/blogServices";
-import ResourceHero from "@/components/resources/ResourceHero";
+import Hero6 from "@/components/common/Hero6";
 import BlogDetails from "@/components/resources/BlogDetails";
 import FeaturedBlogs from "@/components/common/FeaturedBlogs";
 import { notFound } from "next/navigation";
@@ -71,19 +71,19 @@ export default async function Page({ params }: Props) {
     };
 
     return (
-        <div className="bg-[#D8D0CA] min-h-screen ">
-            <div className="px-2 pt-2">
-                <ResourceHero
-                    title={blog.title}
-                    publishedDate={formatDate(blog.createdAt)}
-                    readTime={calculateReadTime()}
-                    author={blog.author}
-                    category={blog.category}
-                    image={imagePath}
-                />
-            </div>
+        // <main className="bg-[#FBF8F5]">
+        <main className="bg-[#FFFFFF]">
+            <Hero6
+                title={blog.title}
+                publishedDate={formatDate(blog.createdAt)}
+                readTime={calculateReadTime()}
+                author={blog.author}
+                category={blog.category}
+                image={imagePath}
+                className="h-[100vh] lg:h-screen min-h-[600px]"
+            />
             <BlogDetails blog={blog} />
             <FeaturedBlogs />
-        </div>
+        </main>
     );
 }

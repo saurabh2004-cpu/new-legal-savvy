@@ -1,5 +1,5 @@
 import Navbar from "@/components/common/Navbar";
-import Hero from "@/components/loan-settlement-by-state/Hero";
+import Hero9 from "@/components/common/Hero9";
 import ContentSection from "@/components/loan-settlement-by-state/ContentSection";
 import type { Metadata } from "next";
 
@@ -28,7 +28,7 @@ export default async function Page({ params }: PageProps) {
     return (
         <div className="bg-[#f0ece7] min-h-screen">
             <Navbar />
-            <Hero stateName={stateName} />
+            <Hero9 stateName={stateName} />
             <ContentSection stateName={stateName} />
         </div>
     );

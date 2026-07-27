@@ -1,13 +1,13 @@
 import StatsSection from "@/components/about/Stats"
 import AboutUs from "@/components/common/AboutUs"
-import AboutHero from "@/components/about/AboutHero"
+import Hero2 from "@/components/common/Hero2"
 import AddressesSection from "@/components/about/Address"
 import LegalExpertise from "@/components/about/LegalExpertise"
 import BankSettlements from "@/components/common/BankSettlements"
 import TrustSection from "@/components/about/TrustSection"
 import ConsultationSection from "@/components/about/CunsultationSection"
 import TeamSection from "@/components/about/TeamSection"
-import LocationsSection from "@/components/common/LocationSection"
+import Locations from "@/components/common/Locations"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,18 +22,19 @@ export default function About() {
         "Professional legal and loan management solutions built on transparency, accuracy, and trust. We simplify complex paperwork and guide you toward secure financial decisions.";
 
     return (
-        <div className="bg-[#D9D9D9] min-h-screen">
-            <AboutHero
+        // <main className="bg-[#FBF8F5]">
+        <main className="bg-[#FFFFFF]">
+            <Hero2
                 Heading={"Trusted Legal & Loan Solutions For Every Need"}
                 img={"/about/about-hero-img.png"}
-                className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
+                className="h-[85vh] lg:h-screen min-h-[600px]"
             />
             <AboutUs
                 buttonText1={"About"}
                 buttonText2={"Us"}
                 buttonText3={"More about us"}
                 paragraph={abotSectionParagraph1}
-                paragraphMaxWidth="max-w-5xl"
+                paragraphMaxWidth="max-w-6xl"
             />
             <StatsSection />
             <AddressesSection />
@@ -47,7 +48,7 @@ export default function About() {
             <TrustSection />
             <ConsultationSection />
             <TeamSection />
-            <LocationsSection />
-        </div>
+            <Locations variant="cards" />
+        </main>
     )
 }

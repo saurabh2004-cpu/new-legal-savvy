@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import SectionHeading from '../utils/SectionHeading';
 
 const testimonials = [
   {
@@ -74,8 +75,8 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
 
         <div className="flex items-center gap-4 px-2 mt-4 md:mt-6">
           <div>
-            <h4 className="font-sans font-medium text-[#1D2331] text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
-            <p className="font-sans font-medium text-sm text-black/50 leading-[100%] tracking-normal mt-1">{testimonial.role}</p>
+            <h4 className="text-[#1D2331] text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
+            <p className="text-sm text-black/50 leading-[100%] tracking-normal mt-1">{testimonial.role}</p>
           </div>
         </div>
       </motion.div>
@@ -96,14 +97,14 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
         </svg>
 
         {/* Quote Text */}
-        <p className="text-[#1D2331] font-sans font-medium text-[16px] md:text-[26px] leading-[120%] md:leading-[110%] tracking-tight text-center">
+        <p className="text-[#1D2331] font-medium text-[16px] md:text-[26px] leading-[120%] md:leading-[110%] tracking-tight text-center">
           “{testimonial.text}”
         </p>
       </div>
 
       <div className="flex flex-col items-start mt-6">
-        <h4 className="font-sans font-medium text-black text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
-        <p className="font-sans font-medium text-sm text-black/50 leading-[100%] tracking-normal mt-2">{testimonial.role}</p>
+        <h4 className="font-medium text-black text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
+        <p className="font-medium text-sm text-black/50 leading-[100%] tracking-normal mt-2">{testimonial.role}</p>
       </div>
     </motion.div>
   );
@@ -142,24 +143,16 @@ export default function Testimonials() {
       >
         {/* Header Section with Viewport Animation */}
         <div className="w-full flex flex-col items-start">
-          <h2 className="font-sans font-semibold text-[28px] md:text-[36px] leading-[100%] tracking-normal text-white inline-block relative mb-6">
-            <span className="relative inline-block">
-              Testimonials
-              <div className="absolute left-0 -bottom-3 w-full flex flex-col space-y-[1px]">
-                <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-                <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-              </div>
-            </span>
-          </h2>
+          <SectionHeading title="Testimonials" align="left" titleClassName="text-[28px] md:text-[36px] text-white" underlineColor="#ED3D3D" containerClassName="mb-6" />
 
           <div className="my-4 flex w-full flex-col lg:flex-row justify-between lg:items-end gap-6">
-            <h2 className="font-sans font-semibold text-[24px] md:text-[32px] xl:text-[52.09px] leading-[100%] tracking-normal text-white inline-block relative">
+            <h2 className="geist-semiBold text-[24px] md:text-[32px] xl:text-[52.09px] leading-[100%] tracking-normal text-white inline-block relative">
               Trusted Smiles.
               <p className="mt-2 text-white">Shared Experiences</p>
             </h2>
 
             <div className="w-full lg:w-[500px] flex">
-              <p className="text-white font-mono font-medium text-base leading-snug">
+              <p className="geist-mono-medium text-white text-base leading-snug">
                 Hear from our clients who have successfully resolved their debt and regained their financial freedom with our expert legal assistance.
               </p>
             </div>

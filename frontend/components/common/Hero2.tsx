@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useScroll, useTransform, motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/common/Navbar";
 
-interface AboutHeroProps {
+interface Hero2Props {
   Heading: string;
   img?: string;
   className?: string;
@@ -14,11 +14,10 @@ const CONSULTANTS = [
   { src: "/home/human-1.avif", alt: "Expert Consultant 1" },
   { src: "/home/human-2.avif", alt: "Expert Consultant 2" },
   { src: "/home/human-3.avif", alt: "Expert Consultant 3" },
-  // { src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=256&auto=format&fit=crop", alt: "Expert Consultant 4" },
   { src: "/about/about-hero-img.png", alt: "Expert Consultant 4" },
 ];
 
-export default function AboutHero({ Heading, className = "" }: AboutHeroProps) {
+export default function Hero2({ Heading, className = "" }: Hero2Props) {
   const [hoveredMenu, setHoveredMenu] = useState<"services" | "locations" | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -41,13 +40,12 @@ export default function AboutHero({ Heading, className = "" }: AboutHeroProps) {
   const contentOpacity = useTransform(scrollY, [0, 350], [1, 0]);
 
   return (
-    <section className="w-full p-2">
-      <div className="xl:min-h-screen">
-        <div className={`relative flex flex-col md:block w-full h-auto rounded-2xl ${hoveredMenu ? "overflow-visible" : "overflow-hidden"} shadow-2xl md:bg-black ${className}`}>
+    <section className={`w-full p-2 ${className}`}>
+        <div className={`relative flex flex-col justify-between w-full h-full rounded-2xl ${hoveredMenu ? "overflow-visible" : "overflow-hidden"} shadow-2xl bg-black`}>
 
           {/* Background Image Container */}
           <div
-            className={`relative md:absolute md:inset-0 w-full h-[280px] sm:h-[350px] md:h-full z-0 transition-all duration-500 ease-out overflow-hidden rounded-b-2xl md:rounded-b-none ${hoveredMenu ? "blur-sm opacity-70 scale-[1.01]" : ""
+            className={`absolute inset-0 w-full h-full z-0 transition-all duration-500 ease-out overflow-hidden rounded-2xl ${hoveredMenu ? "blur-sm opacity-70 scale-[1.01]" : ""
               }`}
           >
             <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
@@ -77,7 +75,7 @@ export default function AboutHero({ Heading, className = "" }: AboutHeroProps) {
 
           {/* Scroll-Linked Motion Content Container */}
           <motion.div
-            className="relative z-20 md:h-full flex flex-col justify-end pt-10 md:pt-0 pb-12 md:pb-10 px-6 md:px-11"
+            className="relative z-20 flex-1 flex flex-col justify-end pt-10 md:pt-0 pb-12 md:pb-10 px-6 md:px-11"
             style={{ y: contentY, opacity: contentOpacity }}
           >
             <div className={`w-full transition-all duration-500 ease-out my-auto ${hoveredMenu ? "opacity-50 blur-sm" : ""}`}>
@@ -85,7 +83,7 @@ export default function AboutHero({ Heading, className = "" }: AboutHeroProps) {
 
                 {/* Heading */}
                 <div className="max-w-4xl w-full">
-                  <h1 className="text-[26px] sm:text-[36px] md:text-[54px] lg:text-[38px] xl:text-[67px] font-black text-white leading-none tracking-normal mb-6 md:mb-8 geist-regular">
+                  <h1 className="geist-semibold text-[26px] sm:text-[36px] md:text-[54px] lg:text-[38px] xl:text-[67px] text-white leading-none tracking-normal mb-6 md:mb-8">
                     {Heading}
                   </h1>
                 </div>
@@ -117,7 +115,6 @@ export default function AboutHero({ Heading, className = "" }: AboutHeroProps) {
             </div>
           </motion.div>
         </div>
-      </div>
     </section>
   );
 }

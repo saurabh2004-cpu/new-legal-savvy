@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Button from '../ui/Button';
+import Button from '../utils/Button';
+import PillTag from '../utils/PillTag';
 
 export default function ConsultationSection() {
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
@@ -45,22 +46,9 @@ export default function ConsultationSection() {
                 {/* MAIN WRAPPER */}
                 <div className="flex flex-col gap-12 px-5 py-8 sm:px-8 sm:py-10 md:px-12 xl:flex-row lg:items-center lg:justify-between lg:gap-12 lg:px-20 lg:py-14">
                     {/* LEFT CONTENT */}
-                    <div className="flex w-full flex-col items-center gap-6 text-center lg:max-w-[32rem] lg:gap-8">
+                    <div className="flex w-full flex-col items-center gap-6 text-center lg:max-w-xl lg:gap-8 lg:pl-16">
                         {/* Dual-Colored Brand Pill Tag */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                            className="inline-flex items-center overflow-hidden"
-                        >
-                            <span className="bg-[#CDC2BB] text-black px-4.5 py-2 rounded-lg font-mono font-medium text-base leading-none tracking-normal uppercase">
-                                LEGAL
-                            </span>
-                            <span className="bg-[#363D4F] text-white px-4.5 py-2 rounded-lg font-mono font-medium text-base leading-none tracking-normal uppercase">
-                                EXPERTISE
-                            </span>
-                        </motion.div>
+                        <PillTag buttonText1={"LEGAL"} buttonText2={"EXPERTISE"} />
 
                         {/* HEADING */}
                         <motion.h2
@@ -68,7 +56,7 @@ export default function ConsultationSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: 0.1 }}
-                            className="text-[1rem] md:text-[1.2rem] lg:text-[1.5rem] xl:text-[1.8rem] 2xl:text-[3rem] leading-[115%] font-medium font-[Geist] text-white sm:text-[2.5rem] md:text-[3rem] lg:text-[3.4rem]"
+                            className="geist-regular text-[1rem] md:text-[1.2rem] lg:text-[1.5rem] xl:text-[1.8rem] 2xl:text-[3rem] leading-[115%] text-white sm:text-[2.5rem] md:text-[3rem] lg:text-[3.4rem]"
                         >
                             From legal advice to
                             <span className="block">

@@ -8,20 +8,25 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
+  --font-sans: var(--font-geist-medium);
+  --font-mono: var(--font-geist-mono-regular);
   --animate-blob: blob 7s infinite;
 
   @keyframes blob {
     0% {
       transform: translate(0px, 0px) scale(1);
     }
+
     33% {
       transform: translate(30px, -50px) scale(1.1);
     }
+
     66% {
       transform: translate(-20px, 20px) scale(0.9);
     }
+
     100% {
       transform: translate(0px, 0px) scale(1);
     }
@@ -46,7 +51,8 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: var(--font-geist-medium), sans-serif;
 }
 
 
@@ -65,6 +71,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.geist-light {
+  font-family: var(--font-geist-light), sans-serif;
+}
+
 .geist-regular {
   font-family: var(--font-geist-regular), sans-serif;
 }
@@ -73,10 +83,30 @@ html {
   font-family: var(--font-geist-medium), sans-serif;
 }
 
+.geist-semibold {
+  font-family: var(--font-geist-semibold), sans-serif;
+}
+
 .geist-bold {
   font-family: var(--font-geist-bold), sans-serif;
 }
 
-.geist-semibold {
-  font-family: var(--font-geist-semibold), sans-serif;
+.geist-mono-light {
+  font-family: var(--font-geist-mono-light), monospace;
+}
+
+.geist-mono-regular {
+  font-family: var(--font-geist-mono-regular), monospace;
+}
+
+.geist-mono-medium {
+  font-family: var(--font-geist-mono-medium), monospace;
+}
+
+.geist-mono-semibold {
+  font-family: var(--font-geist-mono-semibold), monospace;
+}
+
+.geist-mono-bold {
+  font-family: var(--font-geist-mono-bold), monospace;
 }

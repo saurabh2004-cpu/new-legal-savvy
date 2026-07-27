@@ -5,6 +5,7 @@ import { getAllBlogs, generateSlug } from "@/services/blogServices";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import SectionHeading from "../utils/SectionHeading";
 
 interface Article {
     id: string;
@@ -58,26 +59,32 @@ function AllArticleCard({ article }: { article: Article }) {
                 <motion.h3
                     animate={{ color: "#0F172A" }}
                     transition={{ duration: 0.3 }}
-                    className="font-[Geist] text-[1.125rem] sm:text-[1.25rem] lg:text-[1.625rem] font-medium leading-none tracking-normal mb-4 lg:min-h-[3.25rem] line-clamp-2"
+                    className="text-[1.125rem] sm:text-[1.25rem] lg:text-[1.625rem] leading-none tracking-normal mb-4 lg:min-h-[3.25rem] line-clamp-2"
                 >
                     {article.title}
                 </motion.h3>
 
-                <div className="flex flex-col gap-1.5 font-[Geist_Mono] text-[0.8125rem] sm:text-[0.875rem] font-medium leading-none tracking-normal text-[#00000070] uppercase">
-                    <div className="flex gap-1.5 font-[Geist_Mono] text-[1.125rem] font-medium leading-none tracking-normal text-black/77 uppercase">
+                <div className="flex flex-col gap-1.5 geist-mono-medium text-[0.8125rem] sm:text-[0.875rem] leading-none tracking-normal text-[#00000070] uppercase">
+                    <div className="flex gap-1.5 text-[1.125rem] leading-none tracking-normal text-black/77 uppercase">
                         <span>CATEGORY:</span>
-
-                        <span className=" ">
+                        <motion.span
+                            animate={{ color: "#1D2331" }}
+                            transition={{ duration: 0.3 }}
+                            className="text-[0.875rem] sm:text-[1rem] lg:text-[0.9rem] xl:text-[1.125rem] leading-none tracking-normal"
+                        >
                             {article.category}
-                        </span>
+                        </motion.span>
                     </div>
 
-                    <div className="flex gap-1.5 font-[Geist_Mono] text-[1.125rem] font-medium leading-none tracking-normal text-black/77 uppercase">
+                    <div className="flex gap-1.5 text-[1.125rem] leading-none tracking-normal text-black/77 uppercase">
                         <span>READ:</span>
-
-                        <span className="">
+                        <motion.span
+                            animate={{ color: "#1D2331" }}
+                            transition={{ duration: 0.3 }}
+                            className="text-[0.875rem] sm:text-[1rem] lg:text-[0.9rem] xl:text-[1.125rem] leading-none tracking-normal"
+                        >
                             {article.readTime}
-                        </span>
+                        </motion.span>
                     </div>
                 </div>
             </div>
@@ -188,26 +195,12 @@ export default function AllArticlesSection() {
 
     return (
         <section className="w-full py-1 px-2">
-            <div className="w-full max-w-8xl mx-auto py-6 md:py-8 lg:px-10 lg:mt-12 rounded-xl flex flex-col font-sans">
+            <div className="w-full max-w-8xl mx-auto py-6 md:py-8 lg:px-16 lg:my-12 rounded-xl flex flex-col">
                 {/* Section Heading with Double Red Underline */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={headerVariants}
-                    className="relative pb-3.5 mb-10 md:mb-12 inline-block px-15"
-                >
-                    <h2 className="font-[Geist] text-[2rem] text-center md:text-start md:text-[2.25rem] font-semibold leading-none tracking-normal text-[#0F172A] xl:w-[11.6875rem] h-[1.75rem] lg:h-[2.9375rem]">
-                        All articles
-                    </h2>
-                    <div className="flex flex-col">
-                        <div className="absolute bottom-0 left-21 md:left-15 xl:left-15 xl:w-[16rem] w-[12rem] h-[3.5px] bg-[#FF3030]"></div>
-                        <div className="absolute -bottom-1.5 left-21 md:left-15 xl:left-15 xl:w-[16rem] w-[12rem] h-[3.5px] bg-[#FF3030]"></div>
-                    </div>
-                </motion.div>
+                <SectionHeading title="All articles" align="left" titleClassName="text-2xl md:text-[36px] text-[#1D2331]" underlineColor="#ED3D3D" containerClassName="mb-12" />
 
                 {/* 3-Column Responsive Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-14 lg:gap-10 xl:gap-12 max-w-8xl mx-auto w-full items-start justify-items-center px-4 sm:px-6 md:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
                     {articles.map((article, idx) => (
                         <motion.div
                             key={article.id}

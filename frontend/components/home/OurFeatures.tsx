@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Plus } from "lucide-react";
+import SectionHeading from "../utils/SectionHeading";
 
 const features = [
   {
@@ -90,7 +91,7 @@ export default function OurFeatures2() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div  className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 bg-[#CDC2BB] p-4 lg:py-16 lg:px-20">
+      <div  className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center py-10 lg:py-12 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 bg-[#CDC2BB] p-4 lg:py-16 lg:px-20">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 xl:gap-16 items-center">
           {/* Left Column - Content */}
           <motion.div
@@ -101,23 +102,16 @@ export default function OurFeatures2() {
             className="flex flex-col w-full space-y-6"
           >
             <motion.div variants={itemVariants} className="flex flex-col gap-8">
-              <h2 className="text-4xl font-sans font-bold text-[#1D2331] inline-block relative leading-[47px] w-full h-auto opacity-100 rotate-0">
-                <span className="relative inline-block">
-                  Our Features
-                  <div className="absolute left-0 -bottom-3 w-full flex flex-col space-y-[1px]">
-                    <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-                    <div className="w-full h-[2.5px] bg-[#ED3D3D]"></div>
-                  </div>
-                </span>
-              </h2>
-              <p className="text-[#1D2331]/90 font-sans font-normal text-[16px] lg:text-[20px] leading-[125%] lg:leading-[100%] tracking-normal max-w-lg">
+              <SectionHeading title="Our Features" align="left" titleClassName="text-4xl text-[#1D2331]" underlineColor="#ED3D3D" />
+
+              <p className="text-[#1D2331]/90 geist-regular text-[16px] lg:text-[20px] leading-[125%] lg:leading-[100%] tracking-normal max-w-lg">
                 Our platform is designed with legal guidance, structured
                 documentation, and transparent support to make loan settlement and
                 debt resolution easier, safer, and more stress-free.
               </p>
             </motion.div>
 
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-3 geist-regular">
               {features.map((feature, idx) => {
                 const isActive = activeId === feature.id;
                 return (
@@ -144,7 +138,7 @@ export default function OurFeatures2() {
                         }}
                         className="w-full flex items-center justify-between px-5 py-2 lg:py-3.5 text-left hover:bg-[#EAE5DF] transition-colors cursor-pointer"
                       >
-                        <span className="font-mono font-medium text-[#1D2331] text-[12px] lg:text-[18px] leading-[100%] tracking-normal">
+                        <span className="text-[#1D2331] text-[12px] lg:text-[18px] leading-[100%] tracking-normal">
                           {feature.title}
                         </span>
                         <Plus className={`w-5 h-5 text-[#1D2331] transition-all duration-300 ${isActive ? "rotate-[45deg]" : ""}`} />

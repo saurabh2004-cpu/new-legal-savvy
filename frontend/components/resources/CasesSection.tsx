@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Button from "../ui/Button";
+import Button from "../utils/Button";
 
 interface CaseStat {
   label: string;
@@ -87,7 +87,7 @@ export default function CasesSection() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div className="w-full max-w-8xl mx-auto font-sans rounded-xl overflow-hidden">
+      <div className="w-full max-w-8xl mx-auto rounded-xl overflow-hidden">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -130,12 +130,12 @@ export default function CasesSection() {
               >
                 <div className="lg:max-w-xl">
                   {/* Title */}
-                  <h3 className="font-[Geist] text-[1.5rem] sm:text-[1.85rem] lg:text-[2.1rem] font-medium leading-[1.15] tracking-normal text-[#0F172A] mb-4 md:mb-5">
+                  <h3 className="text-[1.5rem] sm:text-[1.85rem] lg:text-[2.1rem] leading-[1.15] tracking-normal text-[#0F172A] mb-4 md:mb-5">
                     {caseItem.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="font-[Geist] text-[0.95rem] sm:text-[1.05rem] lg:text-[1.125rem] font-normal leading-[1.45] tracking-normal text-[#1E293B]/90 mb-6 md:mb-8">
+                  <p className="geist-regular text-[0.95rem] sm:text-[1.05rem] lg:text-[1.125rem] leading-[1.45] tracking-normal text-[#1E293B]/90 mb-6 md:mb-8">
                     {caseItem.description}
                   </p>
 
@@ -152,11 +152,11 @@ export default function CasesSection() {
                       key={statIdx}
                       className="flex flex-col items-center text-center w-full"
                     >
-                      <span className="font-[Geist] text-[0.7rem] sm:text-[0.85rem] lg:text-[0.95rem] font-medium leading-none tracking-wider text-[#0F172A]/70 uppercase text-center">
+                      <span className="geist-medium text-[0.7rem] sm:text-[0.85rem] lg:text-[0.95rem] leading-none tracking-wider text-[#0F172A]/70 uppercase text-center">
                         {stat.label}
                       </span>
                       <div className="w-full h-[1px] bg-black/15 my-2 sm:my-3"></div>
-                      <span className="font-[Geist] text-[0.95rem] sm:text-[1.15rem] lg:text-[1.3rem] font-medium leading-tight text-center text-[#0F172A] whitespace-pre-line">
+                      <span className="geist-medium text-[0.95rem] sm:text-[1.15rem] lg:text-[1.3rem] leading-tight text-center text-[#0F172A] whitespace-pre-line">
                         {stat.value}
                       </span>
                     </div>

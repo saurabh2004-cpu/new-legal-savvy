@@ -1,10 +1,9 @@
 import BookConsultation from "@/components/common/BookConsultationSection";
-import Hero from "@/components/common/Hero";
+import Hero3 from "@/components/common/Hero3";
 import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
 import { getLabelsByType } from "@/services/labelsServices";
 import type { Metadata } from "next";
-import LocationsSection from "@/components/common/LocationSection";
-import ContactHero from "@/components/contact-us/ContactHero";
+import Locations from "@/components/common/Locations";
 
 export const metadata: Metadata = {
     title: "Locations Legal Savvy- Debt Settlement Services",
@@ -14,21 +13,20 @@ export const metadata: Metadata = {
 
 
 export default async function page() {
-
     const cities = await getLabelsByType("city")
-
     console.log("cities fetched", cities)
 
     return (
-        <div className="bg-[#D9D9D9] min-h-screen">
-            <ContactHero
+        // <main className="bg-[#FBF8F5]">
+        <main className="bg-[#FFFFFF]">
+            <Hero3
                 Heading={"LOCATIONS"}
                 img={"/about/about-hero-img.png"}
-                className="h-h-[calc(40vh-3rem)] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)]  xl:h-[calc(85vh-3rem)]"
+                className="h-[50vh] md:h-[70vh] lg:h-[80vh] min-h-[400px]"
             />
-            <LocationsSection />
+            <Locations variant="cards" />
             <BookConsultation />
             <DirectionsSection />
-        </div>
+        </main>
     );
 }

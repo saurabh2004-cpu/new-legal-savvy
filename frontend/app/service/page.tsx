@@ -1,12 +1,9 @@
 import AboutUs from "@/components/common/AboutUs";
-import Hero from "@/components/common/Hero";
-import { CTA_ASSETS } from "@/components/home/assets";
+import Hero4 from "@/components/common/Hero4";
 import ConsultationSolution from "@/components/common/ConsultationSolution";
 import ImageGalleryStrip from "@/components/service/ImageGallery";
-import LegalServicesBanner from "@/components/service/LegalServicesBanner";
 import ServiceCards from "@/components/service/ServiceCards";
 import type { Metadata } from "next";
-import ServiceHero from "@/components/service-details/ServiceHero";
 
 export const metadata: Metadata = {
     title: "Services Legal Savvy- Debt Settlement Services",
@@ -19,13 +16,12 @@ export default function page() {
         "Professional legal and loan management solutions built on transparency, accuracy, and trust. We simplify complex paperwork and guide you toward secure financial decisions.";
 
     return (
-        <div className="bg-[#D9D9D9] min-h-screen">
-            <ServiceHero
-                title="OUR LEGAL SERVICES"
+        // <main className="bg-[#FBF8F5]">
+        <main className="bg-[#FFFFFF]">
+            <Hero4 title="OUR LEGAL SERVICES"
                 description="From Business Setup To Legal Documentation, Legal Savvy Provides Simple, Reliable, And Professional Legal Support For Individuals, Startups, And Businesses."
                 image="/about/about-hero-img.png"
-                className="md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
-            />
+                className="h-[85vh] lg:h-screen min-h-[600px]" />
             {/* <LegalServicesBanner />    */}
             <ServiceCards />
             <AboutUs
@@ -39,6 +35,6 @@ export default function page() {
                 className="pb-0 lg:pb-0"
             />
             <ImageGalleryStrip />
-        </div>
+        </main>
     );
 }

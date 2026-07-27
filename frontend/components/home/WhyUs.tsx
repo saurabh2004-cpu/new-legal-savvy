@@ -15,6 +15,8 @@ import {
   Check,
 } from "lucide-react";
 
+import SectionHeading from "../utils/SectionHeading";
+
 interface BulletItem {
   text: string;
   icon?: React.ElementType;
@@ -74,20 +76,10 @@ export default function WhyUs2() {
   return (
     <section className="w-full py-1 px-2">
       <div
-        className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center pt-10 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10"
+        className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center py-10 lg:py-12 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10"
       >
         {/* Why Us Centered Heading with Red Accent Underline */}
-        <div className="flex flex-col items-center text-center">
-          <h2
-            className="font-sans font-semibold text-[2.25rem] leading-none tracking-normal text-black relative inline-block pb-3"
-          >
-            Why Us
-            <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[1px]">
-              <span className="w-full h-[2.5px] bg-[#FF3030]"></span>
-              <span className="w-full h-[2.5px] bg-[#FF3030]"></span>
-            </div>
-          </h2>
-        </div>
+        <SectionHeading title="Why Us" />
 
         {/* 4-Column Responsive Grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
@@ -118,7 +110,7 @@ export default function WhyUs2() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   // viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="geist-semibold text-lg sm:text-xl text-[#0F172A] mb-2"
+                  className="text-lg sm:text-xl text-[#0F172A] mb-2 font-semibold"
                 >
                   {card.title}
                 </motion.h3>
@@ -129,7 +121,7 @@ export default function WhyUs2() {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   // viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="geist-regular text-base leading-relaxed text-black/80 mb-3 flex-grow"
+                  className="text-base leading-relaxed text-black/80 mb-3 flex-grow"
                 >
                   {card.description}
                 </motion.p>
@@ -153,7 +145,7 @@ export default function WhyUs2() {
                         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-black/10 backdrop-blur-md border border-black/10 flex items-center justify-center flex-shrink-0 shadow-sm transition-transform duration-300 group-hover/bullet:scale-110">
                           <IconComponent className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0F172A]" />
                         </div>
-                        <span className="geist-regular text-base leading-tight text-gray-700 font-medium">
+                        <span className="text-base leading-tight text-gray-700">
                           {bullet.text}
                         </span>
                       </div>
@@ -161,13 +153,11 @@ export default function WhyUs2() {
                   })}
                 </motion.div>
               </div>
-
             </div>
           ))}
         </div>
       </div>
     </section>
-
   );
 }
 

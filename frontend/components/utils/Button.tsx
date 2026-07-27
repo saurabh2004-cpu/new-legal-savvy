@@ -106,7 +106,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 initial="initial"
                 whileHover={isDisabled ? "initial" : "hover"}
                 whileTap={isDisabled ? {} : { scale: 0.96 }}
-                className={`relative group flex items-center justify-center gap-2 px-7 py-3.5 rounded-full shadow-lg whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500 transition-opacity overflow-hidden ${variant === "outline" ? "border-2 border-current shadow-none" : ""
+                className={`relative group flex items-center justify-center gap-2 px-4 py-3 rounded-full shadow-lg whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-500 transition-opacity overflow-hidden ${variant === "outline" ? "border-2 border-current shadow-none" : ""
                     } ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"} ${className}`}
                 style={{
                     backgroundColor: currentBg,
@@ -121,7 +121,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 />
 
                 {/* Text Content */}
-                <span className="relative z-10 overflow-hidden font-sans font-medium text-lg leading-none inline-flex items-center justify-center">
+                <span className="relative z-10 overflow-hidden text-lg leading-none inline-flex items-center justify-center">
                     {loading ? (
                         "Loading..."
                     ) : (

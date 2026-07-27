@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionHeading from "../utils/SectionHeading";
 
 interface FaqItem {
     question: string;
@@ -37,59 +38,12 @@ export default function QnaSection() {
     return (
         <section className="w-full py-1 px-2">
             <div className="w-full max-w-8xl mx-auto py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-[#CDC2BB] rounded-xl overflow-hidden">
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-7xl mx-auto">
                     {/* Section Header */}
                     <div className="text-center mb-16">
-                        <motion.h2
-                            initial={{ opacity: 0, y: -20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                            className="
-                            relative
-                            inline-block
-                            font-[Geist]
-                            font-semibold
-                            text-[1.5rem]
-                            md:text-[1.8rem]
-                            lg:text-[2rem]
-                            xl:text-[2.25rem]
-                            leading-[100%]
-                            tracking-[0%]
-                            text-black
-                            pb-4
-                        "
-                        >
-                            Frequently asked questions
-
-                            <div className="flex mt-2  flex-col gap-[1px] justify-center items-center">
-                                <motion.span
-                                    initial={{ width: 0 }}
-                                    whileInView={{ width: "100%" }}
-                                    viewport={{ once: true }}
-                                    transition={{
-                                        duration: 0.8,
-                                        delay: 0.2,
-                                        ease: [0.16, 1, 0.3, 1],
-                                    }}
-                                    className="relative bottom-0 left-0 h-[2.5px] bg-[#ff3b30]"
-                                />
-
-                                <motion.span
-                                    initial={{ width: 0 }}
-                                    whileInView={{ width: "100%" }}
-                                    viewport={{ once: true }}
-                                    transition={{
-                                        duration: 0.8,
-                                        delay: 0.2,
-                                        ease: [0.16, 1, 0.3, 1],
-                                    }}
-                                    className="relative bottom-0 left-0 h-[2.5px] bg-[#ff3b30]"
-                                />
-                            </div>
-                        </motion.h2>
+                        <SectionHeading title="Frequently asked questions" />
                     </div>
-  
+
                     {/* FAQ Accordions List */}
                     <motion.div
                         variants={{
@@ -104,7 +58,7 @@ export default function QnaSection() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="space-y-6"
+                        className="space-y-4"
                     >
                         {FAQ_DATA.map((item, idx) => {
                             const isOpen = openIndex === idx;
@@ -120,62 +74,21 @@ export default function QnaSection() {
                                             transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
                                         }
                                     }}
-                                    className="flex gap-4 sm:gap-6 items-center"
+                                    className="flex gap-4 items-center"
                                 >
                                     {/* Left Index Badge */}
-                                    <div
-                                        className="
-                                        flex 
-                                        h-10 w-10 
-                                        md:h-12 md:w-12 
-                                        shrink-0 
-                                        items-center 
-                                        justify-center 
-                                        rounded-lg 
-                                        bg-[#363D4F] 
-                                        text-white 
-                                        font-[Geist] 
-                                        font-medium 
-                                        text-lg 
-                                        shadow-[0_4px_12px_rgba(0,0,0,0.06)]
-                                    "
-                                    >
+                                    <div className="bg-[#363D4F] transition-colors duration-300 rounded-[1rem] px-5 py-4 sm:px-7 sm:py-5 flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
                                         {idx + 1}
                                     </div>
 
                                     {/* Accordion Box */}
-                                    <div
-                                        onClick={() => toggleIndex(idx)}
-                                        className="
-                                        flex-1 
-                                        bg-[#E6DCD6] 
-                                        transition-colors 
-                                        duration-300 
-                                        rounded-[1rem] 
-                                        px-5 py-4 
-                                        sm:px-7 sm:py-5 
-                                        flex flex-col 
-                                        cursor-pointer 
-                                        shadow-[0_4px_20px_rgba(0,0,0,0.02)]
-                                    "
-                                    >
+                                    <div onClick={() => toggleIndex(idx)} className="flex-1 bg-[#E6DCD6] transition-colors duration-300 rounded-[1rem] px-5 py-4 sm:px-7 sm:py-5 flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
                                         {/* Question & Toggle Icon */}
                                         <div className="flex justify-between items-center gap-4">
-                                            <p
-                                                className="
-                                                    font-mono
-                                                    font-medium
-                                                    text-[0.9rem]
-                                                    md:text-[1.125rem]
-                                                    lg:text-[1.25rem]
-                                                    xl:text-[1.5rem]
-                                                    leading-[100%]
-                                                    tracking-[0%] 
-                                                    text-black
-                                                "
-                                            >
+                                            <p className="geist-regular text-[0.9rem] md:text-[1.125rem] lg:text-[1.25rem] xl:text-[1.5rem] leading-[100%] tracking-[0%] text-black">
                                                 {item.question}
                                             </p>
+
                                             <motion.div
                                                 animate={{ rotate: isOpen ? 45 : 0 }}
                                                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -201,7 +114,7 @@ export default function QnaSection() {
                                                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                                     className="overflow-hidden"
                                                 >
-                                                    <div className="pt-4 text-black/70 font-[Geist] font-normal leading-relaxed text-[0.9rem] sm:text-[0.98rem]">
+                                                    <div className="pt-4 text-black/70 geist-regular leading-relaxed text-[0.9rem] sm:text-[0.98rem]">
                                                         {item.answer}
                                                     </div>
                                                 </motion.div>

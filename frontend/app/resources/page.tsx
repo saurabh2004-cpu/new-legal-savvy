@@ -1,5 +1,5 @@
 import FeaturedBlogs from "@/components/common/FeaturedBlogs";
-import Hero from "@/components/common/Hero";
+import Hero3 from "@/components/common/Hero3";
 import LatestArticlesSection from "@/components/resources/LatestArticles";
 import AllArticlesSection from "@/components/resources/AllArticles";
 import CasesSection from "@/components/resources/CasesSection";
@@ -8,7 +8,6 @@ import BankSettlements from "@/components/common/BankSettlements";
 import StandardOfCareSection from "@/components/resources/StandardOfCareSection";
 import ScheduleVisitSection from "@/components/resources/ScheduleVisitSection";
 import type { Metadata } from "next";
-import ContactHero from "@/components/contact-us/ContactHero";
 
 export const metadata: Metadata = {
   title: "resources Legal Savvy- Debt Settlement Services",
@@ -18,11 +17,12 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <div className="bg-[#D9D9D9] min-h-screen">
-      <ContactHero
+    // <main className="bg-[#FBF8F5]">
+    <main className="bg-[#FFFFFF]">
+      <Hero3
         Heading={"BLOGS & CASES"}
         img={"/about/about-hero-img.png"}
-        className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
+        className="h-[100vh] lg:h-screen min-h-[600px]"
       />
       <FeaturedBlogs />
       <LatestArticlesSection />
@@ -37,6 +37,6 @@ export default function page() {
       />
       <StandardOfCareSection />
       <ScheduleVisitSection />
-    </div>
+    </main>
   );
 }

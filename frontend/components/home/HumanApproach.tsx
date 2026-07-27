@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
+import SectionHeading from "../utils/SectionHeading";
 
 type Stat = {
   id: number;
@@ -80,29 +81,9 @@ export default function HumanApproach2() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div className="max-w-8xl mx-auto rounded-xl bg-[#E3DDD9] px-4 py-6 md:px-8 lg:px-14 lg:py-16">
+      <div className="max-w-8xl mx-auto rounded-xl px-4 py-6 md:px-8 lg:px-14 lg:py-16 bg-[#1D2540]">
         {/* Header */}
-        <div className="mb-10 lg:mb-20 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative inline-block text-3xl font-bold text-[#1D2331] lg:text-5xl"
-          >
-            Human Approach
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="absolute -bottom-3 left-0 origin-left space-y-[2px]"
-            >
-              <div className="h-[2px] w-full bg-[#ED3D3D]" />
-              <div className="h-[2px] w-full bg-[#ED3D3D]" />
-            </motion.div>
-          </motion.h2>
-        </div>
+        <SectionHeading title="Human Approach" containerClassName="mb-10 lg:mb-20" titleClassName="text-3xl lg:text-5xl text-[#FFFFFF]" underlineColor="#ED3D3D" />
 
         <div
           ref={containerRef}
@@ -141,7 +122,7 @@ export default function HumanApproach2() {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="sticky top-24 hidden lg:pl-28 lg:flex lg:w-1/2 flex-col gap-2">
+          <div className="sticky top-12 hidden lg:pl-28 lg:flex lg:w-1/2 flex-col gap-2">
             {stats.map((stat, i) => {
               // easier animation timing
               const start = i * 0.28;
@@ -153,14 +134,11 @@ export default function HumanApproach2() {
                 [0, 1],
               );
 
-              const y = useTransform(smoothProgress, [start, end], [40, 0]);
-
               return (
                 <motion.div
                   key={stat.id}
                   style={{
                     opacity,
-                    y,
                   }}
                   className="pointer-events-none"
                 >
@@ -182,23 +160,23 @@ type CardProps = {
 
 function Card({ stat }: CardProps) {
   return (
-    <div className="pointer-events-auto flex h-52 w-full max-w-[500px] justify-between rounded-xl border border-white/5 bg-[#333A4D] p-4">
+    <div className="pointer-events-auto flex h-52 w-full max-w-[500px] justify-between rounded-xl border border-white/5 bg-[#27304F] p-4">
       {/* Left */}
       <div className="flex flex-1 flex-col justify-between pr-4">
         <div className="text-white/80">{stat.icon}</div>
 
-        <p className="text-base font-medium leading-snug text-[#E9E4E1] md:text-lg lg:text-xl">
+        <p className="text-base geist-light leading-snug text-gray-300 md:text-lg lg:text-xl">
           {stat.description}
         </p>
       </div>
 
       {/* Right */}
-      <div className="flex w-[42%] flex-col gap-4 justify-end rounded-xl bg-[#F0ECE7] p-4 shadow-inner lg:w-[220px]">
-        <span className="text-right text-sm font-medium uppercase text-[#1D2540]">
+      <div className="flex w-[42%] flex-col gap-4 justify-end rounded-xl bg-[#313B5E] p-4 shadow-inner lg:w-[220px]">
+        <span className="text-right text-sm geist-light uppercase">
           {stat.title}
         </span>
 
-        <span className="text-right font-mono text-4xl font-medium leading-none tracking-tight text-[#E64A19] md:text-5xl">
+        <span className="text-right text-4xl leading-none tracking-tight md:text-5xl geist-light">
           {stat.value}
         </span>
       </div>

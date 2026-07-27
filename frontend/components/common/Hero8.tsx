@@ -1,13 +1,14 @@
 import Link from "next/link";
 
-interface HeroProps {
+interface Hero8Props {
     cityName?: string;
+    className?: string;
 }
 
-export default function Hero({ cityName = "Tirap" }: HeroProps) {
+export default function Hero8({ cityName = "Tirap", className = "" }: Hero8Props) {
     return (
         <section
-            className="relative text-white pt-32 pb-24 px-4 md:px-8 overflow-hidden"
+            className={`relative text-white pt-32 pb-24 px-4 md:px-8 overflow-hidden ${className}`}
             style={{
                 backgroundColor: "#132042",
                 backgroundImage: "radial-gradient(circle at top right, #243A8D 0%, #132042 70%)",

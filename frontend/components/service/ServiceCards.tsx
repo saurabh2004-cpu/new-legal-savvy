@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import { getAllServices } from "@/services/serviceServices";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import Button from "../ui/Button";
+import Button from "../utils/Button";
 
 /* ─── Types ─────────────────────────────────────────────── */
 
@@ -189,7 +189,7 @@ function ServiceCard({ card }: ServiceCardProps) {
         <motion.div
             ref={cardRef}
             style={{ y, opacity }}
-            className="bg-[#CDC2BB] rounded-xl p-5 sm:p-7 flex flex-col lg:flex-row gap-5 lg:gap-6"
+            className="bg-[#CDC2BB] rounded-xl p-5 sm:p-7 lg:p-12 flex flex-col lg:flex-row gap-5 lg:gap-6"
         >
             {/* LEFT — image + content */}
             <div className="flex flex-col sm:flex-row lg:flex-row gap-5 flex-1 min-w-0">
@@ -210,27 +210,17 @@ function ServiceCard({ card }: ServiceCardProps) {
                         <ServiceTag label={card.tag} />
                     </div>
                     <div>
-                        <h2 className="text-[#1a1a1a] mb-3 font-sans font-medium text-[24px] leading-[100%] tracking-[0%]">
+                        <h2 className="text-[#1a1a1a] mb-3 text-[24px] leading-[100%] leading-sung">
                             <Link href={card.buttonHref} className="hover:underline">
                                 {card.title}
                             </Link>
                         </h2>
 
-                        <p className="text-[#555] mb-6 font-sans font-normal text-[16px] leading-[100%] tracking-[0%]">
+                        <p className="geist-regular text-[#555] mb-6 text-[16px] leading-[100%] leading-[120%]">
                             {card.description}
                         </p>
 
-                        {/* Button */}
                         <div>
-                            {/* <a
-                                href={card.buttonHref}
-                                className="inline-flex items-center gap-2.5 bg-[#e8322a] hover:bg-[#cc2921] active:bg-[#b52320] text-white rounded-full px-6 py-3 transition-colors duration-150 no-underline font-sans font-medium text-[18px] leading-[100%] tracking-[0%]"
-                            >
-                                {card.buttonLabel}
-                                <span className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
-                                    <ArrowIcon />
-                                </span>
-                            </a> */}
                             <Button text={card.buttonLabel} href={card.buttonHref} />
                         </div>
                     </div>
@@ -239,36 +229,23 @@ function ServiceCard({ card }: ServiceCardProps) {
 
             {/* RIGHT — related services panel */}
             {card.relatedServices.length > 0 && <div
-                className="
-                    bg-[#C6BAB2]
-                    min-h-40
-                    rounded-[18px]
-                    p-5
-                    lg:w-[220px]
-                    xl:w-[300px]
-                    flex
-                    flex-col
-                    justify-between
-                    flex-shrink-0
-                   
-                "
+                className="bg-[#C6BAB2] min-h-40 rounded-[18px] p-5 lg:w-[220px] xl:w-[300px] flex flex-col justify-between flex-shrink-0"
             >
-                <p className="text-[#444] font-sans font-normal text-[20px] leading-[100%] tracking-[0%]">
+                <p className="geist-regular text-[#444] text-[20px] leading-[100%] leading-sung">
                     Related Services:
                 </p>
 
-                <ul className="flex  flex-wrap gap-4 mt-8">
+                <ul className="flex flex-wrap gap-4 mt-8">
                     {card.relatedServices.map((service) => (
                         <li key={service.id} className="flex items-center gap-2.5">
                             <BulletIcon />
-                            <span className="text-[#000000b5] font-sans font-normal text-[15px]">
+                            <span className="text-[#000000b5] geist-regular text-[15px]">
                                 {service.label}
                             </span>
                         </li>
                     ))}
                 </ul>
             </div>}
-
         </motion.div>
     );
 }
@@ -322,7 +299,7 @@ export default function ServiceCards({ cards: initialCards }: ServiceCardsProps)
     }, [initialCards]);
 
     if (loading) {
-        return <div className="w-full flex justify-center p-10 font-sans text-[#555]">Loading services...</div>;
+        return <div className="w-full flex justify-center p-10 text-[#555]">Loading services...</div>;
     }
 
     return (

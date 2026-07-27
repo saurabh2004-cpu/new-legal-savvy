@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import PillTag from '../utils/PillTag';
 
 interface TeamMember {
     id: number;
@@ -121,17 +122,17 @@ function CardWithAnimation({ member }: { member: TeamMember }) {
                     }
                 >
                     {/* Name */}
-                    <h3 className="font-[Geist] text-[1.25rem] font-medium text-black mt-4">
+                    <h3 className="geist-medium text-[1.25rem] text-black mt-4">
                         {member.name}
                     </h3>
 
                     {/* Title */}
-                    <p className="font-mono text-[1rem] font-medium uppercase text-black mb-3 opacity-70">
+                    <p className="geist-mono-medium text-[1rem] text-black uppercase mb-3 opacity-70">
                         {member.title}
                     </p>
 
                     {/* Description */}
-                    <p className="font-[Geist] text-[1rem] text-black mb-3">
+                    <p className="geist-regular text-[1rem] text-black mb-3">
                         {member.description}
                     </p>
 
@@ -168,7 +169,7 @@ function CardWithAnimation({ member }: { member: TeamMember }) {
                                     }
                                     : undefined
                             }
-                            className="font-mono text-sm underline hover:text-black transition-colors"
+                            className="geist-mono-medium text-sm underline hover:text-black transition-colors"
                             href="#"
                         >
                             ABOUT
@@ -194,7 +195,7 @@ function CardWithAnimation({ member }: { member: TeamMember }) {
                             href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="font-mono text-sm underline hover:text-black transition-colors"
+                            className="geist-mono-medium text-sm underline hover:text-black transition-colors"
                         >
                             SOCIAL
                         </motion.a>
@@ -217,7 +218,7 @@ function CardWithAnimation({ member }: { member: TeamMember }) {
                                     : undefined
                             }
                             href={`mailto:${member.email}`}
-                            className="font-mono text-sm underline hover:text-black transition-colors"
+                            className="geist-mono-medium text-sm underline hover:text-black transition-colors"
                         >
                             EMAIL
                         </motion.a>
@@ -231,38 +232,25 @@ function CardWithAnimation({ member }: { member: TeamMember }) {
 export default function TeamSection() {
     return (
         <section className="w-full py-1 px-2">
-            <div className="max-w-8xl mx-auto rounded-xl bg-[#D8D0CA] px-4 sm:px-6 lg:px-[72px] py-12">
+            <div className="max-w-8xl mx-auto rounded-xl bg-[#D8D0CA] px-4 sm:px-6 lg:px-[72px] py-12 space-y-4">
                 {/* Header with Tabs */}
-                <div className="flex justify-center mb-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="inline-flex items-center overflow-hidden"
-                    >
-                        <span className="bg-[#CDC2BB] text-black px-[18px] py-2 rounded-lg font-mono font-medium text-base leading-none tracking-normal uppercase">
-                            OUR
-                        </span>
-                        <span className="bg-[#363D4F] text-white px-[18px] py-2 rounded-lg font-mono font-medium text-base leading-none tracking-normal uppercase">
-                            TEAM
-                        </span>
-                    </motion.div>
+                <div className="flex justify-center">
+                    <PillTag buttonText1={"OUR"} buttonText2={"TEAM"} />
                 </div>
 
                 {/* Content Block */}
-                <div className="text-center mb-12 md:mb-16 text-black">
-                    <h2 className="font-[Geist] text-[1.3rem] md:text-[1.5rem] lg:text-[2rem] xl:text-[2.5rem] font-medium leading-[120%] tracking-[0%] text-center mb-4">
+                <div className="text-center text-black max-w-5xl mx-auto space-y-4">
+                    <h2 className="geist-medium text-[1.3rem] md:text-[1.5rem] lg:text-[2rem] xl:text-[2.5rem] leading-[120%] text-center">
                         Smart legal guidance focused on clarity and trust
                     </h2>
 
-                    <p className="font-[Geist] text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] 2xl:text-[1rem] font-normal leading-[100%] tracking-[0%] text-center max-w-5xl mx-auto">
+                    <p className="geist-regular text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] 2xl:text-[1rem] leading-[100%] text-center">
                         Legal Savvy provides practical legal support for individuals and businesses with a clear, client-first approach. From consultation and documentation to contracts, compliance, and dispute guidance, we help you make confident legal decisions.
                     </p>
                 </div>
 
                 {/* Team Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-12">
                     {teamMembers.map((member) => (
                         <CardWithAnimation key={member.id} member={member} />
                     ))}

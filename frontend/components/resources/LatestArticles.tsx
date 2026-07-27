@@ -5,6 +5,7 @@ import { getAllBlogs, generateSlug } from "@/services/blogServices";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import SectionHeading from "../utils/SectionHeading";
 
 interface Article {
     id: string;
@@ -77,7 +78,7 @@ function LatestArticleCard({ article }: { article: Article }) {
                 <motion.h3
                     animate={{ color: isHovered ? "#1D2331" : "#ffffff" }}
                     transition={{ duration: 0.3 }}
-                    className="font-[Geist] text-[1.125rem] sm:text-[1.4375rem] lg:text-[1.2rem] xl:text-[1.625rem] font-medium leading-none tracking-normal mb-3 sm:mb-4 max-w-[95%] sm:max-w-[90%]"
+                    className="text-[1.125rem] sm:text-[1.4375rem] lg:text-[1.2rem] xl:text-[1.625rem] leading-none tracking-normal mb-3 sm:mb-4 max-w-[95%] sm:max-w-[90%]"
                 >
                     {article.title}
                 </motion.h3>
@@ -86,17 +87,17 @@ function LatestArticleCard({ article }: { article: Article }) {
                 <motion.div
                     animate={{ color: isHovered ? "rgba(29, 35, 49, 0.8)" : "rgba(255, 255, 255, 0.8)" }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col gap-y-2 font-[Geist_Mono] text-[0.875rem] sm:text-[1rem] lg:text-[1.125rem] font-medium leading-none tracking-normal uppercase"
+                    className="flex flex-col gap-y-2 geist-mono-medium text-[0.875rem] sm:text-[1rem] lg:text-[1.125rem] leading-none tracking-normal uppercase"
                 >
                     <div className="flex gap-1.5">
-                        <span className="font-[Geist_Mono] text-[0.875rem] sm:text-[1rem] lg:text-[0.9rem] xl:text-[1.125rem] font-medium leading-none tracking-normal">
+                        <span className="text-[0.875rem] sm:text-[1rem] lg:text-[0.9rem] xl:text-[1.125rem] leading-none tracking-normal">
                             Category:
                         </span>
 
                         <motion.span
                             animate={{ color: isHovered ? "#1D2331" : "rgba(255, 255, 255, 0.8)" }}
                             transition={{ duration: 0.3 }}
-                            className="font-[Geist_Mono] text-[0.875rem] sm:text-[1rem] lg:text-[0.9rem] xl:text-[1.125rem] font-semibold leading-none tracking-normal"
+                            className="text-[0.875rem] sm:text-[1rem] lg:text-[0.9rem] xl:text-[1.125rem] leading-none tracking-normal"
                         >
                             {article.category}
                         </motion.span>
@@ -176,26 +177,12 @@ export default function LatestArticlesSection() {
 
     return (
         <section className="w-full py-1 px-2">
-            <div className="w-full max-w-8xl mx-auto py-6 md:py-8 lg:px-10 lg:mt-12 rounded-xl flex flex-col font-sans">
+            <div className="w-full max-w-8xl mx-auto py-6 md:py-8 lg:px-16 lg:mt-12 rounded-xl flex flex-col">
                 {/* Section Heading with Double Red Underline */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={headerVariants}
-                    className="relative pb-3.5 mb-10 md:mb-12 inline-block px-15"
-                >
-                    <h2 className="font-[Geist] text-[2rem] md:text-[2.25rem] font-semibold leading-none tracking-normal text-[#0F172A]">
-                        Latest articles
-                    </h2>
-                    <div className="flex flex-col">
-                        <div className="absolute bottom-0 left-15 md:w-[16rem] w-[14rem] h-[3.5px] bg-[#FF3030]"></div>
-                        <div className="absolute -bottom-1.5 left-15 md:w-[16rem] w-[14rem] h-[3.5px] bg-[#FF3030]"></div>
-                    </div>
-                </motion.div>
+                <SectionHeading title="Latest articles" align="left" titleClassName="text-2xl md:text-[36px] text-[#1D2331]" underlineColor="#ED3D3D" containerClassName="mb-12" />
 
                 {/* 2-Column Responsive Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-8xl mx-auto w-full items-start justify-items-center px-4 sm:px-6 md:px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                     {latestArticles.map((article, idx) => (
                         <motion.div
                             key={article.id}

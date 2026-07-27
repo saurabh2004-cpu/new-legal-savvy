@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import PillTag from "../utils/PillTag";
 
 interface StandardOfCareProps {
   title?: string;
@@ -40,24 +41,10 @@ export default function StandardOfCareSection({
             className="lg:col-span-5 bg-[#E6DCD6] rounded-xl p-8 sm:p-12 lg:p-16 flex flex-col gap-8 justify-center items-center text-center min-h-[380px] lg:min-h-[460px]"
           >
             {/* Labels */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center overflow-hidden"
-            >
-              <span className="bg-[#CDC2BB] text-black px-4.5 py-2 rounded-lg font-mono font-medium text-base leading-none tracking-normal uppercase">
-                {label1}
-              </span>
-
-              <span className="bg-[#363D4F] text-white px-4.5 py-2 rounded-lg font-mono font-medium text-base leading-none tracking-normal uppercase">
-                {label2}
-              </span>
-            </motion.div>
+            <PillTag buttonText1={label1} buttonText2={label2} />
 
             {/* Heading */}
-            <h2 className="font-[Geist] font-semibold text-[1.65rem] sm:text-[2.2rem] lg:text-[2.5rem] leading-[1.2] tracking-normal text-center text-[#0F172A] max-w-[17ch]">
+            <h2 className="text-[1.65rem] sm:text-[2.2rem] lg:text-[2.5rem] leading-[1.2] tracking-normal text-center text-[#0F172A] max-w-[17ch]">
               {title}
             </h2>
           </motion.div>
@@ -147,7 +134,7 @@ export default function StandardOfCareSection({
                     </svg>
                   </div>
 
-                  <p className="font-[Geist] font-medium text-[0.95rem] sm:text-[1.05rem] lg:text-[1.125rem] leading-snug tracking-normal text-[#0F172A]">
+                  <p className="geist-regular text-[0.95rem] sm:text-[1.05rem] lg:text-[1.125rem] leading-snug tracking-normal text-[#0F172A]">
                     {feature}
                   </p>
                 </motion.div>

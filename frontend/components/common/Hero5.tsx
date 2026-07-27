@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import Navbar from "../common/Navbar";
+import Navbar from "./Navbar";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Button2 from "../ui/Button2";
-import Button from "../ui/Button";
+import Button from "../utils/Button";
+import PillTag from "../utils/PillTag";
 
 const IMAGES = [
     "/service-details/service-details-hero.png",
@@ -17,16 +18,15 @@ const IMAGES = [
     "/service-details/service-details-hero.png",
 ];
 
-interface HeroProps {
+interface Hero5Props {
     service?: {
         title: string;
         description: string;
     } | null;
     className?: string;
-
 }
 
-export default function Hero({ service, className }: HeroProps) {
+export default function Hero5({ service, className }: Hero5Props) {
     const [hoveredMenu, setHoveredMenu] = useState<"services" | "locations" | null>(null);
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -50,8 +50,8 @@ export default function Hero({ service, className }: HeroProps) {
     }, []);
 
     return (
-        <section className="w-full py-2 px-2">
-            <div className={`relative max-w-8xl mx-auto pb-10 xl:pb-0 rounded-xl w-full bg-[#1B223C] overflow-hidden flex flex-col justify-center font-sans ${className}`}>
+        <section className={`w-full p-2 ${className}`}>
+            <div className="relative max-w-8xl mx-auto pb-10 xl:pb-0 rounded-xl w-full h-full bg-[#1B223C] overflow-hidden flex flex-col justify-center font-sans">
                 {/* Background Glow */}
                 <div className="absolute top-40 -left-[10%] w-[400px] h-[200px] bg-white/30 blur-[120px] rounded-full pointer-events-none" />
 
@@ -68,21 +68,10 @@ export default function Hero({ service, className }: HeroProps) {
                         {/* Left Column: Title and Pills */}
                         <div className="lg:col-span-4 order-2 xl:order-1 flex flex-col items-center gap-10">
                             {/* Toggle Pills */}
-                            <div className="flex p-1.5  rounded-[14px] w-fit shadow-sm">
-                                <div className="bg-[#CDC2BB] text-black px-6 py-3 rounded-lg font-mono text-[16px] font-medium leading-none tracking-normal cursor-default">
-                                    About
-                                </div>
-                                <div className="text-gray-300 bg-[#363D4F] hover:text-white px-6 py-3 rounded-lg font-mono text-[16px] font-medium leading-none tracking-normal transition-colors cursor-pointer">
-                                    Service
-                                </div>
-                            </div>
+                            <PillTag buttonText1="About" buttonText2="Service" />
 
-                            <h1 className="text-white font-sans text-2xl md:text-2xl lg:text-3xl xl:text-[36px] font-semibold leading-none tracking-normal text-center w-full">
-                                {service ? service.title : (
-                                    <>
-                                        Personal Loan <br /> Assistance
-                                    </>
-                                )}
+                            <h1 className="geist-semibold text-white text-2xl md:text-2xl lg:text-3xl xl:text-[36px] leading-none tracking-normal text-center w-full max-w-xs">
+                                {service ? service.title : "Service Title"}
                             </h1>
                         </div>
 
@@ -128,27 +117,16 @@ export default function Hero({ service, className }: HeroProps) {
                         </div>
 
                         {/* Right Column: Paragraph and Buttons */}
-                        <div className="lg:col-span-4 order-2 xl:order-1 flex flex-col items-start lg:items-start gap-8 lg:pl-12">
-                            <p className="text-[#C4C7CC] font-sans text-sm md:text-base lg:text-[16px] font-normal leading-[1.4] tracking-normal text-center capitalize xl:max-w-md">
+                        <div className="lg:col-span-4 order-2 xl:order-1 flex flex-col items-center gap-8">
+                            <p className="geist-regular text-[#C4C7CC] text-sm md:text-base lg:text-[16px] leading-[1.4] tracking-normal text-center">
                                 {service ? service.description : "Get Reliable Support For Personal Loan Applications, Eligibility Checks, Document Verification, Repayment Guidance, And Loan Process Assistance. Legal Savvy Helps Individuals Choose The Right Loan Option Based On Their Financial Needs."}
                             </p>
 
-                            <div className="flex items-center justify-center w-full xl:justify-start gap-4 mt-2">
-                                {/* <button className="h-9 w-9 md:w-12 md:h-12 bg-white hover:bg-gray-100 transition-colors text-black rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95">
-                                    <ArrowDown size={20} strokeWidth={2.5} />
-                                </button> */}
+                            <div className="flex items-center justify-center gap-4">
                                 <Button2 />
-
-                                {/* <button className="bg-[#E64A19] hover:bg-red-600 text-white px-6 md:px-7 py-3 rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg shadow-red-500/20 active:scale-95">
-                                    <span className="text-base md:text-lg font-medium font-sans leading-none tracking-normal">Get Consultation</span>
-                                    <div className="bg-black p-1 rounded-full ml-1 text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
-                                    </div>
-                                </button> */}
                                 <Button text="Get Consultation" />
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

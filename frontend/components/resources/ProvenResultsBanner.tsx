@@ -78,7 +78,7 @@ export default function ProvenResultsBanner({
 
   return (
     <section className="w-full py-1 px-2">
-      <div className="w-full max-w-8xl mx-auto font-sans overflow-hidden">
+      <div className="w-full max-w-8xl mx-auto overflow-hidden">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -102,7 +102,7 @@ export default function ProvenResultsBanner({
           <div className="relative z-10 flex-1 flex items-center w-full">
             <motion.h2
               variants={itemVariants}
-              className="font-[Geist] font-semibold text-lg md:text-[2rem] lg:text-[4.18875rem] leading-none tracking-normal text-white whitespace-pre-line"
+              className="geist-semibold text-lg md:text-[2rem] lg:text-[4.18875rem] leading-none tracking-normal text-white whitespace-pre-line"
             >
               {title}
             </motion.h2>
@@ -120,7 +120,7 @@ export default function ProvenResultsBanner({
                 className="flex flex-col items-center text-center w-full group/stat cursor-pointer"
               >
                 {/* Stat Category Label */}
-                <span className="font-[Geist] text-[0.8125rem] sm:text-[0.875rem] lg:text-[1rem] font-normal leading-none tracking-normal text-center text-white/90 uppercase">
+                <span className="geist-regular text-[0.8125rem] sm:text-[0.875rem] lg:text-[1rem] leading-none tracking-normal text-center text-white/90 uppercase">
                   {stat.label}
                 </span>
 
@@ -135,13 +135,13 @@ export default function ProvenResultsBanner({
                 <motion.span
                   variants={textVariants}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="font-[Geist] text-[2.5rem] sm:text-[2.6rem] lg:text-[2.629375rem] font-normal leading-none tracking-normal text-center text-white select-none"
+                  className="geist-regular text-[2.5rem] sm:text-[2.6rem] lg:text-[2.629375rem] leading-none tracking-normal text-center text-white select-none"
                 >
                   {stat.value}
                 </motion.span>
 
                 {/* Metric Description */}
-                <span className="font-[Geist] text-[1rem] sm:text-[1.125rem] lg:text-[1.25rem] font-light leading-none tracking-normal text-center text-white/90 mt-2 sm:mt-3">
+                <span className="geist-light text-[1rem] sm:text-[1.125rem] lg:text-[1.25rem] leading-none tracking-normal text-center text-white/90 mt-2 sm:mt-3">
                   {stat.description}
                 </span>
               </motion.div>

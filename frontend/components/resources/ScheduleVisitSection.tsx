@@ -6,7 +6,6 @@ import { Mail, Phone, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 /* ───────────────── Types ───────────────── */
-
 interface FormData {
     name: string;
     phone: string;
@@ -324,61 +323,24 @@ export default function ScheduleVisitSection() {
         <section className="w-full py-1 px-2">
             <section
                 ref={sectionRef}
-                className="w-full max-w-8xl mx-auto py-4 pt-8 sm:pt-12 lg:pt-16 font-[Geist] text-black"
+                className="w-full max-w-8xl mx-auto py-4 pt-8 sm:pt-12 lg:pt-16 text-black"
             >
                 <div className="max-w-2xl lg:ml-40">
                     {/* TABS */}
                     <div className="flex items-center gap-6 mb-8 text-[0.95rem] md:text-[1rem]">
-                        <button
-                            className="
-                            font-[Geist]
-                            font-semibold
-                            text-[1.5rem]
-                            leading-[100%]
-                            tracking-[0%]
-                            capitalize
-                            underline
-                            underline-offset-8
-                            decoration-solid
-                            text-black
-                            pb-1 
-                        "
-                        >
+                        <button className="geist-semibold text-[1.5rem] leading-[100%] tracking-[0%] capitalize underline underline-offset-8 decoration-solid text-black pb-1 ">
                             Forms
                         </button>
-                        <button
-                            className="
-                        font-[Geist]
-                        font-normal
-                        text-[1.5rem]
-                        leading-[100%]
-                        tracking-[0%]
-                        capitalize
-                        text-[rgba(0,0,0,0.63)]
-                        pb-1
-                    "
-                        >
+                        <button className="geist-regular text-[1.5rem] leading-[100%] tracking-[0%] capitalize text-[rgba(0,0,0,0.63)] pb-1">
                             Clinics
                         </button>
-
-                        <button
-                            className="
-                            font-[Geist]
-                            font-normal
-                            text-[1.5rem]
-                            leading-[100%]
-                            tracking-[0%]
-                            capitalize
-                            text-[rgba(0,0,0,0.63)]
-                            pb-1
-                        "
-                        >
+                        <button className="geist-regular text-[1.5rem] leading-[100%] tracking-[0%] capitalize text-[rgba(0,0,0,0.63)] pb-1">
                             Newsletter
                         </button>
                     </div>
 
                     {/* HEADING */}
-                    <h1 className="w-[22.4375rem] h-[3.25rem] font-[Geist] text-[2rem] md:text-[2.25rem] font-semibold leading-[120%] tracking-[0%] text-black mb-4">
+                    <h1 className="w-[22.4375rem] h-[3.25rem] text-[2rem] md:text-[2.25rem] leading-[120%] tracking-[0%] text-black mb-4">
                         Schedule your visit
                     </h1>
 

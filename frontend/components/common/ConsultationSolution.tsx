@@ -33,7 +33,7 @@ export default function ConsultationSolution({ image, className }: { image: stri
   ];
 
   return (
-    <div className="w-full py-1 px-2 bg-[#D9D9D9]">
+    <div className="w-full py-1 px-2">
       <section ref={sectionRef} className={`rounded-xl relative z-10 overflow-hidden ${className}`}>
         <div className="px-4 sm:px-6 lg:px-8">
 
@@ -50,7 +50,7 @@ export default function ConsultationSolution({ image, className }: { image: stri
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, margin: "-100px" }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-sans font-medium text-[24px] md:text-[28px] lg:text-[22px] xl:text-[36px] leading-[100%] tracking-normal text-[#1D2331]"
+                  className="font-medium text-[24px] md:text-[28px] lg:text-[22px] xl:text-[36px] leading-[100%] tracking-normal text-[#1D2331]"
                 >
                   Begin your path to debt-free living today
                 </motion.h2>
@@ -64,7 +64,7 @@ export default function ConsultationSolution({ image, className }: { image: stri
                   className="large-link-block w-inline-block group flex items-center justify-between gap-4 py-3 border-b border-[#1D2331] w-full lg:max-w-sm xl:max-w-md cursor-pointer"
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span style={{ fontFamily: "font-1, var(--font-geist-sans), sans-serif" }} className="text-[20px] font-normal leading-[100%] tracking-normal text-[#1D2331] transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="text-[20px] font-normal leading-[100%] tracking-normal text-[#1D2331] transition-transform duration-300 group-hover:translate-x-1">
                     Book Free Call
                   </span>
 
@@ -155,7 +155,7 @@ export default function ConsultationSolution({ image, className }: { image: stri
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <span className="font-sans text-[20px] lg:text-[14px] xl:text-[20px] font-medium leading-[100%] tracking-normal text-[#1D2331]">
+                      <span className="text-[20px] lg:text-[14px] xl:text-[20px] font-medium leading-[100%] tracking-normal text-[#1D2331]">
                         {text}
                       </span>
                     </motion.div>

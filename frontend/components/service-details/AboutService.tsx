@@ -39,21 +39,21 @@ export default function AboutService({ service }: AboutServiceProps) {
 
     return (
         <section className="w-full py-1 px-2">
-            <div className="w-full max-w-8xl mx-auto py-8 sm:py-12 md:py-16 px-4 md:px-8 lg:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-[3fr_4fr] gap-8 lg:gap-16 items-start">
+            <div className="w-full max-w-8xl mx-auto py-8 sm:py-12 md:py-16 px-4 md:px-8 lg:px-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                     {/* Left Sidebar Info Card */}
                     <div className="flex flex-col gap-5 lg:sticky lg:top-2">
-                        <div className="bg-[#D4C8C0] rounded-[1.5rem] p-6 sm:p-8 flex flex-col gap-5">
+                        <div className="w-full max-w-xl bg-[#D4C8C0] rounded-[1.5rem] p-6 sm:p-8 flex flex-col gap-5">
                             {/* Row 1: Condition / Service */}
                             <div className="flex items-end justify-between">
                                 <div className="flex items-center gap-3 text-black/60 pb-3">
                                     <FileText size={18} strokeWidth={1.5} />
-                                    <span className="font-mono text-[16px] font-medium leading-none text-center text-[#00000094]">
+                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
                                         Condition
                                     </span>
                                 </div>
                                 <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="font-sans text-[17px] font-normal leading-none text-right text-[#000000B0]">
+                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
                                         {service ? service.title : "Restorative Dentistry"}
                                     </span>
                                 </div>
@@ -63,12 +63,12 @@ export default function AboutService({ service }: AboutServiceProps) {
                             <div className="flex items-end justify-between">
                                 <div className="flex items-center gap-3 text-black/60 pb-3">
                                     <Users size={18} strokeWidth={1.5} />
-                                    <span className="font-mono text-[16px] font-medium leading-none text-center text-[#00000094]">
+                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
                                         Patients Treated
                                     </span>
                                 </div>
                                 <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="font-sans text-[17px] font-normal leading-none text-right text-[#000000B0]">
+                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
                                         {service ? service.clientsAssisted || "-" : "6,200+"}
                                     </span>
                                 </div>
@@ -78,12 +78,12 @@ export default function AboutService({ service }: AboutServiceProps) {
                             <div className="flex items-end justify-between">
                                 <div className="flex items-center gap-3 text-black/60 pb-3">
                                     <Sparkles size={18} strokeWidth={1.5} />
-                                    <span className="font-mono text-[16px] font-medium leading-none text-center text-[#00000094]">
+                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
                                         Highlight
                                     </span>
                                 </div>
                                 <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="font-sans text-[17px] font-normal leading-none text-right text-[#000000B0]">
+                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
                                         {service ? service.highlight || "-" : "Function restored"}
                                     </span>
                                 </div>
@@ -93,12 +93,12 @@ export default function AboutService({ service }: AboutServiceProps) {
                             <div className="flex items-end justify-between">
                                 <div className="flex items-center gap-3 text-black/60 pb-3">
                                     <Tag size={18} strokeWidth={1.5} />
-                                    <span className="font-mono text-[16px] font-medium leading-none text-center text-[#00000094]">
+                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
                                         Starting From
                                     </span>
                                 </div>
                                 <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="font-sans text-[17px] font-normal leading-none text-right text-[#000000B0]">
+                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
                                         {service ? service.startingFrom || "-" : "€80"}
                                     </span>
                                 </div>
@@ -108,11 +108,11 @@ export default function AboutService({ service }: AboutServiceProps) {
 
                     {/* Right Main Content */}
                     <div className="flex flex-col">
-                        <h2 className="font-sans text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[1.2] text-black mb-8">
+                        <h2 className="geist-semibold text-[32px] md:text-[40px] lg:text-[48px] leading-[1.2] text-black mb-8">
                             About the service
                         </h2>
 
-                        <div className="font-sans text-[16px] md:text-[18px] lg:text-[19px] font-normal leading-none text-black/80 flex flex-col gap-6">
+                        <div className="geist-regular text-[16px] md:text-[18px] lg:text-[19px] leading-none text-black/80 flex flex-col gap-6">
                             {service ? (
                                 <p className="leading-[1.4]">{service.fullDescription || service.description}</p>
                             ) : (

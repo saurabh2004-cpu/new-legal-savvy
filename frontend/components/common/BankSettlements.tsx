@@ -56,7 +56,7 @@ export default function BankSettlements({ circleHeading, innerCircleBgColour, ou
 
   return (
     <section className="w-full py-1 px-2">
-      <div className={`max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center pt-10 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 p-6 ${className}`}>
+      <div className={`max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center py-10 lg:py-12 lg:pb-20 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 ${className}`}>
         {/* Main Circular UI */}
         <div className="relative w-[75%] max-w-[45rem] aspect-square mx-auto my-14 md:my-16 flex items-center justify-center">
 
@@ -80,7 +80,7 @@ export default function BankSettlements({ circleHeading, innerCircleBgColour, ou
             style={{ backgroundColor: innerCircleBgColour }}
           >
             <div className="flex flex-col items-center justify-center px-2 md:px-6">
-              <h2 className="text-white max-w-[80%] font-sans xl:font-semibold xl:text-[25px] lg:text-[20px] md:text-[20px] text-[12px] leading-snug tracking-normal text-center capitalize ">
+              <h2 className="text-white max-w-[80%] xl:font-semibold xl:text-[25px] lg:text-[20px] md:text-[20px] text-[12px] leading-snug tracking-normal text-center capitalize ">
                 {circleHeading}
               </h2>
             </div>

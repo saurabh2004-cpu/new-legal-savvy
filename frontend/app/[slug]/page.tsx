@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Hero from "@/components/dynamic-content-page/Hero";
+import Hero10 from "@/components/common/Hero10";
 import { axiosInstance } from "../utils/axios";
 import { getPageData } from "@/services/pageContentService";
 import { DynamicBreadcrumb } from "@/components/dynamic-content-page/DynamicBreadcrumb";
@@ -68,7 +68,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <main className="bg-[#f0ece7] min-h-screen">
-      <Hero
+      <Hero10
         heading={data.hero?.heading || data.heading}
         description={data.hero?.description || data.description}
         ctaText={data.hero_cta_text || "Get Professional Protection Now"}

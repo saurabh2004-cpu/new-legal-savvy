@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const STATS_DATA = [
@@ -66,7 +66,6 @@ const CARD_VARIANTS = {
 };
 
 export default function StatsSection() {
-
   const [isSmUp, setIsSmUp] = useState(false);
 
   useEffect(() => {
@@ -82,7 +81,7 @@ export default function StatsSection() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div className="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-2 py-2 pt-6">
+      <div className="max-w-8xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-2 pt-6">
         {STATS_DATA.map((stat, idx) => (
           <div
             key={idx}
@@ -91,7 +90,7 @@ export default function StatsSection() {
             <div className="flex w-full flex-col items-center px-6 py-8 text-center sm:py-6 overflow-hidden">
               {/* Label */}
               <span
-                className="text-base lg:text-2xl xl:text-base font-normal text-[#6b6560] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3"
+                className="geist-regular text-base lg:text-2xl xl:text-base text-[#6b6560] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3"
               >
                 {stat.label}
               </span>
@@ -105,11 +104,11 @@ export default function StatsSection() {
               <div
                 className="flex flex-col items-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-3"
               >
-                <span className="text-[2.63rem] lg:text-[3.4rem] xl:text-[2.63rem] font-normal text-[#1a1714]">
+                <span className="text-[2.63rem] lg:text-[3.4rem] xl:text-[2.63rem] geist-regular text-[#1a1714]">
                   {stat.value}
                 </span>
 
-                <span className="mt-1 text-xl lg:text-2xl xl:text-xl font-light text-[#1B223C]">
+                <span className="mt-1 geist-regular text-xl lg:text-2xl xl:text-xl text-[#1B223C]">
                   {stat.description}
                 </span>
               </div>
@@ -119,7 +118,7 @@ export default function StatsSection() {
         ))}
       </div>
 
-      <div className="max-w-8xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-2 py-2 pt-6">
+      <div className="max-w-8xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-2 pt-6">
         {STATS_DATA.map((stat, idx) => (
           <div
             key={idx}
@@ -159,7 +158,7 @@ export default function StatsSection() {
                 <motion.h3
                   variants={CARD_VARIANTS.title}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-2xl md:text-4xl font-semibold leading-none tracking-normal"
+                  className="text-2xl md:text-4xl leading-none tracking-normal"
                 >
                   {stat.imageheading}
                 </motion.h3>
@@ -168,7 +167,7 @@ export default function StatsSection() {
                 <motion.p
                   variants={isSmUp ? CARD_VARIANTS.description : CARD_VARIANTS.descriptionSm}
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden text-base leading-relaxed text-white/75 text-left"
+                  className="overflow-hidden geist-regular text-base leading-relaxed text-white/75 text-left"
                 >
                   {stat.imageDescription}
                 </motion.p>

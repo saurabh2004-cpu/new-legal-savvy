@@ -1,14 +1,13 @@
-import ServiceHero from "@/components/service-details/ServiceHero";
 import AboutService from "@/components/service-details/AboutService";
 import ServiceFooterActions from "@/components/service-details/ServiceFooterActions";
 import OurServices from "@/components/common/OurServices";
 import AssistanceSection from "@/components/service-details/AssistanceSection";
 import BookConsultation from "@/components/common/BookConsultationSection";
-import LocationsSection from "@/components/common/LocationSection";
+import Locations from "@/components/common/Locations";
 
 import type { Metadata } from "next";
 import { getServiceById, getAllServices } from "@/services/serviceServices";
-import Hero from "@/components/service-details/Hero";
+import Hero5 from "@/components/common/Hero5";
 
 // export const metadata: Metadata = {
 //     title: "Services Details Legal Savvy- Debt Settlement Services",
@@ -104,8 +103,11 @@ export default async function page({ params, searchParams }: PageProps) {
     }
 
     return (
-        <div className="bg-[#D9D9D9] min-h-screen">
-            <Hero service={serviceresponse} className="md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]" />
+        // <main className="bg-[#FBF8F5]">
+        <main className="bg-[#FFFFFF]">
+            <Hero5
+                service={serviceresponse}
+                className="h-[85vh] lg:h-screen min-h-[600px]" />
             <AboutService service={serviceresponse} />
             <ServiceFooterActions />
             <OurServices
@@ -115,7 +117,7 @@ export default async function page({ params, searchParams }: PageProps) {
             />
             <AssistanceSection />
             <BookConsultation />
-            <LocationsSection className="py-2" />
-        </div>
+            <Locations variant="cards" className="py-2" />
+        </main>
     );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../components/common/Hero";
+import Hero1 from "@/components/common/Hero1";
 import AboutUs from "@/components/common/AboutUs";
 import WhyUs from "@/components/home/WhyUs";
 import OurServices from "@/components/common/OurServices";
@@ -9,7 +9,7 @@ import Testimonials from "@/components/home/Testimonials";
 import HumanApproach from "@/components/home/HumanApproach";
 import FeaturedBlogs from "@/components/common/FeaturedBlogs";
 import ConsultationSolution from "@/components/common/ConsultationSolution";
-import Locations from "@/components/home/Locations";
+import Locations from "@/components/common/Locations";
 import Footer from "../components/common/Footer";
 import { CTA_ASSETS } from "@/components/home/assets";
 import type { Metadata } from "next";
@@ -95,13 +95,19 @@ export default function Home() {
 
 
   return (
-    <main className="bg-[#D9D9D9] min-h-screen">
-      <Hero
+    // <main className="bg-[#FBF8F5]">
+    <main className="bg-[#FFFFFF]">
+      <Hero1
         Heading={"Smart Legal & Loan Solutions"}
         img={"/about/about-hero-img.png"}
-        className="bg-[#061D31] md:h-[calc(70vh-3rem)] lg:h-[calc(40vh-3rem)] xl:h-[calc(105vh-3rem)]"
+        className="h-[100vh] lg:h-screen min-h-[600px]"
       />
-      <AboutUs buttonText1={"About"} buttonText2={"Us"} buttonText3={"More about us"} paragraph={abotSectionParagraph} paragraphMaxWidth="max-w-5xl" />
+      <AboutUs
+        buttonText1={"About"}
+        buttonText2={"Us"}
+        buttonText3={"More about us"}
+        paragraph={abotSectionParagraph}
+        paragraphMaxWidth="max-w-6xl" />
       <WhyUs />
       <OurServices servicesData={servicesData} heading="Our Services" />
       <BankSettlements
@@ -115,7 +121,6 @@ export default function Home() {
       <FeaturedBlogs />
       <ConsultationSolution image={CTA_ASSETS["radial-text"]} className="pb-16 lg:pb-24" />
       <Locations />
-      {/* <Footer /> */}
     </main>
   );
 }

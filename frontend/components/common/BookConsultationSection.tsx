@@ -58,12 +58,10 @@ interface SelectFieldProps {
 }
 
 /* ───────────────── Shared Styles ───────────────── */
-
 const fieldClass =
     "w-full bg-transparent outline-none border-none text-[0.82rem] md:text-[0.88rem] text-black placeholder:text-black/30";
 
 const fieldStyle = {
-    fontFamily: "Geist",
     fontWeight: 300,
     fontSize: "var(--field-font-size, 20px)",
     lineHeight: "120%",
@@ -73,7 +71,6 @@ const fieldStyle = {
 } as any;
 
 /* ───────────────── Inputs ───────────────── */
-
 const InputField = ({
     label,
     type = "text",
@@ -92,7 +89,7 @@ const InputField = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className={`relative border-b pt-6 pb-2 transition-colors duration-300 ${error ? "border-red-500" : isFocused ? "border-black/30" : "border-black/10"
+            className={`relative border-b pt-6 pb-2 transition-colors duration-300 geist-light ${error ? "border-red-500" : isFocused ? "border-black/30" : "border-black/10"
                 }`}
         >
             <label
@@ -119,7 +116,7 @@ const InputField = ({
                 className={fieldClass}
                 style={fieldStyle}
             />
-            {error && <span className="absolute -bottom-5 left-0 text-[10px] text-red-500 font-sans">{error}</span>}
+            {error && <span className="absolute -bottom-5 left-0 text-[10px] text-red-500">{error}</span>}
         </motion.div>
     );
 };
@@ -157,7 +154,7 @@ const SelectField = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className={`border-b pb-3 relative transition-colors duration-300 ${error ? "border-red-500" : isOpen ? "border-black/30" : "border-black/10"}`}
+            className={`border-b pb-3 relative transition-colors duration-300 geist-light ${error ? "border-red-500" : isOpen ? "border-black/30" : "border-black/10"}`}
         >
             <label
                 className={`mb-2 block ${error ? "text-red-500" : "text-black/55"}`}
@@ -214,7 +211,6 @@ const SelectField = ({
 };
 
 /* ───────────────── Data ───────────────── */
-
 const CITIES = ["Delhi NCR", "Mumbai", "Hyderabad", "Pune", "Chennai", "Bengaluru", "Kolkata", "Others"];
 const MARITAL_STATUS = ["Single", "Married"];
 const EMPLOYMENT_STATUS = ["Not Employed", "Salaried", "Small Business", "Large Business"];
@@ -255,7 +251,6 @@ const INITIAL_FORM_DATA: FormData = {
 };
 
 /* ───────────────── Main Component ───────────────── */
-
 export default function BookConsultation() {
     const pathname = usePathname();
     const isServiceDetailsPage = pathname === "/service-details";
@@ -475,7 +470,7 @@ export default function BookConsultation() {
                             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                             className="w-full lg:pt-8"
                         >
-                            <h1 className="font-[Geist] font-medium text-[2.4rem] md:text-[3.125rem] leading-[120%] tracking-[0%] text-black">
+                            <h1 className="font-medium text-[2.4rem] md:text-[3.125rem] leading-[120%] tracking-[0%] text-black">
                                 Book Consultation
                             </h1>
 
@@ -484,7 +479,7 @@ export default function BookConsultation() {
                                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
                                         <Mail className="h-3.5 w-3.5 text-black/70" />
                                     </div>
-                                    <span className="font-[Geist] font-normal text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
+                                    <span className="geist-regular text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
                                         legal@thelegalstore.com
                                     </span>
                                 </div>
@@ -493,7 +488,7 @@ export default function BookConsultation() {
                                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black/5">
                                         <Phone className="h-3.5 w-3.5 text-black/70" />
                                     </div>
-                                    <span className="font-[Geist] font-normal text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
+                                    <span className="geist-regular text-[1rem] md:text-[1.125rem] leading-[120%] tracking-[0%] text-black/75">
                                         +91 9230445513
                                     </span>
                                 </div>
@@ -710,7 +705,7 @@ export default function BookConsultation() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 15 }}
                                     transition={{ duration: 0.4 }}
-                                    className="pt-1"
+                                    className="pt-1 geist-light"
                                 >
                                     <label className="mb-2 block text-black/55" style={fieldStyle}>
                                         Message
@@ -721,7 +716,7 @@ export default function BookConsultation() {
                                         onChange={handleInputChange}
                                         rows={4}
                                         placeholder="Tell us more about your financial situation..."
-                                        className="min-h-[5rem] w-full resize-none rounded-[0.7rem] bg-[#F0ECE7] px-4 py-3 outline-none font-[Geist] text-black placeholder:text-black/30"
+                                        className="min-h-[5rem] w-full resize-none rounded-[0.7rem] bg-[#F0ECE7] px-4 py-3 outline-none text-black placeholder:text-black/30"
                                         style={fieldStyle}
                                     />
                                 </motion.div>
@@ -732,7 +727,7 @@ export default function BookConsultation() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className={`rounded-full px-6 py-2.5 font-[Geist] text-[0.82rem] font-medium text-white shadow-[0_6px_20px_rgba(255,59,48,0.25)] transition-all duration-300 ${isSubmitting ? 'bg-[#ff2d20]/70 cursor-not-allowed' : 'bg-[#ff3b30] hover:bg-[#ff2d20]'}`}
+                                        className={`rounded-full px-8 py-2.5 text-[0.82rem] geist-light font-medium text-white shadow-[0_6px_20px_rgba(255,59,48,0.25)] transition-all duration-300 ${isSubmitting ? 'bg-[#ff2d20]/70 cursor-not-allowed' : 'bg-[#ff3b30] hover:bg-[#ff2d20]'}`}
                                     >
                                         {isSubmitting ? "Submitting..." : "Submit"}
                                     </button>

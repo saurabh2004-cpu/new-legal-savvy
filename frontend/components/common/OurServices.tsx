@@ -3,7 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import Button from "../ui/Button";
+import Button from "../utils/Button";
+import SectionHeading from "../utils/SectionHeading";
 
 
 export default function OurServices({ servicesData, heading, className }: { servicesData: any[], heading: string, className?: string }) {
@@ -26,24 +27,14 @@ export default function OurServices({ servicesData, heading, className }: { serv
   return (
     <section className="w-full py-1 px-2">
       <div
-        className={`max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center pt-10 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 ${className}`}
+        className={`max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center py-10 lg:py-14 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 ${className}`}
       >
         {/* Centered Heading with Custom Double Red Underline */}
-        <div className="flex flex-col items-center text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-sans font-semibold text-4xl leading-none tracking-normal text-black relative inline-block pb-3.5 ${heading === "Related Services" ? "text-white" : ""}`}
-          >
-            {heading}
-            {heading !== "Related Services" && <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[1px]">
-              <span className="w-full h-[2.5px] bg-[#FF3030]"></span>
-              <span className="w-full h-[2.5px] bg-[#FF3030]"></span>
-            </div>}
-          </motion.h2>
-        </div>
+        <SectionHeading
+          title={heading}
+          titleClassName={heading === "Related Services" ? "text-white text-4xl" : "text-black text-4xl"}
+          underlineColor={heading === "Related Services" ? "transparent" : "#FF3030"}
+        />
 
         {/* 2-Column Responsive Grid */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 overflow-hidden">
@@ -71,7 +62,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
                 {/* Category Tag */}
                 <span
                   style={{ backgroundColor: item.tagBg, color: item.tagColor }}
-                  className="absolute top-0 left-4 font-sans font-medium text-base leading-none tracking-normal uppercase px-3 py-3 rounded-b-lg z-10"
+                  className="absolute top-0 left-4 font-medium text-base leading-none tracking-normal uppercase px-3 py-3 rounded-b-lg z-10"
                 >
                   {item.tag}
                 </span>
@@ -88,13 +79,13 @@ export default function OurServices({ servicesData, heading, className }: { serv
                   >
                     {item.stats.map((stat: any, statIdx: any) => (
                       <div key={statIdx} className="flex flex-col text-left">
-                        <div className="overflow-hidden flex flex-col">
+                        <div className="overflow-hidden flex flex-col geist-mono-medium">
                           <motion.span
                             initial={{ y: "100%", opacity: 0 }}
                             whileInView={{ y: "0%", opacity: 1 }}
                             // viewport={{ once: true }}
                             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                            className="font-sans font-medium text-base tracking-wider text-white leading-none mb-2"
+                            className="font-medium text-base tracking-wider text-white leading-none mb-2"
                           >
                             {stat.label}
                           </motion.span>
@@ -108,7 +99,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
                               delay: 0.1,
                               ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="font-mono font-medium text-base tracking-wider text-white leading-none"
+                            className="font-medium text-base tracking-wider text-white leading-none"
                           >
                             {stat.value}
                           </motion.span>
@@ -133,7 +124,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
                   style={{ originX: 0.5, originY: 0.5 }}
                 />
 
-                <h3 className={`relative z-10 geist-semibold text-2xl md:text-[32px] leading-none tracking-normal transition-colors duration-500 ease-in-out mb-3 ${isServiceDetailsPage ? 'text-white group-hover:text-black' : 'text-[#0F172A]'}`}>
+                <h3 className={`relative z-10 text-2xl md:text-[32px] leading-none tracking-normal transition-colors duration-500 ease-in-out mb-3 ${isServiceDetailsPage ? 'text-white group-hover:text-black' : 'text-[#0F172A]'}`}>
                   {item.title}
                 </h3>
 
@@ -143,7 +134,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
 
                 {/* Call To Action Button (Matches Card Configuration) */}
                 {item.cta && item.ctaBg && (
-                  <div className="relative z-10 w-full flex justify-start mt-3">
+                  <div className="relative z-10 w-full flex justify-start">
                     <motion.div
                       className="origin-center"
                       variants={{
