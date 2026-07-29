@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import Footer from "@/components/common/Footer";
+// import Footer from "@/components/common/Footer";
 import { DynamicPagesList } from "@/components/dynamic-content-page/DynamicPagesList";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import Footer from "@/components/layout/Footer";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -86,6 +87,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <SmoothScroll />
         {children}
+        {/* <Footer /> */}
         <Footer />
         <DynamicPagesList />
       </body>
