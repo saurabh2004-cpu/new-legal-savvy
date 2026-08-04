@@ -15,16 +15,16 @@ import { CTA_ASSETS } from "@/components/home/assets";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Legal Savvy - Debt Settlement Services",
+  title: "Legal Loan Settlement Company in India | LegalSavvy",
   description:
-    "Get expert legal debt settlement services across India. Reduce loan burden and stop recovery harassment.",
+    "Legal Savvy is an RBI-compliant loan settlement company serving borrowers across India. Speak with our legal team about a One-Time Settlement (OTS) plan today.",
 };
 
 
 export default function Home() {
 
   const abotSectionParagraph =
-    "Professional legal and loan management solutions built on transparency, accuracy, and trust. We simplify complex paperwork and guide you toward secure financial decisions.";
+    "Legal Savvy is a legal loan settlement company serving borrowers across India, working within RBI Fair Practices Code guidelines to negotiate fair, documented settlements.";
 
   const servicesData = [
     {
@@ -48,7 +48,7 @@ export default function Home() {
       tagBg: "#E64A19",
       tagColor: "#FFFFFF",
       title: "Business Loan Settlement",
-      description: "If business loan payments are overwhelming you, we're here to help. Our team collaborates with you to find effective solutions, negotiate with lenders, and reduce your financial stress. Together, we can ease the burden and get your business.",
+      description: "If business loan payments are overwhelming you, we're here to help. Our team collaborates with you to find effective solutions, negotiate with lenders, and reduce your financial stress. Together, we can ease the burden and get your business back on stable ground.",
       image: "/home/business-loan-settlement.png",
       stats: [
         { label: "CASES", value: "1,400+" },
@@ -64,7 +64,7 @@ export default function Home() {
       tagBg: "#E64A19",
       tagColor: "#FFFFFF",
       title: "Credit Card Loan Settlement",
-      description: "Struggling with credit card debt? We're here to help you find the right path forward. Our team negotiates with your creditors to reduce your debt, making payments more manageable. Let's work together to clear the burden and get your financial.",
+      description: "Struggling with credit card debt? We're here to help you find the right path forward. Our team negotiates with your creditors to reduce your debt, making payments more manageable. Let’s work together to clear the burden and get your financial health back on track.",
       image: "/home/credit-card-loan-settlement.png",
       stats: [
         { label: "CASES", value: "3,100+" },
@@ -93,25 +93,25 @@ export default function Home() {
     }
   ];
 
-
   return (
     // <main className="bg-[#FBF8F5]">
     <main className="bg-[#FFFFFF]">
       <Hero1
-        Heading={"Smart Legal & Loan Solutions"}
+        Heading={"Legal Loan Settlement Company in India"}
+        description={"RBI-compliant loan and debt settlement services for borrowers across India, handled by a licensed legal team, not recovery agents"}
         img={"/about/about-hero-img.png"}
         className="h-[100vh] lg:h-screen min-h-[600px]"
       />
       <AboutUs
         buttonText1={"About"}
         buttonText2={"Us"}
-        buttonText3={"More about us"}
+        buttonText3={"More About Us"}
         paragraph={abotSectionParagraph}
         paragraphMaxWidth="max-w-6xl" />
       <WhyUs />
       <OurServices servicesData={servicesData} heading="Our Services" />
       <BankSettlements
-        circleHeading={"Settlements Achieved With Banks"}
+        circleHeading={"RBI-Regulated Banks & NBFCs"}
         innerCircleBgColour="#333A4D"
         outerCircleBgColour="#1D2540"
       />

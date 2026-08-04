@@ -11,28 +11,28 @@ import Locations from "@/components/common/Locations"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "About Legal Savvy - Debt Settlement Services",
+    title: "Loan Settlement Lawyers in India | About Legal Savvy",
     description:
-        "Learn about Legal Savvy, a trusted provider of legal and loan management solutions across India. Expert guidance for personal loans, business loans, credit cards, and anti-harassment services.",
+        "Meet the legal team behind Legal Savvy, a debt settlement company serving borrowers across India. Book a consultation with our loan settlement lawyers today.",
 };
 
 export default function About() {
 
     const abotSectionParagraph1 =
-        "Professional legal and loan management solutions built on transparency, accuracy, and trust. We simplify complex paperwork and guide you toward secure financial decisions.";
+        "Legal Savvy is a debt settlement company in India built around a licensed legal team, not a call centre. Every negotiation, letter, and settlement offer is handled by an advocate you can speak with directly.";
 
     return (
         // <main className="bg-[#FBF8F5]">
         <main className="bg-[#FFFFFF]">
             <Hero2
-                Heading={"Trusted Legal & Loan Solutions For Every Need"}
+                Heading={"Meet Your Loan Settlement Lawyers in India"}
                 img={"/about/about-hero-img.png"}
                 className="h-[85vh] lg:h-screen min-h-[600px]"
             />
             <AboutUs
                 buttonText1={"About"}
                 buttonText2={"Us"}
-                buttonText3={"More about us"}
+                buttonText3={"Talk to a Lawyer"}
                 paragraph={abotSectionParagraph1}
                 paragraphMaxWidth="max-w-6xl"
             />

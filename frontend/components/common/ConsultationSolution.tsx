@@ -28,8 +28,8 @@ export default function ConsultationSolution({ image, className }: { image: stri
 
   const listItems = [
     "RBI-compliant settlement process",
-    "Complete protection from harassment",
-    "100% legal, transparent, & secure",
+    "Licensed advocates, not agents",
+    "Every step documented in writing",
   ];
 
   return (
@@ -52,7 +52,7 @@ export default function ConsultationSolution({ image, className }: { image: stri
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="font-medium text-[24px] md:text-[28px] lg:text-[22px] xl:text-[36px] leading-[100%] tracking-normal text-[#1D2331]"
                 >
-                  Begin your path to debt-free living today
+                  Begin your loan settlement, the legal way
                 </motion.h2>
 
                 <motion.a
@@ -65,7 +65,7 @@ export default function ConsultationSolution({ image, className }: { image: stri
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="text-[20px] font-normal leading-[100%] tracking-normal text-[#1D2331] transition-transform duration-300 group-hover:translate-x-1">
-                    Book Free Call
+                    Book Free Consultation
                   </span>
 
                   {/* Arrow Icon */}

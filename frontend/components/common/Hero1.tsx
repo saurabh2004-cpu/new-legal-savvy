@@ -9,11 +9,12 @@ import Button2 from "../utils/Button2";
 
 interface HeroProps {
   Heading: string;
+  description?: string;
   img: string;
   className?: string;
 }
 
-export default function Hero1({ Heading, img, className = "h-[100vh] lg:h-screen min-h-[600px]" }: HeroProps) {
+export default function Hero1({ Heading, description, img, className = "h-[100vh] lg:h-screen min-h-[600px]" }: HeroProps) {
   const [hoveredMenu, setHoveredMenu] = useState<"services" | "locations" | null>(null);
   const pathname = usePathname();
 
@@ -78,6 +79,7 @@ export default function Hero1({ Heading, img, className = "h-[100vh] lg:h-screen
               {/* Left Content Column */}
               <div className={`${isHeadingCenter ? "w-full text-center" : "max-w-4xl w-full"} `}>
                 <h1 className="text-[24px] sm:text-[36px] md:text-[54px] lg:text-[38px] xl:text-[67.02px] text-white leading-[105%] md:leading-[100%] tracking-normal mb-4 md:mb-8 geist-semibold max-w-xl">
+                  {/* <h1 className="text-[24px] sm:text-[36px] md:text-[54px] lg:text-[38px] xl:text-[52.02px] text-white leading-[105%] md:leading-[100%] tracking-normal mb-4 md:mb-8 geist-semibold max-w-xl"> */}
                   {Heading}
                 </h1>
 
@@ -85,7 +87,7 @@ export default function Hero1({ Heading, img, className = "h-[100vh] lg:h-screen
                   <img className="h-10 sm:h-12 md:h-[4.55rem] w-auto object-contain" src="/home/hero-customers-image.png" alt="Customers" />
                   <div className="flex flex-col text-white gap-1">
                     <span className="text-[11px] sm:text-xs md:text-base font-normal geist-mono-regular uppercase tracking-normal leading-tight md:leading-none opacity-90">
-                      Trusted by thousands of<br />satisfied customers
+                      Helping Borrowers <br /> Across India
                     </span>
                     <div className="flex items-center gap-1 text-white">
                       {/* Stars */}
@@ -102,12 +104,12 @@ export default function Hero1({ Heading, img, className = "h-[100vh] lg:h-screen
               {/* Right Content Column */}
               {pathname === '/' && <div className="max-w-xl lg:max-w-3xl flex flex-col items-start lg:items-end text-left lg:text-right w-full mt-2 lg:mt-0">
                 <p className="text-gray-300 text-xs sm:text-base md:text-lg lg:text-xl tracking-normal leading-relaxed lg:leading-none mb-6 md:mb-8 text-left lg:text-right">
-                  Simplifying Legal Paperwork And Loan Management With Trusted Advice, Transparent Processes, And Professional Support.
+                  {description}
                 </p>
 
                 <div className="flex items-center gap-3 sm:gap-4 w-full justify-start lg:justify-end">
                   <Button2 onClick={handleScrollDown} />
-                  <Button text="Get Consultation" />
+                  <Button text="Get a Consultation" />
                 </div>
               </div>}
             </div>

@@ -19,7 +19,7 @@ export default function LegalExpertise() {
     "Corporate Law Advisor",
     "Contract Drafting Specialist",
     "Dispute Resolution Expert",
-    "Compliance Consultant",
+    "Debt Settlement Advisor",
     "Client Legal Advisor",
   ];
 

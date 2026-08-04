@@ -9,37 +9,37 @@ import SectionHeading from "../utils/SectionHeading";
 const features = [
   {
     id: 1,
-    title: "Loan Settlement Assistance",
+    title: "Case Review & Documentation",
     description:
-      "We use the latest anaesthesia techniques and gentle protocols so every visit is as comfortable as possible, even for anxious patients.",
+      "We start by reviewing your loan and payment history and preparing the paperwork lenders expect, in line with RBI norms.",
     image: "/home/our-features-1.png",
   },
   {
     id: 2,
-    title: "Loan Settlement Assistance",
+    title: "Lender Negotiation",
     description:
-      "From 3D CBCT scans to smile design simulations, you see and approve your treatment outcome before we begin any clinical work.",
+      "Our legal team negotiates a One-Time Settlement (OTS) proposal directly with your bank or NBFC, on your behalf.",
     image: "/home/our-featutes-2.png",
   },
   {
     id: 3,
-    title: "Loan Settlement Assistance",
+    title: "Written Confirmation",
     description:
-      "Our multidisciplinary team covers all dental fields under one roof — no waiting lists, no referrals, no fragmented care.",
+      "Every settlement offer, revision, and acceptance is recorded in writing, so there is a clear paper trail at each stage.",
     image: "/home/human-approach-1.png",
   },
   {
     id: 4,
-    title: "Loan Settlement Assistance",
+    title: "Recovery Communication Handled",
     description:
-      "Every treatment plan includes a detailed written quote. No hidden fees, no surprises — just clear, honest communication from day one.",
+      "Once engaged, our team becomes your point of contact for recovery calls, in line with RBI’s rules for recovery agents.",
     image: "/service/service-card-1.png",
   },
   {
     id: 5,
-    title: "Loan Settlement Assistance",
+    title: "Closure & No-Dues Certificate",
     description:
-      "Our clinic is equipped with modern technology and structured processes that ensure accurate diagnosis, efficient treatments, and a comfortable patient experience.",
+      "After the settlement is paid, we help you obtain a written closure letter and No-Dues Certificate from your lender.",
     image: "/home/our-features-1.png",
   },
 ];
@@ -91,7 +91,7 @@ export default function OurFeatures2() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div  className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center py-10 lg:py-12 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 bg-[#CDC2BB] p-4 lg:py-16 lg:px-20">
+      <div className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center py-10 lg:py-12 overflow-hidden space-y-6 md:space-y-8 lg:space-y-10 bg-[#CDC2BB] p-4 lg:py-16 lg:px-20">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 xl:gap-16 items-center">
           {/* Left Column - Content */}
           <motion.div
@@ -102,12 +102,10 @@ export default function OurFeatures2() {
             className="flex flex-col w-full space-y-6"
           >
             <motion.div variants={itemVariants} className="flex flex-col gap-8">
-              <SectionHeading title="Our Features" align="left" titleClassName="text-4xl text-[#1D2331]" underlineColor="#ED3D3D" />
+              <SectionHeading title="How Our Loan Settlement Process Works" align="left" titleClassName="text-3xl text-[#1D2331]" underlineColor="#ED3D3D" />
 
               <p className="text-[#1D2331]/90 geist-regular text-[16px] lg:text-[20px] leading-[125%] lg:leading-[100%] tracking-normal max-w-lg">
-                Our platform is designed with legal guidance, structured
-                documentation, and transparent support to make loan settlement and
-                debt resolution easier, safer, and more stress-free.
+                Every case is guided by legal review, structured documentation, and an RBI-aligned process, so loan settlement and debt resolution feel less overwhelming and more in your control.
               </p>
             </motion.div>
 
@@ -166,65 +164,65 @@ export default function OurFeatures2() {
           </motion.div>
 
           {/* Right Column - Images */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full h-[320px] md:h-[450px] lg:h-[600px] xl:h-[800px] rounded-3xl overflow-hidden relative"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentFeature.image}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-full h-full relative"
-                >
-                  <Image
-                    src={currentFeature.image}
-                    alt="Feature Visual"
-                    className="w-full h-full object-cover grayscale"
-                    fill
-                  />
-                </motion.div>
-              </AnimatePresence>
-
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full h-[320px] md:h-[450px] lg:h-[600px] xl:h-[800px] rounded-3xl overflow-hidden relative"
+          >
+            <AnimatePresence mode="wait">
               <motion.div
-                variants={thumbnailContainerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
-                className="absolute bottom-3 left-3 right-3 md:bottom-5 md:left-5 md:right-5 z-10 grid grid-cols-5 gap-3 h-20 lg:h-28 xl:h-[110px]"
+                key={currentFeature.image}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="w-full h-full relative"
               >
-                {features.map((feature, idx) => {
-                  const isSelected = currentFeature.id === feature.id;
-
-                  return (
-                    <motion.div
-                      key={feature.id}
-                      variants={thumbnailItemVariants}
-                      onClick={() => {
-                        setCurrentFeature(feature);
-                        setActiveId(feature.id);
-                      }}
-                      className={`relative w-full h-full rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${isSelected
-                          ? "ring-4 ring-white scale-95"
-                          : "hover:scale-[1.02] hover:opacity-90"
-                        }`}
-                    >
-                      <Image
-                        src={feature.image}
-                        alt={feature.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  );
-                })}
+                <Image
+                  src={currentFeature.image}
+                  alt="Feature Visual"
+                  className="w-full h-full object-cover grayscale"
+                  fill
+                />
               </motion.div>
+            </AnimatePresence>
+
+            <motion.div
+              variants={thumbnailContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              className="absolute bottom-3 left-3 right-3 md:bottom-5 md:left-5 md:right-5 z-10 grid grid-cols-5 gap-3 h-20 lg:h-28 xl:h-[110px]"
+            >
+              {features.map((feature, idx) => {
+                const isSelected = currentFeature.id === feature.id;
+
+                return (
+                  <motion.div
+                    key={feature.id}
+                    variants={thumbnailItemVariants}
+                    onClick={() => {
+                      setCurrentFeature(feature);
+                      setActiveId(feature.id);
+                    }}
+                    className={`relative w-full h-full rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${isSelected
+                      ? "ring-4 ring-white scale-95"
+                      : "hover:scale-[1.02] hover:opacity-90"
+                      }`}
+                  >
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </motion.div>
+                );
+              })}
             </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

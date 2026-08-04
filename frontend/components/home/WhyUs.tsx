@@ -4,14 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
-  FileCheck,
-  CheckCircle2,
   UserCheck,
   FileText,
-  Award,
-  Handshake,
-  Briefcase,
-  Scale,
   Check,
 } from "lucide-react";
 
@@ -31,43 +25,43 @@ interface WhyUsCard {
 
 const cardsData: WhyUsCard[] = [
   {
-    title: "RBI-Compliant Process",
-    description: "We exclusively follow Reserve Bank of India guidelines for legal loan settlements, ensuring every step is compliant and secure.",
+    title: "RBI-Compliant Settlement",
+    description: "Every settlement we negotiate follows the RBI Fair Practices Code, so the process stays lawful, documented, and traceable at each step.",
     image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=2070&auto=format&fit=crop",
     bullets: [
-      { text: "Secure Verification", icon: ShieldCheck },
-      { text: "Proper Documentation", icon: FileCheck },
-      { text: "Regulatory Approval", icon: CheckCircle2 },
+      { text: "Written Confirmation", icon: FileText },
+      { text: "RBI-Aligned Process", icon: ShieldCheck },
+      { text: "Licensed Advocates", icon: UserCheck },
     ]
   },
   {
-    title: "Expert Legal Team",
-    description: "Negotiations are handled directly by our expert legal team and experienced financial professionals, not by ordinary agents.",
+    title: "Licensed Legal Team",
+    description: "Your case is handled by qualified advocates, not call-centre agents, so negotiations with your bank or NBFC carry legal weight.",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop",
     bullets: [
-      { text: "Secure Verification", icon: UserCheck },
-      { text: "Proper Documentation", icon: FileText },
-      { text: "Regulatory Approval", icon: Award },
+      { text: "Written Confirmation", icon: FileText },
+      { text: "RBI-Aligned Process", icon: ShieldCheck },
+      { text: "Licensed Advocates", icon: UserCheck },
     ]
   },
   {
     title: "Zero Harassment Policy",
-    description: "Once LegalSavvy takes over your case, our legal team immediately steps in to handle communication with banks, lenders, and recovery representatives.",
+    description: "Once we take your case, our team becomes your point of contact with lenders and recovery agents, in line with RBI recovery-agent norms.",
     image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop",
     bullets: [
-      { text: "Secure Verification", icon: ShieldCheck },
-      { text: "Proper Documentation", icon: FileText },
-      { text: "Regulatory Approval", icon: Handshake },
+      { text: "Written Confirmation", icon: FileText },
+      { text: "RBI-Aligned Process", icon: ShieldCheck },
+      { text: "Licensed Advocates", icon: UserCheck },
     ]
   },
   {
-    title: "Expert Negotiation",
-    description: "Our experienced legal team works directly with banks, lenders, and financial institutions to negotiate your outstanding loan amount in a professional and lawful manner.",
+    title: "Direct Lender Negotiation",
+    description: "We negotiate directly with your bank or NBFC on your behalf, and every offer or reply is confirmed to you in writing.",
     image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop",
     bullets: [
-      { text: "Secure Verification", icon: Briefcase },
-      { text: "Proper Documentation", icon: FileText },
-      { text: "Regulatory Approval", icon: Scale },
+      { text: "Written Confirmation", icon: FileText },
+      { text: "RBI-Aligned Process", icon: ShieldCheck },
+      { text: "Licensed Advocates", icon: UserCheck },
     ]
   }
 ];

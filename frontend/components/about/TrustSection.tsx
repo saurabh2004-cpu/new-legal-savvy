@@ -19,7 +19,7 @@ const defaultCards: TrustCard[] = [
   {
     title: "Clear Legal Guidance",
     description:
-      "We simplify complex legal matters with practical advice, transparent communication, and step-by-step support so you can make confident legal decisions.",
+      "We simplify loan settlement and debt resolution with practical advice, transparent communication, and step-by-step support so you can make confident decisions.",
   },
   {
     title: "Reliable Legal Support",
@@ -29,7 +29,7 @@ const defaultCards: TrustCard[] = [
   {
     title: "Expert Legal Minds",
     description:
-      "Our multidisciplinary team covers corporate, property, and financial laws under one roof — no waiting lists, referrals, or fragmented care.",
+      "Our legal team handles personal loans, business loans, and credit card settlements together, so your case does not get passed between departments.",
   },
   {
     title: "Transparent Pricing",
@@ -39,12 +39,12 @@ const defaultCards: TrustCard[] = [
   {
     title: "Modern Tech Stack",
     description:
-      "Modern digital signature systems, secured document vaults, and quick online support mean faster processing with fewer physical meetings.",
+      "Digital signatures, secure document sharing, and online consultations mean you can settle your loan without multiple trips to an office.",
   },
   {
     title: "Proven Results",
     description:
-      "Over thousands of cases resolved and successful loan settlements with a measurable record of clinical excellence and long-term security.",
+      "Every settlement we negotiate is documented in writing and follows the RBI Fair Practices Code from first contact to final closure letter.",
   },
 ];
 

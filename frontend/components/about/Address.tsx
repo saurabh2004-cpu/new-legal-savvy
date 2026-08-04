@@ -42,7 +42,7 @@ export default function AddressesSection() {
   };
 
   const heading =
-    "Legal Savvy provides reliable legal support with a clear, client-focused approach. From legal consultation to documentation and dispute guidance, we simplify complex legal matters and help you make informed decisions with confidence.";
+    "Legal Savvy provides reliable legal support for loan and debt settlement across India, with a clear, client-focused approach. From consultation to negotiation and settlement letters, we simplify the process and help you make informed decisions with confidence.";
 
   const words = heading.split(" ");
 
@@ -124,9 +124,9 @@ export default function AddressesSection() {
               className="p-6 lg:p-7 rounded-2xl bg-[#E6DCD6] flex flex-col justify-between h-auto min-h-[14rem] lg:h-0 lg:flex-[2] shadow-sm"
             >
               {[
-                { label: "Legal Consultation", index: 1 },
-                { label: "Contract Drafting", index: 2 },
-                { label: "Business & Corporate Law", index: 3 },
+                { label: "Loan & Debt Settlement", index: 1 },
+                { label: "Legal Consultation", index: 2 },
+                { label: "Contract Drafting", index: 3 },
                 { label: "Dispute Resolution", index: 4 },
               ].map((item, i) => (
                 <div

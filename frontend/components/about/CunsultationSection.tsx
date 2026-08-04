@@ -58,9 +58,9 @@ export default function ConsultationSection() {
                             transition={{ duration: 0.7, delay: 0.1 }}
                             className="geist-regular text-[1rem] md:text-[1.2rem] lg:text-[1.5rem] xl:text-[1.8rem] 2xl:text-[3rem] leading-[115%] text-white sm:text-[2.5rem] md:text-[3rem] lg:text-[3.4rem]"
                         >
-                            From legal advice to
+                            Loan settlement lawyers,
                             <span className="block">
-                                smart protection
+                                not call-centre agents
                             </span>
                         </motion.h2>
 
@@ -71,7 +71,7 @@ export default function ConsultationSection() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <Button text='Explore Services' />
+                            <Button text='Talk to a Lawyer' />
                         </motion.div>
                     </div>
 

@@ -10,16 +10,16 @@ const navColumns = [
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
         { label: "Services", href: "/service" },
-        { label: "Gallery", href: "/gallery" },
+        { label: "Locations", href: "/locations" },
     ],
     [
-        { label: "Blogs", href: "/blogs" },
+        { label: "Blogs", href: "/resources" },
         { label: "Contact Us", href: "/contact-us" },
         { label: "Services", href: "/service" },
         { label: "Gallery", href: "/gallery" },
     ],
     [
-        { label: "Blogs", href: "/blogs" },
+        { label: "Blogs", href: "/resources" },
         { label: "Contact Us", href: "/contact-us" },
         { label: "Services", href: "/service" },
         { label: "Gallery", href: "/gallery" },
@@ -61,7 +61,7 @@ export default function Footer() {
                                 href="/contact-us"
                                 className="geist-light text-base md:text-lg lg:text-2xl tracking-wide text-[#e0e2ec] transition-colors duration-200 hover:text-white"
                             >
-                                Schedule a Consultation
+                                Book a Consultation
                             </Link>
                         </div>
 
@@ -118,7 +118,7 @@ export default function Footer() {
                                     href="/privacy"
                                     className="text-[0.85rem] md:text-[0.95rem] geist-mono-medium text-[#8a8f9a] hover:text-[#c0c4d8] transition-colors duration-200 uppercase"
                                 >
-                                    Policy And Privacy
+                                    Privacy Policy
                                 </Link>
                             </div>
                             <Link

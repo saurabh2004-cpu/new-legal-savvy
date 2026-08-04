@@ -19,7 +19,7 @@ const stats: Stat[] = [
     id: 1,
     title: "YEARS",
     value: "18+",
-    description: "Legal excellence.",
+    description: "In legal practice.",
     image: "/home/human-approach-1.png",
     icon: (
       <svg
@@ -33,9 +33,9 @@ const stats: Stat[] = [
   },
   {
     id: 2,
-    title: "SATISFACTION",
+    title: "CASES",
     value: "98%",
-    description: "Client satisfaction.",
+    description: "Loan settlements handled.",
     image: "/home/human-approach-1.png",
     icon: (
       <svg
@@ -49,9 +49,9 @@ const stats: Stat[] = [
   },
   {
     id: 3,
-    title: "SERVICES",
-    value: "98%",
-    description: "Case resolutions.",
+    title: "SUPPORT",
+    value: "1:1",
+    description: "Legal team, not agents.",
     image: "/home/human-approach-1.png",
     icon: (
       <svg

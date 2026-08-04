@@ -241,11 +241,11 @@ export default function TeamSection() {
                 {/* Content Block */}
                 <div className="text-center text-black max-w-5xl mx-auto space-y-4">
                     <h2 className="geist-medium text-[1.3rem] md:text-[1.5rem] lg:text-[2rem] xl:text-[2.5rem] leading-[120%] text-center">
-                        Smart legal guidance focused on clarity and trust
+                        Legal guidance for loan settlement, built on trust
                     </h2>
 
                     <p className="geist-regular text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] 2xl:text-[1rem] leading-[100%] text-center">
-                        Legal Savvy provides practical legal support for individuals and businesses with a clear, client-first approach. From consultation and documentation to contracts, compliance, and dispute guidance, we help you make confident legal decisions.
+                        Legal Savvy is built around licensed advocates who handle loan and debt settlement for individuals and businesses across India. From the first consultation to the final settlement letter, an advocate, not a call-centre agent, manages your case.
                     </p>
                 </div>
 

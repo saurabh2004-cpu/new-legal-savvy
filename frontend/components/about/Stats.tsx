@@ -15,22 +15,22 @@ const STATS_DATA = [
       "Over 10 years of successfully helping clients navigate complex legal matters.",
   },
   {
-    label: "SATISFACTION",
+    label: "CASES",
     value: "97%",
-    description: "Trusted by clients.",
+    description: "Loans settled.",
     image: "/about/stats-1.png",
-    imageheading: "Patient Satisfaction",
+    imageheading: "Loan Settlements Handled",
     imageDescription:
-      "Measured through post-treatment surveys, our satisfaction rate reflects our commitment to patient-centred care.",
+      "Negotiated directly with banks and NBFCs under RBI Fair Practices Code guidelines, with every offer confirmed in writing.",
   },
   {
-    label: "SATISFACTION",
-    value: "97%",
-    description: "Trusted by clients.",
+    label: "SUPPORT",
+    value: "1:1",
+    description: "Advocate access.",
     image: "/about/stats-1.png",
-    imageheading: "Patient Satisfaction",
+    imageheading: "Direct Access to Your Advocate",
     imageDescription:
-      "Measured through post-treatment surveys, our satisfaction rate reflects our commitment to patient-centred care.",
+      "You deal with the same advocate throughout your case, not a rotating call-centre team.",
   },
 ];
 
@@ -158,7 +158,7 @@ export default function StatsSection() {
                 <motion.h3
                   variants={CARD_VARIANTS.title}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-2xl md:text-4xl leading-none tracking-normal"
+                  className="text-2xl md:text-4xl leading-none tracking-normal text-left"
                 >
                   {stat.imageheading}
                 </motion.h3>

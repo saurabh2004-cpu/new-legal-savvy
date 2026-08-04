@@ -147,13 +147,13 @@ export default function Testimonials() {
 
           <div className="my-4 flex w-full flex-col lg:flex-row justify-between lg:items-end gap-6">
             <h2 className="geist-semiBold text-[24px] md:text-[32px] xl:text-[52.09px] leading-[100%] tracking-normal text-white inline-block relative">
-              Trusted Smiles.
-              <p className="mt-2 text-white">Shared Experiences</p>
+              What Our Clients Say.
+              {/* <p className="mt-2 text-white">Clients Say</p> */}
             </h2>
 
             <div className="w-full lg:w-[500px] flex">
               <p className="geist-mono-medium text-white text-base leading-snug">
-                Hear from our clients who have successfully resolved their debt and regained their financial freedom with our expert legal assistance.
+                Read how borrowers across India have worked with our legal team to settle loans through a documented, RBI-compliant process.
               </p>
             </div>
           </div>
