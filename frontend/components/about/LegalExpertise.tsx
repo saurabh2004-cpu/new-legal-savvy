@@ -1,10 +1,21 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { getAllServices } from "@/services/serviceServices";
+import Link from "next/link";
+
+interface Service {
+  _id?: string;
+  id?: string;
+  title: string;
+  slug?: string;
+}
 
 export default function LegalExpertise() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [services, setServices] = useState<Service[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Track scroll progress of this section to rotate the asterisk icon
   const { scrollYProgress } = useScroll({
@@ -14,14 +25,44 @@ export default function LegalExpertise() {
 
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
-  const roles = [
-    "Legal Consultant",
-    "Corporate Law Advisor",
-    "Contract Drafting Specialist",
-    "Dispute Resolution Expert",
-    "Debt Settlement Advisor",
-    "Client Legal Advisor",
-  ];
+  // Fetch services
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchServices = async () => {
+      try {
+        setIsLoading(true);
+
+        const data = await getAllServices();
+
+        if (isMounted && data) {
+          setServices(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch services:", error);
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchServices();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+
+  // const roles = [
+  //   "Legal Consultant",
+  //   "Corporate Law Advisor",
+  //   "Contract Drafting Specialist",
+  //   "Dispute Resolution Expert",
+  //   "Debt Settlement Advisor",
+  //   "Client Legal Advisor",
+  // ];
 
   const listVariants = {
     hidden: {},
@@ -61,7 +102,7 @@ export default function LegalExpertise() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="geist-regular text-[20px] leading-[100%] tracking-normal text-center text-[#1D2331] mt-8 md:mt-0"
           >
-            Practical legal expertise
+            Our Services
           </motion.p>
         </div>
 
@@ -73,19 +114,19 @@ export default function LegalExpertise() {
           viewport={{ once: true, margin: "-100px" }}
           className="flex flex-col justify-center gap-1"
         >
-          {roles.map((role, idx) => (
+          {services.map((item, index) => (
             <motion.div
-              key={idx}
+              key={index}
               variants={itemVariants}
               whileHover={{ x: 10, color: "#1D2331" }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="py-1 md:py-1.5 last:border-0 cursor-pointer group"
             >
-              <span
+              <Link href={`/service/${item?.slug}`}
                 className="geist-medium text-2xl md:text-5xl bg-gradient-to-r from-[#0E1429] to-[#2E4286] bg-clip-text text-transparent"
               >
-                {role}
-              </span>
+                {item?.title}
+              </Link>
             </motion.div>
           ))}
         </motion.div>

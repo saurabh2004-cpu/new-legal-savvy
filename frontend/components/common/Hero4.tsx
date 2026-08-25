@@ -39,7 +39,7 @@ function AnimatedCharacter({
           ? { color: "rgba(255, 255, 255, 0.95)" }
           : { WebkitTextStroke: "1px rgba(255, 255, 255, 0.9)", color: "transparent" })
       }}
-      className={`text-[14vw] md:text-[11vw] lg:text-[12vw] font-light uppercase leading-[0.95] tracking-tight`}
+      className={`text-[10vw] md:text-[10vw] lg:text-[10vw] font-light uppercase leading-[0.95] tracking-tight`}
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>

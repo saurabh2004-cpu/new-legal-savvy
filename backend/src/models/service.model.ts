@@ -5,6 +5,10 @@ export interface IService {
   title: string;
   slug: string;
   image: string;
+  homePageDescription?: string;
+  sequence: number;
+  metaTitle?: string;
+  metaDescription?: string;
   description: string;
   relatedServices?: Types.ObjectId[] | IService[];
   clientsAssisted?: string;
@@ -40,6 +44,28 @@ const serviceSchema = new Schema<ServiceDocument>(
       required: [true, "Service image URL/path is required"],
       trim: true,
     },
+
+    homePageDescription: {
+      type: String,
+      trim: true,
+    },
+
+    sequence: {
+      type: Number,
+      unique: true,
+      min: 1,
+    },
+
+    metaTitle: {
+      type: String,
+      trim: true,
+    },
+
+    metaDescription: {
+      type: String,
+      trim: true,
+    },
+
     description: {
       type: String,
       required: [true, "Service description is required"],

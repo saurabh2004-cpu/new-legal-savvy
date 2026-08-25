@@ -33,8 +33,12 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     }
 
     return {
-        title: serviceresponse.title,
-        description: serviceresponse.description || "Professional legal advocacy firm.",
+        title: serviceresponse.metaTitle || serviceresponse.title || "Legal Savvy",
+
+        description:
+            serviceresponse.metaDescription ||
+            serviceresponse.description ||
+            "Professional legal advocacy firm.",
     };
 }
 

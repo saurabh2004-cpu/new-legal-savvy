@@ -108,7 +108,7 @@ export default function Home() {
         buttonText3={"More About Us"}
         buttonText3Href={"/about"}
         paragraph={abotSectionParagraph}
-        paragraphMaxWidth="max-w-6xl" />
+        paragraphClass="xl:text-5xl max-w-6xl" />
       <WhyUs />
       <OurServices servicesData={servicesData} heading="Our Services" />
       <BankSettlements

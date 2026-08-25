@@ -6,13 +6,12 @@ interface ContentSectionProps {
 
 export default function ContentSection({ stateName = "Tirap" }: ContentSectionProps) {
   return (
-    <div>
+   <section className="w-full pb-1 px-2">
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4">
           <nav
-            className="
-                flex
+            className="flex
                 items-center
                 gap-2
                 text-[0.875rem]
@@ -529,6 +528,6 @@ export default function ContentSection({ stateName = "Tirap" }: ContentSectionPr
 
         </div>
       </div>
-    </div>
+    </section>
   );
 }

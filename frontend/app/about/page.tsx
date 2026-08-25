@@ -35,7 +35,7 @@ export default function About() {
                 buttonText3={"Talk to a Lawyer"}
                 buttonText3Href="/contact-us"
                 paragraph={abotSectionParagraph1}
-                paragraphMaxWidth="max-w-6xl"
+                paragraphClass="xl:text-5xl max-w-6xl"
             />
             <StatsSection />
             <AddressesSection />
@@ -48,7 +48,7 @@ export default function About() {
             />
             <TrustSection />
             <ConsultationSection />
-            <TeamSection />
+            {/* <TeamSection /> */}
             <Locations variant="cards" />
         </main>
     )

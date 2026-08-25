@@ -14,6 +14,7 @@ import { getImageUrl } from "@/utils/getImageUrl";
 interface RelatedService {
     id: number | string;
     label: string;
+    slug?: string;
 }
 
 interface ServiceCardData {
@@ -239,12 +240,16 @@ function ServiceCard({ card }: ServiceCardProps) {
                 </p>
 
                 <ul className="flex flex-wrap gap-4 mt-8">
-                    {card.relatedServices.map((service) => (
-                        <li key={service.id} className="flex items-center gap-2.5">
+                    {card.relatedServices.map((item) => (
+                        <li key={item.id} className="flex items-center gap-2.5">
                             <BulletIcon />
-                            <span className="text-[#000000b5] geist-regular text-[15px]">
-                                {service.label}
-                            </span>
+
+                            <Link
+                                href={`/service/${item.slug}`}
+                                className="text-[#000000b5] geist-regular text-[15px] hover:text-black hover:underline transition-colors duration-300"
+                            >
+                                {item.label}
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -282,6 +287,7 @@ export default function ServiceCards({ cards: initialCards }: ServiceCardsProps)
                             relatedServices: (s.relatedServices || []).map((rs: any, rsIndex: number) => ({
                                 id: rs._id || rsIndex,
                                 label: rs.title || rs.name,
+                                slug: rs.slug,
                             })),
                         };
                     });

@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography } from '@mui/material';
+import {
+    Grid,
+    Box,
+    CircularProgress,
+    Alert,
+    Snackbar,
+    MenuItem,
+    Select,
+    FormControl,
+    Typography
+} from '@mui/material';
 import Button from '@mui/material/Button';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
-import { getServiceById, updateService, getAllServices } from '../../../services/servicesService';
+import {
+    getServiceById,
+    updateService,
+    getAllServices
+} from '../../../services/servicesService';
 import { useNavigate, useParams } from 'react-router';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 
 const ServiceEdit = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: '',
         title: '',
+        homePageDescription: '',
+        sequence: '',
+        metaTitle: '',
+        metaDescription: '',
         description: '',
         image: '',
         relatedServices: [],
@@ -35,6 +54,7 @@ const ServiceEdit = () => {
         const fetchServicesAndData = async () => {
             try {
                 const servicesRes = await getAllServices();
+
                 if (servicesRes.data && servicesRes.data.data) {
                     setServices(servicesRes.data.data);
                 } else if (servicesRes.data) {
@@ -43,24 +63,53 @@ const ServiceEdit = () => {
 
                 const res = await getServiceById(id);
                 const data = res.data?.data || res.data;
+
                 if (data) {
                     setFormData({
                         name: data.name || '',
                         title: data.title || '',
+
+                        // NEW FIELDS
+                        homePageDescription: data.homePageDescription || '',
+                        sequence: data.sequence || '',
+                        metaTitle: data.metaTitle || '',
+                        metaDescription: data.metaDescription || '',
+
                         description: data.description || '',
                         image: data.image || '',
-                        relatedServices: data.relatedServices ? data.relatedServices.map(s => typeof s === 'object' ? s._id : s) : [],
+
+                        relatedServices: data.relatedServices
+                            ? data.relatedServices.map(s =>
+                                typeof s === 'object' ? s._id : s
+                            )
+                            : [],
+
                         clientsAssisted: data.clientsAssisted || '',
                         highlight: data.highlight || '',
                         startingFrom: data.startingFrom || '',
                         fullDescription: data.fullDescription || '',
-                        shortDescriptionPoints: data.shortDescriptionPoints ? data.shortDescriptionPoints.join('\n') : ''
+                        shortDescriptionPoints: data.shortDescriptionPoints
+                            ? data.shortDescriptionPoints.join('\n')
+                            : ''
                     });
+
                     if (data.image) {
-                        const rawBackendUrl = import.meta.env.VITE_BASE_BACKEND_URL || '';
-                        const baseUrl = rawBackendUrl.replace(/\/api\/v1\/?$/, '');
-                        const relativePath = data.image.startsWith('/') ? data.image : `/${data.image}`;
-                        const imageUrl = data.image.startsWith('http') ? data.image : `${baseUrl}${relativePath}`;
+                        const rawBackendUrl =
+                            import.meta.env.VITE_BASE_BACKEND_URL || '';
+
+                        const baseUrl = rawBackendUrl.replace(
+                            /\/api\/v1\/?$/,
+                            ''
+                        );
+
+                        const relativePath = data.image.startsWith('/')
+                            ? data.image
+                            : `/${data.image}`;
+
+                        const imageUrl = data.image.startsWith('http')
+                            ? data.image
+                            : `${baseUrl}${relativePath}`;
+
                         setFilePreview(imageUrl);
                     }
                 }
@@ -78,6 +127,7 @@ const ServiceEdit = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
         setFormData(prev => ({
             ...prev,
             [name]: value
@@ -86,6 +136,7 @@ const ServiceEdit = () => {
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
+
         if (file) {
             setSelectedFile(file);
             setFilePreview(URL.createObjectURL(file));
@@ -93,46 +144,116 @@ const ServiceEdit = () => {
     };
 
     const validateForm = () => {
-        if (!formData.name || !formData.title || !formData.description) {
+        if (
+            !formData.name ||
+            !formData.title ||
+            !formData.description
+        ) {
             setError('Please fill all required fields');
             return false;
         }
+
+        // Sequence is optional
+        if (
+            formData.sequence !== '' &&
+            (
+                !Number.isInteger(Number(formData.sequence)) ||
+                Number(formData.sequence) < 1
+            )
+        ) {
+            setError('Sequence must be a positive integer');
+            return false;
+        }
+
         return true;
     };
 
     const handleSubmit = async () => {
         if (!validateForm()) return;
+
         setLoading(true);
+
         try {
             const data = new FormData();
+
             data.append('name', formData.name);
             data.append('title', formData.title);
+
+            // NEW FIELDS
+            data.append(
+                'homePageDescription',
+                formData.homePageDescription
+            );
+
+            // Only send sequence if provided
+            if (formData.sequence !== '') {
+                data.append('sequence', formData.sequence);
+            }
+
+            data.append('metaTitle', formData.metaTitle);
+            data.append('metaDescription', formData.metaDescription);
+
             data.append('description', formData.description);
-            data.append('clientsAssisted', formData.clientsAssisted);
-            data.append('highlight', formData.highlight);
-            data.append('startingFrom', formData.startingFrom);
-            data.append('fullDescription', formData.fullDescription);
-            
+
+            data.append(
+                'clientsAssisted',
+                formData.clientsAssisted
+            );
+
+            data.append(
+                'highlight',
+                formData.highlight
+            );
+
+            data.append(
+                'startingFrom',
+                formData.startingFrom
+            );
+
+            data.append(
+                'fullDescription',
+                formData.fullDescription
+            );
+
             if (selectedFile) {
                 data.append('image', selectedFile);
             } else {
                 data.append('image', formData.image);
             }
 
-            data.append('relatedServices', JSON.stringify(formData.relatedServices));
+            data.append(
+                'relatedServices',
+                JSON.stringify(formData.relatedServices)
+            );
 
             const points = formData.shortDescriptionPoints
-                ? formData.shortDescriptionPoints.split('\n').map(p => p.trim()).filter(p => p !== '')
+                ? formData.shortDescriptionPoints
+                    .split('\n')
+                    .map(p => p.trim())
+                    .filter(p => p !== '')
                 : [];
-            data.append('shortDescriptionPoints', JSON.stringify(points));
+
+            data.append(
+                'shortDescriptionPoints',
+                JSON.stringify(points)
+            );
 
             const res = await updateService(id, data);
+
             if (res.status === 200 || res.data) {
                 setSuccess(true);
-                setTimeout(() => navigate('/dashboard/services/list'), 1500);
+
+                setTimeout(() => {
+                    navigate('/dashboard/services/list');
+                }, 1500);
             }
         } catch (error) {
-            const errDetails = error.response?.data?.message || error.response?.data?.error || error.response?.data?.details || error.message;
+            const errDetails =
+                error.response?.data?.message ||
+                error.response?.data?.error ||
+                error.response?.data?.details ||
+                error.message;
+
             setError(errDetails || 'An error occurred');
         } finally {
             setLoading(false);
@@ -152,7 +273,11 @@ const ServiceEdit = () => {
 
     if (fetchLoading) {
         return (
-            <Box display="flex" justifyContent="center" mt={5}>
+            <Box
+                display="flex"
+                justifyContent="center"
+                mt={5}
+            >
                 <CircularProgress />
             </Box>
         );
@@ -160,79 +285,278 @@ const ServiceEdit = () => {
 
     return (
         <div>
-            <Breadcrumb title="Edit Service" items={BCrumb} />
+            <Breadcrumb
+                title="Edit Service"
+                items={BCrumb}
+            />
+
             <Grid container spacing={3}>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <CustomFormLabel htmlFor="name">Name *</CustomFormLabel>
-                    <CustomOutlinedInput id="name" name="name" fullWidth value={formData.name} onChange={handleChange} />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <CustomFormLabel htmlFor="title">Title *</CustomFormLabel>
-                    <CustomOutlinedInput id="title" name="title" fullWidth value={formData.title} onChange={handleChange} />
-                </Grid>
-                <Grid size={{ xs: 12 }}>
-                    <CustomFormLabel htmlFor="description">Description *</CustomFormLabel>
-                    <CustomOutlinedInput id="description" name="description" multiline rows={4} fullWidth value={formData.description} onChange={handleChange} />
-                </Grid>
 
+                {/* Name */}
                 <Grid size={{ xs: 12, sm: 4 }}>
-                    <CustomFormLabel htmlFor="clientsAssisted">Clients Assisted</CustomFormLabel>
-                    <CustomOutlinedInput id="clientsAssisted" name="clientsAssisted" placeholder="e.g. 2,500+" fullWidth value={formData.clientsAssisted} onChange={handleChange} />
+                    <CustomFormLabel htmlFor="name">
+                        Name *
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="name"
+                        name="name"
+                        fullWidth
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
                 </Grid>
+
+                {/* Title */}
                 <Grid size={{ xs: 12, sm: 4 }}>
-                    <CustomFormLabel htmlFor="highlight">Highlight</CustomFormLabel>
-                    <CustomOutlinedInput id="highlight" name="highlight" placeholder="e.g. Fast eligibility guidance" fullWidth value={formData.highlight} onChange={handleChange} />
+                    <CustomFormLabel htmlFor="title">
+                        Title *
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="title"
+                        name="title"
+                        fullWidth
+                        value={formData.title}
+                        onChange={handleChange}
+                    />
                 </Grid>
+
+                {/* Sequence */}
                 <Grid size={{ xs: 12, sm: 4 }}>
-                    <CustomFormLabel htmlFor="startingFrom">Starting From</CustomFormLabel>
-                    <CustomOutlinedInput id="startingFrom" name="startingFrom" placeholder="e.g. ₹999" fullWidth value={formData.startingFrom} onChange={handleChange} />
+                    <CustomFormLabel htmlFor="sequence">
+                        Sequence
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="sequence"
+                        name="sequence"
+                        type="number"
+                        fullWidth
+                        inputProps={{ min: 1 }}
+                        placeholder="Leave empty to keep current sequence"
+                        value={formData.sequence}
+                        onChange={handleChange}
+                    />
                 </Grid>
 
+                {/* Home Page Description */}
                 <Grid size={{ xs: 12 }}>
-                    <CustomFormLabel htmlFor="fullDescription">Full Description</CustomFormLabel>
-                    <CustomOutlinedInput id="fullDescription" name="fullDescription" multiline rows={6} placeholder="Enter full description details..." fullWidth value={formData.fullDescription} onChange={handleChange} />
+                    <CustomFormLabel htmlFor="homePageDescription">
+                        Home Page Description
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="homePageDescription"
+                        name="homePageDescription"
+                        multiline
+                        rows={3}
+                        fullWidth
+                        placeholder="Enter description to be displayed on the home page..."
+                        value={formData.homePageDescription}
+                        onChange={handleChange}
+                    />
                 </Grid>
 
-                <Grid size={{ xs: 12 }}>
-                    <CustomFormLabel htmlFor="shortDescriptionPoints">Short Description Points (One point per line)</CustomFormLabel>
-                    <CustomOutlinedInput id="shortDescriptionPoints" name="shortDescriptionPoints" multiline rows={4} placeholder="Eligibility Checking Based On Income&#10;Guidance For Salaried Applicants&#10;Assistance With Document Preparation" fullWidth value={formData.shortDescriptionPoints} onChange={handleChange} />
-                </Grid>
-
+                {/* Meta Title */}
                 <Grid size={{ xs: 12, sm: 6 }}>
-                    <CustomFormLabel htmlFor="image">Service Image *</CustomFormLabel>
-                    <Box display="flex" alignItems="center" gap={2}>
-                        <Button variant="outlined" component="label">
+                    <CustomFormLabel htmlFor="metaTitle">
+                        Meta Title
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="metaTitle"
+                        name="metaTitle"
+                        fullWidth
+                        placeholder="Enter SEO meta title..."
+                        value={formData.metaTitle}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Meta Description */}
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="metaDescription">
+                        Meta Description
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="metaDescription"
+                        name="metaDescription"
+                        fullWidth
+                        placeholder="Enter SEO meta description..."
+                        value={formData.metaDescription}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Description */}
+                <Grid size={{ xs: 12 }}>
+                    <CustomFormLabel htmlFor="description">
+                        Description *
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="description"
+                        name="description"
+                        multiline
+                        rows={4}
+                        fullWidth
+                        value={formData.description}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Clients Assisted */}
+                <Grid size={{ xs: 12, sm: 4 }}>
+                    <CustomFormLabel htmlFor="clientsAssisted">
+                        Clients Assisted
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="clientsAssisted"
+                        name="clientsAssisted"
+                        placeholder="e.g. 2,500+"
+                        fullWidth
+                        value={formData.clientsAssisted}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Highlight */}
+                <Grid size={{ xs: 12, sm: 4 }}>
+                    <CustomFormLabel htmlFor="highlight">
+                        Highlight
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="highlight"
+                        name="highlight"
+                        placeholder="e.g. Fast eligibility guidance"
+                        fullWidth
+                        value={formData.highlight}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Starting From */}
+                <Grid size={{ xs: 12, sm: 4 }}>
+                    <CustomFormLabel htmlFor="startingFrom">
+                        Starting From
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="startingFrom"
+                        name="startingFrom"
+                        placeholder="e.g. ₹999"
+                        fullWidth
+                        value={formData.startingFrom}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Full Description */}
+                <Grid size={{ xs: 12 }}>
+                    <CustomFormLabel htmlFor="fullDescription">
+                        Full Description
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="fullDescription"
+                        name="fullDescription"
+                        multiline
+                        rows={6}
+                        placeholder="Enter full description details..."
+                        fullWidth
+                        value={formData.fullDescription}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Short Description Points */}
+                <Grid size={{ xs: 12 }}>
+                    <CustomFormLabel htmlFor="shortDescriptionPoints">
+                        Short Description Points (One point per line)
+                    </CustomFormLabel>
+
+                    <CustomOutlinedInput
+                        id="shortDescriptionPoints"
+                        name="shortDescriptionPoints"
+                        multiline
+                        rows={4}
+                        placeholder={`Eligibility Checking Based On Income
+Guidance For Salaried Applicants
+Assistance With Document Preparation`}
+                        fullWidth
+                        value={formData.shortDescriptionPoints}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                {/* Image */}
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="image">
+                        Service Image *
+                    </CustomFormLabel>
+
+                    <Box
+                        display="flex"
+                        alignItems="center"
+                        gap={2}
+                    >
+                        <Button
+                            variant="outlined"
+                            component="label"
+                        >
                             Choose Image
-                            <input 
-                                type="file" 
-                                hidden 
-                                accept="image/*" 
-                                onChange={handleFileChange} 
+
+                            <input
+                                type="file"
+                                hidden
+                                accept="image/*"
+                                onChange={handleFileChange}
                             />
                         </Button>
+
                         {selectedFile ? (
-                            <Typography variant="body2" color="textSecondary">
+                            <Typography
+                                variant="body2"
+                                color="textSecondary"
+                            >
                                 {selectedFile.name}
                             </Typography>
                         ) : formData.image ? (
-                            <Typography variant="body2" color="textSecondary">
+                            <Typography
+                                variant="body2"
+                                color="textSecondary"
+                            >
                                 Existing image loaded
                             </Typography>
                         ) : null}
                     </Box>
+
                     {filePreview && (
                         <Box mt={2}>
-                            <img 
-                                src={filePreview} 
-                                alt="Preview" 
-                                style={{ maxWidth: '100%', maxHeight: '150px', borderRadius: '4px', objectFit: 'cover' }} 
+                            <img
+                                src={filePreview}
+                                alt="Preview"
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '150px',
+                                    borderRadius: '4px',
+                                    objectFit: 'cover'
+                                }}
                             />
                         </Box>
                     )}
                 </Grid>
 
+                {/* Related Services */}
                 <Grid size={{ xs: 12, sm: 6 }}>
-                    <CustomFormLabel htmlFor="relatedServices">Related Services</CustomFormLabel>
+                    <CustomFormLabel htmlFor="relatedServices">
+                        Related Services
+                    </CustomFormLabel>
+
                     <FormControl fullWidth>
                         <Select
                             id="relatedServices"
@@ -242,32 +566,64 @@ const ServiceEdit = () => {
                             onChange={handleChange}
                             displayEmpty
                         >
-                            {services.map((service) => (
-                                <MenuItem key={service._id || service.id} value={service._id || service.id}>
-                                    {service.title}
-                                </MenuItem>
-                            ))}
+                            {services
+                                .filter((service) => (service._id || service.id) !== id)
+                                .map((service) => (
+                                    <MenuItem
+                                        key={service._id || service.id}
+                                        value={service._id || service.id}
+                                    >
+                                        {service.title}
+                                    </MenuItem>
+                                ))}
                         </Select>
                     </FormControl>
                 </Grid>
 
-                <Grid item size={{ xs: 12 }} mt={3}>
-                    <Button variant="contained" color="primary" onClick={handleSubmit} disabled={loading}>
-                        {loading ? <CircularProgress size={24} /> : 'Update Service'}
+                {/* Submit */}
+                <Grid
+                    item
+                    size={{ xs: 12 }}
+                    mt={3}
+                >
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <CircularProgress size={24} />
+                        ) : (
+                            'Update Service'
+                        )}
                     </Button>
                 </Grid>
-            </Grid> 
+            </Grid>
 
             <Snackbar
                 open={!!error || success}
                 autoHideDuration={6000}
                 onClose={handleCloseSnackbar}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                }}
             >
                 {error ? (
-                    <Alert onClose={handleCloseSnackbar} severity="error">{error}</Alert>
+                    <Alert
+                        onClose={handleCloseSnackbar}
+                        severity="error"
+                    >
+                        {error}
+                    </Alert>
                 ) : (
-                    <Alert onClose={handleCloseSnackbar} severity="success">Service updated successfully!</Alert>
+                    <Alert
+                        onClose={handleCloseSnackbar}
+                        severity="success"
+                    >
+                        Service updated successfully!
+                    </Alert>
                 )}
             </Snackbar>
         </div>
@@ -275,3 +631,282 @@ const ServiceEdit = () => {
 };
 
 export default ServiceEdit;
+
+
+// import React, { useState, useEffect } from 'react';
+// import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography } from '@mui/material';
+// import Button from '@mui/material/Button';
+// import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
+// import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
+// import { getServiceById, updateService, getAllServices } from '../../../services/servicesService';
+// import { useNavigate, useParams } from 'react-router';
+// import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
+
+// const ServiceEdit = () => {
+//     const { id } = useParams();
+//     const navigate = useNavigate();
+//     const [formData, setFormData] = useState({
+//         name: '',
+//         title: '',
+//         description: '',
+//         image: '',
+//         relatedServices: [],
+//         clientsAssisted: '',
+//         highlight: '',
+//         startingFrom: '',
+//         fullDescription: '',
+//         shortDescriptionPoints: ''
+//     });
+
+//     const [selectedFile, setSelectedFile] = useState(null);
+//     const [filePreview, setFilePreview] = useState('');
+//     const [services, setServices] = useState([]);
+//     const [loading, setLoading] = useState(false);
+//     const [fetchLoading, setFetchLoading] = useState(true);
+//     const [error, setError] = useState('');
+//     const [success, setSuccess] = useState(false);
+
+//     useEffect(() => {
+//         const fetchServicesAndData = async () => {
+//             try {
+//                 const servicesRes = await getAllServices();
+//                 if (servicesRes.data && servicesRes.data.data) {
+//                     setServices(servicesRes.data.data);
+//                 } else if (servicesRes.data) {
+//                     setServices(servicesRes.data);
+//                 }
+
+//                 const res = await getServiceById(id);
+//                 const data = res.data?.data || res.data;
+//                 if (data) {
+//                     setFormData({
+//                         name: data.name || '',
+//                         title: data.title || '',
+//                         description: data.description || '',
+//                         image: data.image || '',
+//                         relatedServices: data.relatedServices ? data.relatedServices.map(s => typeof s === 'object' ? s._id : s) : [],
+//                         clientsAssisted: data.clientsAssisted || '',
+//                         highlight: data.highlight || '',
+//                         startingFrom: data.startingFrom || '',
+//                         fullDescription: data.fullDescription || '',
+//                         shortDescriptionPoints: data.shortDescriptionPoints ? data.shortDescriptionPoints.join('\n') : ''
+//                     });
+//                     if (data.image) {
+//                         const rawBackendUrl = import.meta.env.VITE_BASE_BACKEND_URL || '';
+//                         const baseUrl = rawBackendUrl.replace(/\/api\/v1\/?$/, '');
+//                         const relativePath = data.image.startsWith('/') ? data.image : `/${data.image}`;
+//                         const imageUrl = data.image.startsWith('http') ? data.image : `${baseUrl}${relativePath}`;
+//                         setFilePreview(imageUrl);
+//                     }
+//                 }
+//             } catch (error) {
+//                 setError('Failed to fetch data');
+//             } finally {
+//                 setFetchLoading(false);
+//             }
+//         };
+
+//         if (id) {
+//             fetchServicesAndData();
+//         }
+//     }, [id]);
+
+//     const handleChange = (e) => {
+//         const { name, value } = e.target;
+//         setFormData(prev => ({
+//             ...prev,
+//             [name]: value
+//         }));
+//     };
+
+//     const handleFileChange = (e) => {
+//         const file = e.target.files[0];
+//         if (file) {
+//             setSelectedFile(file);
+//             setFilePreview(URL.createObjectURL(file));
+//         }
+//     };
+
+//     const validateForm = () => {
+//         if (!formData.name || !formData.title || !formData.description) {
+//             setError('Please fill all required fields');
+//             return false;
+//         }
+//         return true;
+//     };
+
+//     const handleSubmit = async () => {
+//         if (!validateForm()) return;
+//         setLoading(true);
+//         try {
+//             const data = new FormData();
+//             data.append('name', formData.name);
+//             data.append('title', formData.title);
+//             data.append('description', formData.description);
+//             data.append('clientsAssisted', formData.clientsAssisted);
+//             data.append('highlight', formData.highlight);
+//             data.append('startingFrom', formData.startingFrom);
+//             data.append('fullDescription', formData.fullDescription);
+            
+//             if (selectedFile) {
+//                 data.append('image', selectedFile);
+//             } else {
+//                 data.append('image', formData.image);
+//             }
+
+//             data.append('relatedServices', JSON.stringify(formData.relatedServices));
+
+//             const points = formData.shortDescriptionPoints
+//                 ? formData.shortDescriptionPoints.split('\n').map(p => p.trim()).filter(p => p !== '')
+//                 : [];
+//             data.append('shortDescriptionPoints', JSON.stringify(points));
+
+//             const res = await updateService(id, data);
+//             if (res.status === 200 || res.data) {
+//                 setSuccess(true);
+//                 setTimeout(() => navigate('/dashboard/services/list'), 1500);
+//             }
+//         } catch (error) {
+//             const errDetails = error.response?.data?.message || error.response?.data?.error || error.response?.data?.details || error.message;
+//             setError(errDetails || 'An error occurred');
+//         } finally {
+//             setLoading(false);
+//         }
+//     };
+
+//     const handleCloseSnackbar = () => {
+//         setSuccess(false);
+//         setError('');
+//     };
+
+//     const BCrumb = [
+//         { to: '/', title: 'Home' },
+//         { to: '/dashboard/services/list', title: 'Services' },
+//         { title: 'Edit Service' },
+//     ];
+
+//     if (fetchLoading) {
+//         return (
+//             <Box display="flex" justifyContent="center" mt={5}>
+//                 <CircularProgress />
+//             </Box>
+//         );
+//     }
+
+//     return (
+//         <div>
+//             <Breadcrumb title="Edit Service" items={BCrumb} />
+//             <Grid container spacing={3}>
+//                 <Grid size={{ xs: 12, sm: 6 }}>
+//                     <CustomFormLabel htmlFor="name">Name *</CustomFormLabel>
+//                     <CustomOutlinedInput id="name" name="name" fullWidth value={formData.name} onChange={handleChange} />
+//                 </Grid>
+//                 <Grid size={{ xs: 12, sm: 6 }}>
+//                     <CustomFormLabel htmlFor="title">Title *</CustomFormLabel>
+//                     <CustomOutlinedInput id="title" name="title" fullWidth value={formData.title} onChange={handleChange} />
+//                 </Grid>
+//                 <Grid size={{ xs: 12 }}>
+//                     <CustomFormLabel htmlFor="description">Description *</CustomFormLabel>
+//                     <CustomOutlinedInput id="description" name="description" multiline rows={4} fullWidth value={formData.description} onChange={handleChange} />
+//                 </Grid>
+
+//                 <Grid size={{ xs: 12, sm: 4 }}>
+//                     <CustomFormLabel htmlFor="clientsAssisted">Clients Assisted</CustomFormLabel>
+//                     <CustomOutlinedInput id="clientsAssisted" name="clientsAssisted" placeholder="e.g. 2,500+" fullWidth value={formData.clientsAssisted} onChange={handleChange} />
+//                 </Grid>
+//                 <Grid size={{ xs: 12, sm: 4 }}>
+//                     <CustomFormLabel htmlFor="highlight">Highlight</CustomFormLabel>
+//                     <CustomOutlinedInput id="highlight" name="highlight" placeholder="e.g. Fast eligibility guidance" fullWidth value={formData.highlight} onChange={handleChange} />
+//                 </Grid>
+//                 <Grid size={{ xs: 12, sm: 4 }}>
+//                     <CustomFormLabel htmlFor="startingFrom">Starting From</CustomFormLabel>
+//                     <CustomOutlinedInput id="startingFrom" name="startingFrom" placeholder="e.g. ₹999" fullWidth value={formData.startingFrom} onChange={handleChange} />
+//                 </Grid>
+
+//                 <Grid size={{ xs: 12 }}>
+//                     <CustomFormLabel htmlFor="fullDescription">Full Description</CustomFormLabel>
+//                     <CustomOutlinedInput id="fullDescription" name="fullDescription" multiline rows={6} placeholder="Enter full description details..." fullWidth value={formData.fullDescription} onChange={handleChange} />
+//                 </Grid>
+
+//                 <Grid size={{ xs: 12 }}>
+//                     <CustomFormLabel htmlFor="shortDescriptionPoints">Short Description Points (One point per line)</CustomFormLabel>
+//                     <CustomOutlinedInput id="shortDescriptionPoints" name="shortDescriptionPoints" multiline rows={4} placeholder="Eligibility Checking Based On Income&#10;Guidance For Salaried Applicants&#10;Assistance With Document Preparation" fullWidth value={formData.shortDescriptionPoints} onChange={handleChange} />
+//                 </Grid>
+
+//                 <Grid size={{ xs: 12, sm: 6 }}>
+//                     <CustomFormLabel htmlFor="image">Service Image *</CustomFormLabel>
+//                     <Box display="flex" alignItems="center" gap={2}>
+//                         <Button variant="outlined" component="label">
+//                             Choose Image
+//                             <input 
+//                                 type="file" 
+//                                 hidden 
+//                                 accept="image/*" 
+//                                 onChange={handleFileChange} 
+//                             />
+//                         </Button>
+//                         {selectedFile ? (
+//                             <Typography variant="body2" color="textSecondary">
+//                                 {selectedFile.name}
+//                             </Typography>
+//                         ) : formData.image ? (
+//                             <Typography variant="body2" color="textSecondary">
+//                                 Existing image loaded
+//                             </Typography>
+//                         ) : null}
+//                     </Box>
+//                     {filePreview && (
+//                         <Box mt={2}>
+//                             <img 
+//                                 src={filePreview} 
+//                                 alt="Preview" 
+//                                 style={{ maxWidth: '100%', maxHeight: '150px', borderRadius: '4px', objectFit: 'cover' }} 
+//                             />
+//                         </Box>
+//                     )}
+//                 </Grid>
+
+//                 <Grid size={{ xs: 12, sm: 6 }}>
+//                     <CustomFormLabel htmlFor="relatedServices">Related Services</CustomFormLabel>
+//                     <FormControl fullWidth>
+//                         <Select
+//                             id="relatedServices"
+//                             name="relatedServices"
+//                             multiple
+//                             value={formData.relatedServices}
+//                             onChange={handleChange}
+//                             displayEmpty
+//                         >
+//                             {services.map((service) => (
+//                                 <MenuItem key={service._id || service.id} value={service._id || service.id}>
+//                                     {service.title}
+//                                 </MenuItem>
+//                             ))}
+//                         </Select>
+//                     </FormControl>
+//                 </Grid>
+
+//                 <Grid item size={{ xs: 12 }} mt={3}>
+//                     <Button variant="contained" color="primary" onClick={handleSubmit} disabled={loading}>
+//                         {loading ? <CircularProgress size={24} /> : 'Update Service'}
+//                     </Button>
+//                 </Grid>
+//             </Grid> 
+
+//             <Snackbar
+//                 open={!!error || success}
+//                 autoHideDuration={6000}
+//                 onClose={handleCloseSnackbar}
+//                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+//             >
+//                 {error ? (
+//                     <Alert onClose={handleCloseSnackbar} severity="error">{error}</Alert>
+//                 ) : (
+//                     <Alert onClose={handleCloseSnackbar} severity="success">Service updated successfully!</Alert>
+//                 )}
+//             </Snackbar>
+//         </div>
+//     );
+// };
+
+// export default ServiceEdit;

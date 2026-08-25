@@ -6,35 +6,14 @@ interface ContentSectionProps {
 
 export default function ContentSection({ cityName = "Tirap" }: ContentSectionProps) {
   return (
-    <div>
+    <section className="w-full pb-1 px-2">
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4">
-          <nav
-            className="
-                flex
-                items-center
-                gap-2
-                text-[0.875rem]
-                font-[Geist]
-                font-normal
-                leading-[100%]
-                tracking-[0%]
-                text-gray-500
-                flex-wrap
-              "
-          >
+          <nav className="flex items-center gap-2 text-[0.875rem] font-normal leading-[100%] tracking-[0%] text-gray-500 flex-wrap">
             <Link
               href="/"
-              className="
-                font-[Geist]
-                font-normal
-                text-[0.875rem]
-                leading-[100%]
-                tracking-[0%]
-                hover:text-blue-600
-                transition-colors
-              "
+              className="font-normal text-[0.875rem] leading-[100%] tracking-[0%] hover:text-blue-600 transition-colors"
             >
               Home
             </Link>
@@ -55,15 +34,7 @@ export default function ContentSection({ cityName = "Tirap" }: ContentSectionPro
 
             <Link
               href="/loan-settlement-by-city"
-              className="
-              font-[Geist]
-              font-semibold
-              text-[0.875rem]
-              leading-[100%]
-              tracking-[0%]
-              hover:text-blue-600
-              transition-colors
-            "
+              className="font-semibold text-[0.875rem] leading-[100%] tracking-[0%] hover:text-blue-600 transition-colors"
             >
               Loan Settlement by City
             </Link>
@@ -82,24 +53,14 @@ export default function ContentSection({ cityName = "Tirap" }: ContentSectionPro
               />
             </svg>
 
-            <span
-              className="
-              font-[Geist]
-              font-medium
-              text-[0.95rem]
-              leading-[100%]
-              tracking-[0%]
-              text-gray-900
-            "
-            >
-              Loan Settlement in {cityName}
-            </span>
+            <span className="font-medium text-[0.95rem] leading-[100%] tracking-[0%] text-gray-900">Loan Settlement in {cityName}</span>
           </nav>
         </div>
       </div>
 
       {/* Main Container */}
-      <div className="max-w-[97vw] mx-auto px-4 py-16">
+      {/* <div className="max-w-[97vw] mx-auto px-4 py-16"> */}
+      <div className="max-w-8xl mx-auto px-4 py-6 md:px-8 lg:px-14 lg:py-16 rounded-xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
           {/* Left Sidebar - Table of Contents */}
@@ -529,6 +490,6 @@ export default function ContentSection({ cityName = "Tirap" }: ContentSectionPro
 
         </div>
       </div>
-    </div>
+    </section>
   );
 }

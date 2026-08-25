@@ -533,6 +533,9 @@ const ProductTableList = ({
                                 </Tooltip>
                               </Box>
                             </TableCell>
+
+                            <TableCell><Typography fontWeight="600">{row.sequence}</Typography></TableCell>
+
                             <TableCell>
                               {row.image ? (
                                 <Box
@@ -699,10 +702,10 @@ const ProductTableList = ({
                             </TableCell>
                             <TableCell><Typography fontWeight="600">{row.name}</Typography></TableCell>
                             <TableCell>
-                              <Chip 
-                                label={row.type} 
-                                size="small" 
-                                color={row.type === 'city' ? 'primary' : row.type === 'state' ? 'secondary' : 'default'} 
+                              <Chip
+                                label={row.type}
+                                size="small"
+                                color={row.type === 'city' ? 'primary' : row.type === 'state' ? 'secondary' : 'default'}
                               />
                             </TableCell>
                             <TableCell><Typography>{row.isFeatured ? 'Yes' : 'No'}</Typography></TableCell>
@@ -728,10 +731,10 @@ const ProductTableList = ({
                             </TableCell>
                             <TableCell><Typography fontWeight="600">{row.keyword}</Typography></TableCell>
                             <TableCell>
-                              <Chip 
-                                label={row.status} 
-                                size="small" 
-                                color={row.status === 'completed' ? 'success' : 'warning'} 
+                              <Chip
+                                label={row.status}
+                                size="small"
+                                color={row.status === 'completed' ? 'success' : 'warning'}
                               />
                             </TableCell>
                             <TableCell><Typography>{format(new Date(row.createdAt || new Date()), 'E, MMM d yyyy')}</Typography></TableCell>

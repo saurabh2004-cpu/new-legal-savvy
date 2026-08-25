@@ -77,7 +77,7 @@ export default function QnaSection() {
                                     className="flex gap-4 items-center"
                                 >
                                     {/* Left Index Badge */}
-                                    <div className="bg-[#363D4F] transition-colors duration-300 rounded-[1rem] px-5 py-4 sm:px-7 sm:py-5 flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+                                    <div className="bg-[#363D4F] text-white transition-colors duration-300 rounded-[1rem] px-5 py-4 sm:px-7 sm:py-5 flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
                                         {idx + 1}
                                     </div>
 

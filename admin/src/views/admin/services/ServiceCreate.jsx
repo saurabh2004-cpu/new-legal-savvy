@@ -12,6 +12,10 @@ const ServiceCreate = () => {
     const [formData, setFormData] = useState({
         name: '',
         title: '',
+        homePageDescription: '',
+        sequence: '',
+        metaTitle: '',
+        metaDescription: '',
         description: '',
         relatedServices: [],
         clientsAssisted: '',
@@ -61,14 +65,30 @@ const ServiceCreate = () => {
     };
 
     const validateForm = () => {
-        if (!formData.name || !formData.title || !formData.description) {
+        if (
+            !formData.name ||
+            !formData.title ||
+            !formData.description
+        ) {
             setError('Please fill all required fields');
             return false;
         }
+
+        // Validate sequence only if provided
+        if (
+            formData.sequence !== '' &&
+            (!Number.isInteger(Number(formData.sequence)) ||
+                Number(formData.sequence) < 1)
+        ) {
+            setError('Sequence must be a positive integer');
+            return false;
+        }
+
         if (!selectedFile) {
             setError('Please select an image file');
             return false;
         }
+
         return true;
     };
 
@@ -79,6 +99,10 @@ const ServiceCreate = () => {
             const data = new FormData();
             data.append('name', formData.name);
             data.append('title', formData.title);
+            data.append('homePageDescription', formData.homePageDescription);
+            data.append('sequence', formData.sequence);
+            data.append('metaTitle', formData.metaTitle);
+            data.append('metaDescription', formData.metaDescription);
             data.append('description', formData.description);
             data.append('clientsAssisted', formData.clientsAssisted);
             data.append('highlight', formData.highlight);
@@ -86,7 +110,7 @@ const ServiceCreate = () => {
             data.append('fullDescription', formData.fullDescription);
             data.append('image', selectedFile);
             data.append('relatedServices', JSON.stringify(formData.relatedServices));
-            
+
             const points = formData.shortDescriptionPoints
                 ? formData.shortDescriptionPoints.split('\n').map(p => p.trim()).filter(p => p !== '')
                 : [];
@@ -120,27 +144,93 @@ const ServiceCreate = () => {
         <div>
             <Breadcrumb title="Create Service" items={BCrumb} />
             <Grid container spacing={3}>
-                <Grid size={{ xs: 12, sm: 6 }}>
+                <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="name">Name *</CustomFormLabel>
                     <CustomOutlinedInput id="name" name="name" fullWidth value={formData.name} onChange={handleChange} />
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
+
+                <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="title">Title *</CustomFormLabel>
                     <CustomOutlinedInput id="title" name="title" fullWidth value={formData.title} onChange={handleChange} />
                 </Grid>
+
+                <Grid size={{ xs: 12, sm: 4 }}>
+                    <CustomFormLabel htmlFor="sequence">
+                        Sequence *
+                    </CustomFormLabel>
+                    <CustomOutlinedInput
+                        id="sequence"
+                        name="sequence"
+                        type="number"
+                        fullWidth
+                        inputProps={{ min: 1 }}
+                        placeholder="e.g. 1"
+                        value={formData.sequence}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                <Grid size={{ xs: 12 }}>
+                    <CustomFormLabel htmlFor="homePageDescription">
+                        Home Page Description
+                    </CustomFormLabel>
+                    <CustomOutlinedInput
+                        id="homePageDescription"
+                        name="homePageDescription"
+                        multiline
+                        rows={3}
+                        fullWidth
+                        placeholder="Enter description to be displayed on the home page..."
+                        value={formData.homePageDescription}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="metaTitle">
+                        Meta Title
+                    </CustomFormLabel>
+                    <CustomOutlinedInput
+                        id="metaTitle"
+                        name="metaTitle"
+                        fullWidth
+                        placeholder="Enter SEO meta title..."
+                        value={formData.metaTitle}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="metaDescription">
+                        Meta Description
+                    </CustomFormLabel>
+                    <CustomOutlinedInput
+                        id="metaDescription"
+                        name="metaDescription"
+                        // multiline
+                        // rows={2}
+                        fullWidth
+                        placeholder="Enter SEO meta description..."
+                        value={formData.metaDescription}
+                        onChange={handleChange}
+                    />
+                </Grid>
+
                 <Grid size={{ xs: 12 }}>
                     <CustomFormLabel htmlFor="description">Description *</CustomFormLabel>
                     <CustomOutlinedInput id="description" name="description" multiline rows={4} fullWidth value={formData.description} onChange={handleChange} />
                 </Grid>
-                
+
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="clientsAssisted">Clients Assisted</CustomFormLabel>
                     <CustomOutlinedInput id="clientsAssisted" name="clientsAssisted" placeholder="e.g. 2,500+" fullWidth value={formData.clientsAssisted} onChange={handleChange} />
                 </Grid>
+
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="highlight">Highlight</CustomFormLabel>
                     <CustomOutlinedInput id="highlight" name="highlight" placeholder="e.g. Fast eligibility guidance" fullWidth value={formData.highlight} onChange={handleChange} />
                 </Grid>
+
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="startingFrom">Starting From</CustomFormLabel>
                     <CustomOutlinedInput id="startingFrom" name="startingFrom" placeholder="e.g. ₹999" fullWidth value={formData.startingFrom} onChange={handleChange} />
@@ -210,7 +300,7 @@ const ServiceCreate = () => {
                         {loading ? <CircularProgress size={24} /> : 'Create Service'}
                     </Button>
                 </Grid>
-            </Grid> 
+            </Grid>
 
             <Snackbar
                 open={!!error || success}

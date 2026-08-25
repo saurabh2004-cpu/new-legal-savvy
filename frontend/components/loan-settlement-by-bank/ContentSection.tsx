@@ -6,35 +6,16 @@ interface ContentSectionProps {
 
 export default function ContentSection({ bankName = "Tirap" }: ContentSectionProps) {
   return (
-    <div>
+    <section className="w-full pb-1">
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4">
+        <div className="max-w-8xl mx-auto py-4 px-6 md:px-10 lg:px-16">
           <nav
-            className="
-                flex
-                items-center
-                gap-2
-                text-[0.875rem]
-                font-[Geist]
-                font-normal
-                leading-[100%]
-                tracking-[0%]
-                text-gray-500
-                flex-wrap
-              "
+            className="flex items-center gap-2 text-[0.875rem] font-normal leading-[100%] tracking-[0%] text-gray-500 flex-wrap"
           >
             <Link
               href="/"
-              className="
-                font-[Geist]
-                font-normal
-                text-[0.875rem]
-                leading-[100%]
-                tracking-[0%]
-                hover:text-blue-600
-                transition-colors
-              "
+              className="font-normal text-[0.875rem] leading-[100%] tracking-[0%] hover:text-blue-600 transition-colors"
             >
               Home
             </Link>
@@ -55,15 +36,7 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
 
             <Link
               href="/loan-settlement-by-bank"
-              className="
-              font-[Geist]
-              font-semibold
-              text-[0.875rem]
-              leading-[100%]
-              tracking-[0%]
-              hover:text-blue-600
-              transition-colors
-            "
+              className="font-medium text-[0.875rem] leading-[100%] tracking-[0%] hover:text-blue-600 transition-colors"
             >
               Loan Settlement by Bank
             </Link>
@@ -83,14 +56,7 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
             </svg>
 
             <span
-              className="
-              font-[Geist]
-              font-medium
-              text-[0.95rem]
-              leading-[100%]
-              tracking-[0%]
-              text-gray-900
-            "
+              className="font-medium text-[0.95rem] leading-[100%] tracking-[0%] text-gray-900"
             >
               Loan Settlement in {bankName}
             </span>
@@ -99,7 +65,8 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
       </div>
 
       {/* Main Container */}
-      <div className="max-w-[97vw] mx-auto px-4 py-16">
+      {/* <div className="max-w-[97vw] mx-auto px-4 py-16"> */}
+      <div className="max-w-8xl mx-auto py-16 px-6 md:px-10 lg:px-16 rounded-xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
           {/* Left Sidebar - Table of Contents */}
@@ -167,16 +134,7 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
 
               <section id="introduction" className="mb-12 scroll-mt-32">
                 <h2
-                  className="
-                    font-[Geist]
-                    font-semibold
-                    text-[2rem]
-                    md:text-[2.25rem]
-                    leading-[100%]
-                    tracking-[0%]
-                    text-gray-900
-                    mb-6
-                  "
+                  className="font-semibold text-[2rem] md:text-[2.25rem] leading-[100%] tracking-[0%] text-gray-900 mb-6"
                 >
                   Expert Loan Settlement in {bankName}
                 </h2>
@@ -526,9 +484,8 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
               </div>
             </div>
           </aside>
-
         </div>
       </div>
-    </div>
+    </section>
   );
 }

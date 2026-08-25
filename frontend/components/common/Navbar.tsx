@@ -103,8 +103,8 @@ const LOCATIONS_ITEMS = [
   },
 ];
 
-const MEGA_MENU_PRIMARY_LINKS = ["Home", "About", "Conditions", "Treatments", "Cases", "Equipment", "Gallery", "Blog", "Contact", "Locations"];
-const MOBILE_MENU_MAIN_LINKS = ["Home", "About", "Services", "Cases", "Team", "Blog", "Contact", "Locations"];
+const MEGA_MENU_PRIMARY_LINKS = ["Home", "About", "Services", "Blog", "Contact", "Locations"];
+const MOBILE_MENU_MAIN_LINKS = ["Home", "About", "Services", "Blog", "Contact", "Locations"];
 
 // ─── Animation Variants (Static Objects) ───
 
@@ -274,7 +274,7 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
             onMouseEnter={() => onHoverMenuChange?.(null)}
             className="px-5 py-3 text-base font-medium text-white bg-[#FFBB78]/12 backdrop-blur-[24px] hover:bg-[#FFBB78]/20 rounded-full transition-colors tracking-normal leading-none"
           >
-            RESOURCES
+            Blogs
           </Link>
 
           <Link
@@ -406,7 +406,41 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
         </div>
 
         {/* Right Side / Menu Button */}
-        <button
+        {/* Right Side Actions */}
+        <div className="flex items-center">
+          {/* Contact Button - LG and above */}
+          <Link
+            href="/contact-us"
+            onMouseEnter={() => onHoverMenuChange?.(null)}
+            className="hidden lg:flex items-center gap-2.5 bg-[#EFE9E1]/90 backdrop-blur-sm text-black hover:bg-white px-4 py-2 rounded-full transition-all duration-300 text-base uppercase font-medium"
+          >
+            Get Consultation
+          </Link>
+
+          {/* Menu Button - SM and MD only */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onMouseEnter={() => onHoverMenuChange?.(null)}
+            className="flex lg:hidden items-center gap-2.5 bg-[#EFE9E1]/90 backdrop-blur-sm text-black hover:bg-white px-4 md:px-5 py-3 md:py-4 rounded-lg transition-all duration-300 text-sm md:text-base shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
+          >
+            <div className="w-4 md:w-6 h-[8px] flex flex-col justify-between items-center relative">
+              <span
+                className={`w-full h-[2px] bg-black rounded-full transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-y-[3px] rotate-45" : ""
+                  }`}
+              />
+
+              <span
+                className={`w-full h-[2px] bg-black rounded-full transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "-translate-y-[3px] -rotate-45" : ""
+                  }`}
+              />
+            </div>
+
+            <span className="text-base font-medium font-mono tracking-normal leading-none">
+              {isMobileMenuOpen ? "CLOSE" : "MENU"}
+            </span>
+          </button>
+        </div>
+        {/* <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           onMouseEnter={() => onHoverMenuChange?.(null)}
           className="flex items-center gap-2.5 bg-[#EFE9E1]/90 backdrop-blur-sm text-black hover:bg-white px-4 md:px-5 py-3 md:py-4 rounded-lg transition-all duration-300 text-sm md:text-base shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
@@ -422,7 +456,7 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
             />
           </div>
           <span className="text-base font-medium font-mono tracking-normal leading-none">{isMobileMenuOpen ? "CLOSE" : "MENU"}</span>
-        </button>
+        </button> */}
       </nav>
 
       {/* Mega Menu & Mobile Sidebar Overlay */}

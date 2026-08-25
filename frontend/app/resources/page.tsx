@@ -24,11 +24,11 @@ export default function page() {
         img={"/about/about-hero-img.png"}
         className="h-[100vh] lg:h-screen min-h-[600px]"
       />
-      <FeaturedBlogs />
+      {/* <FeaturedBlogs /> */}
       <LatestArticlesSection />
       <AllArticlesSection />
       <ProvenResultsBanner />
-      <CasesSection />
+      {/* <CasesSection /> */}
       <BankSettlements
         circleHeading={"Settlements Achieved With Banks"}
         innerCircleBgColour="#363D4F"

@@ -28,6 +28,7 @@ export default function page() {
                 buttonText1={"OUR"}
                 buttonText2={"APPROACH"}
                 paragraph={abotSectionParagraph1}
+                paragraphClass="xl:text-4xl"
                 className="pt-2 py-1"
             />
             <ConsultationSolution

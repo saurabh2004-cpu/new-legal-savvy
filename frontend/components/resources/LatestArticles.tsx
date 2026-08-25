@@ -180,7 +180,7 @@ export default function LatestArticlesSection() {
                 <SectionHeading title="Latest articles" align="left" titleClassName="text-2xl md:text-[36px] text-[#1D2331]" underlineColor="#ED3D3D" containerClassName="mb-12" />
 
                 {/* 2-Column Responsive Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                     {latestArticles.map((article, idx) => (
                         <motion.div
                             key={article.id}

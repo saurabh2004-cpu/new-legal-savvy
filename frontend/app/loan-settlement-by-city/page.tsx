@@ -1,5 +1,5 @@
 import BookConsultation from "@/components/common/BookConsultationSection";
-import Hero1 from "@/components/common/Hero1";
+import Hero11 from "@/components/common/Hero11";
 import Locations from "@/components/loan-sattelments/Locations";
 import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
 import { getLabelsByType } from "@/services/labelsServices";
@@ -17,14 +17,15 @@ export default async function page() {
     const labels = await getLabelsByType("city")
 
     return (
-        <div className="bg-[#D8D0CA] min-h-screen">
-            <Hero1
+        // <div className="bg-[#D8D0CA] min-h-screen">
+        <main className="bg-[#FFFFFF]">
+            <Hero11
                 Heading={"LOAN SETTLEMENT BY CITIES"}
                 img={"/about/about-hero-img.png"}
                 className="h-[50vh] md:h-[70vh] lg:h-[80vh] min-h-[400px]"
             />
             <Locations labels={labels} />
             <DirectionsSection />
-        </div>
+        </main>
     );
 }

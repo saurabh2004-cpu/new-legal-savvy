@@ -83,7 +83,7 @@ export default function HumanApproach2() {
     <section className="w-full py-1 px-2">
       <div className="max-w-8xl mx-auto rounded-xl px-4 py-6 md:px-8 lg:px-14 lg:py-16 bg-[#1D2540]">
         {/* Header */}
-        <SectionHeading title="Human Approach" containerClassName="mb-10 lg:mb-20" titleClassName="text-3xl lg:text-5xl text-[#FFFFFF]" underlineColor="#ED3D3D" />
+        <SectionHeading title="Our Approach" containerClassName="mb-10 lg:mb-20" titleClassName="text-3xl lg:text-5xl text-[#FFFFFF]" underlineColor="#ED3D3D" />
 
         <div
           ref={containerRef}

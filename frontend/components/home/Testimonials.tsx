@@ -8,82 +8,51 @@ import SectionHeading from '../utils/SectionHeading';
 const testimonials = [
   {
     id: 1,
-    type: 'text',
     name: "Rajesh Kumar",
     role: "Business Owner",
+    image: "/assets/images/placeholder.png",
     text: "Legal Savy's team was incredible. They negotiated with the bank on my behalf and reduced my settlement amount significantly. Highly recommended!",
     rating: 5,
   },
   {
     id: 2,
-    type: 'video',
     name: "Priya Sharma",
     role: "Software Engineer",
-    videoThumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/assets/images/placeholder.png",
+    text: "Legal Savy made my loan settlement simple and stress-free. Their guidance was clear, professional, and gave me confidence throughout the entire process.",
+    rating: 5,
   },
   {
     id: 3,
-    type: 'text',
     name: "Amit Patel",
     role: "Retail Merchant",
+    image: "/assets/images/placeholder.png",
     text: "Transparent, professional, and empathetic. They explained every step of the loan settlement process clearly. Best decision I made for my financial health.",
     rating: 5,
   },
   {
     id: 4,
-    type: 'video',
     name: "Sneha Reddy",
     role: "Freelancer",
-    videoThumbnail: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/assets/images/placeholder.png",
+    text: "The team understood my financial situation and provided practical solutions. Their support was professional, reassuring, and excellent throughout the settlement process.",
+    rating: 5,
   },
   {
     id: 5,
-    type: 'text',
     name: "Vikram Singh",
     role: "Contractor",
+    image: "/assets/images/placeholder.png",
     text: "Outstanding service! They helped me restructure my multiple loans into a single manageable settlement. The lawyers are top-notch.",
     rating: 5,
   }
 ];
 
 // Duplicate for infinite scroll
-const duplicatedTestimonials = [...testimonials, ...testimonials];
+const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
 // Extracted Card Component to handle both Text and Video types
 const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
-  if (testimonial.type === 'video') {
-    return (
-      <motion.div
-        whileHover={{ scale: 1.02, y: -5 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="w-[290px] sm:w-[320px] md:w-[400px] h-[400px] md:h-[450px] flex-shrink-0 bg-[#D9D9D9] rounded-[32px] md:rounded-[40px] p-4 pb-6 md:p-6 md:pb-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
-      >
-        {/* Video Thumbnail Area */}
-        <div className="relative w-full flex-1 rounded-xl overflow-hidden group cursor-pointer mb-4 bg-gray-200">
-          <img
-            src={testimonial.videoThumbnail}
-            alt={`Video testimonial by ${testimonial.name}`}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {/* Play Button Overlay */}
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-            <div className="w-16 h-16 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.3)] group-hover:scale-110 transition-transform">
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-[#ED3D3D] border-b-[10px] border-b-transparent ml-1"></div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4 px-2 mt-4 md:mt-6">
-          <div>
-            <h4 className="text-[#1D2331] text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
-            <p className="text-sm text-black/50 leading-[100%] tracking-normal mt-1">{testimonial.role}</p>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
-
-  // Text Card
   return (
     <motion.div
       whileHover={{ scale: 1.02, y: -5 }}
@@ -102,9 +71,14 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
         </p>
       </div>
 
-      <div className="flex flex-col items-start mt-6">
-        <h4 className="font-medium text-black text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
-        <p className="font-medium text-sm text-black/50 leading-[100%] tracking-normal mt-2">{testimonial.role}</p>
+      <div className='flex justify-center items-center gap-3 text-center mt-6'>
+        <div className='relative h-10 w-10 sm:h-12 sm:w-12 aspect-square rounded-full overflow-hidden'>
+          <Image src={testimonial.image || "/assets/images/placeholder.png"} alt={testimonial.name} fill className='object-cover' />
+        </div>
+        <div className="flex flex-col items-start ">
+          <h4 className="font-medium text-black text-[20px] leading-[100%] tracking-normal">{testimonial.name}</h4>
+          <p className="font-medium text-sm text-black/50 leading-[100%] tracking-normal mt-2">{testimonial.role}</p>
+        </div>
       </div>
     </motion.div>
   );
@@ -139,7 +113,7 @@ export default function Testimonials() {
   return (
     <section className="w-full py-1 px-2">
       <div
-        className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center overflow-hidden p-12 sm:px-16 sm:py-20 lg:pt-28 space-y-6 md:space-y-8 lg:space-y-10 bg-[#1D2540]"
+        className="max-w-8xl mx-auto rounded-xl flex flex-col items-center justify-center overflow-hidden p-8 sm:px-16 sm:py-20 lg:pt-28 space-y-6 md:space-y-8 lg:space-y-10 bg-[#1D2540]"
       >
         {/* Header Section with Viewport Animation */}
         <div className="w-full flex flex-col items-start">
@@ -152,7 +126,7 @@ export default function Testimonials() {
             </h2>
 
             <div className="w-full lg:w-[500px] flex">
-              <p className="geist-mono-medium text-white text-base leading-snug">
+              <p className="text-white geist-regular text-lg leading-tight tracking-normal">
                 Read how borrowers across India have worked with our legal team to settle loans through a documented, RBI-compliant process.
               </p>
             </div>
@@ -162,30 +136,28 @@ export default function Testimonials() {
         {/* Marquee Container */}
         <div className="relative w-full overflow-hidden flex items-center">
           {/* Left/Right Fade Gradients for smooth entrance/exit */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-48 bg-gradient-to-r from-[#1D2540] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-48 bg-gradient-to-l from-[#1D2540] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-6 md:w-48 bg-gradient-to-r from-[#1D2540] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-6 md:w-48 bg-gradient-to-l from-[#1D2540] to-transparent z-10 pointer-events-none"></div>
 
           {/* Scroll Tracks */}
           <div className="flex w-max">
-            {/* First Track */}
             <motion.div
               variants={trackVariants}
               animate="animate"
               className="flex gap-6 md:gap-8 pr-6 md:pr-8"
             >
-              {testimonials.map((testimonial) => (
-                <TestimonialCard key={`track1-${testimonial.id}`} testimonial={testimonial} />
+              {testimonials.map((testimonial, index) => (
+                <TestimonialCard key={`track1-${index}`} testimonial={testimonial} />
               ))}
             </motion.div>
 
-            {/* Second Track (Duplicate for seamless loop) */}
             <motion.div
               variants={trackVariants}
               animate="animate"
               className="flex gap-6 md:gap-8 pr-6 md:pr-8"
             >
-              {testimonials.map((testimonial) => (
-                <TestimonialCard key={`track2-${testimonial.id}`} testimonial={testimonial} />
+              {testimonials.map((testimonial, index) => (
+                <TestimonialCard key={`track2-${index}`} testimonial={testimonial} />
               ))}
             </motion.div>
           </div>

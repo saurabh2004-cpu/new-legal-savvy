@@ -12,11 +12,11 @@ interface AboutUsProps {
   buttonText3?: string;
   buttonText3Href?: string;
   paragraph: string;
-  paragraphMaxWidth?: string;
+  paragraphClass?: string;
   className?: string;
 }
 
-export default function AboutUs({ buttonText1, buttonText2, buttonText3, buttonText3Href, paragraph, paragraphMaxWidth, className = "" }: AboutUsProps) {
+export default function AboutUs({ buttonText1, buttonText2, buttonText3, buttonText3Href, paragraph, paragraphClass = "", className = "" }: AboutUsProps) {
   const words = paragraph ? paragraph.split(" ") : [];
 
   return (
@@ -41,7 +41,7 @@ export default function AboutUs({ buttonText1, buttonText2, buttonText3, buttonT
             initial="hidden"
             whileInView="visible"
             // viewport={{ once: true, margin: "-100px" }}
-            className={`text-xl md:text-2xl lg:text-3xl xl:text-5xl text-[#0F172A] leading-[1] tracking-normal text-center mt-5 mb-5 ${paragraphMaxWidth}`}
+            className={`text-xl md:text-2xl lg:text-3xl text-[#0F172A] leading-[1] tracking-normal text-center mt-5 mb-5 ${paragraphClass}`}
           >
             {words.map((word, idx) => (
               <span key={idx} className="inline-block overflow-hidden">

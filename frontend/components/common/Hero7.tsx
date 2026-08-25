@@ -28,40 +28,14 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                             Updated for 2026 RBI Guidelines
                         </div>
                         <h1
-                            className="
-                                    font-[Geist]
-                                    font-black
-                                    text-[2.4rem]
-                                    sm:text-[3rem]
-                                    md:text-[3.4rem]
-                                    lg:text-[3.886rem]
-                                    leading-[100%]
-                                    tracking-[0%]
-                                    mb-6
-                                "
+                            className="font-semibold text-[2.4rem] sm:text-[3rem] md:text-[3.4rem] lg:text-[3.886rem] leading-[100%] tracking-[0%] mb-6"
                         >
                             Legally Settle Your <br />
                             <span className="text-white bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">
                                 Debt in {bankName}
                             </span>
                         </h1>
-                        <p
-                            className="
-                                    font-[Geist]
-                                    font-semibold
-                                    text-[1rem]
-                                    sm:text-[1.125rem]
-                                    md:text-[1.25rem]
-                                    leading-[1.2]
-                                    tracking-[0%]
-                                    text-right
-                                    uppercase
-                                    text-white
-                                    mb-8
-                                    text-start 
-                                    max-w-2xl
-                                "
-                        >
+                        <p className="font-regular text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] leading-[1.2] tracking-[0%] text-right uppercase text-white mb-8 text-start max-w-2xl">
                             Facing severe financial hardship in {bankName}? Stop the endless cycle of
                             minimum payments and aggressive recovery calls. Our legal experts negotiate
                             directly with banks to reduce your outstanding principal and waive off penal
@@ -70,25 +44,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
                                 href="https://www.credsettle.com/contact"
-                                className="
-                                    bg-white
-                                    text-blue-900
-                                    px-8
-                                    py-4
-                                    rounded-xl
-                                    font-[Geist]
-                                    font-medium
-                                    text-[1.125rem]
-                                    leading-[100%]
-                                    tracking-[0%]
-                                    hover:bg-blue-50
-                                    transition-all
-                                    shadow-xl
-                                    flex
-                                    items-center
-                                    justify-center
-                                    gap-2
-                                "
+                                className="bg-white text-blue-900 px-8 py-4 rounded-xl font-medium text-[1.125rem] leading-[100%] tracking-[0%] hover:bg-blue-50 transition-all shadow-xl flex items-center justify-center gap-2"
                             >
                                 Get Your Free Debt Audit
 
@@ -109,27 +65,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
 
                             <a
                                 href="tel:+918800226635"
-                                className="
-                                    px-8
-                                    py-4
-                                    rounded-xl
-                                    font-[Geist]
-                                    font-medium
-                                    text-[1.125rem]
-                                    leading-[100%]
-                                    tracking-[0%]
-                                    text-white
-                                    border
-                                    border-gray-600
-                                    hover:border-white
-                                    hover:bg-white/10
-                                    transition-all
-                                    flex
-                                    items-center
-                                    justify-center
-                                    gap-2
-                                    backdrop-blur-sm
-                                "
+                                className="px-8 py-4 rounded-xl font-medium text-[1.125rem] leading-[100%] tracking-[0%] text-white border border-gray-600 hover:border-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
                             >
                                 Call +91-8800226635
                             </a>
@@ -139,20 +75,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                     <div className="hidden lg:block relative">
                         <div className="bg-slate-800/80 backdrop-blur-xl border border-slate-700 p-8 rounded-3xl relative shadow-2xl">
                             <h3
-                                className="
-                                    font-[Geist]
-                                    font-semibold
-                                    text-[2rem]
-                                    md:text-[2.5rem]
-                                    leading-[100%]
-                                    tracking-[0%]
-                                    text-start
-                                    mb-6
-                                    text-white
-                                    border-b
-                                    border-slate-600
-                                    pb-4
-                                "
+                                className="font-medium text-[2rem] md:text-[2.5rem] leading-[100%] tracking-[0%] text-start mb-6 text-white border-b border-slate-600 pb-4"
                             >
                                 Is Settlement Right For You?
                             </h3>
@@ -173,14 +96,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                                     </svg>
 
                                     <span
-                                        className="
-                                        font-[Geist]
-                                        font-normal
-                                        text-[1rem]
-                                        leading-[100%]
-                                        tracking-[0%]
-                                        text-gray-300
-                                        "
+                                        className="font-normal text-[1rem] leading-[100%] tracking-[0%] text-gray-300"
                                     >
                                         Missed 3+ EMIs on personal loans or credit cards?
                                     </span>
@@ -202,14 +118,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                                     </svg>
 
                                     <span
-                                        className="
-                                            font-[Geist]
-                                            font-normal
-                                            text-[1rem]
-                                            leading-[100%]
-                                            tracking-[0%]
-                                            text-gray-300
-                                            "
+                                        className="font-normal text-[1rem] leading-[100%] tracking-[0%] text-gray-300"
                                     >
                                         Harassing calls from recovery agents in {bankName}?
                                     </span>
@@ -231,14 +140,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                                     </svg>
 
                                     <span
-                                        className="
-                                        font-[Geist]
-                                        font-normal
-                                        text-[1rem]
-                                        leading-[100%]
-                                        tracking-[0%]
-                                        text-gray-300
-                                        "
+                                        className="font-normal text-[1rem] leading-[100%] tracking-[0%] text-gray-300"
                                     >
                                         Received legal notices under SARFAESI or Sec 138?
                                     </span>

@@ -40,7 +40,7 @@ export default function Locations({ labels }: { labels: Labels[] }) {
 
     const handleLabelClick = (type: string, slug: string) => {
         if (!type || !slug) return;
-        switch (type) { 
+        switch (type) {
             case 'city':
                 router.push(`/loan-settlement-by-city/${slug}`)
                 break;
@@ -59,19 +59,21 @@ export default function Locations({ labels }: { labels: Labels[] }) {
     }
 
     return (
-        <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12 border border-gray-100">
+        <section className="w-full pb-1 px-2">
+            {/* <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto"> */}
+            <div className="max-w-8xl mx-auto px-4 py-6 md:px-8 lg:px-14 lg:py-16 bg-[#E3DDD9] rounded-xl">
 
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row items-center justify-between mb-8 border-b border-gray-100 pb-6 gap-4">
+                <div className="flex flex-col md:flex-row items-center justify-between mb-8 border-b border-gray-400 pb-6 gap-4">
                     <div>
-                        <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight font-[Geist]">
+                        <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
                             Select Your Location
                         </h2>
-                        <p className="text-gray-500 text-sm mt-1 font-[Geist]">
+                        <p className="text-gray-500 text-sm mt-1">
                             Find legal debt settlement services in your city
                         </p>
                     </div>
+
                     <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-xs font-bold text-blue-700 border border-blue-100">
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         {normalizedlabels.length} ACTIVE labels
@@ -86,7 +88,7 @@ export default function Locations({ labels }: { labels: Labels[] }) {
                             placeholder="Search your city..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full px-4 py-3 pl-11 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-800 text-sm font-[Geist]"
+                            className="w-full px-4 py-3 pl-11 rounded-xl border border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all text-gray-800 text-sm"
                         />
                         <svg
                             className="w-5 h-5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"
@@ -117,14 +119,14 @@ export default function Locations({ labels }: { labels: Labels[] }) {
                 {/* labels Grid */}
                 {filteredlabels.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                        {filteredlabels.map((label) => (
+                        {filteredlabels.map((label, index) => (
                             <button
-                                key={label.slug}
+                                key={index}
                                 // href={`/loan-settlement-by-city/${city.slug}`} 
                                 onClick={() => handleLabelClick(label.type || "", label.slug || "")}
-                                className="group flex items-center p-4 border border-gray-100 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all duration-200"
+                                className="group flex items-center p-4 border border-gray-400 rounded-lg hover:border-gray-400 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
                             >
-                                <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700 truncate font-[Geist]">
+                                <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700 truncate">
                                     Settlement in {label.name}
                                 </span>
                                 <svg

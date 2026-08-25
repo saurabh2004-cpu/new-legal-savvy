@@ -10,19 +10,14 @@ const navColumns = [
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
         { label: "Services", href: "/service" },
-        { label: "Locations", href: "/locations" },
-    ],
-    [
         { label: "Blogs", href: "/resources" },
         { label: "Contact Us", href: "/contact-us" },
-        { label: "Services", href: "/service" },
-        { label: "Gallery", href: "/gallery" },
+        // { label: "Locations", href: "/locations" },
     ],
     [
-        { label: "Blogs", href: "/resources" },
-        { label: "Contact Us", href: "/contact-us" },
-        { label: "Services", href: "/service" },
-        { label: "Gallery", href: "/gallery" },
+        { label: "Loan Settlement By Bank", href: "/loan-settlement-by-bank" },
+        { label: "Settlement By State", href: "/loan-settlement-by-state" },
+        { label: "Settlement By City", href: "/loan-settlement-by-city" },
     ],
 ];
 
@@ -49,7 +44,7 @@ export default function Footer() {
                 </div>
 
                 {/* Navigation */}
-                <div className="grid grid-cols-1 md:grid-cols-2 space-y-8 lg:space-y-16">
+                <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] space-y-8 lg:space-y-16">
                     {/* Contact & Location */}
                     <div className="flex flex-col gap-10">
                         <div className="flex flex-col gap-4">
@@ -80,16 +75,16 @@ export default function Footer() {
                     </div>
 
                     {/* Menu */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-x-20">
-                        {/* Navigation */}
-                        {navColumns.map((col, ci) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-x-20">
+                        {navColumns.map((col, index) => (
                             <div
-                                key={ci}
-                                className="flex flex-col gap-5 lg:gap-3"
+                                key={index}
+                                className={`flex flex-col gap-5 lg:gap-3 ${index === 1 ? "sm:col-span-1 lg:col-span-2" : ""
+                                    }`}
                             >
                                 {col.map((item) => (
                                     <Link
-                                        key={`${item.label}-${ci}`}
+                                        key={`${item.label}-${index}`}
                                         href={item.href}
                                         className="geist-light text-base md:text-lg lg:text-2xl text-white/80 transition-colors duration-200 hover:text-white"
                                     >
@@ -121,12 +116,12 @@ export default function Footer() {
                                     Privacy Policy
                                 </Link>
                             </div>
-                            <Link
+                            {/* <Link
                                 href="/security"
                                 className="text-[0.85rem] md:text-[0.95rem] geist-mono-medium text-[#8a8f9a] hover:text-[#c0c4d8] transition-colors duration-200 uppercase"
                             >
                                 Security
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
 
