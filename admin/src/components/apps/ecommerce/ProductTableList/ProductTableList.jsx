@@ -35,6 +35,15 @@ import { useNavigate } from 'react-router';
 import { DeleteConfirmationDialog } from '../utils/ConfirmDeletePopUp';
 import { deleteAdmin } from 'src/services/adminService';
 
+const getAdminImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  if (imagePath.startsWith('http')) return imagePath;
+  const rawBackendUrl = import.meta.env.VITE_BASE_BACKEND_URL || '';
+  const baseUrl = rawBackendUrl.replace(/\/api\/v1\/?$/, '');
+  const relativePath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  return `${baseUrl}${relativePath}`;
+};
+
 // Keep getComparator, descendingComparator, stableSort
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -524,10 +533,28 @@ const ProductTableList = ({
                                 </Tooltip>
                               </Box>
                             </TableCell>
+                            <TableCell>
+                              {row.image ? (
+                                <Box
+                                  component="img"
+                                  src={getAdminImageUrl(row.image)}
+                                  alt={row.title || row.name}
+                                  sx={{
+                                    width: 50,
+                                    height: 50,
+                                    borderRadius: '4px',
+                                    objectFit: 'cover',
+                                    border: '1px solid #ddd'
+                                  }}
+                                />
+                              ) : (
+                                <Typography variant="body2" color="textSecondary">-</Typography>
+                              )}
+                            </TableCell>
                             <TableCell><Typography fontWeight="600">{row.name}</Typography></TableCell>
                             <TableCell><Typography>{row.title}</Typography></TableCell>
                             <TableCell>
-                              <Box display="flex" flexWrap="wrap" gap={0.5}>
+                              {/* <Box display="flex" flexWrap="wrap" gap={0.5}>
                                 {row.relatedServices && row.relatedServices.length > 0 ? (
                                   row.relatedServices.map((rel) => (
                                     <Chip 
@@ -540,7 +567,8 @@ const ProductTableList = ({
                                 ) : (
                                   <Typography variant="body2" color="textSecondary">-</Typography>
                                 )}
-                              </Box>
+                              </Box> */}
+                              <Typography>{row.relatedServices.length > 0 ? row.relatedServices.length : 0}</Typography>
                             </TableCell>
                             <TableCell><Typography>{format(new Date(row.createdAt || new Date()), 'E, MMM d yyyy')}</Typography></TableCell>
                           </>
@@ -604,7 +632,7 @@ const ProductTableList = ({
                               {row.image ? (
                                 <Box
                                   component="img"
-                                  src={row.image.startsWith('http') ? row.image : `${import.meta.env.VITE_BASE_BACKEND_URL ? import.meta.env.VITE_BASE_BACKEND_URL.replace('/api/v1', '') : ''}${row.image}`}
+                                  src={getAdminImageUrl(row.image)}
                                   alt={row.title}
                                   sx={{
                                     width: 50,

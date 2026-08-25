@@ -3,6 +3,8 @@ import mongoose, { Schema, Document, Types } from "mongoose";
 export interface IService {
   name: string;
   title: string;
+  slug: string;
+  image: string;
   description: string;
   relatedServices?: Types.ObjectId[] | IService[];
   clientsAssisted?: string;
@@ -12,7 +14,7 @@ export interface IService {
   shortDescriptionPoints?: string[];
 }
 
-export interface ServiceDocument extends IService, Document {}
+export interface ServiceDocument extends IService, Document { }
 
 const serviceSchema = new Schema<ServiceDocument>(
   {
@@ -24,6 +26,18 @@ const serviceSchema = new Schema<ServiceDocument>(
     title: {
       type: String,
       required: [true, "Service title is required"],
+      trim: true,
+    },
+    slug: {
+      type: String,
+      required: [true, "Service slug is required"],
+      unique: true,
+      trim: true,
+      index: true,
+    },
+    image: {
+      type: String,
+      required: [true, "Service image URL/path is required"],
       trim: true,
     },
     description: {

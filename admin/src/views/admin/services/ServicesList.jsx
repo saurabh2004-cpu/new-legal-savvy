@@ -14,6 +14,7 @@ const BCrumb = [
 const ServicesList = () => {
     const headCells = [
         { id: 'Actions', numeric: false, disablePadding: false, label: 'Actions' },
+        { id: 'image', numeric: false, disablePadding: false, label: 'Image' },
         { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
         { id: 'title', numeric: false, disablePadding: false, label: 'Title' },
         { id: 'relatedServices', numeric: false, disablePadding: false, label: 'Related Services' },

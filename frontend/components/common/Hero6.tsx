@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Navbar from './Navbar';
+import { isLocalBackendImage } from '@/utils/isLocalBackendImage';
 
 interface Hero6Props {
     title: string;
@@ -38,7 +39,8 @@ export default function Hero6({
                         src={image || "/about/about-hero-img.png"}
                         alt={title}
                         fill
-                        className="object-cover"
+                        unoptimized={isLocalBackendImage(image)}
+                        className="object-cover object-top"
                         priority
                     />
                     {/* Dark Gradient Overlay */}

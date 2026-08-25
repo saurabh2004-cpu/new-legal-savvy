@@ -6,14 +6,13 @@ import BookConsultation from "@/components/common/BookConsultationSection";
 import Locations from "@/components/common/Locations";
 
 import type { Metadata } from "next";
-import { getServiceById, getAllServices } from "@/services/serviceServices";
+import { getServiceById, getServiceBySlug } from "@/services/serviceServices";
 import Hero5 from "@/components/common/Hero5";
 
-// export const metadata: Metadata = {
-//     title: "Services Details Legal Savvy- Debt Settlement Services",
-//     description:
-//         "Get expert legal debt settlement services across India. Reduce your loan burden and get relief from harassment with proven settlement strategies.",
-// }
+interface PageProps {
+    params: Promise<{ slug: string }>;
+    searchParams: Promise<{ id?: string }>;
+}
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
     const { slug } = await params;
@@ -22,6 +21,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     let serviceresponse = null;
     if (id) {
         serviceresponse = await getServiceById(id);
+    } else if (slug) {
+        serviceresponse = await getServiceBySlug(slug);
     }
 
     if (!serviceresponse || !serviceresponse.title) {
@@ -32,16 +33,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     }
 
     return {
-        title: serviceresponse.title.toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, ""),
+        title: serviceresponse.title,
         description: serviceresponse.description || "Professional legal advocacy firm.",
     };
-}
-
-interface PageProps {
-    params: Promise<{ slug: string }>;
-    searchParams: Promise<{ id?: string }>;
 }
 
 export default async function page({ params, searchParams }: PageProps) {
@@ -86,24 +80,11 @@ export default async function page({ params, searchParams }: PageProps) {
     let serviceresponse = null;
     if (id) {
         serviceresponse = await getServiceById(id);
-    }
-
-    // Fallback to match slug if ID was not provided or not found
-    if (!serviceresponse && slug) {
-        const allServices = await getAllServices();
-        if (allServices) {
-            serviceresponse = allServices.find((s: any) => {
-                const sSlug = (s.title || s.title || "")
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g, "-")
-                    .replace(/(^-|-$)/g, "");
-                return sSlug === slug;
-            });
-        }
+    } else if (slug) {
+        serviceresponse = await getServiceBySlug(slug);
     }
 
     return (
-        // <main className="bg-[#FBF8F5]">
         <main className="bg-[#FFFFFF]">
             <Hero5
                 service={serviceresponse}

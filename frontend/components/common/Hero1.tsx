@@ -109,7 +109,7 @@ export default function Hero1({ Heading, description, img, className = "h-[100vh
 
                 <div className="flex items-center gap-3 sm:gap-4 w-full justify-start lg:justify-end">
                   <Button2 onClick={handleScrollDown} />
-                  <Button text="Get a Consultation" />
+                  <Button text="Get a Consultation" href="/contact-us" />
                 </div>
               </div>}
             </div>

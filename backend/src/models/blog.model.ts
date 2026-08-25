@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 
 export interface IBlog {
   title: string;
+  slug: string;
   description: string;
   image: string;
   readTime: string;
@@ -19,6 +20,13 @@ const blogSchema = new Schema<BlogDocument>(
       type: String,
       required: [true, "Blog title is required"],
       trim: true,
+    },
+    slug: {
+      type: String,
+      required: [true, "Blog slug is required"],
+      unique: true,
+      trim: true,
+      index: true,
     },
     description: {
       type: String,

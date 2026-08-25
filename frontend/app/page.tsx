@@ -106,6 +106,7 @@ export default function Home() {
         buttonText1={"About"}
         buttonText2={"Us"}
         buttonText3={"More About Us"}
+        buttonText3Href={"/about"}
         paragraph={abotSectionParagraph}
         paragraphMaxWidth="max-w-6xl" />
       <WhyUs />

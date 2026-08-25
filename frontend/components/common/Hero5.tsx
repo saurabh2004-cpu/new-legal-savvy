@@ -8,6 +8,8 @@ import Image from "next/image";
 import Button2 from "../utils/Button2";
 import Button from "../utils/Button";
 import PillTag from "../utils/PillTag";
+import { getImageUrl } from "@/utils/getImageUrl";
+import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
 
 const IMAGES = [
     "/service-details/service-details-hero.png",
@@ -22,6 +24,7 @@ interface Hero5Props {
     service?: {
         title: string;
         description: string;
+        image?: string;
     } | null;
     className?: string;
 }
@@ -60,6 +63,10 @@ export default function Hero5({ service, className }: Hero5Props) {
             });
         }
     };
+
+    const imagesToRender = service?.image
+        ? Array(6).fill(getImageUrl(service.image))
+        : IMAGES;
 
     return (
         <section className={`w-full p-2 ${className}`}>
@@ -105,7 +112,7 @@ export default function Hero5({ service, className }: Hero5Props) {
                                     repeatType: "reverse"
                                 }}
                             >
-                                {IMAGES.map((src, idx) => (
+                                {imagesToRender.map((src, idx) => (
                                     <div
                                         key={idx}
                                         className="relative overflow-hidden shadow-2xl shrink-0"
@@ -121,7 +128,7 @@ export default function Hero5({ service, className }: Hero5Props) {
                                             alt={`Gallery image ${idx + 1}`}
                                             fill
                                             className="object-cover"
-                                            unoptimized
+                                            unoptimized={src.startsWith("/") ? true : isLocalBackendImage(src)}
                                         />
                                     </div>
                                 ))}
@@ -136,7 +143,7 @@ export default function Hero5({ service, className }: Hero5Props) {
 
                             <div className="flex items-center justify-center gap-4">
                                 <Button2 onClick={handleScrollDown} />
-                                <Button text="Get Consultation" />
+                                <Button text="Get Consultation" href="/contact-us" />
                             </div>
                         </div>
                     </div>

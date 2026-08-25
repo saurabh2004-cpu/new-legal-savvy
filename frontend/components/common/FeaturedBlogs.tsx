@@ -2,11 +2,13 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { getAllBlogs, generateSlug } from "@/services/blogServices";
+import { getAllBlogs } from "@/services/blogServices";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import SectionHeading from "../utils/SectionHeading";
+import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
+import { getImageUrl } from "@/utils/getImageUrl";
 
 export default function FeaturedBlogs() {
   const [isHovered, setIsHovered] = useState(false);
@@ -21,23 +23,24 @@ export default function FeaturedBlogs() {
         const data = await getAllBlogs();
         if (data && data.length > 0) {
           const featured = data.filter((b: any) => b.isFeatured);
-          const baseUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || "").replace("/api/v1", "");
 
           if (featured.length > 0) {
             const first = featured[0];
             setFeaturedBlog({
               id: first._id,
               title: first.title,
+              slug: first.slug,
               category: first.category || "Uncategorized",
               readTime: first.readTime || "5 min",
-              image: first.image?.startsWith("http") ? first.image : `${baseUrl}${first.image}`,
+              image: getImageUrl(first.image),
             });
 
             const rest = featured.slice(1, 6).map((b: any) => ({
               id: b._id,
               title: b.title,
+              slug: b.slug,
               category: b.category || "Uncategorized",
-              image: b.image?.startsWith("http") ? b.image : `${baseUrl}${b.image}`,
+              image: getImageUrl(b.image),
             }));
             setRecentBlogs(rest);
           }
@@ -71,7 +74,7 @@ export default function FeaturedBlogs() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={() => router.push(`/resources/${generateSlug(featuredBlog.title)}`)}
+            onClick={() => router.push(`/resources/${featuredBlog.slug}`)}
             className="relative w-full xl:w-[654px] h-[320px] sm:h-[450px] xl:h-[607px] cursor-pointer flex-shrink-0 select-none"
           >
             {/* Image Container (shrinks and shifts to top-right on hover) */}
@@ -95,6 +98,7 @@ export default function FeaturedBlogs() {
                   src={featuredBlog.image || ""}
                   alt={featuredBlog.title}
                   fill
+                  unoptimized={isLocalBackendImage(featuredBlog.image)}
                   className="object-cover"
                 />
               </motion.div>
@@ -140,7 +144,7 @@ export default function FeaturedBlogs() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                onClick={() => router.push(`/resources/${generateSlug(blog.title)}`)}
+                onClick={() => router.push(`/resources/${blog.slug}`)}
                 className="flex gap-4 sm:gap-5 items-center group cursor-pointer p-3 sm:p-4 rounded-[20px] sm:rounded-[24px] bg-transparent hover:bg-[#E5DEDB] hover:shadow-md transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
               >
                 <div className="relative w-[110px] sm:w-[150px] lg:w-[13.0889644623rem] h-[62px] sm:h-[84px] lg:h-[7.3054690361rem] rounded-[12px] sm:rounded-[16px] overflow-hidden shadow-sm flex-shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[0.9]">

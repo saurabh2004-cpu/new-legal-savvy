@@ -71,7 +71,7 @@ export default function ConsultationSection() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <Button text='Talk to a Lawyer' />
+                            <Button text='Talk to a Lawyer' href='/contact-us' />
                         </motion.div>
                     </div>
 

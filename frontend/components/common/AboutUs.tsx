@@ -10,12 +10,13 @@ interface AboutUsProps {
   buttonText1: string;
   buttonText2: string;
   buttonText3?: string;
+  buttonText3Href?: string;
   paragraph: string;
   paragraphMaxWidth?: string;
   className?: string;
 }
 
-export default function AboutUs({ buttonText1, buttonText2, buttonText3, paragraph, paragraphMaxWidth, className = "" }: AboutUsProps) {
+export default function AboutUs({ buttonText1, buttonText2, buttonText3, buttonText3Href, paragraph, paragraphMaxWidth, className = "" }: AboutUsProps) {
   const words = paragraph ? paragraph.split(" ") : [];
 
   return (
@@ -72,7 +73,7 @@ export default function AboutUs({ buttonText1, buttonText2, buttonText3, paragra
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Button text={buttonText3} />
+              <Button text={buttonText3} href={buttonText3Href} />
             </motion.div>
           )}
         </div>

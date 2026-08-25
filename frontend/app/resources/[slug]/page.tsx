@@ -1,9 +1,10 @@
 import { Metadata, ResolvingMetadata } from "next";
-import { getAllBlogs, getBlogById, generateSlug } from "@/services/blogServices";
+import { getBlogBySlug } from "@/services/blogServices";
 import Hero6 from "@/components/common/Hero6";
 import BlogDetails from "@/components/resources/BlogDetails";
 import FeaturedBlogs from "@/components/common/FeaturedBlogs";
 import { notFound } from "next/navigation";
+import { getImageUrl } from "@/utils/getImageUrl";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -14,17 +15,10 @@ export async function generateMetadata(
     parent: ResolvingMetadata
 ): Promise<Metadata> {
     const { slug } = await params;
-    const allBlogs = await getAllBlogs();
-    if (!allBlogs) return { title: "Blog Not Found" };
-
-    const blogSummary = allBlogs.find((b: any) => generateSlug(b.title) === slug);
-    if (!blogSummary) return { title: "Blog Not Found" };
-
-    const blog = await getBlogById(blogSummary._id);
+    const blog = await getBlogBySlug(slug);
     if (!blog) return { title: "Blog Not Found" };
 
-    const baseUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || "").replace("/api/v1", "");
-    const imagePath = blog.image?.startsWith("http") ? blog.image : `${baseUrl}${blog.image}`;
+    const imagePath = getImageUrl(blog.image);
 
     return {
         title: blog.title,
@@ -40,22 +34,10 @@ export async function generateMetadata(
 export default async function Page({ params }: Props) {
     const { slug } = await params;
 
-
-    // Fetch all blogs to match the slug
-    const allBlogs = await getAllBlogs();
-    if (!allBlogs) return notFound();
-
-    const blogSummary = allBlogs.find((b: any) => generateSlug(b.title) === slug);
-    if (!blogSummary) return notFound();
-
-    // Fetch the specific blog details
-    const blog = await getBlogById(blogSummary._id);
-
-
+    const blog = await getBlogBySlug(slug);
     if (!blog) return notFound();
 
-    const baseUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || "").replace("/api/v1", "");
-    const imagePath = blog.image?.startsWith("http") ? blog.image : `${baseUrl}${blog.image}`;
+    const imagePath = getImageUrl(blog.image);
 
     const formatDate = (dateString: string) => {
         if (!dateString) return '';
@@ -71,7 +53,6 @@ export default async function Page({ params }: Props) {
     };
 
     return (
-        // <main className="bg-[#FBF8F5]">
         <main className="bg-[#FFFFFF]">
             <Hero6
                 title={blog.title}

@@ -45,9 +45,10 @@ const BlogEdit = () => {
                         isFeatured: data.isFeatured || false,
                     });
                     if (data.image) {
-                        const imageUrl = data.image.startsWith('http') 
-                            ? data.image 
-                            : `${import.meta.env.VITE_BASE_BACKEND_URL ? import.meta.env.VITE_BASE_BACKEND_URL.replace('/api/v1', '') : ''}${data.image}`;
+                        const rawBackendUrl = import.meta.env.VITE_BASE_BACKEND_URL || '';
+                        const baseUrl = rawBackendUrl.replace(/\/api\/v1\/?$/, '');
+                        const relativePath = data.image.startsWith('/') ? data.image : `/${data.image}`;
+                        const imageUrl = data.image.startsWith('http') ? data.image : `${baseUrl}${relativePath}`;
                         setFilePreview(imageUrl);
                     }
                 }
@@ -126,7 +127,7 @@ const BlogEdit = () => {
                 setTimeout(() => navigate('/dashboard/blogs/list'), 1500);
             }
         } catch (error) {
-            const errDetails = error.response?.data?.error || error.response?.data?.details || error.message;
+            const errDetails = error.response?.data?.message || error.response?.data?.error || error.response?.data?.details || error.message;
             setError(errDetails || 'An error occurred');
         } finally {
             setLoading(false);

@@ -6,6 +6,8 @@ import { useRef, useEffect, useState } from "react";
 import { getAllServices } from "@/services/serviceServices";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Button from "../utils/Button";
+import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
+import { getImageUrl } from "@/utils/getImageUrl";
 
 /* ─── Types ─────────────────────────────────────────────── */
 
@@ -199,6 +201,7 @@ function ServiceCard({ card }: ServiceCardProps) {
                         src={card.imageSrc}
                         alt={card.imageAlt}
                         fill
+                        unoptimized={isLocalBackendImage(card.imageSrc)}
                         className="object-cover object-center"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 240px, 320px"
                     />
@@ -264,22 +267,18 @@ export default function ServiceCards({ cards: initialCards }: ServiceCardsProps)
 
         async function fetchServices() {
             try {
-                const servicesData = await getAllServices();
-                if (servicesData && servicesData.length > 0) {
-                    const mappedCards = servicesData.map((s: any, index: number) => {
-                        const slug = (s.title || s.title || "service")
-                            .toLowerCase()
-                            .replace(/[^a-z0-9]+/g, "-")
-                            .replace(/(^-|-$)/g, "");
+                const data = await getAllServices();
+                if (data && data.length > 0) {
+                    const mappedCards = data.map((s: any, index: number) => {
                         return {
                             id: s._id || index,
                             tag: s.name || "SERVICE",
-                            imageSrc: "/service/service-card-1.png", // fallback image
+                            imageSrc: s.image ? getImageUrl(s.image) : "/service/service-card-1.png",
                             imageAlt: s.title,
                             title: s.title,
                             description: s.description,
                             buttonLabel: "Apply Now",
-                            buttonHref: `/service/${slug}?id=${s._id}`,
+                            buttonHref: `/service/${s.slug}`,
                             relatedServices: (s.relatedServices || []).map((rs: any, rsIndex: number) => ({
                                 id: rs._id || rsIndex,
                                 label: rs.title || rs.name,

@@ -33,6 +33,7 @@ export default function About() {
                 buttonText1={"About"}
                 buttonText2={"Us"}
                 buttonText3={"Talk to a Lawyer"}
+                buttonText3Href="/contact-us"
                 paragraph={abotSectionParagraph1}
                 paragraphMaxWidth="max-w-6xl"
             />

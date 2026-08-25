@@ -50,7 +50,7 @@ const ConsultationView = () => {
                 setData(prev => ({ ...prev, status }));
             }
         } catch (error) {
-            const errDetails = error.response?.data?.error || error.response?.data?.details || error.message;
+            const errDetails = error.response?.data?.message || error.response?.data?.error || error.response?.data?.details || error.message;
             setError(errDetails || 'An error occurred updating status');
         } finally {
             setLoading(false);

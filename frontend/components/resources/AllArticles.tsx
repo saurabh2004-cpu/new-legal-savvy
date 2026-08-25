@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { getAllBlogs, generateSlug } from "@/services/blogServices";
+import { getAllBlogs } from "@/services/blogServices";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "../utils/SectionHeading";
+import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
+import { getImageUrl } from "@/utils/getImageUrl";
 
 interface Article {
     id: string;
@@ -47,6 +49,7 @@ function AllArticleCard({ article }: { article: Article }) {
                             src={article.image}
                             alt={article.title}
                             fill
+                            unoptimized={isLocalBackendImage(article.image)}
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="object-cover"
                         />
@@ -152,21 +155,17 @@ export default function AllArticlesSection() {
                 const data = await getAllBlogs();
                 if (data && data.length > 0) {
                     const mappedArticles = data.map((blog: any) => {
-                        const baseUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || "").replace("/api/v1", "");
-                        const imagePath = blog.image?.startsWith("http")
-                            ? blog.image
-                            : `${baseUrl}${blog.image}`;
-
                         return {
                             id: blog._id,
                             title: blog.title,
                             category: blog.category || "Uncategorized",
                             readTime: blog.readTime || "5 min",
-                            image: imagePath,
-                            href: `/resources/${generateSlug(blog.title)}`, // Or # depending on your routing
+                            image: getImageUrl(blog.image),
+                            href: `/resources/${blog.slug}`,
                         };
                     });
                     setArticles(mappedArticles);
+
                 }
             } catch (error) {
                 console.error("Error fetching blogs", error);

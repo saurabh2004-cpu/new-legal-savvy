@@ -88,7 +88,7 @@ const BlogCreate = () => {
                 setTimeout(() => navigate('/dashboard/blogs/list'), 1500);
             }
         } catch (error) {
-            const errDetails = error.response?.data?.error || error.response?.data?.details || error.message;
+            const errDetails = error.response?.data?.message || error.response?.data?.error || error.response?.data?.details || error.message;
             setError(errDetails || 'An error occurred');
         } finally {
             setLoading(false);

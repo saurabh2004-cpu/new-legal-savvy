@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl } from '@mui/material';
+import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
@@ -21,6 +21,8 @@ const ServiceCreate = () => {
         shortDescriptionPoints: ''
     });
 
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [filePreview, setFilePreview] = useState('');
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -50,9 +52,21 @@ const ServiceCreate = () => {
         }));
     };
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            setFilePreview(URL.createObjectURL(file));
+        }
+    };
+
     const validateForm = () => {
         if (!formData.name || !formData.title || !formData.description) {
             setError('Please fill all required fields');
+            return false;
+        }
+        if (!selectedFile) {
+            setError('Please select an image file');
             return false;
         }
         return true;
@@ -62,19 +76,29 @@ const ServiceCreate = () => {
         if (!validateForm()) return;
         setLoading(true);
         try {
-            const submitData = {
-                ...formData,
-                shortDescriptionPoints: formData.shortDescriptionPoints
-                    ? formData.shortDescriptionPoints.split('\n').map(p => p.trim()).filter(p => p !== '')
-                    : []
-            };
-            const res = await createService(submitData);
+            const data = new FormData();
+            data.append('name', formData.name);
+            data.append('title', formData.title);
+            data.append('description', formData.description);
+            data.append('clientsAssisted', formData.clientsAssisted);
+            data.append('highlight', formData.highlight);
+            data.append('startingFrom', formData.startingFrom);
+            data.append('fullDescription', formData.fullDescription);
+            data.append('image', selectedFile);
+            data.append('relatedServices', JSON.stringify(formData.relatedServices));
+            
+            const points = formData.shortDescriptionPoints
+                ? formData.shortDescriptionPoints.split('\n').map(p => p.trim()).filter(p => p !== '')
+                : [];
+            data.append('shortDescriptionPoints', JSON.stringify(points));
+
+            const res = await createService(data);
             if (res.status === 201 || res.data) {
                 setSuccess(true);
                 setTimeout(() => navigate('/dashboard/services/list'), 1500);
             }
         } catch (error) {
-            const errDetails = error.response?.data?.error || error.response?.data?.details || error.message;
+            const errDetails = error.response?.data?.message || error.response?.data?.error || error.response?.data?.details || error.message;
             setError(errDetails || 'An error occurred');
         } finally {
             setLoading(false);
@@ -133,6 +157,35 @@ const ServiceCreate = () => {
                 </Grid>
 
                 <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="image">Service Image *</CustomFormLabel>
+                    <Box display="flex" alignItems="center" gap={2}>
+                        <Button variant="outlined" component="label">
+                            Choose Image
+                            <input
+                                type="file"
+                                hidden
+                                accept="image/*"
+                                onChange={handleFileChange}
+                            />
+                        </Button>
+                        {selectedFile && (
+                            <Typography variant="body2" color="textSecondary">
+                                {selectedFile.name}
+                            </Typography>
+                        )}
+                    </Box>
+                    {filePreview && (
+                        <Box mt={2}>
+                            <img
+                                src={filePreview}
+                                alt="Preview"
+                                style={{ maxWidth: '100%', maxHeight: '150px', borderRadius: '4px', objectFit: 'cover' }}
+                            />
+                        </Box>
+                    )}
+                </Grid>
+
+                <Grid size={{ xs: 12, sm: 6 }}>
                     <CustomFormLabel htmlFor="relatedServices">Related Services</CustomFormLabel>
                     <FormControl fullWidth>
                         <Select
@@ -145,7 +198,7 @@ const ServiceCreate = () => {
                         >
                             {services.map((service) => (
                                 <MenuItem key={service._id || service.id} value={service._id || service.id}>
-                                    {service.name}
+                                    {service.title}
                                 </MenuItem>
                             ))}
                         </Select>

@@ -171,7 +171,7 @@ function Card({ stat }: CardProps) {
       </div>
 
       {/* Right */}
-      <div className="flex w-[42%] flex-col gap-4 justify-end rounded-xl bg-[#313B5E] p-4 shadow-inner lg:w-[220px]">
+      <div className="flex w-[42%] flex-col gap-4 justify-end rounded-xl bg-[#313B5E] text-white p-4 shadow-inner lg:w-[220px]">
         <span className="text-right text-sm geist-light uppercase">
           {stat.title}
         </span>

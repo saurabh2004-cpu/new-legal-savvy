@@ -34,6 +34,24 @@ export const upload = multer({
   },
 });
 
+export const uploadSingleImage = (fieldName: string) => {
+  return (req: any, res: any, next: any) => {
+    upload.single(fieldName)(req, res, (err: any) => {
+      if (err) {
+        let message = err.message;
+        if (err instanceof multer.MulterError && err.code === "LIMIT_FILE_SIZE") {
+          message = "Image size must be less than 5MB";
+        }
+        return res.status(400).json({
+          success: false,
+          message,
+        });
+      }
+      next();
+    });
+  };
+};
+
 const csvStorage = multer.memoryStorage();
 
 export const uploadCSV = multer({

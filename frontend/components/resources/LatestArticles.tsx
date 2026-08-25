@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { getAllBlogs, generateSlug } from "@/services/blogServices";
+import { getAllBlogs } from "@/services/blogServices";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "../utils/SectionHeading";
+import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
+import { getImageUrl } from "@/utils/getImageUrl";
 
 interface Article {
     id: string;
@@ -47,6 +49,7 @@ function LatestArticleCard({ article }: { article: Article }) {
                         src={article.image || ""}
                         alt={article.title}
                         fill
+                        unoptimized={isLocalBackendImage(article.image)}
                         className="object-cover"
                     />
                 </motion.div>
@@ -135,17 +138,12 @@ export default function LatestArticlesSection() {
                 if (data && data.length > 0) {
                     const latestTwo = data.slice(0, 2);
                     const mappedArticles = latestTwo.map((blog: any) => {
-                        const baseUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || "").replace("/api/v1", "");
-                        const imagePath = blog.image?.startsWith("http")
-                            ? blog.image
-                            : `${baseUrl}${blog.image}`;
-
                         return {
                             id: blog._id,
                             title: blog.title,
                             category: blog.category || "Uncategorized",
-                            image: imagePath,
-                            href: `/resources/${generateSlug(blog.title)}`,
+                            image: getImageUrl(blog.image),
+                            href: `/resources/${blog.slug}`,
                         };
                     });
                     setLatestArticles(mappedArticles);

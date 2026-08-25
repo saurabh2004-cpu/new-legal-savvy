@@ -4,6 +4,7 @@ import React, { useState, useEffect, memo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAllServices } from "@/services/serviceServices";
+import { getImageUrl } from "@/utils/getImageUrl";
 
 interface NavbarProps {
   onHoverMenuChange?: (menu: "services" | "locations" | null) => void;
@@ -323,54 +324,58 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
                       </div>
                     ))
                   ) : servicesData.length > 0 ? (
-                    servicesData.map((item: any, idx: number) => {
-                      const slug = getServiceSlug(item.title);
-                      return (
-                        <motion.div
-                          key={item._id || idx}
-                          custom={idx}
-                          variants={CARD_VARIANTS}
-                          initial="hidden"
-                          animate="visible"
-                        >
-                          <Link
-                            href={`/service/${slug}?id=${item._id}`}
-                            onClick={() => onHoverMenuChange?.(null)}
-                            className="p-3.5 bg-[#D2C7BD] hover:bg-[#EFECE8] transition-all duration-300 rounded-[1.25rem] flex items-center justify-between group cursor-pointer shadow-sm"
+                    <div
+                      className="max-h-[70vh] overflow-y-auto overscroll-contain pr-1 scrollbar-hide space-y-2"
+                      onWheel={(e) => e.stopPropagation()}
+                    >
+                      {servicesData.map((item: any, idx: number) => {
+                        return (
+                          <motion.div
+                            key={item._id || idx}
+                            custom={idx}
+                            variants={CARD_VARIANTS}
+                            initial="hidden"
+                            animate="visible"
                           >
-                            <div className="flex items-center gap-6 flex-1 min-w-0">
-                              {/* Left Image */}
-                              <div className="relative w-[160px] h-[105px] rounded-xl overflow-hidden shrink-0 shadow-sm">
-                                <img
-                                  src={item.image || "/home/our-features-1.png"}
-                                  alt={item.title}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                              </div>
-                              {/* Center Content */}
-                              <div className="flex flex-col flex-1 text-left justify-center pr-3 min-w-0">
-                                <span className="font-sans text-[1.2rem] md:text-[1.35rem] font-medium text-black/85 group-hover:text-black transition-colors truncate">
-                                  {item.title}
-                                </span>
-                                {item.description && (
-                                  <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out">
-                                    <div className="overflow-hidden min-h-0">
-                                      <p className="font-sans text-[0.9rem] leading-[1.4] text-black/65 line-clamp-2 mt-1">
-                                        {item.description}
-                                      </p>
+                            <Link
+                              href={`/service/${item.slug}`}
+                              onClick={() => onHoverMenuChange?.(null)}
+                              className="p-3.5 bg-[#D2C7BD] hover:bg-[#EFECE8] transition-all duration-300 rounded-[1.25rem] flex items-center justify-between group cursor-pointer shadow-sm"
+                            >
+                              <div className="flex items-center gap-6 flex-1 min-w-0">
+                                {/* Left Image */}
+                                <div className="relative w-[160px] h-[105px] rounded-xl overflow-hidden shrink-0 shadow-sm">
+                                  <img
+                                    src={getImageUrl(item.image) || "/home/our-features-1.png"}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                  />
+                                </div>
+                                {/* Center Content */}
+                                <div className="flex flex-col flex-1 text-left justify-center pr-3 min-w-0">
+                                  <span className="font-sans text-[1.2rem] md:text-[1.35rem] font-medium text-black/85 group-hover:text-black transition-colors truncate">
+                                    {item.title}
+                                  </span>
+                                  {item.description && (
+                                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                                      <div className="overflow-hidden min-h-0">
+                                        <p className="font-sans text-[0.9rem] leading-[1.4] text-black/65 line-clamp-2 mt-1">
+                                          {item.description}
+                                        </p>
+                                      </div>
                                     </div>
-                                  </div>
-                                )}
+                                  )}
+                                </div>
                               </div>
-                            </div>
-                            {/* Right Plus */}
-                            <div className="text-black/70 opacity-100 group-hover:opacity-0 transition-opacity duration-300 shrink-0 mr-3">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    })
+                              {/* Right Plus */}
+                              <div className="text-black/70 opacity-100 group-hover:opacity-0 transition-opacity duration-300 shrink-0 mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
+                              </div>
+                            </Link>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
                   ) : (
                     <div className="text-center p-6 text-black/60 font-mono text-sm">No services found.</div>
                   )
@@ -408,14 +413,12 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
         >
           <div className="w-4 lg:w-6 h-[8px] flex flex-col justify-between items-center relative">
             <span
-              className={`w-full h-[2px] bg-black rounded-full transition-transform duration-300 ease-in-out ${
-                isMobileMenuOpen ? "translate-y-[3px] rotate-45" : ""
-              }`}
+              className={`w-full h-[2px] bg-black rounded-full transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-y-[3px] rotate-45" : ""
+                }`}
             />
             <span
-              className={`w-full h-[2px] bg-black rounded-full transition-transform duration-300 ease-in-out ${
-                isMobileMenuOpen ? "-translate-y-[3px] -rotate-45" : ""
-              }`}
+              className={`w-full h-[2px] bg-black rounded-full transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "-translate-y-[3px] -rotate-45" : ""
+                }`}
             />
           </div>
           <span className="text-base font-medium font-mono tracking-normal leading-none">{isMobileMenuOpen ? "CLOSE" : "MENU"}</span>
@@ -545,11 +548,10 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
                                 <div className="text-[1.2rem] text-black/50 font-light">Loading...</div>
                               ) : servicesData.length > 0 ? (
                                 servicesData.map((item: any) => {
-                                  const slug = getServiceSlug(item.title);
                                   return (
                                     <Link
                                       key={item._id}
-                                      href={`/service/${slug}?id=${item._id}`}
+                                      href={`/service/${item.slug}`}
                                       onClick={() => setIsMobileMenuOpen(false)}
                                       className="text-[1.2rem] text-black/60 hover:text-black transition-colors font-light"
                                     >
