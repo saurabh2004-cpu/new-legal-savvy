@@ -1,18 +1,33 @@
 import Navbar from "@/components/common/Navbar";
-import Hero8 from "@/components/common/Hero8";
-// import ContentSection from "@/components/loan-settlement-by-city/ContentSection";
-import type { Metadata } from "next";
 import Hero7 from "@/components/common/Hero7";
-import ContentSection from "@/components/loan-settlement-by-bank/ContentSection";
-
-export const metadata: Metadata = {
-    title: "Loan Settlement By City - Debt Settlement Services",
-    description:
-        "Get expert legal debt settlement services across India. Reduce your loan burden and get relief from harassment with proven settlement strategies.",
-};
+import ContentSection from "@/components/loan-settlement-by-city/ContentSection";
+import type { Metadata } from "next";
 
 interface PageProps {
     params: Promise<{ slug: string[] }>;
+}
+
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
+    const { slug } = await params;
+
+    const rawCity = slug?.length > 0 ? slug[slug.length - 1] : "";
+
+    const cityName = rawCity
+        ? rawCity
+            .split("-")
+            .map(
+                (word) => word.charAt(0).toUpperCase() + word.slice(1)
+            )
+            .join(" ")
+        : "Tirap";
+
+    return {
+        title: `Loan Settlement Services in ${cityName} | Legal Savvy`,
+        description:
+            `Behind on loan or credit card dues in ${cityName}? Legal Savvy negotiates a written One-Time Settlement under the RBI Fair Practices Code. Book a call.`,
+    };
 }
 
 export default async function Page({ params }: PageProps) {
@@ -33,8 +48,7 @@ export default async function Page({ params }: PageProps) {
         <div className="bg-[#f0ece7] min-h-screen">
             <Navbar />
             <Hero7 bankName={cityName} />
-            {/* <ContentSection cityName={cityName} /> */}
-            <ContentSection bankName={cityName} />
+            <ContentSection cityName={cityName} />
         </div>
     );
 } 

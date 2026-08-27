@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography } from '@mui/material';
+import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography, Switch, FormControlLabel } from '@mui/material';
 import Button from '@mui/material/Button';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
@@ -12,7 +12,6 @@ const ServiceCreate = () => {
     const [formData, setFormData] = useState({
         name: '',
         title: '',
-        homePageDescription: '',
         sequence: '',
         metaTitle: '',
         metaDescription: '',
@@ -22,11 +21,20 @@ const ServiceCreate = () => {
         highlight: '',
         startingFrom: '',
         fullDescription: '',
-        shortDescriptionPoints: ''
+        shortDescriptionPoints: '',
+        showOnHomePage: false,
+        homePageTag: '',
+        homePageTitle: '',
+        homePageDescription: ''
     });
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [filePreview, setFilePreview] = useState('');
+    const [selectedHomePageFile, setSelectedHomePageFile] = useState(null);
+    const [homePageFilePreview, setHomePageFilePreview] = useState('');
+    const [stats, setStats] = useState([{ label: '', value: '' }]);
+    const [faqs, setFaqs] = useState([]);
+
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -64,6 +72,38 @@ const ServiceCreate = () => {
         }
     };
 
+    const handleStatChange = (index, field, val) => {
+        setStats(prev => {
+            const copy = [...prev];
+            copy[index][field] = val;
+            return copy;
+        });
+    };
+
+    const handleAddStat = () => {
+        setStats(prev => [...prev, { label: '', value: '' }]);
+    };
+
+    const handleRemoveStat = (index) => {
+        setStats(prev => prev.filter((_, i) => i !== index));
+    };
+
+    const handleAddFaq = () => {
+        setFaqs(prev => [...prev, { question: '', answer: '' }]);
+    };
+
+    const handleFaqChange = (index, field, val) => {
+        setFaqs(prev => {
+            const copy = [...prev];
+            copy[index][field] = val;
+            return copy;
+        });
+    };
+
+    const handleRemoveFaq = (index) => {
+        setFaqs(prev => prev.filter((_, i) => i !== index));
+    };
+
     const validateForm = () => {
         if (
             !formData.name ||
@@ -89,6 +129,13 @@ const ServiceCreate = () => {
             return false;
         }
 
+        if (formData.showOnHomePage) {
+            if (!formData.homePageTag || !formData.homePageTitle || !formData.homePageDescription) {
+                setError('Please fill all Home Page required fields (Tag, Title, Description)');
+                return false;
+            }
+        }
+
         return true;
     };
 
@@ -99,7 +146,6 @@ const ServiceCreate = () => {
             const data = new FormData();
             data.append('name', formData.name);
             data.append('title', formData.title);
-            data.append('homePageDescription', formData.homePageDescription);
             data.append('sequence', formData.sequence);
             data.append('metaTitle', formData.metaTitle);
             data.append('metaDescription', formData.metaDescription);
@@ -115,6 +161,24 @@ const ServiceCreate = () => {
                 ? formData.shortDescriptionPoints.split('\n').map(p => p.trim()).filter(p => p !== '')
                 : [];
             data.append('shortDescriptionPoints', JSON.stringify(points));
+
+            // Append HomePage fields
+            data.append('showOnHomePage', formData.showOnHomePage);
+
+            const homePageData = {
+                tag: formData.homePageTag,
+                title: formData.homePageTitle,
+                description: formData.homePageDescription,
+                stats: stats.filter(s => s.label && s.value)
+            };
+            data.append('homePage', JSON.stringify(homePageData));
+
+            if (selectedHomePageFile) {
+                data.append('homePageImage', selectedHomePageFile);
+            }
+
+            const validFaqs = faqs.filter(f => f.question.trim() && f.answer.trim());
+            data.append('faqs', JSON.stringify(validFaqs));
 
             const res = await createService(data);
             if (res.status === 201 || res.data) {
@@ -148,43 +212,151 @@ const ServiceCreate = () => {
                     <CustomFormLabel htmlFor="name">Name *</CustomFormLabel>
                     <CustomOutlinedInput id="name" name="name" fullWidth value={formData.name} onChange={handleChange} />
                 </Grid>
-
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="title">Title *</CustomFormLabel>
                     <CustomOutlinedInput id="title" name="title" fullWidth value={formData.title} onChange={handleChange} />
                 </Grid>
-
                 <Grid size={{ xs: 12, sm: 4 }}>
-                    <CustomFormLabel htmlFor="sequence">
-                        Sequence *
-                    </CustomFormLabel>
+                    <CustomFormLabel htmlFor="sequence">Sequence</CustomFormLabel>
                     <CustomOutlinedInput
                         id="sequence"
                         name="sequence"
                         type="number"
                         fullWidth
                         inputProps={{ min: 1 }}
-                        placeholder="e.g. 1"
+                        placeholder="Leave empty to auto-append at end"
                         value={formData.sequence}
                         onChange={handleChange}
                     />
                 </Grid>
 
                 <Grid size={{ xs: 12 }}>
-                    <CustomFormLabel htmlFor="homePageDescription">
-                        Home Page Description
-                    </CustomFormLabel>
-                    <CustomOutlinedInput
-                        id="homePageDescription"
-                        name="homePageDescription"
-                        multiline
-                        rows={3}
-                        fullWidth
-                        placeholder="Enter description to be displayed on the home page..."
-                        value={formData.homePageDescription}
-                        onChange={handleChange}
+                    <Typography variant="h5" sx={{ mt: 3, mb: 1, borderBottom: '1px solid #ddd', pb: 1 }}>
+                        Home Page Settings
+                    </Typography>
+                </Grid>
+
+                <Grid size={{ xs: 12 }}>
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                name="showOnHomePage"
+                                checked={formData.showOnHomePage}
+                                onChange={(e) => setFormData(prev => ({ ...prev, showOnHomePage: e.target.checked }))}
+                            />
+                        }
+                        label="Show on Home Page"
                     />
                 </Grid>
+
+                {formData.showOnHomePage && (
+                    <>
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <CustomFormLabel htmlFor="homePageTag">Home Page Tag *</CustomFormLabel>
+                            <CustomOutlinedInput
+                                id="homePageTag"
+                                name="homePageTag"
+                                fullWidth
+                                placeholder="e.g. LOAN ISSUES"
+                                value={formData.homePageTag}
+                                onChange={handleChange}
+                            />
+                        </Grid>
+
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <CustomFormLabel htmlFor="homePageTitle">Home Page Title *</CustomFormLabel>
+                            <CustomOutlinedInput
+                                id="homePageTitle"
+                                name="homePageTitle"
+                                fullWidth
+                                placeholder="e.g. Personal Loan Settlement"
+                                value={formData.homePageTitle}
+                                onChange={handleChange}
+                            />
+                        </Grid>
+
+                        <Grid size={{ xs: 12 }}>
+                            <CustomFormLabel htmlFor="homePageDescription">Home Page Description *</CustomFormLabel>
+                            <CustomOutlinedInput
+                                id="homePageDescription"
+                                name="homePageDescription"
+                                multiline
+                                rows={3}
+                                fullWidth
+                                placeholder="Enter description for the home page cards..."
+                                value={formData.homePageDescription}
+                                onChange={handleChange}
+                            />
+                        </Grid>
+
+                        <Grid size={{ xs: 12, sm: 12 }}>
+                            <CustomFormLabel htmlFor="homePageImage">Home Page Image (Optional)</CustomFormLabel>
+                            <Box display="flex" alignItems="center" gap={2}>
+                                <Button variant="outlined" component="label">
+                                    Choose Home Page Image
+                                    <input
+                                        type="file"
+                                        hidden
+                                        accept="image/*"
+                                        onChange={(e) => {
+                                            const file = e.target.files[0];
+                                            if (file) {
+                                                setSelectedHomePageFile(file);
+                                                setHomePageFilePreview(URL.createObjectURL(file));
+                                            }
+                                        }}
+                                    />
+                                </Button>
+                                {selectedHomePageFile && (
+                                    <Typography variant="body2" color="textSecondary">
+                                        {selectedHomePageFile.name}
+                                    </Typography>
+                                )}
+                            </Box>
+                            {homePageFilePreview && (
+                                <Box mt={2}>
+                                    <img
+                                        src={homePageFilePreview}
+                                        alt="Home Page Preview"
+                                        style={{ maxWidth: '100%', maxHeight: '150px', borderRadius: '4px', objectFit: 'cover' }}
+                                    />
+                                </Box>
+                            )}
+                        </Grid>
+
+                        <Grid size={{ xs: 12 }}>
+                            <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>
+                                Home Page Stats
+                            </Typography>
+                            {stats.map((stat, index) => (
+                                <Box key={index} display="flex" gap={2} alignItems="center" mb={2}>
+                                    <Box flex={1}>
+                                        <CustomOutlinedInput
+                                            placeholder="Stat Label (e.g. CASES)"
+                                            fullWidth
+                                            value={stat.label}
+                                            onChange={(e) => handleStatChange(index, 'label', e.target.value)}
+                                        />
+                                    </Box>
+                                    <Box flex={1}>
+                                        <CustomOutlinedInput
+                                            placeholder="Stat Value (e.g. 2,500+)"
+                                            fullWidth
+                                            value={stat.value}
+                                            onChange={(e) => handleStatChange(index, 'value', e.target.value)}
+                                        />
+                                    </Box>
+                                    <Button variant="outlined" color="error" onClick={() => handleRemoveStat(index)}>
+                                        Remove
+                                    </Button>
+                                </Box>
+                            ))}
+                            <Button variant="outlined" color="primary" onClick={handleAddStat}>
+                                Add Stat
+                            </Button>
+                        </Grid>
+                    </>
+                )}
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <CustomFormLabel htmlFor="metaTitle">
@@ -207,8 +379,6 @@ const ServiceCreate = () => {
                     <CustomOutlinedInput
                         id="metaDescription"
                         name="metaDescription"
-                        // multiline
-                        // rows={2}
                         fullWidth
                         placeholder="Enter SEO meta description..."
                         value={formData.metaDescription}
@@ -233,7 +403,7 @@ const ServiceCreate = () => {
 
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <CustomFormLabel htmlFor="startingFrom">Starting From</CustomFormLabel>
-                    <CustomOutlinedInput id="startingFrom" name="startingFrom" placeholder="e.g. ₹999" fullWidth value={formData.startingFrom} onChange={handleChange} />
+                    <CustomOutlinedInput id="startingFrom" name="startingFrom" placeholder="e.g. ₹1,999" fullWidth value={formData.startingFrom} onChange={handleChange} />
                 </Grid>
 
                 <Grid size={{ xs: 12 }}>
@@ -293,6 +463,45 @@ const ServiceCreate = () => {
                             ))}
                         </Select>
                     </FormControl>
+                </Grid>
+
+                <Grid size={{ xs: 12 }}>
+                    <Typography variant="h5" sx={{ mt: 3, mb: 1, borderBottom: '1px solid #ddd', pb: 1 }}>
+                        Service FAQs (Optional)
+                    </Typography>
+                    {faqs.map((faq, index) => (
+                        <Box key={index} display="flex" flexDirection="column" gap={2} mb={3} p={2} border="1px solid #e0e0e0" borderRadius="8px">
+                            <Box display="flex" justifyContent="space-between" alignItems="center">
+                                <Typography variant="subtitle1" fontWeight={600}>
+                                    FAQ #{index + 1}
+                                </Typography>
+                                <Button variant="outlined" color="error" size="small" onClick={() => handleRemoveFaq(index)}>
+                                    Remove FAQ
+                                </Button>
+                            </Box>
+                            <CustomFormLabel htmlFor={`faq-q-${index}`}>Question</CustomFormLabel>
+                            <CustomOutlinedInput
+                                id={`faq-q-${index}`}
+                                placeholder="Enter question..."
+                                fullWidth
+                                value={faq.question}
+                                onChange={(e) => handleFaqChange(index, 'question', e.target.value)}
+                            />
+                            <CustomFormLabel htmlFor={`faq-a-${index}`}>Answer</CustomFormLabel>
+                            <CustomOutlinedInput
+                                id={`faq-a-${index}`}
+                                placeholder="Enter answer..."
+                                multiline
+                                rows={3}
+                                fullWidth
+                                value={faq.answer}
+                                onChange={(e) => handleFaqChange(index, 'answer', e.target.value)}
+                            />
+                        </Box>
+                    ))}
+                    <Button variant="outlined" color="primary" onClick={handleAddFaq}>
+                        Add FAQ
+                    </Button>
                 </Grid>
 
                 <Grid item size={{ xs: 12 }} mt={3}>

@@ -557,6 +557,13 @@ const ProductTableList = ({
                             <TableCell><Typography fontWeight="600">{row.name}</Typography></TableCell>
                             <TableCell><Typography>{row.title}</Typography></TableCell>
                             <TableCell>
+                              <Chip
+                                label={row.showOnHomePage ? "Yes" : "No"}
+                                size="small"
+                                color={row.showOnHomePage ? "success" : "default"}
+                              />
+                            </TableCell>
+                            <TableCell>
                               {/* <Box display="flex" flexWrap="wrap" gap={0.5}>
                                 {row.relatedServices && row.relatedServices.length > 0 ? (
                                   row.relatedServices.map((rel) => (

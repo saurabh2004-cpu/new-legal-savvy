@@ -8,9 +8,12 @@ import BankSettlements from "@/components/common/BankSettlements";
 import StandardOfCareSection from "@/components/resources/StandardOfCareSection";
 import ScheduleVisitSection from "@/components/resources/ScheduleVisitSection";
 import type { Metadata } from "next";
+import QnaSection from "@/components/contact-us/QnaSection";
+import { faqs } from "@/data/faq";
+import FAQJsonLd from "@/components/common/FAQJsonLd";
 
 export const metadata: Metadata = {
-  title: "resources Legal Savvy- Debt Settlement Services",
+  title: "Resources Legal Savvy- Debt Settlement Services",
   description:
     "Get expert legal debt settlement services across India. Reduce your loan burden and get relief from harassment with proven settlement strategies.",
 }
@@ -19,6 +22,7 @@ export default function page() {
   return (
     // <main className="bg-[#FBF8F5]">
     <main className="bg-[#FFFFFF]">
+      <FAQJsonLd faqs={faqs.resources} />
       <Hero3
         Heading={"BLOGS & CASES"}
         img={"/about/about-hero-img.png"}
@@ -36,6 +40,7 @@ export default function page() {
         className="bg-none py-12 sm:py-16"
       />
       <StandardOfCareSection />
+      <QnaSection faqs={faqs.resources} />
       <ScheduleVisitSection />
     </main>
   );

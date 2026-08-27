@@ -18,6 +18,7 @@ const ServicesList = () => {
         { id: 'image', numeric: false, disablePadding: false, label: 'Image' },
         { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
         { id: 'title', numeric: false, disablePadding: false, label: 'Title' },
+        { id: 'showOnHomePage', numeric: false, disablePadding: false, label: 'Show on Home Page' },
         { id: 'relatedServices', numeric: false, disablePadding: false, label: 'Related Services' },
         { id: 'createdAt', numeric: false, disablePadding: false, label: 'Created Date' },
     ];

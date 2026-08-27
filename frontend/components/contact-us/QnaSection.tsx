@@ -3,32 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "../utils/SectionHeading";
+import type { FaqItem } from "@/data/faq";
 
-interface FaqItem {
-    question: string;
-    answer: string;
+interface QnaSectionProps {
+    faqs: FaqItem[];
+    className?: string
 }
 
-const FAQ_DATA: FaqItem[] = [
-    {
-        question: "What treatments do you offer?",
-        answer: "We offer a full range of dental treatments under one roof, including dental implants, orthodontics (Invisalign and fixed braces), teeth whitening, porcelain veneers, smile design, crowns and bridges, composite bonding, and preventive and general dentistry. Our multidisciplinary team covers all dental specialties without the need for external referrals."
-    },
-    {
-        question: "How do I book as a new patient?",
-        answer: "We accept new patients and welcome patients from all backgrounds, including those who have not visited a dentist in a long time. We recommend booking an initial consultation as a first step — this gives us time to carry out a full assessment, understand your dental history and goals, and discuss all available treatment options without pressure. You can book online or call our reception team directly."
-    },
-    {
-        question: "How does the treatment planning process work?",
-        answer: "Every treatment begins with a thorough examination, intraoral photographs, and the relevant diagnostic imaging (digital X-rays or 3D CBCT scan). From this assessment, we prepare a written treatment plan outlining all proposed procedures, sequencing, expected timelines, and full cost breakdown before any clinical work begins. You are never committed to anything without your explicit agreement."
-    },
-    {
-        question: "How long does treatment take?",
-        answer: "It depends on the treatment. Teeth whitening and composite bonding can often be completed in a single appointment. Porcelain veneers typically require two to three visits. Dental implants involve a phased process over three to six months, depending on bone condition and the restoration chosen. Orthodontic treatment ranges from six months to two years. We will give you a clear timeline at your consultation."
-    }
-];
-
-export default function QnaSection() {
+export default function QnaSection({ faqs, className }: QnaSectionProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleIndex = (index: number) => {
@@ -37,7 +19,7 @@ export default function QnaSection() {
 
     return (
         <section className="w-full py-1 px-2">
-            <div className="w-full max-w-8xl mx-auto py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-[#CDC2BB] rounded-xl overflow-hidden">
+            <div className={`w-full max-w-8xl mx-auto py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-[#CDC2BB] rounded-xl overflow-hidden ${className}`}>
                 <div className="max-w-7xl mx-auto">
                     {/* Section Header */}
                     <div className="text-center mb-16">
@@ -60,7 +42,7 @@ export default function QnaSection() {
                         viewport={{ once: true }}
                         className="space-y-4"
                     >
-                        {FAQ_DATA.map((item, idx) => {
+                        {faqs.map((item, idx) => {
                             const isOpen = openIndex === idx;
 
                             return (

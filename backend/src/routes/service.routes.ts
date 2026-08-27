@@ -8,15 +8,31 @@ import {
   getServiceBySlug,
 } from "../controllers/service.controller.js";
 import { protectAdmin } from "../middlewares/authMiddleware.js";
-import { uploadSingleImage } from "../middlewares/uploadMiddleware.js";
+import { uploadSingleImage, uploadMultipleImages } from "../middlewares/uploadMiddleware.js";
 
 const router = Router();
 
-router.post("/create-service", protectAdmin, uploadSingleImage("image"), createService);
+router.post(
+  "/create-service",
+  protectAdmin,
+  uploadMultipleImages([
+    { name: "image", maxCount: 1 },
+    { name: "homePageImage", maxCount: 1 }
+  ]),
+  createService
+);
 router.get("/get-all-services", getAllServices);
 router.get("/get-service-by-id/:id", getSingleService);
 router.get("/get-service-by-slug/:slug", getServiceBySlug);
-router.put("/update-service/:id", protectAdmin, uploadSingleImage("image"), updateService);
+router.put(
+  "/update-service/:id",
+  // protectAdmin,
+  uploadMultipleImages([
+    { name: "image", maxCount: 1 },
+    { name: "homePageImage", maxCount: 1 }
+  ]),
+  updateService
+);
 router.delete("/delete-service/:id", protectAdmin, deleteService);
 
 export default router;

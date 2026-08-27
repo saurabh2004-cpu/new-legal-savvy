@@ -1,11 +1,26 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
 
+export interface IServiceFaq {
+  question: string;
+  answer: string;
+}
+
 export interface IService {
   name: string;
   title: string;
   slug: string;
   image: string;
-  homePageDescription?: string;
+  homePage: {
+    tag: string;
+    title: string;
+    description: string;
+    image?: string;
+    stats: {
+      label: string;
+      value: string;
+    }[];
+  };
+  showOnHomePage: boolean;
   sequence: number;
   metaTitle?: string;
   metaDescription?: string;
@@ -16,9 +31,64 @@ export interface IService {
   startingFrom?: string;
   fullDescription?: string;
   shortDescriptionPoints?: string[];
+  faqs?: IServiceFaq[];
 }
 
 export interface ServiceDocument extends IService, Document { }
+
+const serviceFaqSchema = new Schema<IServiceFaq>(
+  {
+    question: {
+      type: String,
+      required: [true, "FAQ question is required"],
+      trim: true,
+    },
+    answer: {
+      type: String,
+      required: [true, "FAQ answer is required"],
+      trim: true,
+    },
+  },
+  {
+    _id: false,
+  }
+);
+
+const serviceHomePageSchema = new Schema(
+  {
+    tag: {
+      type: String,
+      trim: true,
+    },
+    title: {
+      type: String,
+      trim: true,
+    },
+    description: {
+      type: String,
+      trim: true,
+    },
+    image: {
+      type: String,
+      trim: true,
+    },
+    stats: [
+      {
+        label: {
+          type: String,
+          trim: true,
+        },
+        value: {
+          type: String,
+          trim: true,
+        },
+      },
+    ],
+  },
+  {
+    _id: false,
+  }
+);
 
 const serviceSchema = new Schema<ServiceDocument>(
   {
@@ -45,9 +115,14 @@ const serviceSchema = new Schema<ServiceDocument>(
       trim: true,
     },
 
-    homePageDescription: {
-      type: String,
-      trim: true,
+    homePage: {
+      type: serviceHomePageSchema,
+      required: false,
+    },
+
+    showOnHomePage: {
+      type: Boolean,
+      default: false,
     },
 
     sequence: {
@@ -99,6 +174,11 @@ const serviceSchema = new Schema<ServiceDocument>(
         trim: true,
       },
     ],
+    faqs: {
+      type: [serviceFaqSchema],
+      default: [],
+      required: false,
+    },
   },
   {
     timestamps: true,

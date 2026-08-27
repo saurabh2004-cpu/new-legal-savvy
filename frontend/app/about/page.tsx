@@ -9,6 +9,9 @@ import ConsultationSection from "@/components/about/CunsultationSection"
 import TeamSection from "@/components/about/TeamSection"
 import Locations from "@/components/common/Locations"
 import type { Metadata } from "next";
+import QnaSection from "@/components/contact-us/QnaSection";
+import { faqs } from "@/data/faq";
+import FAQJsonLd from "@/components/common/FAQJsonLd";
 
 export const metadata: Metadata = {
     title: "Loan Settlement Lawyers in India | About Legal Savvy",
@@ -24,6 +27,7 @@ export default function About() {
     return (
         // <main className="bg-[#FBF8F5]">
         <main className="bg-[#FFFFFF]">
+            <FAQJsonLd faqs={faqs.about} />
             <Hero2
                 Heading={"Meet Your Loan Settlement Lawyers in India"}
                 img={"/about/about-hero-img.png"}
@@ -49,6 +53,7 @@ export default function About() {
             <TrustSection />
             <ConsultationSection />
             {/* <TeamSection /> */}
+            <QnaSection faqs={faqs.about} />
             <Locations variant="cards" />
         </main>
     )

@@ -59,7 +59,7 @@ export default function FeaturedBlogs() {
 
   return (
     <section className="w-full py-1 px-2">
-      <div className="w-full max-w-8xl mx-auto relative py-6 lg:py-16 px-4 md:px-8 lg:px-16 bg-[#E6DCD6] rounded-xl">
+      <div className="w-full max-w-8xl mx-auto relative py-6 lg:py-16 px-4 md:px-8 lg:px-16 bg-[#CDC2BB] rounded-xl">
         {/* Section Header */}
         <SectionHeading title="Featured Blog Posts" align="left" titleClassName="text-2xl md:text-[36px] text-[#1D2331]" underlineColor="#ED3D3D" containerClassName="mb-12" />
 

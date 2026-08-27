@@ -57,7 +57,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
             >
 
               {/* Card Media (Image Block) */}
-              <div className="w-full h-[15rem] md:h-[21.25rem] rounded-[0.9375rem] overflow-hidden relative mx-auto">
+              <div className="w-full h-[15rem] md:h-[21.25rem] aspect-[3/2] rounded-[0.9375rem] overflow-hidden relative mx-auto">
 
                 {/* Category Tag */}
                 <span
@@ -85,7 +85,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
                             whileInView={{ y: "0%", opacity: 1 }}
                             // viewport={{ once: true }}
                             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                            className="font-medium text-base tracking-wider text-white leading-none mb-2"
+                            className="font-medium text-base tracking-wider text-white uppercase leading-none mb-2"
                           >
                             {stat.label}
                           </motion.span>
@@ -99,7 +99,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
                               delay: 0.1,
                               ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="font-medium text-base tracking-wider text-white leading-none"
+                            className="font-medium text-base tracking-wider text-white uppercase leading-none"
                           >
                             {stat.value}
                           </motion.span>

@@ -84,7 +84,7 @@ export default function WhyUs2() {
             >
 
               {/* Card Media (Image) */}
-              <div className="w-full rounded-xl overflow-hidden mb-4 relative aspect-[16/10]">
+              <div className="w-full rounded-xl overflow-hidden mb-4 relative aspect-[3/2]">
                 <motion.img
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}

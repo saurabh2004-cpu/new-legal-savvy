@@ -83,7 +83,7 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
                   2. Your Legal Rights
                 </a>
                 <a href="#rbi-guidelines" className="block hover:text-blue-600 transition-colors">
-                  3. RBI Guidelines
+                  3. OTS Settlement
                 </a>
                 <a href="#credit-card-settlement" className="block hover:text-blue-600 transition-colors">
                   4. Credit Card Settlement
@@ -95,34 +95,16 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
                   6. The Settlement Process
                 </a>
                 <a href="#harassment-protection" className="block hover:text-blue-600 transition-colors">
-                  7. Harassment Protection
+                  7. CIBIL Score Impact
                 </a>
                 <a href="#cibil-impact" className="block hover:text-blue-600 transition-colors">
-                  8. CIBIL Score Impact
-                </a>
-                <a href="#why-choose-us" className="block hover:text-blue-600 transition-colors">
-                  9. Why Choose CredSettle
-                </a>
-                <a href="#sarfaesi-act" className="block hover:text-blue-600 transition-colors">
-                  10. SARFAESI &amp; Sec 138
-                </a>
-                <a href="#diy-risks" className="block hover:text-blue-600 transition-colors">
-                  11. DIY Settlement Risks
-                </a>
-                <a href="#management-vs-settlement" className="block hover:text-blue-600 transition-colors">
-                  12. Management vs Settlement
-                </a>
-                <a href="#success-stories" className="block hover:text-blue-600 transition-colors">
-                  13. Success Stories
-                </a>
-                <a href="#future-planning" className="block hover:text-blue-600 transition-colors">
-                  14. Life After Settlement
+                  8. Legal Notice
                 </a>
                 <a href="#reviews" className="block hover:text-blue-600 transition-colors">
-                  15. Client Reviews
+                  9. Client Reviews
                 </a>
                 <a href="#faqs" className="block hover:text-blue-600 transition-colors">
-                  16. Frequently Asked Questions
+                  10. Frequently Asked Questions
                 </a>
               </nav>
             </div>
@@ -136,219 +118,88 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
                 <h2
                   className="font-semibold text-[2rem] md:text-[2.25rem] leading-[100%] tracking-[0%] text-gray-900 mb-6"
                 >
-                  Expert Loan Settlement in {bankName}
+                  How {bankName} Loan Settlement Works
                 </h2>
                 <p className="mb-4">
-                  Facing mounting debt in <strong>{bankName}</strong>? CredSettle provides expert legal representation to help you negotiate with banks and NBFCs. We understand the mental and financial toll of debt, and we are here to fight for your financial freedom. The demand for specialized <strong>loan settlement in {bankName}</strong> has seen a significant rise as more individuals seek legal ways to escape the debt trap of high-interest personal loans and credit cards.
+                  Loan settlement means your lender agrees to accept a single reduced payment that closes the account, instead of you continuing to pay the full outstanding balance. With <strong>{bankName}</strong>, Legal Savvy reviews your loan agreement and statement history, then puts a One-Time Settlement proposal to the bank on your behalf. What <strong>{bankName}</strong> will accept depends on its own internal settlement policy and how long the account has been overdue, so we do not quote a figure before reading your file.
                 </p>
-                <p className="mb-4">
-                  Loan settlement is a 100% legal process governed by RBI guidelines. It allows genuine borrowers who have suffered financial setbacks—such as job loss, medical emergencies, or business failure—to close their accounts for a lower, negotiated amount. If you are looking for professional assistance for <strong>loan settlement in {bankName}</strong>, our team of experienced advocates is ready to guide you through every step of the legal negotiation process.
-                </p>
-                <p className="mb-4">
-                  In a bustling hub like {bankName}, the cost of living and financial pressures can sometimes lead to an unmanageable accumulation of debt. Many residents find themselves struggling with multiple EMIs, where a single missed payment can trigger a cascade of penalties and interest, making it impossible to clear the original principal. This is where the strategic intervention of <strong>loan settlement in {bankName}</strong> becomes essential. Our approach is not just about reducing the debt, but about providing a comprehensive legal shield that protects your rights as a borrower.
-                </p>
+
               </section>
 
               <section id="legal-rights" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Your Rights Against Harassment</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  Your Rights When {bankName} Recovery Agents Call
+                </h2>
                 <p className="mb-4">
-                  Banks and recovery agents must follow the RBI Fair Practices Code. They cannot harass you, use abusive language, or visit your workplace illegally. Once you hire CredSettle for <strong>loan settlement in {bankName}</strong>, we formally notify the bank, and all communication is routed through our legal team, putting an immediate stop to harassment.
-                </p>
-                <p className="mb-4">
-                  It is a common misconception that defaulting on a loan means losing all your rights. On the contrary, the law protects you from undignified recovery practices. In {bankName}, we have seen numerous cases where recovery agents exceed their legal boundaries. Our <strong>loan settlement in {bankName}</strong> services include filing formal complaints with the Banking Ombudsman and the police if harassment persists. We ensure that you are treated with respect throughout the negotiation period.
-                </p>
-                <p className="mb-4">
-                  The psychological impact of debt harassment can be devastating. By choosing a professional legal partner for <strong>loan settlement in {bankName}</strong>, you delegate the stressful communication to experts. This allows you to focus on your recovery while we handle the aggressive recovery departments of banks and NBFCs. Our legal notices are designed to remind financial institutions of their obligations under the law, often leading to a more cooperative negotiation stance.
+                  <strong>{bankName}</strong> is entitled to recover what it is owed. It is not entitled to threaten you, call outside 8 a.m. to 7 p.m., or contact your relatives, employer or neighbours about your debt. Those limits come from the RBI Fair Practices Code, and the bank stays responsible for any agency it appoints. Legal Savvy helps you record what is happening and put <strong>{bankName}</strong> on formal written notice.
                 </p>
               </section>
 
               <section id="rbi-guidelines" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">RBI Guidelines for Loan Settlement</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  One-Time Settlement (OTS) with {bankName}
+                </h2>
                 <p className="mb-4">
-                  The Reserve Bank of India has clear frameworks regarding One Time Settlement (OTS). These guidelines are meant to provide a path for recovery of bad loans while offering relief to genuine defaulters. Our expertise in <strong>loan settlement in {bankName}</strong> involves leveraging these very guidelines to ensure that our clients get the most favorable terms possible.
-                </p>
-                <p className="mb-4">
-                  Understanding the nuances of RBI circulars is crucial for a successful <strong>loan settlement in {bankName}</strong>. For instance, the timing of the settlement can significantly impact the waiver percentage. Typically, once a loan is classified as a Non-Performing Asset (NPA), banks are more inclined to settle to avoid the costs and delays of prolonged litigation. We track these stages meticulously for every client.
-                </p>
-                <p className="mb-4">
-                  Moreover, the RBI emphasizes that recovery through settlement should be transparent and non-discriminatory. When we represent you for <strong>loan settlement in {bankName}</strong>, we ensure that the bank applies these principles fairly to your case. We analyze the bank's internal settlement policies, which they often don't disclose to individual borrowers, but are bound to follow during legal negotiations.
+                  An OTS is a single negotiated payment that closes the loan account for less than the full outstanding amount. Most banks including <strong>{bankName}</strong> have an internal OTS policy setting out what they can accept and who has to approve it, which is why the achievable figure varies between lenders. Legal Savvy prepares the proposal, negotiates the amount and timeline, and confirms the settlement in writing before any money moves.
                 </p>
               </section>
 
               <section id="credit-card-settlement" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Credit Card Settlement in {bankName}</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  {bankName} Credit Card Settlement
+                </h2>
                 <p className="mb-4">
-                  Credit card debt is often the most stressful due to its compounding interest rates, sometimes exceeding 40% per annum. If you are struggling with a mountain of card debt, <strong>loan settlement in {bankName}</strong> specifically tailored for credit cards can be your lifeline. We work to freeze further interest accumulation and negotiate a lump-sum payment that usually covers only a fraction of the total outstanding amount.
-                </p>
-                <p className="mb-4">
-                  The process for <strong>loan settlement in {bankName}</strong> for credit cards differs from term loans. Since credit cards are completely unsecured, banks recognize the high risk of total recovery failure. This gives us significant leverage during negotiations. We have successfully closed numerous credit card accounts in {bankName} with waivers ranging from 50% to even 70% in extreme hardship cases.
-                </p>
-                <p className="mb-4">
-                  Don't let credit card companies continue to trap you in the 'minimum due' cycle. That cycle only serves to increase their profits while keeping you in debt forever. Our <strong>loan settlement in {bankName}</strong> strategy breaks this cycle permanently, allowing you to settle the debt for a manageable amount and regain control over your financial life.
+                  Credit card dues behave differently from a loan account. Interest is charged monthly on the revolving balance and late fees stack on top, so the outstanding figure keeps moving while a settlement is being negotiated. Legal Savvy reviews your <strong>{bankName}</strong> statements to separate principal from accumulated interest and charges, then negotiates a settlement figure with the card division directly.
                 </p>
               </section>
 
               <section id="personal-loan-settlement" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Personal Loan Settlement Strategies</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  {bankName} Personal Loan Settlement
+                </h2>
                 <p className="mb-4">
-                  Personal loans, much like credit cards, are unsecured and often have high-interest rates. Whether you took a loan for a wedding, medical emergency, or travel, if you can no longer afford the EMIs, <strong>loan settlement in {bankName}</strong> is a viable legal option. We analyze your loan agreement and repayment history to build a strong case for financial hardship.
-                </p>
-                <p className="mb-4">
-                  In {bankName}, personal loan defaults often attract legal notices under Section 138 of the Negotiable Instruments Act if checks are bounced. Part of our <strong>loan settlement in {bankName}</strong> service involves handling these legal notices. We represent you in court if necessary and integrate the legal defense with the settlement negotiation to ensure no criminal liability arises from your civil debt.
-                </p>
-                <p className="mb-4">
-                  Our goal with <strong>loan settlement in {bankName}</strong> for personal loans is to reach a 'Full and Final' settlement. This ensures that once you pay the agreed amount, the bank has no further claims on you. We meticulously review the settlement letter provided by the bank to ensure there are no hidden clauses that could allow them to reopen the case later.
+                  A personal loan is unsecured, so <strong>{bankName}</strong> has no asset to seize if you fall behind. What it can do is add penal interest, report the account to the credit bureaus, and route it to recovery. Legal Savvy reviews your repayment history to build the hardship case, then negotiates a settlement. If a cheque has bounced, the Section 138 notice is handled alongside the negotiation rather than separately.
                 </p>
               </section>
 
               <section id="process" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">The CredSettle Settlement Process</h2>
-                <p className="mb-4">
-                  Our systematic approach to <strong>loan settlement in {bankName}</strong> is designed to be transparent, efficient, and legally sound. We understand that every financial situation is unique, which is why we provide personalized strategies for each of our clients.
-                </p>
-                <ol className="space-y-6 list-decimal list-inside text-gray-700 mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  The Settlement Process, Step by Step
+                </h2>
+                <ul className="space-y-6 list-inside text-gray-700 mb-6">
                   <li className="mb-2">
-                    <strong>Financial Audit &amp; Debt Analysis:</strong> The first step in our <strong>loan settlement in {bankName}</strong> process is a deep dive into your financial health. We analyze your total outstanding debt, the interest rates, your current income, and the reasons for your default. This helps us determine the most realistic settlement target.
+                    Step 1: We review your loan agreement, statements and current repayment capacity.
                   </li>
                   <li className="mb-2">
-                    <strong>Legal Representation &amp; Strategy:</strong> Once you enroll for <strong>loan settlement in {bankName}</strong> with us, we issue a formal letter of representation to all your creditors. This legally informs them that all future communications regarding your debt must be directed to our firm.
+                    Step 2: We issue a letter of representation to {bankName}, after which communication routes through us.
                   </li>
                   <li className="mb-2">
-                    <strong>Immediate Harassment Stop:</strong> As soon as the banks receive our legal notice, the aggressive recovery activities typically halt. If any agent continues to contact you, we handle it legally, ensuring your peace of mind is restored during the <strong>loan settlement in {bankName}</strong> process.
+                    Step 3: We prepare and submit the OTS proposal.
                   </li>
                   <li className="mb-2">
-                    <strong>Intensive Negotiation Phase:</strong> Our expert negotiators engage with the settlement departments of your banks. We use your financial hardship evidence and the current market conditions in {bankName} to push for the highest possible waiver. This is the core of our <strong>loan settlement in {bankName}</strong> service.
+                    Step 4: We negotiate the amount and timeline, confirming every offer to you in writing.
                   </li>
                   <li className="mb-2">
-                    <strong>Settlement Verification &amp; Closure:</strong> After a successful negotiation, the bank issues a formal settlement letter. We verify this document to ensure it clearly states that the payment will settle the entire debt 'full and final'. After you pay, we ensure you receive the No Dues Certificate (NDC).
+                    Step 5: Once paid, we request the settlement letter and No-Dues Certificate.
                   </li>
-                </ol>
+                </ul>
               </section>
 
               <section id="harassment-protection" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Protecting Your Reputation and Peace</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  What Settlement Does to Your CIBIL Record
+                </h2>
                 <p className="mb-4">
-                  Debt often brings social stigma, but it shouldn't. Financial setbacks can happen to anyone. Our <strong>loan settlement in {bankName}</strong> services are discreet and professional. We ensure that the settlement process doesn't disrupt your daily life or your social standing in the city.
-                </p>
-                <p className="mb-4">
-                  Many people in {bankName} fear that their neighbors or employers will find out about their debt issues. We take extreme measures to prevent this. By taking over all communications, we ensure that recovery agents don't have a reason to visit your home or office. A professional approach to <strong>loan settlement in {bankName}</strong> is the best way to handle your debt with dignity.
-                </p>
-                <p className="mb-4">
-                  Remember, the sooner you start the process for <strong>loan settlement in {bankName}</strong>, the more options you have. Delaying often leads to more legal notices and higher accumulated penalties, which can make the negotiation harder. Take the first step today by consulting with our legal experts.
+                  This is worth being straight about. A settled account is reported to the credit bureaus as "settled", not "closed", and that affects your score. It is generally viewed less harshly than an account left in default or written off, but it is not neutral. Legal Savvy explains exactly how your <strong>{bankName}</strong> account will be reported before you agree to anything, so the decision is an informed one.
                 </p>
               </section>
 
               <section id="cibil-impact" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Understanding CIBIL Post-Settlement</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  If {bankName} Sends a Legal Notice
+                </h2>
                 <p className="mb-4">
-                  A major concern for anyone seeking <strong>loan settlement in {bankName}</strong> is the impact on their credit score. It's important to be honest: a settlement will reflect as 'Settled' on your CIBIL report, which initially lowers your score. However, this is far better than having multiple 'Default' or 'Written Off' entries that stay for even longer.
-                </p>
-                <p className="mb-4">
-                  As part of our <strong>loan settlement in {bankName}</strong> package, we don't just leave you after the settlement. We provide a comprehensive roadmap on how to rebuild your credit history. In {bankName}, many of our past clients have successfully rebuilt their scores to 750+ within 18-24 months of their settlement by following our expert advice on disciplined financial habits.
-                </p>
-                <p className="mb-4">
-                  Rebuilding your credit after <strong>loan settlement in {bankName}</strong> involves starting with small, secured credit lines and ensuring 100% timely payments. Over time, these positive entries will outweigh the 'Settled' status, making you eligible for credit again. We believe in providing solutions that help you not just today, but for your entire financial future.
-                </p>
-              </section>
-
-              <section id="why-choose-us" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Why CredSettle for Loan Settlement in {bankName}?</h2>
-                <p className="mb-4">
-                  Choosing the right partner for <strong>loan settlement in {bankName}</strong> is crucial. CredSettle stands out due to our legal heritage and our dedicated focus on borrower rights. We are not just a negotiation firm; we are a legal advocacy group committed to financial justice.
-                </p>
-                <ul className="space-y-4 list-disc list-inside text-gray-700 mb-6">
-                  <li>
-                    <strong>City-Specific Expertise:</strong> We understand the local banking environment and the specific recovery patterns prevalent in {bankName}.
-                  </li>
-                  <li>
-                    <strong>Transparent Fee Structure:</strong> No hidden costs. We provide a clear fee structure for our <strong>loan settlement in {bankName}</strong> services right from the start.
-                  </li>
-                  <li>
-                    <strong>Dedicated Legal Cell:</strong> Every case is supervised by qualified lawyers who ensure that all settlements are legally airtight.
-                  </li>
-                  <li>
-                    <strong>Proven Track Record:</strong> We have helped thousands of individuals in {bankName} and across India successfully settle their debts.
-                  </li>
-                </ul>
-                <p className="mb-4">
-                  In {bankName}, where financial competition is fierce, CredSettle acts as your professional buffer. We don't just negotiate; we educate. Our clients for <strong>loan settlement in {bankName}</strong> leave the process not just debt-free, but financially wiser. We help you understand the traps that led to the debt in the first place and provide tools to avoid them in the future.
-                </p>
-              </section>
-
-              <section id="sarfaesi-act" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Navigating SARFAESI and Sec 138 in {bankName}</h2>
-                <p className="mb-4">
-                  Many residents seeking <strong>loan settlement in {bankName}</strong> are often already facing legal threats. The Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest (SARFAESI) Act, 2002, and Section 138 of the Negotiable Instruments Act are common legal tools used by banks. Understanding these is vital for any borrower in default.
-                </p>
-                <p className="mb-4">
-                  Under the SARFAESI Act, banks can take possession of secured assets without the intervention of a court. However, there are many procedural safeguards that banks must follow. As part of our <strong>loan settlement in {bankName}</strong> services, we scrutinize every notice sent by the bank. If there is a procedural lapse, we use it as leverage to push for a better settlement deal.
-                </p>
-                <p className="mb-4">
-                  Section 138 deals with cheque bounce cases, which are criminal in nature. If you are worried about criminal proceedings while pursuing <strong>loan settlement in {bankName}</strong>, our legal team provides the necessary defense. We work to resolve the underlying debt so that the criminal case can be settled and withdrawn, protecting you from potential jail time or heavy fines.
-                </p>
-                <p className="mb-4">
-                  Legal complexity shouldn't be a barrier to your peace of mind. By integrating legal defense with <strong>loan settlement in {bankName}</strong>, we provide a holistic solution that covers all bases. We ensure that all legal notices are replied to within the statutory periods, preserving your rights and building a record of your bonafide intent to settle.
-                </p>
-              </section>
-
-              <section id="diy-risks" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">The Risks of DIY Loan Settlement</h2>
-                <p className="mb-4">
-                  Some individuals attempt to negotiate <strong>loan settlement in {bankName}</strong> on their own. While this is possible, it comes with significant risks. Banks are experienced negotiators with massive legal departments. An individual borrower often lacks the knowledge of 'benchmark settlement rates' and might end up paying much more than necessary.
-                </p>
-                <p className="mb-4">
-                  Furthermore, without a legal representative for <strong>loan settlement in {bankName}</strong>, you remain directly exposed to the high-pressure tactics of recovery departments. They may make verbal promises that are never reflected in the final settlement letter. We have seen cases where borrowers paid a 'settlement' amount only to find out later that the bank treated it as a part-payment and continued recovery for the balance.
-                </p>
-                <p className="mb-4">
-                  A professional for <strong>loan settlement in {bankName}</strong> ensures that every communication is documented. We insist on a formal offer letter on the bank's letterhead before any payment is made. This letter must clearly state that the payment is for 'Full and Final Settlement' and that all legal cases will be withdrawn. This protection is what you pay for when you hire experts.
-                </p>
-                <p className="mb-4">
-                  In the long run, the money saved through better negotiation techniques and the protection from legal pitfalls far outweighs the professional fees of a <strong>loan settlement in {bankName}</strong> expert. We treat your debt as if it were our own, fighting for every rupee of waiver possible.
-                </p>
-              </section>
-
-              <section id="management-vs-settlement" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Debt Management vs. Loan Settlement in {bankName}</h2>
-                <p className="mb-4">
-                  It is important to distinguish between debt management and <strong>loan settlement in {bankName}</strong>. Debt management involves restructuring your loans—perhaps by extending the tenure or slightly reducing the interest rate—to make the monthly payments more affordable. This is often a good option for those who still have a regular income but are temporarily over-leveraged.
-                </p>
-                <p className="mb-4">
-                  However, if your financial situation has deteriorated to the point where any EMI is impossible, then <strong>loan settlement in {bankName}</strong> is the only practical way out. Settlement is a more aggressive approach that targets the principal amount itself. It is for those who need a clean break from their debt to start over.
-                </p>
-                <p className="mb-4">
-                  Choosing between these two depends on a detailed financial analysis. When you come to us for <strong>loan settlement in {bankName}</strong>, we first assess if restructuring is a better path for you. If not, we pivot to a robust settlement strategy. Our goal is always the long-term financial health of our clients in {bankName}.
-                </p>
-                <p className="mb-4">
-                  Many local financial 'advisors' in {bankName} might push you toward more loans to pay off existing ones. This is a classic debt trap. We strongly advise against taking 'top-up' loans or high-interest private loans. Instead, a legal <strong>loan settlement in {bankName}</strong> provides a permanent closure to the debt without adding new liabilities.
-                </p>
-              </section>
-
-              <section id="success-stories" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Recent Success Stories in {bankName}</h2>
-                <p className="mb-4">
-                  To understand the impact of professional <strong>loan settlement in {bankName}</strong>, consider these real-world examples (names changed for privacy). Last month, we helped a small business owner in {bankName} who was struggling with ₹25 Lakhs in unsecured debt across five different banks. After our intervention, we secured settlements for a total of ₹11 Lakhs, a 56% waiver.
-                </p>
-                <p className="mb-4">
-                  Another case involved a young professional in {bankName} who had accumulated ₹8 Lakhs in credit card debt due to medical expenses. The interest was growing at almost ₹30,000 every month. Through our specialized <strong>loan settlement in {bankName}</strong> approach, we settled the entire amount for ₹3.2 Lakhs, allowing them to finally focus on their health and career again.
-                </p>
-                <p className="mb-4">
-                  These aren't just numbers; they represent lives transformed. The relief that comes with receiving a No Dues Certificate after months of stress is immeasurable. This is why we are so passionate about <strong>loan settlement in {bankName}</strong>. We provide the legal muscle you need to take on powerful financial institutions and win your freedom back.
-                </p>
-              </section>
-
-              <section id="future-planning" className="mb-12 scroll-mt-32">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Life After Loan Settlement in {bankName}</h2>
-                <p className="mb-4">
-                  Once the <strong>loan settlement in {bankName}</strong> is complete, a new chapter begins. Many worry that they will never get credit again. While it takes time, it is entirely possible to regain creditworthiness. The key is to demonstrate a new, disciplined approach to finances.
-                </p>
-                <p className="mb-4">
-                  We advise our {bankName} clients to start with a 'Secured Credit Card' against a fixed deposit. This is one of the fastest ways to start reporting positive data to credit bureaus after a <strong>loan settlement in {bankName}</strong>. Within a year of consistent, timely payments on such a card, your score will begin a steady climb.
-                </p>
-                <p className="mb-4">
-                  Financial literacy is the best defense against future debt. As part of our commitment to the community in {bankName}, we provide free resources and webinars for our past clients. We believe that everyone deserves a second chance, and <strong>loan settlement in {bankName}</strong> is exactly that—a second chance at financial life.
-                </p>
-                <p className="mb-4">
-                  In conclusion, if you are feeling the weight of unmanageable debt, don't suffer in silence. The legal path of <strong>loan settlement in {bankName}</strong> is designed to help people exactly in your position. With CredSettle by your side, you have a partner who understands the law, the banks, and most importantly, your need for a fresh start. Contact us today to begin your journey toward financial freedom.
+                  A notice under SARFAESI applies to secured lending, and a Section 138 notice follows a bounced cheque. Neither means the matter is closed to negotiation, and many accounts are settled while proceedings are pending. If <strong>{bankName}</strong> files before the Debt Recovery Tribunal, or the matter is listed for a Lok Adalat sitting, Legal Savvy prepares the file and appears alongside you.
                 </p>
               </section>
 
@@ -387,80 +238,51 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
 
               <section id="faqs" className="scroll-mt-32">
                 <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                  Frequently Asked Questions on Loan Settlement in {bankName}
+                  Frequently Asked Questions
                 </h2>
                 <div className="space-y-6">
                   <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">What is loan settlement and how does it work?</h4>
+                    <h3 className="font-bold text-gray-900 mb-2">
+                      How do I settle a loan with {bankName}?
+                    </h3>
                     <p className="text-gray-600 m-0">
-                      Loan settlement, also known as debt settlement, is a legal financial process where a borrower negotiates with the lender to pay a lump sum amount that is lower than the total outstanding debt to close the loan account. This is typically done through a One Time Settlement (OTS) scheme under RBI guidelines.
+                      You or your representative submit a One-Time Settlement proposal to {bankName} setting out your financial position and the amount you can pay. The bank assesses it against its internal settlement policy and the status of your account. If accepted, the terms are recorded in a settlement letter, which you should have in writing before paying anything.
                     </p>
                   </div>
 
                   <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">Is loan settlement legal in India?</h4>
+                    <h3 className="font-bold text-gray-900 mb-2">
+                      How long does a {bankName} loan settlement take?
+                    </h3>
                     <p className="text-gray-600 m-0">
-                      Yes, loan settlement is completely legal in India. It is governed by guidelines issued by the Reserve Bank of India (RBI) and is a standard banking practice for recovering non-performing assets (NPAs).
+                      It depends on how far the account has progressed and how quickly {bankName} responds. A straightforward negotiation may conclude in a few weeks; a file already in recovery takes longer. Anyone quoting a guaranteed timeline before reading your account details is guessing.
                     </p>
                   </div>
 
                   <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">How much can I save through loan settlement?</h4>
+                    <h3 className="font-bold text-gray-900 mb-2">
+                      Can I settle a {bankName} credit card and a personal loan together?
+                    </h3>
                     <p className="text-gray-600 m-0">
-                      Typically, borrowers can save anywhere from 30% to 50% of the total outstanding amount, depending on the age of the default and the bank's policies.
+                      They are negotiated separately because they sit with different divisions and are governed by different internal policies, even at the same bank. Legal Savvy can run both negotiations in parallel and keep you updated on each, but the settlement letters will be separate documents.
                     </p>
                   </div>
 
                   <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">Will loan settlement affect my CIBIL score?</h4>
+                    <h3 className="font-bold text-gray-900 mb-2">
+                      What can I do about {bankName} recovery agent calls?
+                    </h3>
                     <p className="text-gray-600 m-0">
-                      Yes, it will drop your score initially and show as 'Settled'. However, CredSettle provides a roadmap to rebuild your score to 750+ within 12-24 months.
+                      The RBI Fair Practices Code restricts recovery contact to between 8 a.m. and 7 p.m. and prohibits intimidation, abusive language, or contacting people other than you and any guarantor. Record what happens, then put the bank on formal written notice. If its grievance process does not resolve it, the matter can go to the Banking Ombudsman.
                     </p>
                   </div>
 
                   <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">How long does the settlement process take?</h4>
+                    <h3 className="font-bold text-gray-900 mb-2">
+                      Will {bankName} agree to a settlement?
+                    </h3>
                     <p className="text-gray-600 m-0">
-                      On average, the process takes between 3 to 6 months to reach a final agreement and receive the official settlement letter.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">What is the role of a lawyer in loan settlement?</h4>
-                    <p className="text-gray-600 m-0">
-                      A loan settlement lawyer protects your rights, handles all communications with the bank to stop harassment, and ensures you get the best possible waiver legally.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">
-                      Can the bank sue me during or after the settlement process?
-                    </h4>
-                    <p className="text-gray-600 m-0">
-                      While a bank has the right to take legal action for default, proactive negotiation for settlement often prevents litigation. Once a settlement is reached and the NDCs are issued, the bank cannot take further legal action for that debt.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">Which types of loans can be settled?</h4>
-                    <p className="text-gray-600 m-0">
-                      Unsecured loans like personal loans, credit card debts, and business loans without collateral are most suitable for settlement. Secured loans like home loans are harder but can be negotiated under specific hardship conditions.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">
-                      What is the difference between loan settlement and loan restructuring?
-                    </h4>
-                    <p className="text-gray-600 m-0">
-                      Restructuring involves changing the EMI or tenure of the loan to make it manageable, while settlement involves closing the loan account completely by paying a reduced lump sum amount.
-                    </p>
-                  </div>
-
-                  <div className="border-b border-gray-100 pb-6 last:border-0 hover:bg-gray-50 p-4 rounded-xl transition-colors">
-                    <h4 className="font-bold text-gray-900 mb-2">Is there a minimum debt amount required for settlement?</h4>
-                    <p className="text-gray-600 m-0">
-                      Generally, banks consider settlement for amounts above ₹1-2 Lakhs, but CredSettle can assist with various debt portfolios depending on the financial hardship of the borrower.
+                      There is no guarantee, and any firm promising one is overstating what it can do. Whether a bank settles depends on its own policy, how long the account has been overdue, and the strength of the hardship case put to it. What Legal Savvy can commit to is preparing that case properly and getting every offer in writing.
                     </p>
                   </div>
                 </div>
@@ -473,13 +295,13 @@ export default function ContentSection({ bankName = "Tirap" }: ContentSectionPro
           <aside className="lg:col-span-3">
             <div className="sticky top-24 space-y-6">
               <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
-                <h3 className="text-2xl font-bold mb-4">Urgent Help?</h3>
+                <h3 className="text-2xl font-bold mb-4">Talk to a Lawyer</h3>
                 <p className="text-gray-400 mb-8 text-sm">Speak with our senior debt advisor in {bankName} now.</p>
                 <a
-                  href="tel:+918800226635"
+                  href="tel:+91 92304 45513"
                   className="block w-full bg-blue-600 text-center py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-white"
                 >
-                  Call +91-8800226635
+                  Call +91 92304 45513
                 </a>
               </div>
             </div>

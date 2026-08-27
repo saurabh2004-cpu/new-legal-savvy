@@ -25,28 +25,24 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="text-left">
                         <div className="inline-block px-4 py-2 bg-blue-900 bg-opacity-50 border border-blue-400 rounded-full text-blue-200 font-semibold text-sm mb-6 backdrop-blur-sm">
-                            Updated for 2026 RBI Guidelines
+                            RBI Fair Practices Code compliant
                         </div>
                         <h1
                             className="font-semibold text-[2.4rem] sm:text-[3rem] md:text-[3.4rem] lg:text-[3.886rem] leading-[100%] tracking-[0%] mb-6"
                         >
-                            Legally Settle Your <br />
                             <span className="text-white bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">
-                                Debt in {bankName}
+                                {bankName} Loan Settlement
                             </span>
                         </h1>
                         <p className="font-regular text-[1rem] sm:text-[1.125rem] md:text-[1.25rem] leading-[1.2] tracking-[0%] text-right uppercase text-white mb-8 text-start max-w-2xl">
-                            Facing severe financial hardship in {bankName}? Stop the endless cycle of
-                            minimum payments and aggressive recovery calls. Our legal experts negotiate
-                            directly with banks to reduce your outstanding principal and waive off penal
-                            interest.
+                            Behind on your {bankName} EMIs or credit card dues? Legal Savvy negotiates a One-Time Settlement with {bankName} on your behalf, under the RBI Fair Practices Code. Every offer is put in writing before you pay.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
-                                href="https://www.credsettle.com/contact"
+                                href="/contact-us"
                                 className="bg-white text-blue-900 px-8 py-4 rounded-xl font-medium text-[1.125rem] leading-[100%] tracking-[0%] hover:bg-blue-50 transition-all shadow-xl flex items-center justify-center gap-2"
                             >
-                                Get Your Free Debt Audit
+                                Check If You Qualify
 
                                 <svg
                                     className="w-5 h-5"
@@ -64,10 +60,10 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                             </Link>
 
                             <a
-                                href="tel:+918800226635"
+                                href="tel:+919230445513"
                                 className="px-8 py-4 rounded-xl font-medium text-[1.125rem] leading-[100%] tracking-[0%] text-white border border-gray-600 hover:border-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
                             >
-                                Call +91-8800226635
+                                Call +91 92304 45513
                             </a>
                         </div>
                     </div>
@@ -98,7 +94,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                                     <span
                                         className="font-normal text-[1rem] leading-[100%] tracking-[0%] text-gray-300"
                                     >
-                                        Missed 3+ EMIs on personal loans or credit cards?
+                                        Missed 3 or more EMIs on a loan or credit card
                                     </span>
                                 </li>
 
@@ -120,7 +116,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                                     <span
                                         className="font-normal text-[1rem] leading-[100%] tracking-[0%] text-gray-300"
                                     >
-                                        Harassing calls from recovery agents in {bankName}?
+                                        Getting recovery calls about your {bankName} dues
                                     </span>
                                 </li>
 
@@ -142,7 +138,7 @@ export default function Hero7({ bankName = "Tirap", className = "" }: Hero7Props
                                     <span
                                         className="font-normal text-[1rem] leading-[100%] tracking-[0%] text-gray-300"
                                     >
-                                        Received legal notices under SARFAESI or Sec 138?
+                                        Received a legal notice under SARFAESI or Sec 138
                                     </span>
                                 </li>
                             </ul>

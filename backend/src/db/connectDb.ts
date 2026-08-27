@@ -44,6 +44,61 @@ const backfillExistingRecords = async () => {
         }
       }
     }
+
+    // 3. Backfill Services missing homePage or showOnHomePage
+    const servicesHomePageToFix = await Service.find({
+      $or: [
+        { homePage: { $exists: false } },
+        { showOnHomePage: { $exists: false } }
+      ]
+    });
+    if (servicesHomePageToFix.length > 0) {
+      console.log(`Found ${servicesHomePageToFix.length} services missing homePage/showOnHomePage. Backfilling...`);
+      for (const service of servicesHomePageToFix) {
+        let changed = false;
+        const updateData: any = {};
+        const unsetData: any = {};
+
+        if (service.showOnHomePage === undefined) {
+          updateData.showOnHomePage = false;
+          changed = true;
+        }
+
+        if (!service.homePage) {
+          const rawDoc = service.toObject() as any;
+          
+          // Generate a default tag from service name (e.g. "Personal Loan Settlement" -> "PERSONAL")
+          const defaultTag = rawDoc.name 
+            ? rawDoc.name.split(' ')[0].toUpperCase() 
+            : "SERVICE";
+
+          updateData.homePage = {
+            tag: defaultTag,
+            title: rawDoc.title || rawDoc.name || "Service Title",
+            description: rawDoc.homePageDescription || rawDoc.description || "Service Description",
+            image: rawDoc.image || "",
+            stats: [] // Empty default array
+          };
+
+          // Also mark to remove the old homePageDescription field
+          unsetData.homePageDescription = "";
+          changed = true;
+        }
+
+        if (changed) {
+          const updateQuery: any = { $set: updateData };
+          if (Object.keys(unsetData).length > 0) {
+            updateQuery.$unset = unsetData;
+          }
+
+          await Service.updateOne(
+            { _id: service._id },
+            updateQuery
+          );
+          console.log(`Backfilled homePage/showOnHomePage for service "${service.title || service.name}"`);
+        }
+      }
+    }
   } catch (error) {
     console.error("Error during startup database backfill:", error);
   }
