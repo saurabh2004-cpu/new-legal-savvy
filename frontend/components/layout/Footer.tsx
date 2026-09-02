@@ -128,9 +128,9 @@ export default function Footer() {
                     {/* Social Icons */}
                     <div className="flex justify-center items-center gap-6">
                         {[
-                            { label: "Facebook", href: "https://facebook.com", Icon: FaFacebook },
-                            { label: "Instagram", href: "https://instagram.com", Icon: RiInstagramFill },
-                            { label: "LinkedIn", href: "https://linkedin.com", Icon: FaLinkedin },
+                            { label: "Facebook", href: "https://www.facebook.com/people/The-Legal-Savvy/61570740873562/", Icon: FaFacebook },
+                            { label: "Instagram", href: "https://www.instagram.com/thelegal.savvy/", Icon: RiInstagramFill },
+                            { label: "LinkedIn", href: "https://www.linkedin.com/company/the-legal-savvy/", Icon: FaLinkedin },
                         ].map(({ label, href, Icon }) => (
                             <Link
                                 key={label}
