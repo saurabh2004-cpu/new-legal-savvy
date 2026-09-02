@@ -157,7 +157,7 @@ export default function OurServices({ servicesData, heading, className }: { serv
                       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className="inline-block">
-                        <Button text={item.cta} />
+                        <Button text={item.cta} href={`/service/${item.slug}`} />
                       </div>
                     </motion.div>
                   </div>

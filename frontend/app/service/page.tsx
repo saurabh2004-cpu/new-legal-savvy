@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
 import FAQJsonLd from "@/components/common/FAQJsonLd";
+import { CTA_ASSETS } from "@/components/home/assets";
 
 export const metadata: Metadata = {
     title: "Personal & Business Loan Settlement in India | Legal Savvy",
@@ -37,7 +38,8 @@ export default function page() {
             />
             <QnaSection faqs={faqs.service} />
             <ConsultationSolution
-                image={'/service/service-cultation-img.png'}
+                // image={'/service/service-cultation-img.png'}
+                image={CTA_ASSETS["radial-text"]}
                 className="pb-0 lg:pb-0"
             />
             <ImageGalleryStrip />

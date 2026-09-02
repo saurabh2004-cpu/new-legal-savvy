@@ -66,10 +66,13 @@ export default async function page({ params, searchParams }: PageProps) {
     const services = await getAllServices();
     const currentServiceId = serviceresponse?._id || serviceresponse?.id;
 
+    // const related = (services || [])
+    //     .filter((s: any) => s.showOnHomePage && (s._id || s.id) !== currentServiceId)
+    //     .sort((a: any, b: any) => (a.sequence || 0) - (b.sequence || 0))
+    //     .slice(0, 2);
     const related = (services || [])
-        .filter((s: any) => s.showOnHomePage && (s._id || s.id) !== currentServiceId)
-        .sort((a: any, b: any) => (a.sequence || 0) - (b.sequence || 0))
-        .slice(0, 2);
+        .filter((s: any) => (s._id || s.id) !== currentServiceId)
+        .sort((a: any, b: any) => (a.sequence || 0) - (b.sequence || 0));
 
     const servicesData = related.map((s: any) => {
         return {
@@ -82,7 +85,8 @@ export default async function page({ params, searchParams }: PageProps) {
             stats: s.homePage?.stats || [],
             cta: "Consult our Expert",
             ctaBg: "bg-[#FF3030] hover:bg-red-600 text-white shadow-lg shadow-red-500/20 hover:shadow-red-500/30",
-            ctaIconBg: "bg-white"
+            ctaIconBg: "bg-white",
+            slug: s.slug
         };
     });
 
@@ -104,7 +108,7 @@ export default async function page({ params, searchParams }: PageProps) {
                 heading="Related Services"
                 className="bg-[#1D2540] pb-12"
             />
-            <AssistanceSection />
+            {/* <AssistanceSection /> */}
             <BookConsultation />
             <Locations variant="cards" className="py-2" />
         </main>

@@ -49,7 +49,7 @@ export default function AboutService({ service }: AboutServiceProps) {
                                 <div className="flex items-center gap-3 text-black/60 pb-3">
                                     <FileText size={18} strokeWidth={1.5} />
                                     <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
-                                        Condition
+                                        Service
                                     </span>
                                 </div>
                                 <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
@@ -60,49 +60,55 @@ export default function AboutService({ service }: AboutServiceProps) {
                             </div>
 
                             {/* Row 2: Patients Treated */}
-                            <div className="flex items-end justify-between">
-                                <div className="flex items-center gap-3 text-black/60 pb-3">
-                                    <Users size={18} strokeWidth={1.5} />
-                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
-                                        Patients Treated
-                                    </span>
+                            {service?.clientsAssisted && (
+                                <div className="flex items-end justify-between">
+                                    <div className="flex items-center gap-3 text-black/60 pb-3">
+                                        <Users size={18} strokeWidth={1.5} />
+                                        <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
+                                            Patients Treated
+                                        </span>
+                                    </div>
+                                    <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
+                                        <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
+                                            {service ? service.clientsAssisted || "-" : "6,200+"}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
-                                        {service ? service.clientsAssisted || "-" : "6,200+"}
-                                    </span>
-                                </div>
-                            </div>
+                            )}
 
                             {/* Row 3: Highlight */}
-                            <div className="flex items-end justify-between">
-                                <div className="flex items-center gap-3 text-black/60 pb-3">
-                                    <Sparkles size={18} strokeWidth={1.5} />
-                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
-                                        Highlight
-                                    </span>
+                            {service?.highlight && (
+                                <div className="flex items-end justify-between">
+                                    <div className="flex items-center gap-3 text-black/60 pb-3">
+                                        <Sparkles size={18} strokeWidth={1.5} />
+                                        <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
+                                            Highlight
+                                        </span>
+                                    </div>
+                                    <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
+                                        <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
+                                            {service ? service.highlight || "-" : "Function restored"}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
-                                        {service ? service.highlight || "-" : "Function restored"}
-                                    </span>
-                                </div>
-                            </div>
+                            )}
 
                             {/* Row 4: Starting From */}
-                            <div className="flex items-end justify-between">
-                                <div className="flex items-center gap-3 text-black/60 pb-3">
-                                    <Tag size={18} strokeWidth={1.5} />
-                                    <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
-                                        Starting From
-                                    </span>
+                            {service?.startingFrom && (
+                                <div className="flex items-end justify-between">
+                                    <div className="flex items-center gap-3 text-black/60 pb-3">
+                                        <Tag size={18} strokeWidth={1.5} />
+                                        <span className="geist-mono-medium text-[16px] leading-none text-center text-[#00000094]">
+                                            Starting From
+                                        </span>
+                                    </div>
+                                    <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
+                                        <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
+                                            {service ? service.startingFrom || "-" : "€80"}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="border-b border-black/15 pb-3 flex-1 ml-6 flex justify-end">
-                                    <span className="geist-regular text-[17px] leading-none text-right text-[#000000B0]">
-                                        {service ? service.startingFrom || "-" : "€80"}
-                                    </span>
-                                </div>
-                            </div>
+                            )}
                         </div>
                     </div>
 

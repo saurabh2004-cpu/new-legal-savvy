@@ -150,7 +150,7 @@ export default function AddressesSection() {
           {/* RIGHT COLUMN (Width: ~65% or 8 cols) */}
           <div className="lg:col-span-8 flex flex-col gap-4">
             {/* Top-Right Locations Card */}
-            <motion.div
+            {/* <motion.div
               variants={cardVariants}
               className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-[#E6DCD6] flex flex-col sm:flex-row gap-6 sm:gap-8 justify-around items-center h-auto py-8 sm:py-0 sm:h-[22rem] lg:h-auto lg:flex-1 shadow-sm min-h-[18rem]"
             >
@@ -180,12 +180,58 @@ export default function AddressesSection() {
                   </div>
                 </div>
               ))}
+            </motion.div> */}
+            <motion.div
+              variants={cardVariants}
+              className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-[#E6DCD6] flex items-center justify-center min-h-[18rem] sm:h-[22rem] lg:h-auto lg:flex-1 shadow-sm"
+            >
+              <motion.h2
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.03,
+                      delayChildren: 0.1,
+                    },
+                  },
+                }}
+                initial="hidden"
+                whileInView="visible"
+                className="max-w-4xl mx-auto geist-medium text-xl md:text-2xl lg:text-3xl xl:text-4xl text-[#0F172A] leading-[1.15] tracking-normal text-center"
+              >
+                {`We bring together thoughtful strategy, creative design, and technology to build digital experiences that make a lasting impact.`
+                  .split(" ")
+                  .map((word, index) => (
+                    <span key={index} className="inline-block overflow-hidden">
+                      <motion.span
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            y: -30,
+                          },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                              duration: 0.6,
+                              ease: [0.16, 1, 0.3, 1],
+                            },
+                          },
+                        }}
+                        className="inline-block mr-[0.25em]"
+                      >
+                        {word}
+                      </motion.span>
+                    </span>
+                  ))}
+              </motion.h2>
             </motion.div>
 
             {/* Bottom-Right 2 Cards (Avatars Card + Feature Image Card) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto sm:h-[16.5rem] shrink-0">
               {/* Card 1: Overlapping Circular Avatars on Dark Navy Background */}
-              <motion.div
+              {/* <motion.div
                 variants={cardVariants}
                 className="bg-[#0B1E36] rounded-2xl p-6 flex items-center justify-center relative overflow-hidden shadow-sm h-[13rem] sm:h-full"
               >
@@ -207,6 +253,40 @@ export default function AddressesSection() {
                       />
                     </div>
                   ))}
+                </div>
+              </motion.div> */}
+              <motion.div
+                variants={cardVariants}
+                className="bg-[#0B1E36] rounded-2xl p-6 flex flex-col items-center justify-center relative overflow-hidden shadow-sm h-[13rem] sm:h-full"
+              >
+                <div className="flex items-center justify-center -space-x-5">
+                  {[
+                    { src: "/home/human-1.avif", alt: "Consultant 1" },
+                    { src: "/home/human-2.avif", alt: "Consultant 2" },
+                    { src: "/home/human-3.avif", alt: "Consultant 3" },
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full border-4 border-[#0B1E36] overflow-hidden relative shadow-lg ${i === 1 ? "z-20 scale-105" : "z-10"
+                        }`}
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-center mt-5">
+                  <p className="geist-regular text-white/70 text-sm sm:text-base">
+                    Trusted by
+                  </p>
+                  <p className="geist-medium text-white text-xl sm:text-2xl lg:text-3xl">
+                    23,000+ clients
+                  </p>
                 </div>
               </motion.div>
 

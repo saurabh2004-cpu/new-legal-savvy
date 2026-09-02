@@ -16,6 +16,7 @@ import { getAllServices } from "@/services/serviceServices";
 import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
 import FAQJsonLd from "@/components/common/FAQJsonLd";
+import ImageGalleryStrip from "@/components/service/ImageGallery";
 
 export const metadata: Metadata = {
   title: "Legal Loan Settlement Company in India | LegalSavvy",
@@ -52,7 +53,8 @@ export default async function Home() {
       stats: s.homePage?.stats || [],
       cta: "Consult our Expert",
       ctaBg: "bg-[#FF3030] hover:bg-red-600 text-white shadow-lg shadow-red-500/20 hover:shadow-red-500/30",
-      ctaIconBg: "bg-white"
+      ctaIconBg: "bg-white",
+      slug: s.slug
     };
   });
 
@@ -85,7 +87,8 @@ export default async function Home() {
       <FeaturedBlogs />
       <QnaSection faqs={faqs.home} />
       <ConsultationSolution image={CTA_ASSETS["radial-text"]} className="pb-16 lg:pb-24" />
-      <Locations variant="parallax" className="-mt-20 md:-mt-58 xl:-mt-38" />
+      {/* <Locations variant="parallax" className="-mt-20 md:-mt-52 xl:-mt-24" /> */}
+      <ImageGalleryStrip className="-mt-20 md:-mt-52 xl:-mt-26" />
     </main>
   );
 }

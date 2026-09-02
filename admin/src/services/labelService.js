@@ -1,11 +1,7 @@
 import axiosInstance from '../axios/axiosInstance';
 
 export const createLabel = async (data) => {
-    return await axiosInstance.post('/labels/create-label', data, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    return await axiosInstance.post('/labels/create-label', data);
 };
 
 export const getAllLabels = async (type) => {
@@ -21,13 +17,19 @@ export const getLabelById = async (id) => {
 };
 
 export const updateLabel = async (id, data) => {
-    return await axiosInstance.put(`/labels/update-label/${id}`, data, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    return await axiosInstance.put(`/labels/update-label/${id}`, data);
 };
 
 export const deleteLabel = async (id) => {
     return await axiosInstance.delete(`/labels/delete-label/${id}`);
+};
+
+export const importLabels = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return await axiosInstance.post('/labels/import', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
 };

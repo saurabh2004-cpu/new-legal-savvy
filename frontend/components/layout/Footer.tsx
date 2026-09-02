@@ -16,8 +16,8 @@ const navColumns = [
     ],
     [
         { label: "Loan Settlement By Bank", href: "/loan-settlement-by-bank" },
-        { label: "Settlement By State", href: "/loan-settlement-by-state" },
-        { label: "Settlement By City", href: "/loan-settlement-by-city" },
+        { label: "Loan Settlement By State", href: "/loan-settlement-by-state" },
+        { label: "Loan Settlement By City", href: "/loan-settlement-by-city" },
     ],
 ];
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl } from '@mui/material';
+import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
@@ -18,6 +18,8 @@ const LabelCreate = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [filePreview, setFilePreview] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,6 +27,14 @@ const LabelCreate = () => {
             ...prev,
             [name]: value
         }));
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            setFilePreview(URL.createObjectURL(file));
+        }
     };
 
     const validateForm = () => {
@@ -43,7 +53,15 @@ const LabelCreate = () => {
         if (!validateForm()) return;
         setLoading(true);
         try {
-            const res = await createLabel(formData);
+            const data = new FormData();
+            data.append('name', formData.name);
+            data.append('type', formData.type);
+            data.append('isFeatured', formData.isFeatured);
+            if (selectedFile) {
+                data.append('image', selectedFile);
+            }
+
+            const res = await createLabel(data);
             if (res.status === 201 || res.data) {
                 setSuccess(true);
                 setTimeout(() => navigate('/dashboard/labels/list'), 1500);
@@ -104,13 +122,41 @@ const LabelCreate = () => {
                         </Select>
                     </FormControl>
                 </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="image">Label Image (Optional)</CustomFormLabel>
+                    <Box display="flex" alignItems="center" gap={2}>
+                        <Button variant="outlined" component="label">
+                            Choose Image
+                            <input
+                                type="file"
+                                hidden
+                                accept="image/*"
+                                onChange={handleFileChange}
+                            />
+                        </Button>
+                        {selectedFile && (
+                            <Typography variant="body2" color="textSecondary">
+                                {selectedFile.name}
+                            </Typography>
+                        )}
+                    </Box>
+                    {filePreview && (
+                        <Box mt={2}>
+                            <img
+                                src={filePreview}
+                                alt="Preview"
+                                style={{ maxWidth: '100%', maxHeight: '150px', borderRadius: '4px', objectFit: 'cover' }}
+                            />
+                        </Box>
+                    )}
+                </Grid>
 
                 <Grid item size={{ xs: 12 }} mt={3}>
                     <Button variant="contained" color="primary" onClick={handleSubmit} disabled={loading}>
                         {loading ? <CircularProgress size={24} /> : 'Create Label'}
                     </Button>
                 </Grid>
-            </Grid> 
+            </Grid>
 
             <Snackbar
                 open={!!error || success}

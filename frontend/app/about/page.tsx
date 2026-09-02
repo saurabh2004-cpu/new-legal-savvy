@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
 import FAQJsonLd from "@/components/common/FAQJsonLd";
+import ImageGalleryStrip from "@/components/service/ImageGallery"
 
 export const metadata: Metadata = {
     title: "Loan Settlement Lawyers in India | About Legal Savvy",
@@ -51,10 +52,11 @@ export default function About() {
                 className="bg-[#1D2540] md:py-16 lg:py-20"
             />
             <TrustSection />
-            <ConsultationSection />
+            {/* <ConsultationSection /> */}
             {/* <TeamSection /> */}
             <QnaSection faqs={faqs.about} />
-            <Locations variant="cards" />
+            {/* <Locations variant="cards" /> */}
+            <ImageGalleryStrip />
         </main>
     )
 }

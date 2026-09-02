@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl } from '@mui/material';
+import { Grid, Box, CircularProgress, Alert, Snackbar, MenuItem, Select, FormControl, Typography, IconButton } from '@mui/material';
+import { IconTrash } from '@tabler/icons-react';
 import Button from '@mui/material/Button';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
@@ -20,6 +21,10 @@ const LabelEdit = () => {
     const [fetchLoading, setFetchLoading] = useState(true);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [filePreview, setFilePreview] = useState('');
+    const [existingImage, setExistingImage] = useState('');
+    const [removeImage, setRemoveImage] = useState(false);
 
     useEffect(() => {
         const fetchLabel = async () => {
@@ -32,6 +37,10 @@ const LabelEdit = () => {
                         type: data.type || 'city',
                         isFeatured: data.isFeatured !== undefined ? data.isFeatured : false
                     });
+                    if (data.image) {
+                        const backendUrl = import.meta.env.VITE_API_URL?.replace('/api/v1', '') || 'http://localhost:3001';
+                        setExistingImage(`${backendUrl}${data.image.startsWith('/') ? '' : '/'}${data.image}`);
+                    }
                 }
             } catch (error) {
                 setError('Failed to fetch label details');
@@ -53,6 +62,22 @@ const LabelEdit = () => {
         }));
     };
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            setFilePreview(URL.createObjectURL(file));
+            setRemoveImage(false);
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setSelectedFile(null);
+        setFilePreview('');
+        setExistingImage('');
+        setRemoveImage(true);
+    };
+
     const validateForm = () => {
         if (!formData.name) {
             setError('Please enter a name for the label');
@@ -69,7 +94,18 @@ const LabelEdit = () => {
         if (!validateForm()) return;
         setLoading(true);
         try {
-            const res = await updateLabel(id, formData);
+            const data = new FormData();
+            data.append('name', formData.name);
+            data.append('type', formData.type);
+            data.append('isFeatured', formData.isFeatured);
+            if (selectedFile) {
+                data.append('image', selectedFile);
+            }
+            if (removeImage) {
+                data.append('removeImage', 'true');
+            }
+
+            const res = await updateLabel(id, data);
             if (res.status === 200 || res.data) {
                 setSuccess(true);
                 setTimeout(() => navigate('/dashboard/labels/list'), 1500);
@@ -138,13 +174,51 @@ const LabelEdit = () => {
                         </Select>
                     </FormControl>
                 </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <CustomFormLabel htmlFor="image">Label Image (Optional)</CustomFormLabel>
+                    <Box display="flex" alignItems="center" gap={2}>
+                        <Button variant="outlined" component="label">
+                            Choose Image
+                            <input
+                                type="file"
+                                hidden
+                                accept="image/*"
+                                onChange={handleFileChange}
+                            />
+                        </Button>
+                        {selectedFile && (
+                            <Typography variant="body2" color="textSecondary">
+                                {selectedFile.name}
+                            </Typography>
+                        )}
+                        {(filePreview || existingImage) && (
+                            <Button
+                                variant="outlined"
+                                color="error"
+                                onClick={handleRemoveImage}
+                                startIcon={<IconTrash size={18} />}
+                            >
+                                Remove
+                            </Button>
+                        )}
+                    </Box>
+                    {(filePreview || existingImage) && (
+                        <Box mt={2}>
+                            <img
+                                src={filePreview || existingImage}
+                                alt="Preview"
+                                style={{ maxWidth: '100%', maxHeight: '150px', borderRadius: '4px', objectFit: 'cover' }}
+                            />
+                        </Box>
+                    )}
+                </Grid>
 
                 <Grid item size={{ xs: 12 }} mt={3}>
                     <Button variant="contained" color="primary" onClick={handleSubmit} disabled={loading}>
                         {loading ? <CircularProgress size={24} /> : 'Update Label'}
                     </Button>
                 </Grid>
-            </Grid> 
+            </Grid>
 
             <Snackbar
                 open={!!error || success}

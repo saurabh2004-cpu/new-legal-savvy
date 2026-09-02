@@ -39,7 +39,7 @@ function AnimatedCharacter({
           ? { color: "rgba(255, 255, 255, 0.95)" }
           : { WebkitTextStroke: "1px rgba(255, 255, 255, 0.9)", color: "transparent" })
       }}
-      className={`text-[10vw] md:text-[10vw] lg:text-[10vw] font-light uppercase leading-[0.95] tracking-tight`}
+      className={`text-[10vw] sm:text-[8vw] md:text-[6vw] lg:text-[6vw] font-light uppercase leading-[0.95] tracking-tight`}
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>
@@ -111,42 +111,120 @@ export default function ServiceHero({ title, description, image, className }: Se
   // --------------------------------------------------------
   // STAGE 5: Giant Typography Reveal (Dual Layer)
   // --------------------------------------------------------
-  const words = title.split(" ").filter(word => word.length > 0);
+  // const words = title.split(" ").filter(word => word.length > 0);
+  // const totalChars = title.replace(/\s/g, "").length;
+
+  // const AnimatedTypography = ({ isForeground }: { isForeground: boolean }) => (
+  //   <motion.div
+  //     style={isForeground ? { clipPath: textClipPath, visibility: typoVisibility } : { visibility: typoVisibility }}
+  //     className={`absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4 ${isForeground ? 'z-[15]' : 'z-0'}`}
+  //   >
+  //     {words.map((word, wordIndex) => (
+  //       <div key={wordIndex} className="flex overflow-hidden">
+  //         {word.split("").map((char, charIndex) => {
+  //           let pastChars = 0;
+  //           for (let i = 0; i < wordIndex; i++) {
+  //             pastChars += words[i].length;
+  //           }
+  //           pastChars += charIndex;
+
+  //           // Fades in *after* the image finishes shrinking (0.65 to 0.90)
+  //           const startScroll = 0.65 + (pastChars / totalChars) * 0.20;
+  //           const endScroll = startScroll + 0.05;
+
+  //           return (
+  //             <AnimatedCharacter
+  //               key={charIndex}
+  //               char={char}
+  //               startScroll={startScroll}
+  //               endScroll={endScroll}
+  //               scrollYProgress={scrollYProgress}
+  //               isForeground={isForeground}
+  //             />
+  //           );
+  //         })}
+  //       </div>
+  //     ))}
+  //   </motion.div>
+  // );
+
+  const words = title.split(" ").filter(Boolean);
   const totalChars = title.replace(/\s/g, "").length;
 
-  const AnimatedTypography = ({ isForeground }: { isForeground: boolean }) => (
-    <motion.div
-      style={isForeground ? { clipPath: textClipPath, visibility: typoVisibility } : { visibility: typoVisibility }}
-      className={`absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4 ${isForeground ? 'z-[15]' : 'z-0'}`}
-    >
-      {words.map((word, wordIndex) => (
-        <div key={wordIndex} className="flex overflow-hidden">
-          {word.split("").map((char, charIndex) => {
-            let pastChars = 0;
-            for (let i = 0; i < wordIndex; i++) {
-              pastChars += words[i].length;
+  const AnimatedTypography = ({
+    isForeground,
+  }: {
+    isForeground: boolean;
+  }) => {
+    let globalCharIndex = 0;
+
+    return (
+      <motion.div
+        style={
+          isForeground
+            ? {
+              clipPath: textClipPath,
+              visibility: typoVisibility,
             }
-            pastChars += charIndex;
+            : {
+              visibility: typoVisibility,
+            }
+        }
+        className={`absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4 ${isForeground ? "z-[15]" : "z-0"
+          }`}
+      >
+        <div className="flex flex-wrap justify-center overflow-hidden gap-x-[2vw] gap-y-[1vw] max-w-full sm:max-w-xl lg:max-w-5xl pb-8">
+          {words.map((word, wordIndex) => (
+            <div key={wordIndex} className="flex">
+              {word.split("").map((char, charIndex) => {
+                const pastChars = globalCharIndex;
+                globalCharIndex++;
 
-            // Fades in *after* the image finishes shrinking (0.65 to 0.90)
-            const startScroll = 0.65 + (pastChars / totalChars) * 0.20;
-            const endScroll = startScroll + 0.05;
+                const startScroll = 0.65 + (pastChars / totalChars) * 0.20;
+                const endScroll = startScroll + 0.05;
 
-            return (
-              <AnimatedCharacter
-                key={charIndex}
-                char={char}
-                startScroll={startScroll}
-                endScroll={endScroll}
-                scrollYProgress={scrollYProgress}
-                isForeground={isForeground}
-              />
-            );
-          })}
+                return (
+                  <AnimatedCharacter
+                    key={`${wordIndex}-${charIndex}`}
+                    char={char}
+                    startScroll={startScroll}
+                    endScroll={endScroll}
+                    scrollYProgress={scrollYProgress}
+                    isForeground={isForeground}
+                  />
+                );
+              })}
+            </div>
+          ))}
         </div>
-      ))}
-    </motion.div>
-  );
+
+        {/* Second line: Services */}
+        {/* <div className="flex justify-center overflow-hidden">
+          {words.slice(2).map((word, wordIndex) =>
+            word.split("").map((char, charIndex) => {
+              const pastChars = globalCharIndex;
+              globalCharIndex++;
+
+              const startScroll =
+                0.65 + (pastChars / totalChars) * 0.20;
+              const endScroll = startScroll + 0.05;
+
+              return (
+                <AnimatedCharacter
+                  key={`${wordIndex}-${charIndex}`}
+                  char={char}
+                  startScroll={startScroll}
+                  endScroll={endScroll}
+                  scrollYProgress={scrollYProgress}
+                  isForeground={isForeground}
+                />
+              );
+            })
+          )}
+        </div> */}
+      </motion.div>
+    );
+  };
 
 
   const handleScrollDown = () => {

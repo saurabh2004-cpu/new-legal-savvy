@@ -8,3 +8,12 @@ export const getLabelsByType = async (type: string) => {
         return [];
     }
 }
+
+export const getStateLabels = async () => {
+    try {
+        const response = await axiosInstance.get(`/labels/get-label-by-type/state`);
+        return response.data.data;
+    } catch (error) {
+        return [];
+    }
+}

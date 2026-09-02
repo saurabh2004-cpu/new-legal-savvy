@@ -707,6 +707,24 @@ const ProductTableList = ({
                                 </Tooltip>
                               </Box>
                             </TableCell>
+                            <TableCell>
+                              {row.image ? (
+                                <Box
+                                  component="img"
+                                  src={getAdminImageUrl(row.image)}
+                                  alt={row.name}
+                                  sx={{
+                                    width: 40,
+                                    height: 40,
+                                    borderRadius: '4px',
+                                    objectFit: 'cover',
+                                    border: '1px solid #ddd'
+                                  }}
+                                />
+                              ) : (
+                                <Typography variant="body2" color="textSecondary">-</Typography>
+                              )}
+                            </TableCell>
                             <TableCell><Typography fontWeight="600">{row.name}</Typography></TableCell>
                             <TableCell>
                               <Chip

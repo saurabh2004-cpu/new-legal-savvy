@@ -10,6 +10,7 @@ interface Service {
   id?: string;
   title: string;
   slug?: string;
+  sequence?: Number | string;
 }
 
 export default function LegalExpertise() {
@@ -125,7 +126,7 @@ export default function LegalExpertise() {
               <Link href={`/service/${item?.slug}`}
                 className="geist-medium text-2xl md:text-5xl bg-gradient-to-r from-[#0E1429] to-[#2E4286] bg-clip-text text-transparent"
               >
-                {item?.title}
+                {item?.sequence ? `${item?.sequence}.` : `${index + 1}.`} {item?.title}
               </Link>
             </motion.div>
           ))}

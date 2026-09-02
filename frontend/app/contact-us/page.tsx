@@ -8,6 +8,7 @@ import FAQJsonLd from "@/components/common/FAQJsonLd";
 import type { Metadata } from "next";
 import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
 import Locations from "@/components/common/Locations";
+import ImageGalleryStrip from "@/components/service/ImageGallery";
 
 export const metadata: Metadata = {
     title: "Contact Legal Savvy - Debt Settlement Services",
@@ -23,9 +24,10 @@ export default function page() {
             <Hero3 className="h-[50vh] md:h-[70vh] lg:h-[80vh] min-h-[400px]" />
             <BookConsultation />
             <DirectionsSection />
-            <Locations variant="parallax" />
+            {/* <Locations variant="parallax" /> */}
+            <ImageGalleryStrip />
             <QnaSection faqs={faqs.contact} />
-            <ComfortGallerySection />
+            {/* <ComfortGallerySection /> */}
         </main>
     );
 }

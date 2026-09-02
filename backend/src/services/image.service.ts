@@ -7,9 +7,9 @@ const uploadDir = path.join(process.cwd(), "public/uploads");
 // Upload Image
 export const uploadImage = async (
   file: Express.Multer.File,
-  entityType: "blog" | "service"
+  entityType: "blog" | "service" | "label"
 ): Promise<string> => {
-  const subFolder = entityType === "blog" ? "blogs" : "services";
+  const subFolder = entityType === "blog" ? "blogs" : entityType === "service" ? "services" : "labels";
   const targetDir = path.join(uploadDir, subFolder);
 
   // Ensure target directory exists
@@ -26,7 +26,7 @@ export const uploadImage = async (
     if (fs.existsSync(currentPath)) {
       await fs.promises.rename(currentPath, newPath);
     }
-    
+
     return `/public/uploads/${subFolder}/${file.filename}`;
   }
 

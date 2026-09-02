@@ -3,10 +3,12 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface ILabel {
   type: "city" | "state" | "bank";
   name: string;
+  slug?: string;
+  image?: string;
   isFeatured?: boolean;
 }
 
-export interface LabelDocument extends ILabel, Document {}
+export interface LabelDocument extends ILabel, Document { }
 
 const labelSchema = new Schema<LabelDocument>(
   {
@@ -23,6 +25,15 @@ const labelSchema = new Schema<LabelDocument>(
       type: String,
       required: [true, "Label name is required"],
       trim: true,
+    },
+    slug: {
+      type: String,
+      trim: true,
+    },
+    image: {
+      type: String,
+      trim: true,
+      default: null,
     },
     isFeatured: {
       type: Boolean,

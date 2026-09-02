@@ -1,41 +1,54 @@
-
 'use client'
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { getStateLabels } from "@/services/labelsServices";
+import { useRouter } from "next/navigation";
+import { getImageUrl } from "@/utils/getImageUrl";
+import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
 
-const images = [
-    {
-        id: 1,
-        src: "/service/image-gallery.png",
-        alt: "Dental consultation",
-    },
-    {
-        id: 2,
-        src: "/service/image-gallery.png",
-        alt: "Dental procedure",
-    },
-    {
-        id: 3,
-        src: "/service/image-gallery.png",
-        alt: "Dental checkup",
-    },
-    {
-        id: 4,
-        src: "/service/image-gallery.png",
-        alt: "Dentist at work",
-    },
-];
+type ImageGalleryProps = {
+    className?: string;
+}
 
-// Duplicate the array enough times to ensure seamless scrolling on large screens.
-const duplicatedImages = [...images, ...images, ...images, ...images];
+export default function ImageGalleryStrip({ className }: ImageGalleryProps) {
+    const [selected, setSelected] = useState<string | null>(null);
+    const [hovered, setHovered] = useState<string | null>(null);
+    const [images, setImages] = useState<Label[]>([]);
+    // Simple label type for the gallery
+    type Label = {
+        _id: string;
+        name?: string;
+        image?: string;
+        slug?: string;
+    };
+    const router = useRouter();
 
-export default function ImageGalleryStrip() {
-    const [selected, setSelected] = useState<number | null>(null);
-    const [hovered, setHovered] = useState<number | null>(null);
+    useEffect(() => {
+        const fetchLabels = async () => {
+            const labels = await getStateLabels();
+            setImages(labels || []);
+        };
+        fetchLabels();
+    }, []);
+
+    const handleNavigation = (slug: string | undefined, id: string) => {
+        setSelected(selected === id ? null : id);
+        if (slug) {
+            router.push(`/loan-settlement-by-state/${slug}`);
+        }
+    };
+
+    if (images.length === 0) return null;
+
+    // Duplicate the array enough times to ensure seamless scrolling on large screens.
+    let duplicatedImages = [...images];
+    while (duplicatedImages.length < 12 && duplicatedImages.length > 0) {
+        duplicatedImages = [...duplicatedImages, ...images];
+    }
 
     return (
-        <section className="w-full py-1 px-2">
+        <section className={`w-full py-1 px-2 ${className}`}>
             <div className="max-w-8xl mx-auto rounded-xl bg-[#1B223C] flex items-center justify-center p-6 md:p-8 overflow-hidden">
                 {/* Outer container — navy background strip */}
                 <div className="w-full relative overflow-hidden py-5">
@@ -53,26 +66,27 @@ export default function ImageGalleryStrip() {
                     >
                         {duplicatedImages.map((img, idx) => (
                             <button
-                                key={`${img.id}-${idx}`}
-                                onClick={() => setSelected(selected === img.id ? null : img.id)}
-                                onMouseEnter={() => setHovered(img.id)}
+                                key={`${img._id}-${idx}`}
+                                onClick={() => handleNavigation(img.slug, img._id)}
+                                onMouseEnter={() => setHovered(img._id)}
                                 onMouseLeave={() => setHovered(null)}
                                 className="relative rounded-xl overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-all duration-300 shrink-0 w-[15rem] md:w-[18.9rem]"
                                 style={{
                                     aspectRatio: "4/3",
                                     transform:
-                                        hovered === img.id || selected === img.id
+                                        hovered === img._id || selected === img._id
                                             ? "scale(1.03)"
                                             : "scale(1)",
                                 }}
                             >
                                 <Image
-                                    src={img.src}
-                                    alt={img.alt}
+                                    src={img.image ? getImageUrl(img.image) : "/service/image-gallery.png"}
+                                    alt={img.name || "Gallery Image"}
                                     width={337}
                                     height={302}
                                     className="object-cover h-full w-full rounded-xl object-top transition-transform duration-500"
                                     draggable={false}
+                                    unoptimized={isLocalBackendImage(img.image)}
                                 />
 
                                 {/* Subtle gradient overlay at bottom */}
@@ -84,8 +98,12 @@ export default function ImageGalleryStrip() {
                                     }}
                                 />
 
+                                <div className="absolute bottom-4 left-4 right-4 text-white text-left font-semibold text-lg md:text-xl drop-shadow-md">
+                                    {img.name}
+                                </div>
+
                                 {/* Selected checkmark badge */}
-                                {selected === img.id && (
+                                {selected === img._id && (
                                     <span
                                         className="absolute top-2 right-2 flex items-center justify-center w-6 h-6 rounded-full bg-blue-400 text-white"
                                         style={{ fontSize: 13, fontWeight: 700 }}
