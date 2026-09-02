@@ -12,6 +12,9 @@ import blogRoutes from "./routes/blog.routes.js";
 import labelRoutes from "./routes/label.routes.js";
 import keywordRoutes from "./routes/keyword.routes.js";
 import pageContentRoutes from "./routes/pageContent.routes.js";
+import dns from 'node:dns';
+
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 export const app = express();
 

@@ -29,6 +29,7 @@ next-env.d.ts
 
 # User-requested exclusions
 temp/
+backend.zip
 public/dist/
 **/public/dist/
 
