@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import PillTag from "../utils/PillTag";
+import assets from "@/data/assets";
 
 interface TrustCard {
   title: string;
@@ -82,7 +83,7 @@ export default function TrustSection({
           <div className="w-full aspect-square lg:h-[98vh] lg:sticky lg:top-1 lg:self-start rounded-xl overflow-hidden">
             <div className="relative w-full h-[420px] sm:h-full min-h-[350px] lg:min-h-[500px] rounded-xl shadow-[0_20px_40px_-15px_rgba(29,35,49,0.15)] border border-white/20">
               <Image
-                src={imageSrc || "/home/human-approach-1.png"}
+                src={imageSrc || assets.home.humanApproach1}
                 alt="Professional legal guidance consultation"
                 className="w-full h-full object-cover select-none pointer-events-none rounded-xl"
                 sizes="(max-width: 640px) 100vw, 50vw"

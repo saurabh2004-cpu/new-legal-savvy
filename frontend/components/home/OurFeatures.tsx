@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Plus } from "lucide-react";
 import SectionHeading from "../utils/SectionHeading";
+import assets from "@/data/assets";
 
 const features = [
   {
@@ -12,35 +13,35 @@ const features = [
     title: "Case Review & Documentation",
     description:
       "We start by reviewing your loan and payment history and preparing the paperwork lenders expect, in line with RBI norms.",
-    image: "/home/our-features-1.png",
+    image: assets.home.ourFeatures1,
   },
   {
     id: 2,
     title: "Lender Negotiation",
     description:
       "Our legal team negotiates a One-Time Settlement (OTS) proposal directly with your bank or NBFC, on your behalf.",
-    image: "/home/our-featutes-2.png",
+    image: assets.home.ourFeatures2,
   },
   {
     id: 3,
     title: "Written Confirmation",
     description:
       "Every settlement offer, revision, and acceptance is recorded in writing, so there is a clear paper trail at each stage.",
-    image: "/home/human-approach-1.png",
+    image: assets.home.humanApproach1,
   },
   {
     id: 4,
     title: "Recovery Communication Handled",
     description:
       "Once engaged, our team becomes your point of contact for recovery calls, in line with RBI’s rules for recovery agents.",
-    image: "/service/service-card-1.png",
+    image: assets.service.serviceCard1,
   },
   {
     id: 5,
     title: "Closure & No-Dues Certificate",
     description:
       "After the settlement is paid, we help you obtain a written closure letter and No-Dues Certificate from your lender.",
-    image: "/home/our-features-1.png",
+    image: assets.home.ourFeatures1,
   },
 ];
 

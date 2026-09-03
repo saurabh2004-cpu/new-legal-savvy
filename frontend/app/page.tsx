@@ -1,22 +1,23 @@
 import React from "react";
-import Hero1 from "@/components/common/Hero1";
-import AboutUs from "@/components/common/AboutUs";
+import FAQJsonLd from "@/components/utils/FAQJsonLd";
+import Hero1 from "@/components/ui/Hero1";
+import AboutUs from "@/components/utils/AboutUs";
 import WhyUs from "@/components/home/WhyUs";
-import OurServices from "@/components/common/OurServices";
-import BankSettlements from "@/components/common/BankSettlements";
+import OurServices from "@/components/utils/OurServices";
+import BankSettlements from "@/components/utils/BankSettlements";
 import OurFeatures from "@/components/home/OurFeatures";
-import Testimonials from "@/components/home/Testimonials";
+import Testimonials from "@/components/ui/Testimonials";
 import HumanApproach from "@/components/home/HumanApproach";
-import FeaturedBlogs from "@/components/common/FeaturedBlogs";
-import ConsultationSolution from "@/components/common/ConsultationSolution";
-import Locations from "@/components/common/Locations";
-import { CTA_ASSETS } from "@/components/home/assets";
+import FeaturedBlogs from "@/components/ui/FeaturedBlogs";
+import QnaSection from "@/components/utils/QnaSection";
+import ConsultationSolution from "@/components/ui/ConsultationSolution";
+import ImageGalleryStrip from "@/components/ui/ImageGallery";
+
 import type { Metadata } from "next";
 import { getAllServices } from "@/services/serviceServices";
-import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
-import FAQJsonLd from "@/components/common/FAQJsonLd";
-import ImageGalleryStrip from "@/components/service/ImageGallery";
+
+import assets, { CTA_ASSETS } from "@/data/assets";
 
 export const metadata: Metadata = {
   title: "Legal Loan Settlement Company in India | LegalSavvy",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 const getFrontImageUrl = (imagePath: string) => {
-  if (!imagePath) return "/service/service-card-1.png";
+  if (!imagePath) return assets.service.serviceCard1;
   if (imagePath.startsWith("http")) return imagePath;
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
   const baseUrl = backendUrl.replace(/\/api\/v1\/?$/, "");
@@ -64,7 +65,7 @@ export default async function Home() {
       <Hero1
         Heading={"Legal Loan Settlement Company in India"}
         description={"RBI-compliant loan and debt settlement services for borrowers across India, handled by a licensed legal team, not recovery agents"}
-        img={"/about/about-hero-img.png"}
+        img={assets.about.hero}
         className="h-[100vh] lg:h-screen min-h-[600px]"
       />
       <AboutUs

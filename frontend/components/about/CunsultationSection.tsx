@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../utils/Button';
 import PillTag from '../utils/PillTag';
+import assets from '@/data/assets';
 
 export default function ConsultationSection() {
     const [hoveredImage, setHoveredImage] = useState<number | null>(null);
@@ -13,27 +14,27 @@ export default function ConsultationSection() {
     const galleryImages = [
         {
             id: 1,
-            src: '/about/consultant-main.png',
+            src: assets.about.consultantMain,
             alt: 'Professional consultant main',
         },
         {
             id: 2,
-            src: '/about/consultation-2.png',
+            src: assets.about.consultation2,
             alt: 'Consultation view 2',
         },
         {
             id: 3,
-            src: '/about/our-team-1.png',
+            src: assets.about.ourTeam1,
             alt: 'Our team',
         },
         {
             id: 4,
-            src: '/about/about-hero-img.png',
+            src: assets.about.hero,
             alt: 'About hero banner',
         },
         {
             id: 5,
-            src: '/about/stats-1.png',
+            src: assets.about.stats1,
             alt: 'Statistics and achievements',
         },
     ];

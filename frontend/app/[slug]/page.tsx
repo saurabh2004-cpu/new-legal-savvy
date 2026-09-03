@@ -1,13 +1,13 @@
-import { Metadata } from "next";
-import Hero10 from "@/components/common/Hero10";
-import { axiosInstance } from "../utils/axios";
-import { getPageData } from "@/services/pageContentService";
+import Hero10 from "@/components/ui/Hero10";
 import { DynamicBreadcrumb } from "@/components/dynamic-content-page/DynamicBreadcrumb";
 import { DynamicSidebar } from "@/components/dynamic-content-page/DynamicSidebar";
 import { DynamicSections } from "@/components/dynamic-content-page/DynamicSections";
 import { DynamicFAQ } from "@/components/dynamic-content-page/DynamicFAQ";
 import { DynamicTestimonials } from "@/components/dynamic-content-page/DynamicTestimonials";
 import { DynamicRightSidebar } from "@/components/dynamic-content-page/DynamicRightSidebar";
+
+import { Metadata } from "next";
+import { getPageData } from "@/services/pageContentService";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

@@ -1,16 +1,17 @@
-import FeaturedBlogs from "@/components/common/FeaturedBlogs";
-import Hero3 from "@/components/common/Hero3";
+import FAQJsonLd from "@/components/utils/FAQJsonLd";
+import Hero3 from "@/components/ui/Hero3";
 import LatestArticlesSection from "@/components/resources/LatestArticles";
 import AllArticlesSection from "@/components/resources/AllArticles";
-import CasesSection from "@/components/resources/CasesSection";
 import ProvenResultsBanner from "@/components/resources/ProvenResultsBanner";
-import BankSettlements from "@/components/common/BankSettlements";
+import BankSettlements from "@/components/utils/BankSettlements";
 import StandardOfCareSection from "@/components/resources/StandardOfCareSection";
+import QnaSection from "@/components/utils/QnaSection";
 import ScheduleVisitSection from "@/components/resources/ScheduleVisitSection";
+import ImageGalleryStrip from "@/components/ui/ImageGallery";
+
 import type { Metadata } from "next";
-import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
-import FAQJsonLd from "@/components/common/FAQJsonLd";
+import assets from "@/data/assets";
 
 export const metadata: Metadata = {
   title: "Resources Legal Savvy- Debt Settlement Services",
@@ -25,7 +26,7 @@ export default function page() {
       <FAQJsonLd faqs={faqs.resources} />
       <Hero3
         Heading={"BLOGS & CASES"}
-        img={"/about/about-hero-img.png"}
+        img={assets.about.hero}
         className="h-[100vh] lg:h-screen min-h-[600px]"
       />
       {/* <FeaturedBlogs /> */}
@@ -42,6 +43,7 @@ export default function page() {
       <StandardOfCareSection />
       <QnaSection faqs={faqs.resources} />
       <ScheduleVisitSection />
+      <ImageGalleryStrip />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import assets from "@/data/assets";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
@@ -35,7 +36,7 @@ export default function Footer() {
                 {/* Logo  */}
                 <div className="flex justify-start">
                     <Image
-                        src="/home/logo.png"
+                        src={assets.logo.main}
                         alt="Logo"
                         width={220}
                         height={100}

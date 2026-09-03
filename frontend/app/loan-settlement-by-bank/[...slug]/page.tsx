@@ -1,6 +1,6 @@
 import Navbar from "@/components/common/Navbar";
-import Hero7 from "@/components/common/Hero7";
-import ContentSection from "@/components/loan-settlement-by-bank/ContentSection";
+import Hero7 from "@/components/ui/Hero7";
+import ContentSection from "@/components/loan-sattelments/ContentSection";
 import { getLabelsByType } from "@/services/labelsServices";
 import type { Metadata } from "next";
 

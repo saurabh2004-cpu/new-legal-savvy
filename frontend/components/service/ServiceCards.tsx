@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Button from "../utils/Button";
 import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
 import { getImageUrl } from "@/utils/getImageUrl";
+import assets from "@/data/assets";
 
 /* ─── Types ─────────────────────────────────────────────── */
 
@@ -39,7 +40,7 @@ const SERVICE_CARDS: ServiceCardData[] = [
     {
         id: 1,
         tag: "SERVICE",
-        imageSrc: "/service/service-card-1.png",
+        imageSrc: assets.service.serviceCard1,
         imageAlt: "Personal Loan Assistance",
         title: "Personal Loan Assistance",
         description:
@@ -56,7 +57,7 @@ const SERVICE_CARDS: ServiceCardData[] = [
     {
         id: 2,
         tag: "SERVICE",
-        imageSrc: "/service/service-card-1.png",
+        imageSrc: assets.service.serviceCard1,
         imageAlt: "Business Loan Assistance",
         title: "Business Loan Assistance",
         description:
@@ -73,7 +74,7 @@ const SERVICE_CARDS: ServiceCardData[] = [
     {
         id: 3,
         tag: "SERVICE",
-        imageSrc: "/service/service-card-1.png",
+        imageSrc: assets.service.serviceCard1,
         imageAlt: "Business Loan Assistance",
         title: "Business Loan Assistance",
         description:
@@ -90,7 +91,7 @@ const SERVICE_CARDS: ServiceCardData[] = [
     {
         id: 4,
         tag: "SERVICE",
-        imageSrc: "/service/service-card-1.png",
+        imageSrc: assets.service.serviceCard1,
         imageAlt: "Business Loan Assistance",
         title: "Business Loan Assistance",
         description:
@@ -278,7 +279,7 @@ export default function ServiceCards({ cards: initialCards }: ServiceCardsProps)
                         return {
                             id: s._id || index,
                             tag: s.name || "SERVICE",
-                            imageSrc: s.image ? getImageUrl(s.image) : "/service/service-card-1.png",
+                            imageSrc: s.image ? getImageUrl(s.image) : assets.service.serviceCard1,
                             imageAlt: s.title,
                             title: s.title,
                             description: s.description,

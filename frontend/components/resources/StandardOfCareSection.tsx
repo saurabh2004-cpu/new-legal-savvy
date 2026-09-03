@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import PillTag from "../utils/PillTag";
+import assets from "@/data/assets";
 
 interface StandardOfCareProps {
   title?: string;
@@ -23,7 +24,7 @@ const features = [
 
 export default function StandardOfCareSection({
   title = "Real cases that reflect our standard of legal excellence",
-  imageSrc = "/resources/legal_care_office.png",
+  imageSrc = assets.resources.legalCareOffice,
   label1 = "PROVEN",
   label2 = "CARE",
 }: StandardOfCareProps) {

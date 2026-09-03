@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import assets from "@/data/assets";
 
 interface StatItem {
   label: string;
@@ -89,7 +90,7 @@ export default function ProvenResultsBanner({
           {/* Background Image Asset */}
           <div className="absolute inset-0 z-0 lg:w-[104.5rem] lg:h-[58.8125rem]">
             <Image
-              src="/about/about-hero-img.png"
+              src={assets.about.hero}
               alt="Proven results"
               fill
               sizes="100vw"

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import assets from "@/data/assets";
 
 interface LegalServicesBannerProps {
     imageSrc?: string;
@@ -7,7 +8,7 @@ interface LegalServicesBannerProps {
 }
 
 export default function LegalServicesBanner({
-    imageSrc = "/service/legal-services.png",
+    imageSrc = assets.service.legalServices,
     imageAlt = "Legal Services Office",
     heading = "LEGAL\nSERVICES",
 }: LegalServicesBannerProps) {

@@ -1,15 +1,14 @@
-import AboutService from "@/components/service-details/AboutService";
-import ServiceFooterActions from "@/components/service-details/ServiceFooterActions";
-import OurServices from "@/components/common/OurServices";
-import AssistanceSection from "@/components/service-details/AssistanceSection";
-import BookConsultation from "@/components/common/BookConsultationSection";
-import Locations from "@/components/common/Locations";
-import QnaSection from "@/components/contact-us/QnaSection";
-import FAQJsonLd from "@/components/common/FAQJsonLd";
+import FAQJsonLd from "@/components/utils/FAQJsonLd";
+import Hero5 from "@/components/ui/Hero5";
+import AboutService from "@/components/service/AboutService";
+import ServiceFooterActions from "@/components/service/ServiceFooterActions";
+import OurServices from "@/components/utils/OurServices";
+import BookConsultation from "@/components/ui/BookConsultationSection";
+import QnaSection from "@/components/utils/QnaSection";
+import ImageGalleryStrip from "@/components/ui/ImageGallery";
 
 import type { Metadata } from "next";
 import { getServiceById, getServiceBySlug, getAllServices } from "@/services/serviceServices";
-import Hero5 from "@/components/common/Hero5";
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -44,8 +43,10 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     };
 }
 
+import assets from "@/data/assets";
+
 const getFrontImageUrl = (imagePath: string) => {
-    if (!imagePath) return "/service/service-card-1.png";
+    if (!imagePath) return assets.service.serviceCard1;
     if (imagePath.startsWith("http")) return imagePath;
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
     const baseUrl = backendUrl.replace(/\/api\/v1\/?$/, "");
@@ -110,7 +111,8 @@ export default async function page({ params, searchParams }: PageProps) {
             />
             {/* <AssistanceSection /> */}
             <BookConsultation />
-            <Locations variant="cards" className="py-2" />
+            {/* <Locations variant="cards" className="py-2" /> */}
+            <ImageGalleryStrip />
         </main>
     );
 }

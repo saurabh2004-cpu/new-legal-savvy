@@ -1,13 +1,15 @@
-import AboutUs from "@/components/common/AboutUs";
-import Hero4 from "@/components/common/Hero4";
-import ConsultationSolution from "@/components/common/ConsultationSolution";
-import ImageGalleryStrip from "@/components/service/ImageGallery";
+import FAQJsonLd from "@/components/utils/FAQJsonLd";
+import Hero4 from "@/components/ui/Hero4";
 import ServiceCards from "@/components/service/ServiceCards";
+import AboutUs from "@/components/utils/AboutUs";
+import QnaSection from "@/components/utils/QnaSection";
+import ConsultationSolution from "@/components/ui/ConsultationSolution";
+import ImageGalleryStrip from "@/components/ui/ImageGallery";
+
 import type { Metadata } from "next";
-import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
-import FAQJsonLd from "@/components/common/FAQJsonLd";
-import { CTA_ASSETS } from "@/components/home/assets";
+
+import assets, { CTA_ASSETS } from "@/data/assets";
 
 export const metadata: Metadata = {
     title: "Personal & Business Loan Settlement in India | Legal Savvy",
@@ -25,7 +27,7 @@ export default function page() {
             <FAQJsonLd faqs={faqs.service} />
             <Hero4 title="LOAN SETTLEMENT SERVICES"
                 description="Legal Savvy Handles Personal, Business, Credit Card, And NBFC Loan Settlement Across India, With Every Offer Documented And Every Step Explained."
-                image="/about/about-hero-img.png"
+                image={assets.about.hero}
                 className="h-[85vh] lg:h-screen min-h-[600px]" />
             {/* <LegalServicesBanner />   */}
             <ServiceCards />

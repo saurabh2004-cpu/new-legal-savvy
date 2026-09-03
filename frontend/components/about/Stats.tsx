@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import assets from "@/data/assets";
 
 const STATS_DATA = [
   {
     label: "YEARS",
     value: "10+",
     description: "Legal excellence.",
-    image: "/about/stats-1.png",
+    image: assets.about.stats1,
     imageheading: "Years In Legal Savvy",
     imageDescription:
       "Over 10 years of successfully helping clients navigate complex legal matters.",
@@ -18,7 +19,7 @@ const STATS_DATA = [
     label: "CASES",
     value: "97%",
     description: "Loans settled.",
-    image: "/about/stats-1.png",
+    image: assets.about.stats1,
     imageheading: "Loan Settlements Handled",
     imageDescription:
       "Negotiated directly with banks and NBFCs under RBI Fair Practices Code guidelines, with every offer confirmed in writing.",
@@ -27,7 +28,7 @@ const STATS_DATA = [
     label: "SUPPORT",
     value: "1:1",
     description: "Advocate access.",
-    image: "/about/stats-1.png",
+    image: assets.about.stats1,
     imageheading: "Direct Access to Your Advocate",
     imageDescription:
       "You deal with the same advocate throughout your case, not a rotating call-centre team.",

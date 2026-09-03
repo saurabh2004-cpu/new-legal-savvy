@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import PillTag from "../utils/PillTag";
+import assets from "@/data/assets";
 
 const BulletIcon = () => (
   <div className="w-7 h-7 rounded-full bg-[#CDC2BB] flex items-center justify-center text-[#1D2331] shrink-0">
@@ -111,7 +112,7 @@ export default function AddressesSection() {
               className="relative w-full h-[20rem] sm:h-[22rem] lg:h-[24rem] rounded-2xl overflow-hidden shadow-sm min-h-[16rem]"
             >
               <Image
-                src="/about/about-hero-img.png"
+                src={assets.about.hero}
                 alt="Client Consultation"
                 fill
                 className="object-cover"
@@ -261,9 +262,9 @@ export default function AddressesSection() {
               >
                 <div className="flex items-center justify-center -space-x-5">
                   {[
-                    { src: "/home/human-1.avif", alt: "Consultant 1" },
-                    { src: "/home/human-2.avif", alt: "Consultant 2" },
-                    { src: "/home/human-3.avif", alt: "Consultant 3" },
+                    { src: assets.home.human1, alt: "Consultant 1" },
+                    { src: assets.home.human2, alt: "Consultant 2" },
+                    { src: assets.home.human3, alt: "Consultant 3" },
                   ].map((item, i) => (
                     <div
                       key={i}
@@ -296,7 +297,7 @@ export default function AddressesSection() {
                 className="relative w-full h-[13rem] sm:h-full rounded-2xl overflow-hidden shadow-sm group cursor-pointer"
               >
                 <Image
-                  src="/home/human-2.avif"
+                  src={assets.home.human2}
                   alt="Legal Excellence"
                   fill
                   className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

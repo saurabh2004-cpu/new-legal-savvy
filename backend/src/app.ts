@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
 
+dotenv.config();
+
 import adminRoutes from "./routes/admin.routes.js";
 import serviceRoutes from "./routes/service.routes.js";
 import addressRoutes from "./routes/address.routes.js";
@@ -55,8 +57,6 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
         message: err.message || "Internal Server Error",
     });
 });
-
-dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 

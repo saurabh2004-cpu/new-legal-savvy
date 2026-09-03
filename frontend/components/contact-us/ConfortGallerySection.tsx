@@ -4,16 +4,17 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import Button from '../utils/Button';
 import SectionHeading from '../utils/SectionHeading';
+import assets from '@/data/assets';
 
 const galleryImages = [
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
-    '/contact-us/gallery-1.png',
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
+    assets.contactUs.gallery1,
 ];
 
 export default function ComfortGallerySection() {

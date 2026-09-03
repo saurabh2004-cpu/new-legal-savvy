@@ -1,6 +1,6 @@
 import Navbar from "@/components/common/Navbar";
-import Hero7 from "@/components/common/Hero7";
-import ContentSection from "@/components/loan-settlement-by-state/ContentSection";
+import Hero7 from "@/components/ui/Hero7";
+import ContentSectionState from "@/components/loan-sattelments/ContentSectionState";
 import type { Metadata } from "next";
 
 interface PageProps {
@@ -46,7 +46,7 @@ export default async function Page({ params }: PageProps) {
         <div className="bg-[#f0ece7] min-h-screen">
             <Navbar />
             <Hero7 bankName={stateName} />
-            <ContentSection stateName={stateName} />
+            <ContentSectionState stateName={stateName} />
         </div>
     );
 }  

@@ -1,16 +1,17 @@
-import BookConsultation from "@/components/common/BookConsultationSection";
-import Hero3 from "@/components/common/Hero3";
-import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
-import { getLabelsByType } from "@/services/labelsServices";
+import Hero3 from "@/components/ui/Hero3";
+import Locations from "@/components/ui/Locations";
+import BookConsultation from "@/components/ui/BookConsultationSection";
+import DirectionsSection from "@/components/ui/DirectionsSections";
+
 import type { Metadata } from "next";
-import Locations from "@/components/common/Locations";
+import { getLabelsByType } from "@/services/labelsServices";
+import assets from "@/data/assets";
 
 export const metadata: Metadata = {
     title: "Locations Legal Savvy- Debt Settlement Services",
     description:
         "Get expert legal debt settlement services across India. Reduce your loan burden and get relief from harassment with proven settlement strategies.",
 }
-
 
 export default async function page() {
     const cities = await getLabelsByType("city")
@@ -21,7 +22,7 @@ export default async function page() {
         <main className="bg-[#FFFFFF]">
             <Hero3
                 Heading={"LOCATIONS"}
-                img={"/about/about-hero-img.png"}
+                img={assets.about.hero}
                 className="h-[50vh] md:h-[70vh] lg:h-[80vh] min-h-[400px]"
             />
             <Locations variant="cards" />

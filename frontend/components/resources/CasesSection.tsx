@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "../utils/Button";
+import assets from "@/data/assets";
 
 interface CaseStat {
   label: string;
@@ -23,7 +24,7 @@ interface CaseItem {
 const casesData: CaseItem[] = [
   {
     id: "1",
-    images: ["/about/about-hero-img.png", "/about/about-hero-img.png"],
+    images: [assets.about.hero, assets.about.hero],
     title: "Debt harassment resolved with legal guidance",
     description:
       "A Client Facing Repeated Recovery Calls And Repayment Pressure Received Proper Legal Guidance, Documentation Support, And Step-By-Step Assistance To Handle The Issue Professionally And Confidently.",
@@ -36,7 +37,7 @@ const casesData: CaseItem[] = [
   },
   {
     id: "2",
-    images: ["/about/about-hero-img.png", "/about/about-hero-img.png"],
+    images: [assets.about.hero, assets.about.hero],
     title: "Debt harassment resolved with legal guidance",
     description:
       "A Client Facing Repeated Recovery Calls And Repayment Pressure Received Proper Legal Guidance, Documentation Support, And Step-By-Step Assistance To Handle The Issue Professionally And Confidently.",
@@ -49,7 +50,7 @@ const casesData: CaseItem[] = [
   },
   {
     id: "3",
-    images: ["/about/about-hero-img.png", "/about/about-hero-img.png"],
+    images: [assets.about.hero, assets.about.hero],
     title: "Debt harassment resolved with legal guidance",
     description:
       "A Client Facing Repeated Recovery Calls And Repayment Pressure Received Proper Legal Guidance, Documentation Support, And Step-By-Step Assistance To Handle The Issue Professionally And Confidently.",

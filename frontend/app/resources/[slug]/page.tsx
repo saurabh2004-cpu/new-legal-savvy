@@ -1,8 +1,10 @@
+import Hero6 from "@/components/ui/Hero6";
+import BlogDetails from "@/components/resources/BlogDetails";
+import FeaturedBlogs from "@/components/ui/FeaturedBlogs";
+import ImageGalleryStrip from "@/components/ui/ImageGallery";
+
 import { Metadata, ResolvingMetadata } from "next";
 import { getBlogBySlug } from "@/services/blogServices";
-import Hero6 from "@/components/common/Hero6";
-import BlogDetails from "@/components/resources/BlogDetails";
-import FeaturedBlogs from "@/components/common/FeaturedBlogs";
 import { notFound } from "next/navigation";
 import { getImageUrl } from "@/utils/getImageUrl";
 
@@ -65,6 +67,7 @@ export default async function Page({ params }: Props) {
             />
             <BlogDetails blog={blog} />
             <FeaturedBlogs />
+            <ImageGalleryStrip />
         </main>
     );
 }

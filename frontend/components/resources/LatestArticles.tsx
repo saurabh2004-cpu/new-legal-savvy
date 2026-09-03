@@ -8,6 +8,7 @@ import Link from "next/link";
 import SectionHeading from "../utils/SectionHeading";
 import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
 import { getImageUrl } from "@/utils/getImageUrl";
+import assets from "@/data/assets";
 
 interface Article {
     id: string;
@@ -117,14 +118,14 @@ export default function LatestArticlesSection() {
             id: "1",
             title: "Dealing with Debt: Strategies for Financial Recovery ",
             category: "Dental Treatments",
-            image: "/resources/resources-1.png",
+            image: assets.resources.resources1,
             href: "#",
         },
         {
             id: "2",
             title: "Dealing with Debt: Strategies for Financial Recovery ",
             category: "Oral Health & Prevention",
-            image: "/resources/resources-2.png",
+            image: assets.resources.resources2,
             href: "#",
         },
     ];

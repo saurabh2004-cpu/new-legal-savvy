@@ -1,18 +1,18 @@
+import FAQJsonLd from "@/components/utils/FAQJsonLd";
+import Hero2 from "@/components/ui/Hero2"
+import AboutUs from "@/components/utils/AboutUs"
 import StatsSection from "@/components/about/Stats"
-import AboutUs from "@/components/common/AboutUs"
-import Hero2 from "@/components/common/Hero2"
 import AddressesSection from "@/components/about/Address"
 import LegalExpertise from "@/components/about/LegalExpertise"
-import BankSettlements from "@/components/common/BankSettlements"
+import BankSettlements from "@/components/utils/BankSettlements"
 import TrustSection from "@/components/about/TrustSection"
-import ConsultationSection from "@/components/about/CunsultationSection"
-import TeamSection from "@/components/about/TeamSection"
-import Locations from "@/components/common/Locations"
+import QnaSection from "@/components/utils/QnaSection";
+import ImageGalleryStrip from "@/components/ui/ImageGallery"
+
 import type { Metadata } from "next";
-import QnaSection from "@/components/contact-us/QnaSection";
 import { faqs } from "@/data/faq";
-import FAQJsonLd from "@/components/common/FAQJsonLd";
-import ImageGalleryStrip from "@/components/service/ImageGallery"
+
+import assets from "@/data/assets";
 
 export const metadata: Metadata = {
     title: "Loan Settlement Lawyers in India | About Legal Savvy",
@@ -31,7 +31,7 @@ export default function About() {
             <FAQJsonLd faqs={faqs.about} />
             <Hero2
                 Heading={"Meet Your Loan Settlement Lawyers in India"}
-                img={"/about/about-hero-img.png"}
+                img={assets.about.hero}
                 className="h-[85vh] lg:h-screen min-h-[600px]"
             />
             <AboutUs

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import PillTag from '../utils/PillTag';
+import assets from '@/data/assets';
 
 interface TeamMember {
     id: number;
@@ -21,7 +22,7 @@ const teamMembers: TeamMember[] = [
         name: 'Dr. James Whitfield',
         title: 'Corporate Law Consultant',
         description: 'Founder of Legal Savvy with 20+ years of experience in business law, contracts, company compliance, and legal advisory for growing businesses.',
-        image: '/about/our-team-1.png',
+        image: assets.about.ourTeam1,
         email: 'james@legalsavvy.com',
         linkedin: 'https://linkedin.com/in/james-whitfield',
     },
@@ -30,7 +31,7 @@ const teamMembers: TeamMember[] = [
         name: 'Dr. James Whitfield',
         title: 'Corporate Law Consultant',
         description: 'Founder of Legal Savvy with 20+ years of experience in business law, contracts, company compliance, and legal advisory for growing businesses.',
-        image: '/about/our-team-1.png',
+        image: assets.about.ourTeam1,
         email: 'james@legalsavvy.com',
         linkedin: 'https://linkedin.com/in/james-whitfield',
     },
@@ -39,7 +40,7 @@ const teamMembers: TeamMember[] = [
         name: 'Dr. James Whitfield',
         title: 'Corporate Law Consultant',
         description: 'Founder of Legal Savvy with 20+ years of experience in business law, contracts, company compliance, and legal advisory for growing businesses.',
-        image: '/about/our-team-1.png',
+        image: assets.about.ourTeam1,
         email: 'james@legalsavvy.com',
         linkedin: 'https://linkedin.com/in/james-whitfield',
     },
@@ -48,7 +49,7 @@ const teamMembers: TeamMember[] = [
         name: 'Dr. James Whitfield',
         title: 'Corporate Law Consultant',
         description: 'Founder of Legal Savvy with 20+ years of experience in business law, contracts, company compliance, and legal advisory for growing businesses.',
-        image: '/about/our-team-1.png',
+        image: assets.about.ourTeam1,
         email: 'james@legalsavvy.com',
         linkedin: 'https://linkedin.com/in/james-whitfield',
     },
@@ -57,7 +58,7 @@ const teamMembers: TeamMember[] = [
         name: 'Dr. James Whitfield',
         title: 'Corporate Law Consultant',
         description: 'Founder of Legal Savvy with 20+ years of experience in business law, contracts, company compliance, and legal advisory for growing businesses.',
-        image: '/about/our-team-1.png',
+        image: assets.about.ourTeam1,
         email: 'james@legalsavvy.com',
         linkedin: 'https://linkedin.com/in/james-whitfield',
     },
@@ -66,7 +67,7 @@ const teamMembers: TeamMember[] = [
         name: 'Dr. James Whitfield',
         title: 'Corporate Law Consultant',
         description: 'Founder of Legal Savvy with 20+ years of experience in business law, contracts, company compliance, and legal advisory for growing businesses.',
-        image: '/about/our-team-1.png',
+        image: assets.about.ourTeam1,
         email: 'james@legalsavvy.com',
         linkedin: 'https://linkedin.com/in/james-whitfield',
     },

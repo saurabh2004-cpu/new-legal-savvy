@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import assets from "@/data/assets";
 
 // ── Navigation Data ─────────────────────────────────────────────
 const navColumns = [
@@ -89,7 +90,7 @@ export default function Footer() {
                     {/* Logo */}
                     <div className="flex justify-start">
                         <Image
-                            src="/home/logo.png"
+                            src={assets.logo.main}
                             alt="Logo"
                             width={220}
                             height={100}

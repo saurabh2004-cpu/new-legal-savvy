@@ -8,6 +8,7 @@ import Link from "next/link";
 import SectionHeading from "../utils/SectionHeading";
 import { isLocalBackendImage } from "@/utils/isLocalBackendImage";
 import { getImageUrl } from "@/utils/getImageUrl";
+import assets from "@/data/assets";
 
 // interface Article {
 //     id: string;
@@ -205,7 +206,7 @@ export default function AllArticlesSection() {
             title: "Dealing with Debt: Strategies for Financial Recovery",
             category: "Credit Card",
             readTime: "5 min",
-            image: "/home/human-approach-1.png",
+            image: assets.home.humanApproach1,
             href: "#",
         },
         {
@@ -213,7 +214,7 @@ export default function AllArticlesSection() {
             title: "Understanding Personal Loans: A Complete Guide",
             category: "Personal Loans",
             readTime: "8 min",
-            image: "/resources/resources-1.png",
+            image: assets.resources.resources1,
             href: "#",
         },
         {
@@ -221,7 +222,7 @@ export default function AllArticlesSection() {
             title: "Business Debt Settlement: How It Works",
             category: "Business Debt",
             readTime: "6 min",
-            image: "/resources/resources-2.png",
+            image: assets.resources.resources2,
             href: "#",
         },
         {
@@ -229,7 +230,7 @@ export default function AllArticlesSection() {
             title: "Credit Repair: Steps to Rebuild Your Score",
             category: "Credit Score",
             readTime: "7 min",
-            image: "/resources/resources-1.png",
+            image: assets.resources.resources1,
             href: "#",
         },
         {
@@ -237,7 +238,7 @@ export default function AllArticlesSection() {
             title: "Legal Rights Against Harassment from Creditors",
             category: "Legal Rights",
             readTime: "10 min",
-            image: "/resources/resources-2.png",
+            image: assets.resources.resources2,
             href: "#",
         },
         {
@@ -245,7 +246,7 @@ export default function AllArticlesSection() {
             title: "Debt Consolidation vs. Bankruptcy: Which is Right?",
             category: "Financial Strategy",
             readTime: "9 min",
-            image: "/home/human-approach-1.png",
+            image: assets.home.humanApproach1,
             href: "#",
         },
     ];

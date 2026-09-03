@@ -1,14 +1,12 @@
-import Hero3 from "@/components/common/Hero3";
-import BookConsultation from "@/components/common/BookConsultationSection";
-import ComfortGallerySection from "@/components/contact-us/ConfortGallerySection";
-import QnaSection from "@/components/contact-us/QnaSection";
-import { faqs } from "@/data/faq";
-import FAQJsonLd from "@/components/common/FAQJsonLd";
+import FAQJsonLd from "@/components/utils/FAQJsonLd";
+import Hero3 from "@/components/ui/Hero3";
+import BookConsultation from "@/components/ui/BookConsultationSection";
+import DirectionsSection from "@/components/ui/DirectionsSections";
+import QnaSection from "@/components/utils/QnaSection";
+import ImageGalleryStrip from "@/components/ui/ImageGallery";
 
 import type { Metadata } from "next";
-import DirectionsSection from "@/components/loan-sattelments/DirectionsSections";
-import Locations from "@/components/common/Locations";
-import ImageGalleryStrip from "@/components/service/ImageGallery";
+import { faqs } from "@/data/faq";
 
 export const metadata: Metadata = {
     title: "Contact Legal Savvy - Debt Settlement Services",
@@ -25,8 +23,8 @@ export default function page() {
             <BookConsultation />
             <DirectionsSection />
             {/* <Locations variant="parallax" /> */}
-            <ImageGalleryStrip />
             <QnaSection faqs={faqs.contact} />
+            <ImageGalleryStrip />
             {/* <ComfortGallerySection /> */}
         </main>
     );

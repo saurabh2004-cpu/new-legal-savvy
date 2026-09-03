@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAllServices } from "@/services/serviceServices";
 import { getImageUrl } from "@/utils/getImageUrl";
+import assets from "@/data/assets";
 
 interface NavbarProps {
   onHoverMenuChange?: (menu: "services" | "locations" | null) => void;
@@ -236,7 +237,7 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
           onMouseEnter={() => onHoverMenuChange?.(null)}
           className={`flex items-center gap-2 z-50 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMobileMenuOpen ? 'opacity-0 -translate-y-8 pointer-events-none' : 'opacity-100 translate-y-0'}`}
         >
-          <img src="/home/logo.png" alt="LEGALSAVVY Logo" className="h-6 md:h-8 w-auto object-contain" />
+          <img src={assets.logo.main} alt="LEGALSAVVY Logo" className="h-6 md:h-8 w-auto object-contain" />
         </Link>
 
         {/* Center Nav Links - Pill Shape */}
@@ -346,7 +347,7 @@ function NavbarComponent({ onHoverMenuChange, hoveredMenu }: NavbarProps) {
                                 {/* Left Image */}
                                 <div className="relative w-[160px] h-[105px] rounded-xl overflow-hidden shrink-0 shadow-sm">
                                   <img
-                                    src={getImageUrl(item.image) || "/home/our-features-1.png"}
+                                    src={getImageUrl(item.image) || assets.home.ourFeatures1}
                                     alt={item.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                   />

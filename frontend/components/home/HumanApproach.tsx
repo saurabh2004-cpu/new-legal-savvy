@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import SectionHeading from "../utils/SectionHeading";
+import assets from "@/data/assets";
 
 type Stat = {
   id: number;
@@ -20,7 +21,7 @@ const stats: Stat[] = [
     title: "YEARS",
     value: "18+",
     description: "In legal practice.",
-    image: "/home/human-approach-1.png",
+    image: assets.home.humanApproach1,
     icon: (
       <svg
         className="size-[18px] text-white"
@@ -36,7 +37,7 @@ const stats: Stat[] = [
     title: "CASES",
     value: "98%",
     description: "Loan settlements handled.",
-    image: "/home/human-approach-1.png",
+    image: assets.home.humanApproach1,
     icon: (
       <svg
         className="size-[18px] text-white"
@@ -52,7 +53,7 @@ const stats: Stat[] = [
     title: "SUPPORT",
     value: "1:1",
     description: "Legal team, not agents.",
-    image: "/home/human-approach-1.png",
+    image: assets.home.humanApproach1,
     icon: (
       <svg
         className="size-[18px] text-white"
