@@ -54,3 +54,7 @@ Thumbs.db
 # Large archives
 *.zip
 **/*.zip
+
+# Upload media
+public/uploads/*
+!public/uploads/.gitkeep
